@@ -13,6 +13,7 @@ public class PlayerMovement : MonoBehaviour
 
     public float airMultiplier;
 
+
     Vector3 move;
     // Start is called before the first frame update
     void Start()
@@ -26,40 +27,71 @@ public class PlayerMovement : MonoBehaviour
         ver = Input.GetAxisRaw("Vertical");
 
         ControlSpeed();
+
+        model.actualSpeed = model.rb.velocity.magnitude;
          
     }
     void FixedUpdate()
     {
-        Walk();
+        Movement();
     }
 
-    private void Walk()
+    private void Movement()
     {
         
         move = orientation.forward * ver + orientation.right * hor;
 
         if(playerGroundCheck.grounded)
         {
-            model.rb.AddForce(move.normalized * model.speed * 10f, ForceMode.Force);
+            if (Input.GetKey(KeyCode.LeftShift) && model.staActual >=0)
+            {
+                Run();
+            }
+            else
+            {
+                Walk();
+            }
         }
 
         else if (!playerGroundCheck.grounded)
         {
-            model.rb.AddForce(move.normalized * model.speed * 10f * airMultiplier , ForceMode.Force);
+            model.rb.AddForce(move.normalized * model.speedWalk * 10f * airMultiplier , ForceMode.Force);
         }
 
 
+    }
+
+    private void Walk()
+    {
+        model.rb.AddForce(move.normalized * model.speedWalk * 10f, ForceMode.Force);
+        model.isRunning = false;
+    }
+    private void Run()
+    {
+        model.rb.AddForce(move.normalized * model.speedRun * 10f, ForceMode.Force);
+        model.isRunning = true;
     }
 
     private void ControlSpeed()
     {
         Vector3 flatVel = new Vector3(model.rb.velocity.x, 0f, model.rb.velocity.z);
 
-
-        if(flatVel.magnitude > model.speed)
+        if(model.isRunning)
         {
-            Vector3 limitedVel = flatVel.normalized * model.speed;
-            model.rb.velocity = new Vector3(limitedVel.x, model.rb.velocity.y, limitedVel.z);
+            if (flatVel.magnitude > model.speedRun)
+            {
+                Vector3 limitedVel = flatVel.normalized * model.speedRun;
+                model.rb.velocity = new Vector3(limitedVel.x, model.rb.velocity.y, limitedVel.z);
+            }
         }
+        else
+        {
+            if (flatVel.magnitude > model.speedWalk)
+            {
+                Vector3 limitedVel = flatVel.normalized * model.speedWalk;
+                model.rb.velocity = new Vector3(limitedVel.x, model.rb.velocity.y, limitedVel.z);
+            }
+        }
+        
     }
 }
