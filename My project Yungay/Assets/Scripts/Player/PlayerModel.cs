@@ -26,10 +26,21 @@ public class PlayerModel : MonoBehaviour
 
     public Rigidbody rb;
 
+    public Inventory inventory;
+
 
     private void Awake()
     {
         rb = GetComponent<Rigidbody>();
+        inventory = GetComponent<Inventory>();
     }
 
+    private void OnCollisionEnter(Collision collision)
+    {
+        var item = collision.gameObject.GetComponent<Item>();
+        if (item)
+        {
+            inventory.AddItem(item, item.item, item.amount);
+        }
+    }
 }

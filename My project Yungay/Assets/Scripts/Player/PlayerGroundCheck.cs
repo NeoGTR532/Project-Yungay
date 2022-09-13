@@ -27,9 +27,7 @@ public class PlayerGroundCheck : MonoBehaviour
         {
             model.rb.drag = groundDrag;
         }
-
         else
-
         {
             model.rb.drag = 0;
         }
