@@ -10,5 +10,10 @@ public class SacoBoxeo : MonoBehaviour
     public void RecibirDaño(int valor)
     {
         life -= valor;
+
+        if (life <= 0)
+        {
+            Destroy(gameObject);
+        }
     }
 }
