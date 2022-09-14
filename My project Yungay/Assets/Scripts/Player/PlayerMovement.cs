@@ -56,6 +56,7 @@ public class PlayerMovement : MonoBehaviour
         else if (!playerGroundCheck.grounded)
         {
             model.rb.AddForce(move.normalized * model.speedWalk * 10f * airMultiplier , ForceMode.Force);
+
         }
 
 

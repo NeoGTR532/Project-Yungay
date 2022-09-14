@@ -28,6 +28,8 @@ public class PlayerModel : MonoBehaviour
 
     public Inventory inventory;
 
+    public AudioSource Walk;
+
 
     private void Awake()
     {

@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Arma : MonoBehaviour
+public class Weapons : MonoBehaviour
 {
     [Header("General")]
     public Camera cam;
@@ -14,7 +14,7 @@ public class Arma : MonoBehaviour
     [SerializeField]
     private TrailRenderer bulletTrail;
     public string weapons;
-    public int stateWeapons = 1;
+    public int stateWeapons;
 
     [Header("Pistola")]
     [SerializeField]
@@ -44,9 +44,9 @@ public class Arma : MonoBehaviour
         {
             Shoot();
         }
-        if(Input.GetKeyDown(KeyCode.Alpha1))
+        if (Input.GetKeyDown(KeyCode.Alpha1))
         {
-            ChangeWeapons(); 
+            ChangeWeapons();
         }
     }
 
