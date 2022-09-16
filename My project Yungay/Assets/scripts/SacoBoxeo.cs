@@ -4,10 +4,10 @@ using UnityEngine;
 
 public class SacoBoxeo : MonoBehaviour
 {
-    public int life;
+    public float life;
 
 
-    public void RecibirDaño(int valor)
+    public void RecibirDaño(float valor)
     {
         life -= valor;
 
