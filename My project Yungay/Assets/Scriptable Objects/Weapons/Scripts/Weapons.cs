@@ -6,6 +6,11 @@ public class Weapons : MonoBehaviour
 {
     [Header("General")]
     public Camera cam;
+    public Inventory inventory;
+    public ItemObject nailsItem;
+    public ItemObject bulletsItem;
+    [HideInInspector]
+    public bool hasItemNails, hasItemBullets;
     private Vector3 beggin;
     private float BulletSpeed = 100f;
     [SerializeField]
@@ -13,8 +18,8 @@ public class Weapons : MonoBehaviour
     public string weapons;
     public int stateWeapons;
     public Munition munition;
-    [HideInInspector]
-    public bool lockWeapons,stateAmmo;
+    //[HideInInspector]
+    public bool lockWeapons,ammo;
 
     public List<Weapon> armas = new List<Weapon>();
 
@@ -40,6 +45,15 @@ public class Weapons : MonoBehaviour
         {
             ChangeWeapons();
         }
+        if (Input.GetKeyDown(KeyCode.T))
+        {
+            StateAmmo();
+        }
+        if (Input.GetKeyDown(KeyCode.R))
+        {
+            munition.RechargeAmmo();
+        }
+
     }
 
     public void ChangeWeapons()
@@ -55,10 +69,26 @@ public class Weapons : MonoBehaviour
                 break;
             case 1:
                 weapons = armas[stateWeapons].name;
+                ammo = true;
                 break;
             default:
                 stateWeapons = 0;
                 weapons = armas[stateWeapons].name;
+                break;
+        }
+    }
+
+    
+
+    public void StateAmmo()
+    {
+        switch (stateWeapons)
+        {
+            case 0:
+                ammo = !ammo;
+                break;
+            case 1:
+                ammo = true;
                 break;
         }
     }
@@ -78,16 +108,16 @@ public class Weapons : MonoBehaviour
                     Debug.Log("a");
                     if (lastShootTime + arma.shootDelay < Time.time)
                     {
+                        if (munition.thereNails && ammo == false)
+                        {
+                            munition.chargerNails -= 1;
+                        }
+                        if (munition.thereBullets == true && ammo == true)
+                        {
+                            munition.chargerBullets -= 1;
+                        }
                         if (Physics.Raycast(beggin, cam.transform.forward, out hit, arma.range))
                         {
-                            if (munition.thereNails)
-                            {
-                                munition.nails -= 1;
-                            }
-                            if (munition.thereBullets == true && munition.thereNails == false)
-                            {
-                                munition.bullets -= 1;
-                            }
                             TrailRenderer trail = Instantiate(bulletTrail, beggin, Quaternion.identity);
                             StartCoroutine(SpawnTrail(trail, hit.point));
                             if (hit.collider.CompareTag("Enemigo"))
@@ -116,9 +146,9 @@ public class Weapons : MonoBehaviour
                     if (lastShootTime + arma.shootDelay < Time.time)
                     {
                         Vector3 direction = GetDirection();
+                        munition.chargerBullets -= 1;
                         if (Physics.Raycast(beggin, direction, out hit, arma.range))
                         {
-                            munition.bullets -= 1;
                             TrailRenderer trail = Instantiate(bulletTrail, beggin, Quaternion.identity);
                             StartCoroutine(SpawnTrail(trail, hit.point));
                             if (hit.collider.CompareTag("Enemigo"))
@@ -136,7 +166,6 @@ public class Weapons : MonoBehaviour
 
                             lastShootTime = Time.time;
                         }
-
                     }
                 }
                 break;

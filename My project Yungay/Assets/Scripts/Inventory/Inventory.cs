@@ -6,7 +6,6 @@ public class Inventory : MonoBehaviour
 {
     public List<InventorySlot> slots = new List<InventorySlot>();
     public int maxSlots;
-
     public void AddItem(Item item, ItemObject itemObject, int amount)
     {
         bool hasItem = false;
@@ -31,10 +30,10 @@ public class Inventory : MonoBehaviour
         }
         if (!hasItem)
         {
-            if (slots.Count<maxSlots)
+            if (slots.Count < maxSlots)
             {
                 slots.Add(new InventorySlot(itemObject, amount));
-                if (item!=null)
+                if (item != null)
                 {
                     item.amount = 0;
                 }
@@ -55,7 +54,7 @@ public class Inventory : MonoBehaviour
         {
             foreach (InventorySlot slot in slots)
             {
-                if (slot.item==recipe.materials[i].item)
+                if (slot.item == recipe.materials[i].item)
                 {
                     if (slot.amount >= recipe.materials[i].amount)
                     {
@@ -65,7 +64,7 @@ public class Inventory : MonoBehaviour
             }
         }
 
-        if (count==materialCount)
+        if (count == materialCount)
         {
             hasMaterials = true;
         }
@@ -96,12 +95,13 @@ public class Inventory : MonoBehaviour
     {
         for (int i = 0; i < slots.Count; i++)
         {
-            if (slots[i].amount==0)
+            if (slots[i].amount == 0)
             {
                 slots.RemoveAt(i);
             }
         }
     }
+
     public bool CheckItem(ItemObject item)
     {
         bool hasItem = false;
@@ -130,15 +130,28 @@ public class Inventory : MonoBehaviour
 
         return amount;
     }
-    public void RestItem(ItemObject item)
+
+    public int GetItemIndex(ItemObject item)
     {
+        int index = 0;
+
         for (int i = 0; i < slots.Count; i++)
         {
             if (slots[i].item == item)
             {
-                slots[i].amount--;
+                index = i;
             }
-            break;
+        }
+
+        return index;
+    }
+    public void RestItem(ItemObject item, int value)
+    {
+        bool hasItem = CheckItem(item);
+        int index = GetItemIndex(item);
+        if (hasItem)
+        {
+            slots[index].RestAmount(value);
         }
     }
 }
@@ -158,5 +171,10 @@ public class InventorySlot
     public void AddAmount(int value)
     {
         amount += value;
+    }
+
+    public void RestAmount(int value)
+    {
+        amount -= value;
     }
 }

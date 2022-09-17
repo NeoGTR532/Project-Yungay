@@ -17,7 +17,7 @@ MonoBehaviour:
   shootDelay: 0.2
   bulletSpreadVarianceDis: 0.02
   chargerNailsMax: 0
-  chargerBulletMax: 0
+  chargerBulletsMax: 20
   bulletSpreadVariance: {x: 0.02, y: 0.02}
   range: 20
   zoom: 30

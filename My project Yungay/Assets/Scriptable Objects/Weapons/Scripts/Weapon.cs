@@ -13,7 +13,7 @@ public class Weapon : ScriptableObject
     [Range(0f,0.9f)]
     public float bulletSpreadVarianceDis;
     public int chargerNailsMax;
-    public int chargerBulletMax;
+    public int chargerBulletsMax;
     [HideInInspector]
     public Vector2 bulletSpreadVariance;
     public float range;
