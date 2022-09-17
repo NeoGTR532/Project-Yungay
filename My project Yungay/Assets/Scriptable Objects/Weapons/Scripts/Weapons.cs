@@ -14,7 +14,7 @@ public class Weapons : MonoBehaviour
     public int stateWeapons;
     public Munition munition;
     [HideInInspector]
-    public bool lockWeapons;
+    public bool lockWeapons,stateAmmo;
 
     public List<Weapon> armas = new List<Weapon>();
 
@@ -25,7 +25,6 @@ public class Weapons : MonoBehaviour
     
     private void Start()
     {
-        beggin = this.transform.position;
         stateWeapons = -1;
         ChangeWeapons();
     }
@@ -66,6 +65,7 @@ public class Weapons : MonoBehaviour
 
     public void Shoot(Weapon arma)
     {
+        beggin = this.transform.position;
         arma = armas[stateWeapons];
         BulletSpreadVariance = new Vector3(armas[stateWeapons].bulletSpreadVarianceDis, armas[stateWeapons].bulletSpreadVarianceDis);
 

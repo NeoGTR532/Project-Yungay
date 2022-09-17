@@ -102,6 +102,45 @@ public class Inventory : MonoBehaviour
             }
         }
     }
+    public bool CheckItem(ItemObject item)
+    {
+        bool hasItem = false;
+        for (int i = 0; i < slots.Count; i++)
+        {
+            if (slots[i].item == item)
+            {
+                hasItem = true;
+            }
+        }
+
+        return hasItem;
+    }
+
+    public int CheckAmount(ItemObject item)
+    {
+        int amount = 0;
+
+        for (int i = 0; i < slots.Count; i++)
+        {
+            if (slots[i].item == item)
+            {
+                amount = slots[i].amount;
+            }
+        }
+
+        return amount;
+    }
+    public void RestItem(ItemObject item)
+    {
+        for (int i = 0; i < slots.Count; i++)
+        {
+            if (slots[i].item == item)
+            {
+                slots[i].amount--;
+            }
+            break;
+        }
+    }
 }
 
 [System.Serializable]
