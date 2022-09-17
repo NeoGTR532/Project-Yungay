@@ -6,6 +6,7 @@ public class Inventory : MonoBehaviour
 {
     public List<InventorySlot> slots = new List<InventorySlot>();
     public int maxSlots;
+    public CraftRecipes objectToCraft;
     public void AddItem(Item item, ItemObject itemObject, int amount)
     {
         bool hasItem = false;
@@ -68,29 +69,49 @@ public class Inventory : MonoBehaviour
         {
             hasMaterials = true;
         }
+        else
+        {
+            Debug.Log("No tienes los materiales suficientes");
+        }
 
         if (hasMaterials)
         {
-            for (int i = 0; i < recipe.materials.Count; i++)
+            bool hasItem = CheckItem(recipe.result);
+            if (hasItem)
             {
-                foreach (InventorySlot slot in slots)
+                int index = GetItemIndex(recipe.result);
+                if (slots[index].amount + recipe.amount < recipe.result.maxStack)
                 {
-                    if (slot.item == recipe.materials[i].item)
-                    {
-                        slot.amount -= recipe.materials[i].amount;
-                    }
+                    Craft(recipe, count);
                 }
             }
-
-            for (int i = 0; i < count; i++)
+            else
             {
-                RemoveSlot();
+                Craft(recipe, count);
             }
-
-            AddItem(null, recipe.result, recipe.amount);
         }
     }
 
+    private void Craft(CraftRecipes recipe, int count)
+    {
+        for (int i = 0; i < recipe.materials.Count; i++)
+        {
+            foreach (InventorySlot slot in slots)
+            {
+                if (slot.item == recipe.materials[i].item)
+                {
+                    slot.amount -= recipe.materials[i].amount;
+                }
+            }
+        }
+
+        for (int i = 0; i < count; i++)
+        {
+            RemoveSlot();
+        }
+
+        AddItem(null, recipe.result, recipe.amount);
+    }
     private void RemoveSlot()
     {
         for (int i = 0; i < slots.Count; i++)
