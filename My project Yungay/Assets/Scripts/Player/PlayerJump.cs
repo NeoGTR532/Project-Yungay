@@ -7,20 +7,19 @@ public class PlayerJump : MonoBehaviour
     public PlayerModel model;
     public PlayerGroundCheck playerGroundCheck;
 
-    private bool canJump;
     // Start is called before the first frame update
     void Start()
     {
-        canJump = true;
+
     }
 
     // Update is called once per frame
     void Update()
     {
-        if(Input.GetKeyDown(KeyCode.Space) && canJump && playerGroundCheck.grounded)
+        if(Input.GetKeyDown(KeyCode.Space) && model.canJump && playerGroundCheck.grounded)
         {
             Jump();
-            canJump = false;
+            
             Invoke(nameof(ResetJump), model.jumpCooldown);
         }
     }
@@ -34,6 +33,6 @@ public class PlayerJump : MonoBehaviour
 
     private void ResetJump()
     {
-        canJump = true;
+        model.canJump = true;
     }
 }

@@ -13,6 +13,7 @@ public class PlayerMovement : MonoBehaviour
 
     public float airMultiplier;
 
+    public Animator anim;
 
     Vector3 move;
     // Start is called before the first frame update
@@ -27,26 +28,29 @@ public class PlayerMovement : MonoBehaviour
         ver = Input.GetAxisRaw("Vertical");
 
         ControlSpeed();
-
+            
         model.actualSpeed = model.rb.velocity.magnitude;
          
     }
     void FixedUpdate()
     {
         Movement();
+        
     }
 
     private void Movement()
     {
         
         move = orientation.forward * ver + orientation.right * hor;
-
-        if(playerGroundCheck.grounded)
+        
+        if (playerGroundCheck.grounded)
         {
-            if (Input.GetKey(KeyCode.LeftShift) && model.staActual >=0)
+            
+            if (Input.GetKey(KeyCode.LeftShift) && model.staActual >=0 && !model.isCrouching)
             {
                 Run();
             }
+            
             else
             {
                 Walk();
@@ -70,8 +74,32 @@ public class PlayerMovement : MonoBehaviour
     private void Run()
     {
         model.rb.AddForce(move.normalized * model.speedRun * 10f, ForceMode.Force);
-        model.isRunning = true;
+         model.isRunning = true;
+        
+            
     }
+
+    //private void Crouch()
+    //{
+    //    if (Input.GetKeyDown(KeyCode.LeftControl))
+
+    //        if(!model.isCrouching)
+    //        {
+    //            model.isCrouching = true;
+    //            model.canJump = false;
+    //            model.cap.height = model.crouchHeight;
+    //            model.cap.center = new Vector3(model.cap.center.x, model.CrouchY, model.cap.center.z);
+    //        }
+    //        else if(model.isCrouching && playerHeadCheck.headCheck == false)
+    //        {
+    //            model.isCrouching = false;
+    //            model.canJump = true;
+    //            model.rb.AddForce(move.normalized * model.speedWalk * 10f, ForceMode.Force);
+    //            model.cap.height = model.standHeight;
+    //            model.cap.center = new Vector3(model.cap.center.x, model.standY, model.cap.center.z);
+    //        }
+
+    //}
 
     private void ControlSpeed()
     {
