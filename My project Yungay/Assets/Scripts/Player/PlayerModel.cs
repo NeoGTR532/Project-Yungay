@@ -37,6 +37,7 @@ public class PlayerModel : MonoBehaviour
     public bool canCrouch;
     public bool canJump;
     public bool canRun;
+    public bool canUpLedge;
 
 
 
