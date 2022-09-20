@@ -20,6 +20,7 @@ public class Weapons : MonoBehaviour
     public Munition munition;
     //[HideInInspector]
     public bool lockWeapons,ammo;
+    public GameObject sound;
 
     public List<Weapon> armas = new List<Weapon>();
 
@@ -125,7 +126,7 @@ public class Weapons : MonoBehaviour
                                 hit.collider.gameObject.GetComponent<SacoBoxeo>().RecibirDaño(arma.damage);
                             }
                             lastShootTime = Time.time;
-                            //pistol.Play();
+                            sound.GetComponent<AudioSource>().PlayOneShot(armas[stateWeapons].shoot);
                         }
                         else
                         {
@@ -155,8 +156,9 @@ public class Weapons : MonoBehaviour
                             {
                                 hit.collider.gameObject.GetComponent<SacoBoxeo>().RecibirDaño(arma.damage);
                             }
-                            lastShootTime = Time.time;
-                            //pistol.Play();
+                            lastShootTime = Time.time; 
+                            sound.GetComponent<AudioSource>().PlayOneShot(armas[stateWeapons].shoot);
+
                         }
                         else
                         {
