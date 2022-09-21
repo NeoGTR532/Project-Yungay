@@ -28,6 +28,8 @@ public class Weapons : MonoBehaviour
     // public AudioSource pistol;
 
      private Vector2 BulletSpreadVariance;
+
+    public LayerMask enemyMask;
     
     private void Start()
     {
@@ -119,13 +121,13 @@ public class Weapons : MonoBehaviour
                             munition.chargerBullets -= 1;
                             sound.GetComponent<AudioSource>().PlayOneShot(armas[stateWeapons].shoot);
                         }
-                        if (Physics.Raycast(beggin, cam.transform.forward, out hit, arma.range))
+                        if (Physics.Raycast(beggin, cam.transform.forward, out hit, arma.range, enemyMask))
                         {
                             TrailRenderer trail = Instantiate(bulletTrail, beggin, Quaternion.identity);
                             StartCoroutine(SpawnTrail(trail, hit.point));
-                            if (hit.collider.CompareTag("Enemigo"))
+                            if (hit.collider.CompareTag("Enemy"))
                             {
-                                hit.collider.gameObject.GetComponent<SacoBoxeo>().RecibirDaño(arma.damage);
+                                hit.collider.gameObject.GetComponent<EnemyHealth>().lifeE(arma.damage);
                             }
                             lastShootTime = Time.time;
                         }
@@ -154,9 +156,9 @@ public class Weapons : MonoBehaviour
                         {
                             TrailRenderer trail = Instantiate(bulletTrail, beggin, Quaternion.identity);
                             StartCoroutine(SpawnTrail(trail, hit.point));
-                            if (hit.collider.CompareTag("Enemigo"))
+                            if (hit.collider.CompareTag("Enemy"))
                             {
-                                hit.collider.gameObject.GetComponent<SacoBoxeo>().RecibirDaño(arma.damage);
+                                hit.collider.gameObject.GetComponent<EnemyHealth>().lifeE(arma.damage);
                             }
                             lastShootTime = Time.time; 
 

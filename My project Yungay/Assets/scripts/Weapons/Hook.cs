@@ -6,13 +6,18 @@ public class Hook : MonoBehaviour
 {
     public Transform grapplingHook;
     public Transform handPos;
+    public Transform CamPos;
     public LayerMask grappleLayer;
     public float distanceHook;
     public float speedHook;
+    public float timer;
+    public float maxtimer;
 
 
-    public bool isShooting, isGrappling;
+
+    public bool isShooting, isGrappling , returm;
     private Vector3 pointHook;
+    public GameObject HandPoint;
 
 
 
@@ -21,16 +26,31 @@ public class Hook : MonoBehaviour
     {
         isShooting = false;
         isGrappling = false;
+        
     }
     void Update()
     {
-        if (Input.GetMouseButton(0))
+        if (Input.GetMouseButton(0) )
         {
             ShootHook();
         }
         if (isGrappling)
         {
             grapplingHook.position = Vector3.Lerp(grapplingHook.position, pointHook, speedHook * Time.deltaTime);
+            timer += Time.deltaTime;
+            if ( timer >= maxtimer)
+            {
+                isGrappling = false;
+                returm = true;
+        
+            }
+        }
+        if (!isGrappling)
+        {
+            grapplingHook.position = Vector3.Lerp(grapplingHook.position, handPos.transform.position, speedHook * Time.deltaTime);
+            timer = 0;
+            //grapplingHook.SetParent(CamPos);
+            returm = false;
         }
     }
 
