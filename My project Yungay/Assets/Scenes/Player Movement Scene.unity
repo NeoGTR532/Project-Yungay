@@ -578,9 +578,16 @@ MonoBehaviour:
   lockWeapons: 0
   ammo: 0
   sound: {fileID: 0}
+  a: 0
+  hook: {fileID: 0}
   armas:
   - {fileID: 11400000, guid: 7fc7c36603de0bb4595b934b1d2db04e, type: 2}
   - {fileID: 11400000, guid: 1a52eb37db84a7a4e92a9753ed95613f, type: 2}
+  enemyMask:
+    serializedVersion: 2
+    m_Bits: 0
+  modelAxe: {fileID: 0}
+  modelHook: {fileID: 0}
 --- !u!1 &310327112
 GameObject:
   m_ObjectHideFlags: 0
@@ -709,6 +716,12 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 407793495}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1 &424624414 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: d86d24b7149787d4d967b5dfe7b87869,
+    type: 3}
+  m_PrefabInstance: {fileID: 1833740619}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &448528226
 GameObject:
   m_ObjectHideFlags: 0
@@ -1854,7 +1867,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 814939185}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c8f676d86fb0db445a190cb62bd11477, type: 3}
   m_Name: 
@@ -1876,8 +1889,8 @@ MonoBehaviour:
   weapons: {fileID: 814939189}
   nails: 0
   bullets: 0
-  chargerNails: 10
-  chargerBullets: 10
+  chargerNails: 0
+  chargerBullets: 0
   textNails: {fileID: 1808715365}
   textBullets: {fileID: 789479605}
   thereBullets: 0
@@ -1889,7 +1902,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 814939185}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 77231e6ae5c77aa4da4ce2979dc591df, type: 3}
   m_Name: 
@@ -1908,9 +1921,16 @@ MonoBehaviour:
   lockWeapons: 0
   ammo: 0
   sound: {fileID: 814696338}
+  a: 0
+  hook: {fileID: 814939194}
   armas:
   - {fileID: 11400000, guid: 7fc7c36603de0bb4595b934b1d2db04e, type: 2}
   - {fileID: 11400000, guid: 1a52eb37db84a7a4e92a9753ed95613f, type: 2}
+  enemyMask:
+    serializedVersion: 2
+    m_Bits: 1024
+  modelAxe: {fileID: 2053136078}
+  modelHook: {fileID: 424624414}
 --- !u!114 &814939190
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2024,13 +2044,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   grapplingHook: {fileID: 505048420}
   handPos: {fileID: 539091062}
+  CamPos: {fileID: 814939186}
   grappleLayer:
     serializedVersion: 2
     m_Bits: 16
   distanceHook: 30
   speedHook: 5
+  timer: 0
+  maxtimer: 0.5
+  active: 0
   isShooting: 0
   isGrappling: 0
+  returm: 0
+  HandPoint: {fileID: 539091061}
 --- !u!1 &899008977
 GameObject:
   m_ObjectHideFlags: 0
@@ -2974,7 +3000,6 @@ MonoBehaviour:
   rb: {fileID: 0}
   inventory: {fileID: 0}
   sourceSound: {fileID: 0}
-  walk: {fileID: 0}
 --- !u!54 &1414573070
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -3378,6 +3403,12 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1645743987}
   m_CullTransparentMesh: 1
+--- !u!1 &1721612231 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1735745338477293402, guid: d169416df5e61704da52bf354974e8b2,
+    type: 3}
+  m_PrefabInstance: {fileID: 1735745337240737469}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1808715363
 GameObject:
   m_ObjectHideFlags: 0
@@ -3687,9 +3718,10 @@ GameObject:
   - component: {fileID: 1897190688}
   - component: {fileID: 1897190693}
   - component: {fileID: 1897190694}
-  m_Layer: 0
+  - component: {fileID: 1897190695}
+  m_Layer: 10
   m_Name: Enemy
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3824,6 +3856,21 @@ MonoBehaviour:
   timer: 0
   maxtimer: 1
   Atack: 0
+--- !u!114 &1897190695
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1897190687}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 637b9d07d3061df4686383b655698b41, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  life: 10
+  resources:
+  - {fileID: 1721612231}
 --- !u!1 &1900136299
 GameObject:
   m_ObjectHideFlags: 0
@@ -7611,7 +7658,6 @@ MonoBehaviour:
   rb: {fileID: 0}
   inventory: {fileID: 0}
   sourceSound: {fileID: 899008977}
-  walk: {fileID: 8300000, guid: 6b22aac949e11094bbb7f61040a9cc79, type: 3}
 --- !u!54 &8949097853262754768
 Rigidbody:
   m_ObjectHideFlags: 0

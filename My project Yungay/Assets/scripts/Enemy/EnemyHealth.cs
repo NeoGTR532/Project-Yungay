@@ -25,4 +25,12 @@ public class EnemyHealth : MonoBehaviour
             Instantiate(resources[Random.Range(0, resources.Length)], transform.position, Quaternion.identity);
         }
     }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.CompareTag("Axe"))
+        {
+            lifeE(other.GetComponent<Axe>().damage);
+        }
+    }
 }

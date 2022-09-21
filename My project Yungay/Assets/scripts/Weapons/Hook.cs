@@ -12,6 +12,7 @@ public class Hook : MonoBehaviour
     public float speedHook;
     public float timer;
     public float maxtimer;
+    public bool active;
 
 
 
@@ -29,28 +30,30 @@ public class Hook : MonoBehaviour
         
     }
     void Update()
-    {
-        if (Input.GetMouseButton(0) )
+    {if (active)
         {
-            ShootHook();
-        }
-        if (isGrappling)
-        {
-            grapplingHook.position = Vector3.Lerp(grapplingHook.position, pointHook, speedHook * Time.deltaTime);
-            timer += Time.deltaTime;
-            if ( timer >= maxtimer)
+            if (Input.GetMouseButton(0))
             {
-                isGrappling = false;
-                returm = true;
-        
+                ShootHook();
             }
-        }
-        if (!isGrappling)
-        {
-            grapplingHook.position = Vector3.Lerp(grapplingHook.position, handPos.transform.position, speedHook * Time.deltaTime);
-            timer = 0;
-            //grapplingHook.SetParent(CamPos);
-            returm = false;
+            if (isGrappling)
+            {
+                grapplingHook.position = Vector3.Lerp(grapplingHook.position, pointHook, speedHook * Time.deltaTime);
+                timer += Time.deltaTime;
+                if (timer >= maxtimer)
+                {
+                    isGrappling = false;
+                    returm = true;
+
+                }
+            }
+            if (!isGrappling)
+            {
+                grapplingHook.position = Vector3.Lerp(grapplingHook.position, handPos.transform.position, speedHook * Time.deltaTime);
+                timer = 0;
+                //grapplingHook.SetParent(CamPos);
+                returm = false;
+            }
         }
     }
 

@@ -10,6 +10,7 @@ public class Axe : MonoBehaviour
     public CapsuleCollider capCollider;
     public BoxCollider boxTriggerUse;
     public BoxCollider boxTriggerPick;
+    public float damage;
     // Start is called before the first frame update
     void Start()
     {
@@ -82,7 +83,11 @@ public class Axe : MonoBehaviour
         this.GetComponent<Rigidbody>().isKinematic = true;
         capCollider.enabled = false;
         this.enabled = false;
-        
+
+        if (collision.gameObject.CompareTag("Enemy"))
+        {
+            gameObject.GetComponent<EnemyHealth>().lifeE(damage);
+        }
        
     }
 

@@ -22,6 +22,11 @@ public class Weapons : MonoBehaviour
     public bool lockWeapons,ammo;
     public GameObject sound;
 
+    public bool a;
+
+    [Header("Hook")]
+    public Hook hook;
+   
     public List<Weapon> armas = new List<Weapon>();
 
     private float lastShootTime;
@@ -30,7 +35,9 @@ public class Weapons : MonoBehaviour
      private Vector2 BulletSpreadVariance;
 
     public LayerMask enemyMask;
-    
+
+    public GameObject modelAxe,modelHook;
+
     private void Start()
     {
         stateWeapons = -1;
@@ -42,7 +49,24 @@ public class Weapons : MonoBehaviour
         if (Input.GetMouseButton(0))
         {
             munition.CheckAmmo();
-            Shoot(armas[stateWeapons]);
+            switch (stateWeapons)
+            {
+                case 0:
+                    Shoot(armas[stateWeapons]);
+                    hook.active = false;
+                    break;
+                case 1:
+                    Shoot(armas[stateWeapons]);
+                    hook.active = false;
+                    break;
+                case 2:
+                    hook.active = true;
+                    break;
+                case 3:
+                    hook.active = false;
+                    break;
+            }
+            
         }
         if (Input.GetKeyDown(KeyCode.Alpha1))
         {
@@ -56,7 +80,26 @@ public class Weapons : MonoBehaviour
         {
             munition.RechargeAmmo();
         }
+        /*
+        if (isGrappling)
+        {
+            grapplingHook.position = Vector3.Lerp(grapplingHook.position, pointHook, speedHook * Time.deltaTime);
+            timer += Time.deltaTime;
+            if (timer >= maxtimer)
+            {
+                isGrappling = false;
+                returm = true;
 
+            }
+        }
+        if (!isGrappling)
+        {
+            grapplingHook.position = Vector3.Lerp(grapplingHook.position, handPos.transform.position, speedHook * Time.deltaTime);
+            timer = 0;
+            //grapplingHook.SetParent(CamPos);
+            returm = false;
+        }
+        */
     }
 
     public void ChangeWeapons()
@@ -69,14 +112,35 @@ public class Weapons : MonoBehaviour
         {
             case 0:
                 weapons = armas[stateWeapons].name;
+                modelHook.SetActive(false);
+                modelAxe.SetActive(false);
+                a = true;
                 break;
             case 1:
                 weapons = armas[stateWeapons].name;
                 ammo = true;
+                modelHook.SetActive(false);
+                modelAxe.SetActive(false);
+                a = true;
+                break;
+            case 2:
+                weapons = "Hook";
+                modelHook.SetActive(true);
+                modelAxe.SetActive(false);
+                a = false;
+                break;
+            case 3:
+                weapons = "Axe";
+                modelAxe.SetActive(true);
+                modelHook.SetActive(false);
+                a = false;
                 break;
             default:
                 stateWeapons = 0;
                 weapons = armas[stateWeapons].name;
+                modelHook.SetActive(false);
+                modelAxe.SetActive(false);
+                a = true;
                 break;
         }
     }
@@ -95,7 +159,6 @@ public class Weapons : MonoBehaviour
                 break;
         }
     }
-
     public void Shoot(Weapon arma)
     {
         beggin = this.transform.position;
@@ -152,7 +215,7 @@ public class Weapons : MonoBehaviour
                         Vector3 direction = GetDirection();
                         munition.chargerBullets -= 1;
                         sound.GetComponent<AudioSource>().PlayOneShot(armas[stateWeapons].shoot);
-                        if (Physics.Raycast(beggin, direction, out hit, arma.range))
+                        if (Physics.Raycast(beggin, direction, out hit, arma.range, enemyMask))
                         {
                             TrailRenderer trail = Instantiate(bulletTrail, beggin, Quaternion.identity);
                             StartCoroutine(SpawnTrail(trail, hit.point));
@@ -174,6 +237,7 @@ public class Weapons : MonoBehaviour
                     }
                 }
                 break;
+
                
         }
     }
@@ -181,7 +245,14 @@ public class Weapons : MonoBehaviour
     private void OnDrawGizmos()
     {
         Gizmos.color = Color.red;
-        Gizmos.DrawRay(cam.transform.position, cam.transform.forward * armas[stateWeapons].range);
+        if (a == true)
+        {
+            Gizmos.DrawRay(cam.transform.position, cam.transform.forward * armas[stateWeapons].range);
+        }
+        else
+        {
+            Gizmos.DrawRay(cam.transform.position, cam.transform.forward * 2);
+        }
     }
 
     private Vector3 GetDirection()
