@@ -112,10 +112,12 @@ public class Weapons : MonoBehaviour
                         if (munition.thereNails && ammo == false)
                         {
                             munition.chargerNails -= 1;
+                            sound.GetComponent<AudioSource>().PlayOneShot(armas[stateWeapons].shoot);
                         }
                         if (munition.thereBullets == true && ammo == true)
                         {
                             munition.chargerBullets -= 1;
+                            sound.GetComponent<AudioSource>().PlayOneShot(armas[stateWeapons].shoot);
                         }
                         if (Physics.Raycast(beggin, cam.transform.forward, out hit, arma.range))
                         {
@@ -126,7 +128,6 @@ public class Weapons : MonoBehaviour
                                 hit.collider.gameObject.GetComponent<SacoBoxeo>().RecibirDaño(arma.damage);
                             }
                             lastShootTime = Time.time;
-                            sound.GetComponent<AudioSource>().PlayOneShot(armas[stateWeapons].shoot);
                         }
                         else
                         {
@@ -148,6 +149,7 @@ public class Weapons : MonoBehaviour
                     {
                         Vector3 direction = GetDirection();
                         munition.chargerBullets -= 1;
+                        sound.GetComponent<AudioSource>().PlayOneShot(armas[stateWeapons].shoot);
                         if (Physics.Raycast(beggin, direction, out hit, arma.range))
                         {
                             TrailRenderer trail = Instantiate(bulletTrail, beggin, Quaternion.identity);
@@ -157,7 +159,6 @@ public class Weapons : MonoBehaviour
                                 hit.collider.gameObject.GetComponent<SacoBoxeo>().RecibirDaño(arma.damage);
                             }
                             lastShootTime = Time.time; 
-                            sound.GetComponent<AudioSource>().PlayOneShot(armas[stateWeapons].shoot);
 
                         }
                         else

@@ -63,6 +63,14 @@ public class PlayerMovement : MonoBehaviour
 
         }
 
+        if (hor != 0 || ver != 0)
+        {
+           model.sourceSound.SetActive(true);
+        }
+        else
+        {
+           model.sourceSound.SetActive(false);
+        }
 
     }
 
