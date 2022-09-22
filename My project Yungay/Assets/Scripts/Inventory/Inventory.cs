@@ -4,9 +4,18 @@ using UnityEngine;
 
 public class Inventory : MonoBehaviour
 {
-    public List<InventorySlot> slots = new List<InventorySlot>();
     public int maxSlots;
+    public List<InventorySlot> slots = new List<InventorySlot>();
     public CraftRecipes objectToCraft;
+    public InventoryDisplay inventoryDisplay;
+
+    private void Start()
+    {
+        for (int i = 0; i < maxSlots; i++)
+        {
+            slots.Add(null);
+        }
+    }
     public void AddItem(Item item, ItemObject itemObject, int amount)
     {
         bool hasItem = false;
@@ -31,9 +40,18 @@ public class Inventory : MonoBehaviour
         }
         if (!hasItem)
         {
-            if (slots.Count < maxSlots)
+            if (slots.Count <= maxSlots)
             {
-                slots.Add(new InventorySlot(itemObject, amount));
+                //slots.Add(new InventorySlot(itemObject, amount));
+                for (int i = 0; i < slots.Count; i++)
+                {
+                    if (slots[i].item == null)
+                    {
+                        slots[i].item = itemObject;
+                        slots[i].amount = amount;
+                        break;
+                    }
+                }
                 if (item != null)
                 {
                     item.amount = 0;
@@ -44,6 +62,8 @@ public class Inventory : MonoBehaviour
                 Debug.Log("No hay espacio en el inventario");
             }
         }
+
+        inventoryDisplay.UpdateDisplay();
     }
 
     public void CraftItem(CraftRecipes recipe)
@@ -118,9 +138,11 @@ public class Inventory : MonoBehaviour
         {
             if (slots[i].amount == 0)
             {
-                slots.RemoveAt(i);
+                slots[i].item = null;
+                slots[i].amount = 0;
             }
         }
+        inventoryDisplay.UpdateDisplay();
     }
 
     public bool CheckItem(ItemObject item)
@@ -131,6 +153,11 @@ public class Inventory : MonoBehaviour
             if (slots[i].item == item)
             {
                 hasItem = true;
+                break;
+            }
+            else
+            {
+                hasItem = false;
             }
         }
 
@@ -169,9 +196,9 @@ public class Inventory : MonoBehaviour
     public void RestItem(ItemObject item, int value)
     {
         bool hasItem = CheckItem(item);
-        int index = GetItemIndex(item);
         if (hasItem)
         {
+            int index = GetItemIndex(item);
             slots[index].RestAmount(value);
         }
     }

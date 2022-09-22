@@ -12,6 +12,7 @@ public enum ItemType
 public abstract class ItemObject : ScriptableObject
 {
     public GameObject prefab;
+    public Sprite itemSprite;
     public ItemType type;
     public int maxStack;
     [TextArea(15,20)]
