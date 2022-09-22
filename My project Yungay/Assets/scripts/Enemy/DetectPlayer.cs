@@ -4,7 +4,10 @@ using UnityEngine;
 
 public class DetectPlayer : MonoBehaviour
 {
-    public EnemyMovement Player;
+    //public EnemyMovement Player;
+
+    public Animator ani;
+    public EnemyMovement1 Enemy;
     void Start()
     {
 
@@ -19,11 +22,14 @@ public class DetectPlayer : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Player"))
         {
-            Player.inArea = true;
-           
+            ani.SetBool("Walk", false);
+            ani.SetBool("Run",false);
+            ani.SetBool("Atack", true);
+            Enemy.atack = true;
+            GetComponent<CapsuleCollider>().enabled = false;
         }
     }
-    private void OnTriggerExit(Collider other)
+    /*private void OnTriggerExit(Collider other)
     {
         if (other.gameObject.CompareTag("Player"))
         {
@@ -32,6 +38,6 @@ public class DetectPlayer : MonoBehaviour
 
         }
 
-    }
+    }*/
 
 }
