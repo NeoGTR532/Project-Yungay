@@ -18,43 +18,39 @@ public class Inventory : MonoBehaviour
     }
     public void AddItem(Item item, ItemObject itemObject, int amount)
     {
-        bool hasItem = false;
+        bool hasItem = CheckItem(itemObject);
 
-        for (int i = 0; i < slots.Count; i++)
+        if (hasItem)
         {
-            if (slots[i] != null)
-            {
-                if (slots[i].item == itemObject)
-                {
-                    if (slots[i].amount + amount < slots[i].item.maxStack)
-                    {
-                        slots[i].AddAmount(amount);
-                        item.amount = 0;
-                    }
-                    else
-                    {
-                        item.amount = (slots[i].amount + amount) - slots[i].item.maxStack;
-                        slots[i].amount = slots[i].item.maxStack;
-                    }
+            int index = GetItemIndex(itemObject);
 
-                    hasItem = true;
-                    break;
-                }
+            if (slots[index].amount + amount < slots[index].item.maxStack)
+            {
+                slots[index].AddAmount(amount);
+                item.amount = 0;
+            }
+            else
+            {
+                item.amount = (slots[index].amount + amount) - slots[index].item.maxStack;
+                slots[index].amount = slots[index].item.maxStack;
             }
         }
-
-        if (!hasItem)
+        else
         {
             if (slots.Count <= maxSlots)
             {
                 for (int i = 0; i < slots.Count; i++)
                 {
-                if (slots[i].item == null)
-                {
-                    slots[i].item = itemObject;
-                    slots[i].amount = amount;
-                    break;
-                }
+                    if (slots[i] != null)
+                    {
+                        if (slots[i].item == null)
+                        {
+                            slots[i].item = itemObject;
+                            slots[i].amount = amount;
+                            break;
+                        }
+
+                    }
                 }
 
                 if (item != null)
@@ -67,6 +63,54 @@ public class Inventory : MonoBehaviour
                 Debug.Log("No hay espacio en el inventario");
             }
         }
+
+        //for (int i = 0; i < slots.Count; i++)
+        //{
+        //    if (slots[i] != null)
+        //    {
+        //        if (slots[i].item == itemObject)
+        //        {
+        //            if (slots[i].amount + amount < slots[i].item.maxStack)
+        //            {
+        //                slots[i].AddAmount(amount);
+        //                item.amount = 0;
+        //            }
+        //            else
+        //            {
+        //                item.amount = (slots[i].amount + amount) - slots[i].item.maxStack;
+        //                slots[i].amount = slots[i].item.maxStack;
+        //            }
+
+        //            hasItem = true;
+        //            break;
+        //        }
+        //    }
+        //}
+
+        //if (!hasItem)
+        //{
+        //    if (slots.Count <= maxSlots)
+        //    {
+        //        for (int i = 0; i < slots.Count; i++)
+        //        {
+        //            if (slots[i] == null)
+        //            {
+        //                slots[i].item = itemObject;
+        //                slots[i].amount = amount;
+        //            }
+        //            break;
+        //        }
+
+        //        if (item != null)
+        //        {
+        //            item.amount = 0;
+        //        }
+        //    }
+        //    else
+        //    {
+        //        Debug.Log("No hay espacio en el inventario");
+        //    }
+        //}
 
         inventoryDisplay.UpdateDisplay();
     }
@@ -153,6 +197,7 @@ public class Inventory : MonoBehaviour
     public bool CheckItem(ItemObject item)
     {
         bool hasItem = false;
+
         for (int i = 0; i < slots.Count; i++)
         {
             if (slots[i] != null)
@@ -165,11 +210,11 @@ public class Inventory : MonoBehaviour
                 else
                 {
                     hasItem = false;
-                    break;
                 }
 
             }
         }
+
         return hasItem;
     }
 
@@ -179,9 +224,13 @@ public class Inventory : MonoBehaviour
 
         for (int i = 0; i < slots.Count; i++)
         {
-            if (slots[i].item == item)
+            if (slots[i] != null)
             {
-                amount = slots[i].amount;
+                if (slots[i].item == item)
+                {
+                    amount = slots[i].amount;
+                    break;
+                }
             }
         }
 

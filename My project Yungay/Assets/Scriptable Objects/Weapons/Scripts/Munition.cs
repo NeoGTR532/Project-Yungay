@@ -28,33 +28,33 @@ public class Munition : MonoBehaviour
         textNails.text = chargerNails.ToString();
         textBullets.text = chargerBullets.ToString();
         //AmmoMax();
-        for (int i = 0; i < inventory.slots.Count; i++)
-        {
-            if (inventory.slots[i] != null)
-            {
-                if (inventory.slots[i].item == nailsItem)
-                {
-                    hasItemNails = true;
-                }
-                else
-                {
-                    hasItemNails = false;
-                }
-                if (inventory.slots[i].item == bulletsItem)
-                {
-                    hasItemBullets = true;
-                }
-                else
-                {
-                    hasItemBullets = false;
-                }
-            }
-            else
-            {
-                hasItemBullets = false;
-                hasItemNails = false;
-            }
-        }
+
+        hasItemBullets = inventory.CheckItem(bulletsItem);
+        hasItemNails = inventory.CheckItem(nailsItem);
+
+
+        //for (int i = 0; i < inventory.slots.Count; i++)
+        //{
+        //    if (inventory.slots[i] != null)
+        //    {
+        //        if (inventory.slots[i].item == nailsItem)
+        //        {
+        //            hasItemNails = true;
+        //            break;
+        //        }
+        //        else if (inventory.slots[i].item != bulletsItem)
+        //        {
+        //            hasItemBullets = false;
+        //            break;
+        //        }
+        //        else
+        //        {
+        //            hasItemBullets = false;
+        //            hasItemNails = false;
+        //        }
+        //    }
+        //}
+
         InventoryAmmo();
     }
     public void InventoryAmmo()
