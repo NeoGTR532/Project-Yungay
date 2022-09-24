@@ -8,6 +8,7 @@ public class Inventory : MonoBehaviour
     public List<InventorySlot> slots = new List<InventorySlot>();
     public CraftRecipes objectToCraft;
     public InventoryDisplay inventoryDisplay;
+    public bool detect;
 
     private void Awake()
     {
@@ -20,49 +21,62 @@ public class Inventory : MonoBehaviour
     {
         bool hasItem = CheckItem(itemObject);
 
-        if (hasItem)
-        {
-            int index = GetItemIndex(itemObject);
 
-            if (slots[index].amount + amount < slots[index].item.maxStack)
+            if (hasItem)
             {
-                slots[index].AddAmount(amount);
-                item.amount = 0;
-            }
-            else
-            {
-                item.amount = (slots[index].amount + amount) - slots[index].item.maxStack;
-                slots[index].amount = slots[index].item.maxStack;
-            }
-        }
-        else
-        {
-            if (slots.Count <= maxSlots)
-            {
-                for (int i = 0; i < slots.Count; i++)
+                int index = GetItemIndex(itemObject);
+
+                if (slots[index].amount + amount <= slots[index].item.maxStack)
                 {
-                    if (slots[i] != null)
-                    {
-                        if (slots[i].item == null)
-                        {
-                            slots[i].item = itemObject;
-                            slots[i].amount = amount;
-                            break;
-                        }
-
-                    }
-                }
-
-                if (item != null)
-                {
+                    slots[index].AddAmount(amount);
                     item.amount = 0;
                 }
+                else
+                {
+                    item.amount = (slots[index].amount + amount) - slots[index].item.maxStack;
+                    slots[index].amount = slots[index].item.maxStack;
+                }
             }
             else
             {
-                Debug.Log("No hay espacio en el inventario");
+                if (slots.Count <= maxSlots)
+                {
+                    for (int i = 0; i < slots.Count; i++)
+                    {
+                        if (slots[i] != null)
+                        {
+                            if (slots[i].item == null)
+                            {
+                                slots[i].item = itemObject;
+
+                                if (slots[i].amount + amount <= slots[i].item.maxStack)
+                                {
+                                    slots[i].AddAmount(amount);
+                                    if(item != null)
+                                    {
+                                        item.amount = 0;
+                                    }
+                                    break;
+                                }
+                                else
+                                {
+                                    item.amount = (slots[i].amount + amount) - slots[i].item.maxStack;
+                                    slots[i].amount = slots[i].item.maxStack;
+                                    break;
+                                }
+                                
+                            }
+                        }
+                    }
+                    
+                }
+                else
+                {
+                    Debug.Log("No hay espacio en el inventario");
+                }
             }
-        }
+        
+
 
         //for (int i = 0; i < slots.Count; i++)
         //{
@@ -243,9 +257,12 @@ public class Inventory : MonoBehaviour
 
         for (int i = 0; i < slots.Count; i++)
         {
-            if (slots[i].item == item)
+            if (slots[i] != null)
             {
-                index = i;
+                if (slots[i].item == item)
+                {
+                    index = i;
+                }
             }
         }
 
