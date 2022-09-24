@@ -36,7 +36,15 @@ public class Submachine : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (Input.GetMouseButton(0))
+        {
+            Shoot();
+        }
 
+        if (Input.GetKeyDown(KeyCode.R))
+        {
+            munition.RechargeAmmo();
+        }
     }
     public void Shoot()
     {

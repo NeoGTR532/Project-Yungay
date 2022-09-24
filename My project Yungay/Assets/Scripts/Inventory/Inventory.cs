@@ -21,21 +21,24 @@ public class Inventory : MonoBehaviour
         bool hasItem = false;
         for (int i = 0; i < slots.Count; i++)
         {
-            if (slots[i].item == itemObject)
+            if (slots[i] != null)
             {
-                if (slots[i].amount + amount < slots[i].item.maxStack)
+                if (slots[i].item == itemObject)
                 {
-                    slots[i].AddAmount(amount);
-                    item.amount = 0;
-                }
-                else
-                {
-                    item.amount = (slots[i].amount + amount) - slots[i].item.maxStack;
-                    slots[i].amount = slots[i].item.maxStack;
-                }
+                    if (slots[i].amount + amount < slots[i].item.maxStack)
+                    {
+                        slots[i].AddAmount(amount);
+                        item.amount = 0;
+                    }
+                    else
+                    {
+                        item.amount = (slots[i].amount + amount) - slots[i].item.maxStack;
+                        slots[i].amount = slots[i].item.maxStack;
+                    }
 
-                hasItem = true;
-                break;
+                    hasItem = true;
+                    break;
+                }
             }
         }
         if (!hasItem)
@@ -45,11 +48,14 @@ public class Inventory : MonoBehaviour
                 //slots.Add(new InventorySlot(itemObject, amount));
                 for (int i = 0; i < slots.Count; i++)
                 {
-                    if (slots[i].item == null)
+                    if (slots[i] == null)
                     {
-                        slots[i].item = itemObject;
-                        slots[i].amount = amount;
-                        break;
+                        if (slots[i].item == null)
+                        {
+                            slots[i].item = itemObject;
+                            slots[i].amount = amount;
+                            break;
+                        }
                     }
                 }
                 if (item != null)

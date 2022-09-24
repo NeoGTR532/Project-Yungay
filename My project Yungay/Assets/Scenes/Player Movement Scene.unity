@@ -6052,7 +6052,6 @@ GameObject:
   - component: {fileID: 1670770840}
   - component: {fileID: 1670770843}
   - component: {fileID: 1670770842}
-  - component: {fileID: 1670770841}
   - component: {fileID: 1670770844}
   m_Layer: 11
   m_Name: Pistol
@@ -6076,19 +6075,6 @@ Transform:
   m_Father: {fileID: 814939186}
   m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!65 &1670770841
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1670770839}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!23 &1670770842
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -6470,6 +6456,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Layer
       value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: d86d24b7149787d4d967b5dfe7b87869,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_AddedGameObjects: []
@@ -7091,7 +7082,6 @@ GameObject:
   - component: {fileID: 1989189262}
   - component: {fileID: 1989189265}
   - component: {fileID: 1989189264}
-  - component: {fileID: 1989189263}
   - component: {fileID: 1989189266}
   m_Layer: 11
   m_Name: Submachine
@@ -7115,19 +7105,6 @@ Transform:
   m_Father: {fileID: 814939186}
   m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!65 &1989189263
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1989189261}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!23 &1989189264
 MeshRenderer:
   m_ObjectHideFlags: 0

@@ -25,10 +25,10 @@ public class Munition : MonoBehaviour
 
     private void Update()
     {
-        textNails.text = chargerNails.ToString();
-        textBullets.text = chargerBullets.ToString();
         hasItemNails = inventory.CheckItem(nailsItem);
         hasItemBullets = inventory.CheckItem(bulletsItem);
+        textNails.text = chargerNails.ToString();
+        textBullets.text = chargerBullets.ToString();
         InventoryAmmo();
         //AmmoMax();
     }

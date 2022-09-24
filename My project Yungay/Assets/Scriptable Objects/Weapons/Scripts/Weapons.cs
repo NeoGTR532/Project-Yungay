@@ -82,7 +82,7 @@ public class Weapons : MonoBehaviour
                 modelHook.GetComponent<MeshRenderer>().enabled = false;
                 modelHook.GetComponent<Hook>().enabled = false;
                 break;
-            case 4:
+          /*  case 4:
                 modelPistol.GetComponent<MeshRenderer>().enabled = false;
                 modelPistol.GetComponent<Pistol>().enabled = false;
                 modelSubmachine.GetComponent<MeshRenderer>().enabled = false;
@@ -90,7 +90,7 @@ public class Weapons : MonoBehaviour
                 modelHook.GetComponent<MeshRenderer>().enabled = true;
                 modelHook.GetComponent<Hook>().enabled = true;
                 modelAxe.SetActive(false);
-                break;
+                break;*/
         }
     }
 }
