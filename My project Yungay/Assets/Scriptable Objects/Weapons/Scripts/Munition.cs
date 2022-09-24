@@ -25,12 +25,37 @@ public class Munition : MonoBehaviour
 
     private void Update()
     {
-        hasItemNails = inventory.CheckItem(nailsItem);
-        hasItemBullets = inventory.CheckItem(bulletsItem);
         textNails.text = chargerNails.ToString();
         textBullets.text = chargerBullets.ToString();
-        InventoryAmmo();
         //AmmoMax();
+        for (int i = 0; i < inventory.slots.Count; i++)
+        {
+            if (inventory.slots[i] != null)
+            {
+                if (inventory.slots[i].item == nailsItem)
+                {
+                    hasItemNails = true;
+                }
+                else
+                {
+                    hasItemNails = false;
+                }
+                if (inventory.slots[i].item == bulletsItem)
+                {
+                    hasItemBullets = true;
+                }
+                else
+                {
+                    hasItemBullets = false;
+                }
+            }
+            else
+            {
+                hasItemBullets = false;
+                hasItemNails = false;
+            }
+        }
+        InventoryAmmo();
     }
     public void InventoryAmmo()
     {
@@ -39,13 +64,15 @@ public class Munition : MonoBehaviour
             case 1:
                 if (hasItemNails)
                 {
-                    nails = inventory.CheckAmount(nailsItem);
+                    int i = inventory.GetItemIndex(nailsItem);
+                    nails = inventory.CheckAmount(inventory.slots[i].item);
                 }
                 else if (hasItemNails == false)
                 { }
                 if (hasItemBullets)
                 {
-                    bullets = inventory.CheckAmount(bulletsItem);
+                    int i = inventory.GetItemIndex(bulletsItem);
+                    bullets = inventory.CheckAmount(inventory.slots[i].item);
                 }
                 else if (hasItemBullets == false)
                 { }
