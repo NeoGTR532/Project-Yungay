@@ -1066,7 +1066,7 @@ MonoBehaviour:
   boxFullPieces: {fileID: 8136586195334732137, guid: 72c811a78a6570e4a8a65845a7174fc6,
     type: 3}
   resources:
-  - {fileID: 6091949557851866741, guid: 2cc4fa7d49f89a342821637f1f09f054, type: 3}
+  - {fileID: 1735745338477293402, guid: 52f0955757eeca443812e14958b0434e, type: 3}
 --- !u!65 &233529564
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1472,7 +1472,7 @@ MonoBehaviour:
   boxFullPieces: {fileID: 8136586195334732137, guid: 72c811a78a6570e4a8a65845a7174fc6,
     type: 3}
   resources:
-  - {fileID: 4837104770637594162, guid: ebdd4bd39d5a20342a6105aca0e03ec8, type: 3}
+  - {fileID: 6091949557851866741, guid: 2cc4fa7d49f89a342821637f1f09f054, type: 3}
 --- !u!65 &252283180
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -2294,7 +2294,7 @@ MonoBehaviour:
   boxFullPieces: {fileID: 8136586195334732137, guid: 72c811a78a6570e4a8a65845a7174fc6,
     type: 3}
   resources:
-  - {fileID: 1735745338477293402, guid: d169416df5e61704da52bf354974e8b2, type: 3}
+  - {fileID: 6091949557851866741, guid: 2cc4fa7d49f89a342821637f1f09f054, type: 3}
 --- !u!65 &317905476
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -2980,7 +2980,7 @@ MonoBehaviour:
   boxFullPieces: {fileID: 8136586195334732137, guid: 72c811a78a6570e4a8a65845a7174fc6,
     type: 3}
   resources:
-  - {fileID: 1735745338477293402, guid: d169416df5e61704da52bf354974e8b2, type: 3}
+  - {fileID: 7060141630597079246, guid: 18e383e10b5130844a4b2ecee29c1e13, type: 3}
 --- !u!65 &405622047
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -3362,7 +3362,7 @@ MonoBehaviour:
   boxFullPieces: {fileID: 8136586195334732137, guid: 72c811a78a6570e4a8a65845a7174fc6,
     type: 3}
   resources:
-  - {fileID: 4837104770637594162, guid: ebdd4bd39d5a20342a6105aca0e03ec8, type: 3}
+  - {fileID: 6091949557851866741, guid: 2cc4fa7d49f89a342821637f1f09f054, type: 3}
 --- !u!65 &429767187
 BoxCollider:
   m_ObjectHideFlags: 0

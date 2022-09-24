@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 1735745338477293396}
   - component: {fileID: 1735745338477293397}
   m_Layer: 0
-  m_Name: Bullets
+  m_Name: Nails
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -111,7 +111,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cd4dbbc35ba793d419c86c2a9e1c1b6e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  item: {fileID: 11400000, guid: 90e3d25ee62315f41bd96ceec0c764b9, type: 2}
+  item: {fileID: 11400000, guid: 7572195227b61b64291ece32e684d54f, type: 2}
   amount: 10
 --- !u!54 &1735745338477293397
 Rigidbody:
