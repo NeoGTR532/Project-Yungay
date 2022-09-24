@@ -40,11 +40,14 @@ public class InventoryDisplay : MonoBehaviour
     {
         for (int i = 0; i < inventory.slots.Count; i++)
         {
-            if (inventory.slots[i].item != null)
+            if (inventory.slots[i] != null)
             {
-                slotsUI[i].GetComponent<Image>().sprite = inventory.slots[i].item.itemSprite;
-                TMP_Text text = slotsUI[i].transform.GetChild(0).GetComponent<TMP_Text>();
-                text.text = inventory.slots[i].amount.ToString();
+                if (inventory.slots[i].item != null)
+                {
+                    slotsUI[i].GetComponent<Image>().sprite = inventory.slots[i].item.itemSprite;
+                    TMP_Text text = slotsUI[i].transform.GetChild(0).GetComponent<TMP_Text>();
+                    text.text = inventory.slots[i].amount.ToString();
+                }
             }
         }
     }
