@@ -28,11 +28,15 @@ public class InventoryDisplay : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.I) && !isOpen)
         {
             OpenDisplay();
-            
+            Cursor.lockState = CursorLockMode.Confined;
+            Cursor.visible = true;
+
         }
         else if (Input.GetKeyDown(KeyCode.I))
         {
             CloseDisplay();
+            Cursor.lockState = CursorLockMode.Locked;
+            Cursor.visible = true;
         }
     }
 
@@ -47,6 +51,12 @@ public class InventoryDisplay : MonoBehaviour
                     slotsUI[i].GetComponent<Image>().sprite = inventory.slots[i].item.itemSprite;
                     TMP_Text text = slotsUI[i].transform.GetChild(0).GetComponent<TMP_Text>();
                     text.text = inventory.slots[i].amount.ToString();
+                }
+                else
+                {
+                    slotsUI[i].GetComponent<Image>().sprite = null;
+                    TMP_Text text = slotsUI[i].transform.GetChild(0).GetComponent<TMP_Text>();
+                    text.text = null;
                 }
             }
         }

@@ -63,6 +63,8 @@ public class Inventory : MonoBehaviour
                 Debug.Log("No hay espacio en el inventario");
             }
         }
+        inventoryDisplay.UpdateDisplay();
+        inventoryDisplay.UpdateDisplay();
 
         //for (int i = 0; i < slots.Count; i++)
         //{
@@ -112,7 +114,6 @@ public class Inventory : MonoBehaviour
         //    }
         //}
 
-        inventoryDisplay.UpdateDisplay();
     }
 
     public void CraftItem(CraftRecipes recipe)

@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3c77f19f6609141418b978f0010a51e6, type: 3}
+  m_Name: VerdeReceta
+  m_EditorClassIdentifier: 
+  materials:
+  - item: {fileID: 11400000, guid: 1e28f630e27dc78488ea554db1773a23, type: 2}
+    amount: 1
+  - item: {fileID: 11400000, guid: 8f7fff190ce7c234e8d99447c797f638, type: 2}
+    amount: 1
+  result: {fileID: 11400000, guid: b27653072f657f04a9d77e0a8b62e680, type: 2}
+  amount: 1
