@@ -2321,7 +2321,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   item: {fileID: 11400000, guid: 7572195227b61b64291ece32e684d54f, type: 2}
-  amount: 50
+  amount: 11
 --- !u!135 &631121838
 SphereCollider:
   m_ObjectHideFlags: 0

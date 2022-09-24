@@ -15,7 +15,7 @@ public class Munition : MonoBehaviour
     public int chargerBullets;
     public TMP_Text textNails;
     public TMP_Text textBullets;
-    [HideInInspector]
+    //[HideInInspector]
     public bool thereBullets, thereNails;
     public bool hasItemNails, hasItemBullets;
     public Inventory inventory;
@@ -23,14 +23,9 @@ public class Munition : MonoBehaviour
     public ItemObject bulletsItem;
     public InventoryDisplay inventoryDisplay;
 
-    private void Update()
+   /* private void Update()
     {
-        textNails.text = chargerNails.ToString();
-        textBullets.text = chargerBullets.ToString();
-        //AmmoMax();
-
-        hasItemBullets = inventory.CheckItem(bulletsItem);
-        hasItemNails = inventory.CheckItem(nailsItem);
+        
 
 
         //for (int i = 0; i < inventory.slots.Count; i++)
@@ -55,7 +50,17 @@ public class Munition : MonoBehaviour
         //    }
         //}
 
+    }*/
+    private void FixedUpdate()
+    {
+        textNails.text = chargerNails.ToString();
+        textBullets.text = chargerBullets.ToString();
+        //AmmoMax();
+        CheckAmmo();
+        hasItemBullets = inventory.CheckItem(bulletsItem);
+        hasItemNails = inventory.CheckItem(nailsItem);
         InventoryAmmo();
+
     }
     public void InventoryAmmo()
     {
@@ -123,34 +128,71 @@ public class Munition : MonoBehaviour
     {
         switch (weapons.stateWeapons)
         {
-            case 11:
+            case 1:
                 if (pistol.ammo == true && bullets >= 1)
                 {
-                    for (int i = chargerBullets; i < pistol.pistol.chargerBulletsMax; i++)
+                    if (bullets > 10)
                     {
+                        for (int i = chargerBullets; i < pistol.pistol.chargerBulletsMax; i++)
+                        {
                             chargerBullets++;
                             inventory.RestItem(bulletsItem, 1);
                             inventoryDisplay.UpdateDisplay();
+                        }
+                    }
+                    else 
+                    {
+                        for (int i = 0; i < bullets; i++)
+                        {
+                            chargerBullets++;
+                            inventory.RestItem(bulletsItem, 1);
+                            inventoryDisplay.UpdateDisplay();
+                        }
                     }
                 }
                 else if (pistol.ammo == false && nails >= 1)
                 {
-                    for (int i = chargerNails; i < pistol.pistol.chargerNailsMax; i++)
+                    if (nails > 10)
                     {
-                        chargerNails++;
-                        inventory.RestItem(nailsItem,1);
-                        inventoryDisplay.UpdateDisplay();
+                        for (int i = chargerNails; i < pistol.pistol.chargerNailsMax; i++)
+                        {
+                            chargerNails++;
+                            inventory.RestItem(nailsItem, 1);
+                            inventoryDisplay.UpdateDisplay();
+                        }
+                    }
+                    else
+                    {
+                        for (int i = 0; i < nails; i++)
+                        {
+                            chargerNails++;
+                            inventory.RestItem(nailsItem, 1);
+                            inventoryDisplay.UpdateDisplay();
+                        }
+
                     }
                 }
                 break;
             case 2:
                 if (submachine.ammo == true && bullets >= 1)
                 {
-                    for (int i = chargerBullets; i < submachine.submachine.chargerBulletsMax; i++)
+                    if (bullets > 10)
                     {
-                        chargerBullets++;
-                        inventory.RestItem(bulletsItem,1);
-                        inventoryDisplay.UpdateDisplay();
+                        for (int i = chargerBullets; i < submachine.submachine.chargerBulletsMax; i++)
+                        {
+                            chargerBullets++;
+                            inventory.RestItem(bulletsItem, 1);
+                            inventoryDisplay.UpdateDisplay();
+                        }
+                    }
+                    else
+                    {
+                        for (int i = 0; i < bullets; i++)
+                        {
+                            chargerBullets++;
+                            inventory.RestItem(bulletsItem, 1);
+                            inventoryDisplay.UpdateDisplay();
+                        }
                     }
                 }
                 break;
