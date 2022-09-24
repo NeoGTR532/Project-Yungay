@@ -19,6 +19,7 @@ public class Inventory : MonoBehaviour
     public void AddItem(Item item, ItemObject itemObject, int amount)
     {
         bool hasItem = false;
+
         for (int i = 0; i < slots.Count; i++)
         {
             if (slots[i] != null)
@@ -46,24 +47,19 @@ public class Inventory : MonoBehaviour
         {
             if (slots.Count <= maxSlots)
             {
+                for (int i = 0; i < slots.Count; i++)
+                {
+                if (slots[i].item == null)
+                {
+                    slots[i].item = itemObject;
+                    slots[i].amount = amount;
+                    break;
+                }
+                }
+
                 if (item != null)
                 {
                     item.amount = 0;
-                }
-                else
-                {
-                    for (int i = 0; i < slots.Count; i++)
-                    {
-                        if (slots[i] == null)
-                        {
-                            if (slots[i].item == null)
-                            {
-                                slots[i].item = itemObject;
-                                slots[i].amount = amount;
-                            }
-                            break;
-                        }
-                    }
                 }
             }
             else
