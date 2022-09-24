@@ -7659,7 +7659,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -141.348, y: 12.996}
+  m_AnchoredPosition: {x: -141.34802, y: 12.995972}
   m_SizeDelta: {x: -356.584, y: -155.95}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2120356998
@@ -11227,17 +11227,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   inventory: {fileID: 8949097853262754770}
-  slotsUI:
-  - {fileID: 85355888}
-  - {fileID: 2069708627}
-  - {fileID: 2080873382}
-  - {fileID: 735764559}
-  - {fileID: 827874124}
-  - {fileID: 4121854}
-  - {fileID: 301920201}
-  - {fileID: 1954636360}
-  - {fileID: 981960951}
-  - {fileID: 1594961397}
+  slotsUI: []
   inventaryPanel: {fileID: 848643198}
   craftPanel: {fileID: 2120356996}
 --- !u!4 &8988387945947282226
