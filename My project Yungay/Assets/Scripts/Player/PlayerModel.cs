@@ -57,12 +57,10 @@ public class PlayerModel : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-            var item = collision.gameObject.GetComponent<Item>();
-            if (item)
-            {
-                inventory.AddItem(item, item.item, item.amount);
-                inventory.detect = true;
-                
-            }
+        var item = collision.gameObject.GetComponent<Item>();
+        if (item)
+        {
+            inventory.AddItem(item, item.item, item.amount);
+        }
     }
 }

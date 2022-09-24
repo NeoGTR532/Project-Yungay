@@ -2287,7 +2287,7 @@ GameObject:
   - component: {fileID: 631121836}
   m_Layer: 0
   m_Name: Nails
-  m_TagString: Item
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -4466,7 +4466,7 @@ GameObject:
   - component: {fileID: 1201457521}
   m_Layer: 0
   m_Name: Piedra
-  m_TagString: Item
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -5203,7 +5203,6 @@ MonoBehaviour:
   slots: []
   objectToCraft: {fileID: 0}
   inventoryDisplay: {fileID: 0}
-  detect: 0
 --- !u!1 &1472100053
 GameObject:
   m_ObjectHideFlags: 0
@@ -8555,11 +8554,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Bullets
       objectReference: {fileID: 0}
-    - target: {fileID: 1735745338477293402, guid: d169416df5e61704da52bf354974e8b2,
-        type: 3}
-      propertyPath: m_TagString
-      value: Item
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_AddedGameObjects: []
   m_SourcePrefab: {fileID: 100100000, guid: d169416df5e61704da52bf354974e8b2, type: 3}
@@ -11159,7 +11153,6 @@ MonoBehaviour:
   slots: []
   objectToCraft: {fileID: 11400000, guid: 5397d3ac2773701459acf34c41ef933f, type: 2}
   inventoryDisplay: {fileID: 8949097853262754773}
-  detect: 0
 --- !u!114 &8949097853262754771
 MonoBehaviour:
   m_ObjectHideFlags: 0
