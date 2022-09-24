@@ -9,7 +9,7 @@ public class Inventory : MonoBehaviour
     public CraftRecipes objectToCraft;
     public InventoryDisplay inventoryDisplay;
 
-    private void Start()
+    private void Awake()
     {
         for (int i = 0; i < maxSlots; i++)
         {
@@ -150,15 +150,17 @@ public class Inventory : MonoBehaviour
         bool hasItem = false;
         for (int i = 0; i < slots.Count; i++)
         {
-            if (slots[i].item == item)
-            {
-                hasItem = true;
-                break;
-            }
-            else
-            {
-                hasItem = false;
-            }
+                if (slots[i].item == item)
+                {
+                    hasItem = true;
+                    break;
+                }
+                else
+                {
+                    hasItem = false;
+                    break;
+                }
+            
         }
 
         return hasItem;

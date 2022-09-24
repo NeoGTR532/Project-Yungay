@@ -11,7 +11,7 @@ public class InventoryDisplay : MonoBehaviour
     private bool isOpen;
     [SerializeField] private GameObject inventaryPanel, craftPanel;
     // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
         for (int i = 0; i < inventory.maxSlots; i++)
         {

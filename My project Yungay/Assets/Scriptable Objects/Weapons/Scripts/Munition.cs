@@ -7,6 +7,8 @@ using UnityEngine.UI;
 public class Munition : MonoBehaviour
 {
     public Weapons weapons;
+    public Pistol pistol;
+    public Submachine submachine;
     public int nails;
     public int bullets;
     public int chargerNails;
@@ -15,16 +17,49 @@ public class Munition : MonoBehaviour
     public TMP_Text textBullets;
     [HideInInspector]
     public bool thereBullets, thereNails;
+    public bool hasItemNails, hasItemBullets;
+    public Inventory inventory;
+    public ItemObject nailsItem;
+    public ItemObject bulletsItem;
+    public InventoryDisplay inventoryDisplay;
 
     private void Update()
     {
         textNails.text = chargerNails.ToString();
-        textBullets.text = chargerBullets.ToString(); 
+        textBullets.text = chargerBullets.ToString();
+        hasItemNails = inventory.CheckItem(nailsItem);
+        hasItemBullets = inventory.CheckItem(bulletsItem);
         InventoryAmmo();
+        //AmmoMax();
     }
     public void InventoryAmmo()
     {
-        weapons.hasItemNails = weapons.inventory.CheckItem(weapons.nailsItem);
+        switch (weapons.stateWeapons)
+        {
+            case 1:
+                if (hasItemNails)
+                {
+                    nails = inventory.CheckAmount(nailsItem);
+                }
+                else if (hasItemNails == false)
+                { }
+                if (hasItemBullets)
+                {
+                    bullets = inventory.CheckAmount(bulletsItem);
+                }
+                else if (hasItemBullets == false)
+                { }
+                break;
+            case 2:
+                if (hasItemBullets)
+                {
+                    bullets = inventory.CheckAmount(bulletsItem);
+                }
+                else if (hasItemBullets == false)
+                { }
+                break;
+        }
+      /*  weapons.hasItemNails = weapons.inventory.CheckItem(weapons.nailsItem);
         weapons.hasItemBullets = weapons.inventory.CheckItem(weapons.bulletsItem);
         if (weapons.hasItemNails)
         {
@@ -38,36 +73,57 @@ public class Munition : MonoBehaviour
         }
         else if (weapons.hasItemBullets == false)
         { }
+      */
     }
+
+  /*  public void AmmoMax()
+    {
+        if (weapons.armas[weapons.stateWeapons].chargerBulletsMax > bullets)
+        {
+            RechargeAmmo();
+        }
+        else
+        {
+            int i = inventory.GetItemIndex(weapons.bulletsItem);
+
+            int j = chargerBullets - weapons.armas[weapons.stateWeapons].chargerBulletsMax;
+
+            inventory.slots[i].AddAmount(j);
+        }
+    }
+  */
     public void RechargeAmmo()
     {
         switch (weapons.stateWeapons)
         {
-            case 0:
-                if (weapons.ammo == true && bullets > 1)
+            case 11:
+                if (pistol.ammo == true && bullets >= 1)
                 {
-                    for (int i = chargerBullets; i < weapons.armas[weapons.stateWeapons].chargerBulletsMax; i++)
+                    for (int i = chargerBullets; i < pistol.pistol.chargerBulletsMax; i++)
                     {
-                        chargerBullets++;
-                        weapons.inventory.RestItem(weapons.bulletsItem,1);
+                            chargerBullets++;
+                            inventory.RestItem(bulletsItem, 1);
+                            inventoryDisplay.UpdateDisplay();
                     }
                 }
-                else if (weapons.ammo == false && nails > 1)
+                else if (pistol.ammo == false && nails >= 1)
                 {
-                    for (int i = chargerNails; i < weapons.armas[weapons.stateWeapons].chargerNailsMax; i++)
+                    for (int i = chargerNails; i < pistol.pistol.chargerNailsMax; i++)
                     {
                         chargerNails++;
-                        weapons.inventory.RestItem(weapons.nailsItem,1);
+                        inventory.RestItem(nailsItem,1);
+                        inventoryDisplay.UpdateDisplay();
                     }
                 }
                 break;
-            case 1:
-                if (weapons.ammo == true && bullets > 1)
+            case 2:
+                if (submachine.ammo == true && bullets >= 1)
                 {
-                    for (int i = chargerBullets; i < weapons.armas[weapons.stateWeapons].chargerBulletsMax; i++)
+                    for (int i = chargerBullets; i < submachine.submachine.chargerBulletsMax; i++)
                     {
                         chargerBullets++;
-                        weapons.inventory.RestItem(weapons.bulletsItem,1);
+                        inventory.RestItem(bulletsItem,1);
+                        inventoryDisplay.UpdateDisplay();
                     }
                 }
                 break;
