@@ -150,6 +150,8 @@ public class Inventory : MonoBehaviour
         bool hasItem = false;
         for (int i = 0; i < slots.Count; i++)
         {
+            if (slots[i] != null)
+            {
                 if (slots[i].item == item)
                 {
                     hasItem = true;
@@ -160,9 +162,9 @@ public class Inventory : MonoBehaviour
                     hasItem = false;
                     break;
                 }
-            
-        }
 
+            }
+        }
         return hasItem;
     }
 
