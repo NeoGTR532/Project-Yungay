@@ -6,16 +6,16 @@ public class Inventory : MonoBehaviour
 {
     public int maxSlots;
     public List<InventorySlot> slots = new List<InventorySlot>();
-    public CraftRecipes objectToCraft;
     public InventoryDisplay inventoryDisplay;
 
     private void Awake()
     {
         for (int i = 0; i < maxSlots; i++)
         {
-            slots.Add(null);
+            slots.Add(new InventorySlot(null,0));
         }
     }
+
     public void AddItem(Item item, ItemObject itemObject, int amount)
     {
         bool hasItem = CheckItem(itemObject);
@@ -41,16 +41,13 @@ public class Inventory : MonoBehaviour
             {
                 for (int i = 0; i < slots.Count; i++)
                 {
-                    if (slots[i] != null)
+                    if (slots[i].item == null)
                     {
-                        if (slots[i].item == null)
-                        {
-                            slots[i].item = itemObject;
-                            slots[i].amount = amount;
-                            break;
-                        }
-
+                        slots[i].item = itemObject;
+                        slots[i].amount = amount;
+                        break;
                     }
+
                 }
 
                 if (item != null)
@@ -63,7 +60,6 @@ public class Inventory : MonoBehaviour
                 Debug.Log("No hay espacio en el inventario");
             }
         }
-        inventoryDisplay.UpdateDisplay();
         inventoryDisplay.UpdateDisplay();
 
         //for (int i = 0; i < slots.Count; i++)
@@ -179,7 +175,6 @@ public class Inventory : MonoBehaviour
         {
             RemoveSlot();
         }
-
         AddItem(null, recipe.result, recipe.amount);
     }
     private void RemoveSlot()
@@ -244,9 +239,13 @@ public class Inventory : MonoBehaviour
 
         for (int i = 0; i < slots.Count; i++)
         {
-            if (slots[i].item == item)
+            if (slots[i] != null)
             {
-                index = i;
+                if (slots[i].item == item)
+                {
+                    index = i;
+                    break;
+                }
             }
         }
 
