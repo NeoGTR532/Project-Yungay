@@ -23,6 +23,10 @@ public class EnemyMovement1 : MonoBehaviour
     public float AtackDistance;
     public float Vision;
 
+    //
+    public LayerMask layerWall;
+    public bool inContact;
+
 
     
     void Start()
@@ -33,14 +37,19 @@ public class EnemyMovement1 : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        RutineEnemy();
+      
+        
+            RutineEnemy();
+        
+        
     }
     public void RutineEnemy()
     {
-         if (Vector3.Distance(transform.position, target.transform.position) > Vision)
+        if (Vector3.Distance(transform.position, target.transform.position) > Vision)
         {
-            agent.enabled = false;
+
             anim.SetBool("Run", false);
+            
             timer += 1 * Time.deltaTime;
             if (timer >= 2)
             {
@@ -58,7 +67,7 @@ public class EnemyMovement1 : MonoBehaviour
                     rutine++;
                     break;
                 case 2:
-                    transform.rotation = Quaternion.RotateTowards(transform.rotation, angule, 0.5f);
+                    transform.rotation = Quaternion.RotateTowards(transform.rotation, angule, 3f);
                     transform.Translate(Vector3.forward * speedWalk * Time.deltaTime);
                     anim.SetBool("Walk", true);
                     break;
@@ -69,9 +78,10 @@ public class EnemyMovement1 : MonoBehaviour
         }
         else
         {
-            var lookpos = target.transform.position - transform.position;
+            var lookpos = target.transform.position - transform.position  ;
             lookpos.y = 0;
             var rotation = Quaternion.LookRotation(lookpos);
+            transform.rotation = Quaternion.Slerp(transform.rotation, rotation, 5f * Time.deltaTime);
             agent.enabled = true;
             agent.SetDestination(target.transform.position);
             if (Vector3.Distance (transform.position,target.transform.position)>AtackDistance && !atack)
@@ -121,4 +131,6 @@ public class EnemyMovement1 : MonoBehaviour
         atack = false;
         Range.GetComponent<CapsuleCollider>().enabled = true;
     }
+   
+    
 }
