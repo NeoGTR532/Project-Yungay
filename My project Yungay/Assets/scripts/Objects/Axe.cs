@@ -84,7 +84,7 @@ public class Axe : MonoBehaviour
         capCollider.enabled = false;
         this.enabled = false;
 
-      /*  if (collision.gameObject.CompareTag("Enemy"))
+       /* if (collision.gameObject.CompareTag("Enemy"))
         {
             gameObject.GetComponent<EnemyHealth>().lifeE(damage);
         }*/

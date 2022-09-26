@@ -11646,7 +11646,7 @@ MonoBehaviour:
   boxFullPieces: {fileID: 8136586195334732137, guid: 72c811a78a6570e4a8a65845a7174fc6,
     type: 3}
   resources:
-  - {fileID: 0}
+  - {fileID: 1735745338477293402, guid: d169416df5e61704da52bf354974e8b2, type: 3}
 --- !u!65 &1840345600
 BoxCollider:
   m_ObjectHideFlags: 0
