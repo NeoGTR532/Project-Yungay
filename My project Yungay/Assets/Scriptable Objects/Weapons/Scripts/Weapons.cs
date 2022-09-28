@@ -71,7 +71,6 @@ public class Weapons : MonoBehaviour
                 modelSubmachine.GetComponent<Submachine>().enabled = true;
                 modelHook.GetComponent<MeshRenderer>().enabled = false;
                 modelHook.GetComponent<Hook>().enabled = false;
-                modelAxe.SetActive(false);
                 break;
             case 3:
                 modelPistol.GetComponent<MeshRenderer>().enabled = false;

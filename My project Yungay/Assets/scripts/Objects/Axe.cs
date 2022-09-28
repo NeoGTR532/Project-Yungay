@@ -22,10 +22,8 @@ public class Axe : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
         UseAxe();
         ThowAxe();
-        
     }
 
 
