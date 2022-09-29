@@ -176,7 +176,7 @@ public class Munition : MonoBehaviour
             case 2:
                 if (submachine.ammo == true && bullets >= 1)
                 {
-                    if (bullets > 10)
+                    if (bullets > 20)
                     {
                         for (int i = chargerBullets; i < submachine.submachine.chargerBulletsMax; i++)
                         {
