@@ -8,6 +8,7 @@ public class GameManager : MonoBehaviour
     public GameObject panelPause;
     private string sceneName;
     public static bool inPause = false;
+    public static string actualScene;
     //public static string actualScene;
     // Start is called before the first frame update
     void Start()
@@ -41,7 +42,7 @@ public class GameManager : MonoBehaviour
             }
         }
 
-        //actualScene = sceneName;
+        actualScene = sceneName;
     }
 
 

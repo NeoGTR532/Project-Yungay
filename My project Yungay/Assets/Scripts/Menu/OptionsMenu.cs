@@ -59,7 +59,7 @@ public class OptionsMenu : MonoBehaviour
     }
     public void ButtonBack()
     {
-        if(panelMainMenu != null)
+        if(GameManager.actualScene == "Menu")
         {
             panelOptions.SetActive(false);
             panelMainMenu.SetActive(true);

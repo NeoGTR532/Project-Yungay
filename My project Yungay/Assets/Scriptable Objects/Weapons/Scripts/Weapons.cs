@@ -14,6 +14,7 @@ public class Weapons : MonoBehaviour
         modelPistol,
         modelSubmachine;
 
+
     private void Awake()
     {
         ChangeWeapons();
@@ -21,6 +22,11 @@ public class Weapons : MonoBehaviour
 
     private void Update()
     {
+
+        if (modelAxe.transform.childCount <= 0)
+        {
+            modelAxe.SetActive(false);
+        }
 
         if (lockWeapons == false)
         {
@@ -63,6 +69,14 @@ public class Weapons : MonoBehaviour
                 modelSubmachine.GetComponent<MeshRenderer>().enabled = false;
                 modelSubmachine.GetComponent<Submachine>().enabled = false;
                 modelAxe.SetActive(false);
+                //if (modelAxe.transform.childCount > 0)
+                //{
+                //    modelAxe.SetActive(false);
+                //}
+                //else
+                //{
+
+                //}
                 break;
             case 2:
                 modelPistol.GetComponent<MeshRenderer>().enabled = false;
@@ -78,6 +92,7 @@ public class Weapons : MonoBehaviour
                 modelSubmachine.GetComponent<MeshRenderer>().enabled = false;
                 modelSubmachine.GetComponent<Submachine>().enabled = false;
                 modelAxe.SetActive(true);
+                //modelAxe.transform.GetChild(0).gameObject.SetActive(true);
                 modelHook.GetComponent<MeshRenderer>().enabled = false;
                 modelHook.GetComponent<Hook>().enabled = false;
                 break;

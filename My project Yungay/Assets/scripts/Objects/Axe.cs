@@ -5,6 +5,8 @@ using UnityEngine;
 public class Axe : MonoBehaviour
 {
 
+    public GameObject modelAxe;
+
     Animator anim;
     public float force;
     public CapsuleCollider capCollider;
@@ -14,6 +16,8 @@ public class Axe : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        modelAxe = GameObject.Find("Axe_Parent");
+
         anim = GetComponent<Animator>();
         DesactiveUseCollider();
         DesactivePickTrigger();
@@ -50,7 +54,9 @@ public class Axe : MonoBehaviour
             this.GetComponent<Rigidbody>().AddForce(Camera.main.transform.forward * force, ForceMode.Impulse);
 
             capCollider.enabled = true;
-            
+            this.transform.SetParent(null);
+            modelAxe.SetActive(false);
+            anim.enabled = false;
         }
     }
 
@@ -77,10 +83,10 @@ public class Axe : MonoBehaviour
     private void OnCollisionEnter(Collision collision)
     {
         ActivePickTrigger();
-        this.transform.SetParent(null);
+        //this.transform.SetParent(null);
         this.GetComponent<Rigidbody>().isKinematic = true;
         capCollider.enabled = false;
-        this.enabled = false;
+        //this.enabled = false;
 
        /* if (collision.gameObject.CompareTag("Enemy"))
         {
