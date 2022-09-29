@@ -39,6 +39,7 @@ public class PauseMenu : MonoBehaviour
         panelPause.SetActive(false);
         panelMenu.SetActive(true);
         GameManager.inPause = false;
+        GameManager.ShowCursor();
         SceneManager.LoadScene("Menu");
     }
 

@@ -9,7 +9,7 @@ public class MainMenu : MonoBehaviour
     public GameObject panelOptions;
     private void Awake()
     {
-        panelMainMenu = GameObject.Find("Panel MainMenu");
+        //panelMainMenu = GameObject.Find("Panel MainMenu");
         if(panelMainMenu == null)
         {
 

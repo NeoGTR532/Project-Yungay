@@ -18,7 +18,7 @@ public class OptionsMenu : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        panelMainMenu = GameObject.Find("Panel MainMenu");
+        //panelMainMenu = GameObject.Find("Panel MainMenu");
         if (panelMainMenu == null)
         {
 

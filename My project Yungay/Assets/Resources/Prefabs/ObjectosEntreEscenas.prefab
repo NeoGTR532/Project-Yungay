@@ -568,7 +568,7 @@ Transform:
   - {fileID: 5205739721002314342}
   - {fileID: 5205739720598531187}
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &5205739719434117981
 MonoBehaviour:
@@ -6292,6 +6292,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   panelPause: {fileID: 5205739719513949254}
   panelOptions: {fileID: 5205739719866233444}
+  panelMenu: {fileID: 5205739720574417956}
 --- !u!114 &5205739720989920405
 MonoBehaviour:
   m_ObjectHideFlags: 0

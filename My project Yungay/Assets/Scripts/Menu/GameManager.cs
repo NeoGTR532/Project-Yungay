@@ -9,6 +9,8 @@ public class GameManager : MonoBehaviour
     private string sceneName;
     public static bool inPause = false;
     public static string actualScene;
+
+    public bool pause;
     //public static string actualScene;
     // Start is called before the first frame update
     void Start()
@@ -33,16 +35,25 @@ public class GameManager : MonoBehaviour
                 panelPause.SetActive(true);
                 inPause = true;
             }
-            else
+
+            //else
+            //{
+            //    HideCursor();
+            //    Time.timeScale = 1f;
+            //    panelPause.SetActive(false);
+            //    inPause = false;
+            //}
+
+            if (sceneName == "Menu")
             {
-                HideCursor();
-                Time.timeScale = 1f;
-                panelPause.SetActive(false);
-                inPause = false;
+                ShowCursor();
             }
+            
         }
 
         actualScene = sceneName;
+
+        pause = inPause;
     }
 
 
