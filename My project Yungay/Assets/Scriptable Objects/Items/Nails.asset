@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: Nails
   m_EditorClassIdentifier: 
   prefab: {fileID: 0}
+  itemSprite: {fileID: 21300000, guid: 0d38a175c253f144f81387acaf776f9a, type: 3}
   type: 1
   maxStack: 50
   description: 

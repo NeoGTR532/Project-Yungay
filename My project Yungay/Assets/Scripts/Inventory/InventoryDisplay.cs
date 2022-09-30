@@ -25,18 +25,18 @@ public class InventoryDisplay : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.I) && !isOpen)
+        if (Input.GetKeyDown(KeyCode.I) && !isOpen && !GameManager.inPause)
         {
             OpenDisplay();
-            Cursor.lockState = CursorLockMode.Confined;
-            Cursor.visible = true;
+            GameManager.ShowCursor();
+            Time.timeScale = 0f;
 
         }
-        else if (Input.GetKeyDown(KeyCode.I))
+        else if (Input.GetKeyDown(KeyCode.I) && !GameManager.inPause)
         {
             CloseDisplay();
-            Cursor.lockState = CursorLockMode.Locked;
-            Cursor.visible = true;
+            GameManager.HideCursor();
+            Time.timeScale = 1f;
         }
     }
 

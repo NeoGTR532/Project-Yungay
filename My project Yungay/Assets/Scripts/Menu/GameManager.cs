@@ -6,6 +6,7 @@ using UnityEngine.SceneManagement;
 public class GameManager : MonoBehaviour
 {
     public GameObject panelPause;
+    public GameObject panelOptions;
     private string sceneName;
     public static bool inPause = false;
     public static string actualScene;
@@ -27,7 +28,7 @@ public class GameManager : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.Escape))
         {
-            if(sceneName != "Menu" && inPause == false)
+            if (sceneName != "Menu" && inPause == false)
             {
                 ShowCursor();
 
@@ -35,14 +36,18 @@ public class GameManager : MonoBehaviour
                 panelPause.SetActive(true);
                 inPause = true;
             }
-
-            //else
-            //{
-            //    HideCursor();
-            //    Time.timeScale = 1f;
-            //    panelPause.SetActive(false);
-            //    inPause = false;
-            //}
+            else if (sceneName != "Menu" && inPause && !panelOptions.activeSelf)
+            {
+                HideCursor();
+                Time.timeScale = 1f;
+                panelPause.SetActive(false);
+                inPause = false;
+            }
+            else if (sceneName != "Menu" && inPause && panelOptions.activeSelf)
+            {
+                panelOptions.SetActive(false);
+                panelPause.SetActive(true);
+            }
 
             if (sceneName == "Menu")
             {
