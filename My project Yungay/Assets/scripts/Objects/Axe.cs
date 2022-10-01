@@ -57,6 +57,7 @@ public class Axe : MonoBehaviour
             this.transform.SetParent(null);
             modelAxe.SetActive(false);
             anim.enabled = false;
+            
         }
     }
 
@@ -86,13 +87,14 @@ public class Axe : MonoBehaviour
         //this.transform.SetParent(null);
         this.GetComponent<Rigidbody>().isKinematic = true;
         capCollider.enabled = false;
+        this.enabled = false;
         //this.enabled = false;
 
-       /* if (collision.gameObject.CompareTag("Enemy"))
-        {
-            gameObject.GetComponent<EnemyHealth>().lifeE(damage);
-        }*/
-       
+        /* if (collision.gameObject.CompareTag("Enemy"))
+         {
+             gameObject.GetComponent<EnemyHealth>().lifeE(damage);
+         }*/
+
     }
 
    

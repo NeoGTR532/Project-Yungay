@@ -17345,7 +17345,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   modelAxe: {fileID: 0}
-  force: 1.5
+  force: 1.6
   capCollider: {fileID: 8303731282646855754}
   boxTriggerUse: {fileID: 8303731282646855750}
   boxTriggerPick: {fileID: 8303731282646855756}
