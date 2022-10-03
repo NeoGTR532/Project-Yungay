@@ -1,10 +1,15 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PlayerModel : MonoBehaviour
 {
+    [Header("Life")]
+  
     public float health;
+    public float maxHealth;
+
 
     [Header("Movement")]
     public float actualSpeed;
@@ -65,4 +70,6 @@ public class PlayerModel : MonoBehaviour
         }
 
     }
+  
+   
 }
