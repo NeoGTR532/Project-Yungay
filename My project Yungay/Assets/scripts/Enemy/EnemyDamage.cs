@@ -10,13 +10,14 @@ public class EnemyDamage : MonoBehaviour
     }
     public Enemy enemyType;
     public PlayerModel player;
+    public float damage;
     
    
     public void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.CompareTag("Player"))
         {
-            player.health = player.health - 1;
+            player.health = player.health - damage;
             Debug.Log("auch");
 
         }

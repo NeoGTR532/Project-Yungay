@@ -7,6 +7,7 @@ TagManager:
   - Enemigo
   - Axe
   - Enemy
+  - options
   layers:
   - Default
   - TransparentFX
@@ -20,7 +21,7 @@ TagManager:
   - Ground
   - Enemy
   - Weapon
-  - 
+  - Hookeble
   - 
   - 
   - 
