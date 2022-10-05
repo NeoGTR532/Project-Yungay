@@ -33,6 +33,7 @@ public class Pistol : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+
         if (Input.GetMouseButton(0))
         {
             Shoot();
@@ -52,40 +53,47 @@ public class Pistol : MonoBehaviour
     }
     public void Shoot()
     {
-        beggin = this.transform.position;
-        RaycastHit hit;
+        beggin = cam.transform.position;
+        RaycastHit hit; 
+        Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
         if (munition.thereNails || munition.thereBullets)
         {
-            Debug.Log("a");
             if (lastShootTime + pistol.shootDelay < Time.time)
             {
                 if (munition.thereNails && ammo == false)
                 {
                     munition.chargerNails -= 1;
                     sound.GetComponent<AudioSource>().PlayOneShot(pistol.shoot);
+                    if (Physics.Raycast(ray, out hit, pistol.range, enemyMask))
+                    {
+                        if (hit.collider.CompareTag("Enemy"))
+                        {
+                            hit.collider.gameObject.GetComponent<EnemyHealth>().lifeE(pistol.damage);
+                        }
+                        lastShootTime = Time.time;
+                    }
+                    else
+                    {
+
+                        lastShootTime = Time.time;
+                    }
                 }
                 if (munition.thereBullets == true && ammo == true)
                 {
                     munition.chargerBullets -= 1;
                     sound.GetComponent<AudioSource>().PlayOneShot(pistol.shoot);
-                }
-                if (Physics.Raycast(beggin, cam.transform.forward, out hit, pistol.range, enemyMask))
-                {
-                    TrailRenderer trail = Instantiate(bulletTrail, beggin, Quaternion.identity);
-                    StartCoroutine(SpawnTrail(trail, hit.point));
-                    if (hit.collider.CompareTag("Enemy"))
+                    if (Physics.Raycast(ray, out hit, pistol.range, enemyMask))
                     {
-                        hit.collider.gameObject.GetComponent<EnemyHealth>().lifeE(pistol.damage);
+                        if (hit.collider.CompareTag("Enemy"))
+                        {
+                            hit.collider.gameObject.GetComponent<EnemyHealth>().lifeE(pistol.damage);
+                        }
+                        lastShootTime = Time.time;
                     }
-                    lastShootTime = Time.time;
-                }
-                else
-                {
-                    TrailRenderer trail = Instantiate(bulletTrail, beggin, Quaternion.identity);
-
-                    StartCoroutine(SpawnTrail(trail, cam.transform.forward * 100));
-
-                    lastShootTime = Time.time;
+                    else
+                    {
+                        lastShootTime = Time.time;
+                    }
                 }
             }
         }
@@ -97,25 +105,5 @@ public class Pistol : MonoBehaviour
         Gizmos.color = Color.red;
         Gizmos.DrawRay(cam.transform.position, cam.transform.forward * pistol.range);
 
-        Gizmos.DrawRay(cam.transform.position, cam.transform.forward * 2);
-
-    }
-    private IEnumerator SpawnTrail(TrailRenderer Trail, Vector3 HitPoint)
-    {
-        Vector3 startPosition = Trail.transform.position;
-        float distance = Vector3.Distance(Trail.transform.position, HitPoint);
-        float remainingDistance = distance;
-
-        while (remainingDistance > 0)
-        {
-            Trail.transform.position = Vector3.Lerp(startPosition, HitPoint, 1 - (remainingDistance / distance));
-
-            remainingDistance -= BulletSpeed * Time.deltaTime;
-
-            yield return null;
-        }
-        Trail.transform.position = HitPoint;
-
-        Destroy(Trail.gameObject, Trail.time);
     }
 }
