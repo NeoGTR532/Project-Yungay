@@ -7,7 +7,7 @@ using TMPro;
 public class InventoryDisplay : MonoBehaviour
 {
     public Inventory inventory;
-    [SerializeField] private List<GameObject> slotsUI = new List<GameObject>();
+    [SerializeField] public List<GameObject> slotsUI = new List<GameObject>();
     private bool isOpen;
     [SerializeField] private GameObject inventaryPanel, craftPanel;
     private GameObject imageSlots;
@@ -48,12 +48,15 @@ public class InventoryDisplay : MonoBehaviour
             {
                 if (inventory.slots[i].item != null)
                 {
+                    slotsUI[i].GetComponent<Slot>().slot = inventory.slots[i];
                     slotsUI[i].GetComponent<Image>().sprite = inventory.slots[i].item.itemSprite;
                     TMP_Text text = slotsUI[i].transform.GetChild(0).GetComponent<TMP_Text>();
                     text.text = inventory.slots[i].amount.ToString();
                 }
                 else
                 {
+                    slotsUI[i].GetComponent<Slot>().slot.item = null;
+                    slotsUI[i].GetComponent<Slot>().slot.amount = 0;
                     slotsUI[i].GetComponent<Image>().sprite = null;
                     TMP_Text text = slotsUI[i].transform.GetChild(0).GetComponent<TMP_Text>();
                     text.text = null;

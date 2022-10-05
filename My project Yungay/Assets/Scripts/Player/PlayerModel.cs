@@ -52,12 +52,15 @@ public class PlayerModel : MonoBehaviour
 
     public GameObject sourceSound;
 
+    public static Transform playerTransform;
+
 
     private void Awake()
     {
         cap = GetComponent<CapsuleCollider>();
         rb = GetComponent<Rigidbody>();
         inventory = GetComponent<Inventory>();
+        playerTransform = GetComponent<Transform>();
     }
 
     private void OnCollisionEnter(Collision collision)

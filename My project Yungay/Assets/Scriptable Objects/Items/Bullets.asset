@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3c08865a1c2b60a49b85bd8c18175481, type: 3}
   m_Name: Bullets
   m_EditorClassIdentifier: 
-  prefab: {fileID: 0}
+  prefab: {fileID: 1735745338477293402, guid: d169416df5e61704da52bf354974e8b2, type: 3}
   itemSprite: {fileID: 21300000, guid: 87c4b8ad50ac99241986f8be8f0f6a0e, type: 3}
   type: 1
   maxStack: 50

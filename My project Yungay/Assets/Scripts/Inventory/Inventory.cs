@@ -7,6 +7,7 @@ public class Inventory : MonoBehaviour
     public int maxSlots;
     public List<InventorySlot> slots = new List<InventorySlot>();
     public InventoryDisplay inventoryDisplay;
+    public ItemObject currentItem;
 
     private void Awake()
     {
@@ -60,55 +61,8 @@ public class Inventory : MonoBehaviour
                 Debug.Log("No hay espacio en el inventario");
             }
         }
+
         inventoryDisplay.UpdateDisplay();
-
-        //for (int i = 0; i < slots.Count; i++)
-        //{
-        //    if (slots[i] != null)
-        //    {
-        //        if (slots[i].item == itemObject)
-        //        {
-        //            if (slots[i].amount + amount < slots[i].item.maxStack)
-        //            {
-        //                slots[i].AddAmount(amount);
-        //                item.amount = 0;
-        //            }
-        //            else
-        //            {
-        //                item.amount = (slots[i].amount + amount) - slots[i].item.maxStack;
-        //                slots[i].amount = slots[i].item.maxStack;
-        //            }
-
-        //            hasItem = true;
-        //            break;
-        //        }
-        //    }
-        //}
-
-        //if (!hasItem)
-        //{
-        //    if (slots.Count <= maxSlots)
-        //    {
-        //        for (int i = 0; i < slots.Count; i++)
-        //        {
-        //            if (slots[i] == null)
-        //            {
-        //                slots[i].item = itemObject;
-        //                slots[i].amount = amount;
-        //            }
-        //            break;
-        //        }
-
-        //        if (item != null)
-        //        {
-        //            item.amount = 0;
-        //        }
-        //    }
-        //    else
-        //    {
-        //        Debug.Log("No hay espacio en el inventario");
-        //    }
-        //}
 
     }
 
@@ -258,6 +212,27 @@ public class Inventory : MonoBehaviour
         {
             int index = GetItemIndex(item);
             slots[index].RestAmount(value);
+        }
+    }
+
+    public void UpdateInventory()
+    {
+        for (int i = 0; i < slots.Count; i++)
+        {
+            InventorySlot slot = inventoryDisplay.slotsUI[i].GetComponent<Slot>().slot;
+            if (slot != null)
+            {
+                if (slot.item != null)
+                {
+                    slots[i].item = slot.item;
+                    slots[i].amount = slot.amount;
+                }
+                else
+                {
+                    slots[i].item = null;
+                    slots[i].amount = 0;
+                }
+            }
         }
     }
 }
