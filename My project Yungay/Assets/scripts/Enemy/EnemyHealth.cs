@@ -30,7 +30,12 @@ public class EnemyHealth : MonoBehaviour
     {
         if (other.CompareTag("Axe"))
         {
-            lifeE(other.GetComponent<Axe>().damage);
+            lifeE(other.GetComponent<MeleeWeapon>().damage);
+        }
+
+        if (other.CompareTag("Knife"))
+        {
+            lifeE(other.GetComponent<MeleeWeapon>().damage);
         }
     }
 }

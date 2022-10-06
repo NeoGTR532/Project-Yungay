@@ -2,10 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Axe : MonoBehaviour
+public class MeleeWeapon : MonoBehaviour
 {
 
-    public GameObject modelAxe;
+    public GameObject modelWeapon;
 
     Animator anim;
     public float force;
@@ -13,10 +13,12 @@ public class Axe : MonoBehaviour
     public BoxCollider boxTriggerUse;
     public BoxCollider boxTriggerPick;
     public float damage;
+
+    public string nameTransform;
     // Start is called before the first frame update
     void Start()
     {
-        modelAxe = GameObject.Find("Axe_Parent");
+        GetTransform(nameTransform);
 
         anim = GetComponent<Animator>();
         DesactiveUseCollider();
@@ -30,6 +32,10 @@ public class Axe : MonoBehaviour
         ThowAxe();
     }
 
+    private void GetTransform(string a)
+    {
+        modelWeapon = GameObject.Find(a);
+    }
 
     private void UseAxe()
     {
@@ -55,8 +61,9 @@ public class Axe : MonoBehaviour
 
             capCollider.enabled = true;
             this.transform.SetParent(null);
-            modelAxe.SetActive(false);
+            modelWeapon.SetActive(false);
             anim.enabled = false;
+
             
         }
     }
