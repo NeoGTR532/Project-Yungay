@@ -524,12 +524,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
---- !u!1 &5205739720574417956 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 5205739720574417956, guid: fa9ca198d9416704780e5ee1bd7b755c,
-    type: 3}
-  m_PrefabInstance: {fileID: 5205739720764772832}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &5205739720764772832
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -598,11 +592,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 5205739720989920409, guid: fa9ca198d9416704780e5ee1bd7b755c,
-        type: 3}
-      propertyPath: panelMenu
-      value: 
-      objectReference: {fileID: 5205739720574417956}
     m_RemovedComponents: []
     m_AddedGameObjects: []
   m_SourcePrefab: {fileID: 100100000, guid: fa9ca198d9416704780e5ee1bd7b755c, type: 3}

@@ -35,6 +35,7 @@ public class FullScreen : MonoBehaviour
     public void ActiveFullScreen(bool fullScreen)
     {
         Screen.fullScreen = fullScreen;
+        Screen.fullScreenMode = FullScreenMode.FullScreenWindow;
     }
 
     public void CheckResolution()
