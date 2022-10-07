@@ -48,7 +48,7 @@ public class Submachine : MonoBehaviour
     }
     public void Shoot()
     {
-        beggin = cam.transform.position;
+        beggin = this.transform.position;
         RaycastHit hit;
         if (munition.thereBullets)
         {
@@ -59,6 +59,8 @@ public class Submachine : MonoBehaviour
                 sound.GetComponent<AudioSource>().PlayOneShot(submachine.shoot);
                 if (Physics.Raycast(beggin, direction, out hit, submachine.range, enemyMask))
                 {
+                    TrailRenderer trail = Instantiate(bulletTrail, beggin, Quaternion.identity);
+                    StartCoroutine(SpawnTrail(trail, hit.point));
                     if (hit.collider.CompareTag("Enemy"))
                     {
                         hit.collider.gameObject.GetComponent<EnemyHealth>().lifeE(submachine.damage);
@@ -68,6 +70,8 @@ public class Submachine : MonoBehaviour
                 }
                 else
                 {
+                    TrailRenderer trail = Instantiate(bulletTrail, beggin, Quaternion.identity);
+                    StartCoroutine(SpawnTrail(trail, cam.transform.forward * submachine.range));
                     lastShootTime = Time.time;
                 }
             }
@@ -94,6 +98,24 @@ public class Submachine : MonoBehaviour
         direction.Normalize();
 
         return direction;
+    }
+    private IEnumerator SpawnTrail(TrailRenderer Trail, Vector3 HitPoint)
+    {
+        Vector3 startPosition = Trail.transform.position;
+        float distance = Vector3.Distance(Trail.transform.position, HitPoint);
+        float remainingDistance = distance;
+
+        while (remainingDistance > 0)
+        {
+            Trail.transform.position = Vector3.Lerp(startPosition, HitPoint, 1 - (remainingDistance / distance));
+
+            remainingDistance -= BulletSpeed * Time.deltaTime;
+
+            yield return null;
+        }
+        Trail.transform.position = HitPoint;
+
+        Destroy(Trail.gameObject, Trail.time);
     }
 
 }

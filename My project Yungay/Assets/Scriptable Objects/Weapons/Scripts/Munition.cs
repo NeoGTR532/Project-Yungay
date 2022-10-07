@@ -61,6 +61,7 @@ public class Munition : MonoBehaviour
         hasItemNails = inventory.CheckItem(nailsItem);
         InventoryAmmo();
 
+
     }
     public void InventoryAmmo()
     {
@@ -131,7 +132,8 @@ public class Munition : MonoBehaviour
             case 1:
                 if (pistol.ammo == true && bullets >= 1)
                 {
-                    if (bullets > 10 && chargerBullets < pistol.pistol.chargerBulletsMax)
+                    
+                    if (bullets > pistol.pistol.chargerBulletsMax && chargerBullets < pistol.pistol.chargerBulletsMax)
                     {
                         for (int i = chargerBullets; i < pistol.pistol.chargerBulletsMax; i++)
                         {
@@ -140,18 +142,17 @@ public class Munition : MonoBehaviour
                             inventoryDisplay.UpdateDisplay();
                         }
                     }
-                    else if(chargerBullets < pistol.pistol.chargerBulletsMax)
+                    else
                     {
-                        for (int i = chargerBullets; i < pistol.pistol.chargerBulletsMax; i++)
+                        for (int i = bullets; i > 0; i--)
                         {
-
-                            if (bullets > 0)
+                            if (chargerBullets < pistol.pistol.chargerBulletsMax)
                             {
                                 chargerBullets++;
                                 inventory.RestItem(bulletsItem, 1);
                                 inventoryDisplay.UpdateDisplay();
                             }
-                            else { break; }
+                                
                         }
                     }
                 }
@@ -166,48 +167,44 @@ public class Munition : MonoBehaviour
                             inventoryDisplay.UpdateDisplay();
                         }
                     }
-                    else if (chargerNails < pistol.pistol.chargerNailsMax && nails < pistol.pistol.chargerNailsMax)
+                    else
                     {
-                        for (int i = chargerNails; i < pistol.pistol.chargerNailsMax; i++)
+                        for (int i = nails; i > 0; i--)
                         {
-                            if (nails > 0)
+                            if (chargerNails < pistol.pistol.chargerNailsMax)
                             {
                                 chargerNails++;
                                 inventory.RestItem(nailsItem, 1);
                                 inventoryDisplay.UpdateDisplay();
                             }
-                            else 
-                            {
-                                break;
-                            }
                         }
-
                     }
                 }
                 break;
             case 2:
                 if (submachine.ammo == true && bullets >= 1)
                 {
-                    if (bullets > 20 && chargerBullets < submachine.submachine.chargerBulletsMax)
+                    if (bullets > submachine.submachine.chargerBulletsMax && chargerBullets < submachine.submachine.chargerBulletsMax)
                     {
                         for (int i = chargerBullets; i < submachine.submachine.chargerBulletsMax; i++)
                         {
                             chargerBullets++;
                             inventory.RestItem(bulletsItem, 1);
                             inventoryDisplay.UpdateDisplay();
+                            
                         }
                     }
-                    else if(chargerBullets < submachine.submachine.chargerBulletsMax)
+                    else
                     {
-                        for (int i = chargerBullets; i < submachine.submachine.chargerBulletsMax; i++)
+                        for (int i = bullets; i > 0; i--)
                         {
-                            if (bullets > 0)
+                            if (chargerBullets < submachine.submachine.chargerBulletsMax)
                             {
                                 chargerBullets++;
                                 inventory.RestItem(bulletsItem, 1);
                                 inventoryDisplay.UpdateDisplay();
                             }
-                            else { break; }
+                            
                         }
                     }
                 }
@@ -216,6 +213,16 @@ public class Munition : MonoBehaviour
     }
     public void CheckAmmo()
     {
+        if (weapons.stateWeapons == 1)
+        {
+            for (int i = chargerBullets; i > pistol.pistol.chargerBulletsMax; i--)
+            {
+                chargerBullets--;
+                inventory.ReturnItem(nailsItem, 1);
+                inventoryDisplay.UpdateDisplay();
+            }
+        }
+        
 
         if (chargerNails >= 1)
         {

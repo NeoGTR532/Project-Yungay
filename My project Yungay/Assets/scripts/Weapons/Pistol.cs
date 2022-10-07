@@ -53,7 +53,7 @@ public class Pistol : MonoBehaviour
     }
     public void Shoot()
     {
-        beggin = cam.transform.position;
+        beggin = this.transform.position;
         RaycastHit hit; 
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
         if (munition.thereNails || munition.thereBullets)
@@ -66,6 +66,8 @@ public class Pistol : MonoBehaviour
                     sound.GetComponent<AudioSource>().PlayOneShot(pistol.shoot);
                     if (Physics.Raycast(ray, out hit, pistol.range, enemyMask))
                     {
+                        TrailRenderer trail = Instantiate(bulletTrail, beggin, Quaternion.identity);
+                        StartCoroutine(SpawnTrail(trail, hit.point));
                         if (hit.collider.CompareTag("Enemy"))
                         {
                             hit.collider.gameObject.GetComponent<EnemyHealth>().lifeE(pistol.damage);
@@ -74,7 +76,8 @@ public class Pistol : MonoBehaviour
                     }
                     else
                     {
-
+                        TrailRenderer trail = Instantiate(bulletTrail, beggin, Quaternion.identity);
+                        StartCoroutine(SpawnTrail(trail, cam.transform.forward * pistol.range));
                         lastShootTime = Time.time;
                     }
                 }
@@ -84,6 +87,8 @@ public class Pistol : MonoBehaviour
                     sound.GetComponent<AudioSource>().PlayOneShot(pistol.shoot);
                     if (Physics.Raycast(ray, out hit, pistol.range, enemyMask))
                     {
+                        TrailRenderer trail = Instantiate(bulletTrail, beggin, Quaternion.identity);
+                        StartCoroutine(SpawnTrail(trail, hit.point));
                         if (hit.collider.CompareTag("Enemy"))
                         {
                             hit.collider.gameObject.GetComponent<EnemyHealth>().lifeE(pistol.damage);
@@ -92,6 +97,8 @@ public class Pistol : MonoBehaviour
                     }
                     else
                     {
+                        TrailRenderer trail = Instantiate(bulletTrail, beggin, Quaternion.identity);
+                        StartCoroutine(SpawnTrail(trail, cam.transform.forward * pistol.range));
                         lastShootTime = Time.time;
                     }
                 }
@@ -105,5 +112,23 @@ public class Pistol : MonoBehaviour
         Gizmos.color = Color.red;
         Gizmos.DrawRay(cam.transform.position, cam.transform.forward * pistol.range);
 
+    }
+    private IEnumerator SpawnTrail(TrailRenderer Trail, Vector3 HitPoint)
+    {
+        Vector3 startPosition = Trail.transform.position;
+        float distance = Vector3.Distance(Trail.transform.position, HitPoint);
+        float remainingDistance = distance;
+
+        while (remainingDistance > 0)
+        {
+            Trail.transform.position = Vector3.Lerp(startPosition, HitPoint, 1 - (remainingDistance / distance));
+
+            remainingDistance -= BulletSpeed * Time.deltaTime;
+
+            yield return null;
+        }
+        Trail.transform.position = HitPoint;
+
+        Destroy(Trail.gameObject, Trail.time);
     }
 }

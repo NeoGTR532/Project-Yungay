@@ -13,7 +13,7 @@ public class Inventory : MonoBehaviour
     {
         for (int i = 0; i < maxSlots; i++)
         {
-            slots.Add(new InventorySlot(null,0));
+            slots.Add(new InventorySlot(null, 0));
         }
     }
 
@@ -204,6 +204,15 @@ public class Inventory : MonoBehaviour
         }
 
         return index;
+    }
+    public void ReturnItem(ItemObject item, int value)
+    {
+        bool hasItem = CheckItem(item);
+        if (hasItem)
+        {
+            int index = GetItemIndex(item);
+            slots[index].AddAmount(value);
+        }
     }
     public void RestItem(ItemObject item, int value)
     {
