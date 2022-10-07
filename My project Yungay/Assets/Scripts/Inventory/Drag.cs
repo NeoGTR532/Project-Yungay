@@ -9,36 +9,46 @@ public class Drag : MonoBehaviour, IPointerDownHandler, IBeginDragHandler, IEndD
     [SerializeField] private Canvas canvas;
     private RectTransform rectTransform;
     public Vector3 pos;
-    public GameObject prefabItem;
+    [HideInInspector]public GameObject prefabItem;
     public InventoryDisplay inventoryDisplay;
     public Inventory inventory;
-    public ItemObject thisitem;
-    public InventorySlot slot;
+    [HideInInspector]public InventorySlot slot;
+    private Drop drop;
 
     private void Awake()
     {
         rectTransform = GetComponent<RectTransform>();
+        drop = GetComponent<Drop>();
     }
 
     public void OnBeginDrag(PointerEventData eventData)
     {
-        pos = rectTransform.position;
-        thisitem = GetItemObject();
-        prefabItem = thisitem.prefab;
+        pos = rectTransform.position; 
+        prefabItem = GetItemObject().prefab;
         slot = GetComponent<Slot>().slot;
+        if (drop.change)
+        {
+            drop.change = false;
+        }
     }
 
     public void OnDrag(PointerEventData eventData)
     {
         if (GetComponent<Image>().sprite != null)
         {
-            rectTransform.anchoredPosition += eventData.delta / canvas.scaleFactor;
+            if (slot.item != null)
+            {
+                rectTransform.anchoredPosition += eventData.delta / canvas.scaleFactor;
+            }
         }
     }
 
     public void OnEndDrag(PointerEventData eventData)
     {
-        rectTransform.position = pos;
+        if (!drop.change)
+        {
+            rectTransform.position = pos;
+        }
     }
 
     public void OnPointerDown(PointerEventData eventData)
