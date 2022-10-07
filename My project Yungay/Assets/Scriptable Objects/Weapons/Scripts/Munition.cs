@@ -218,7 +218,7 @@ public class Munition : MonoBehaviour
             for (int i = chargerBullets; i > pistol.pistol.chargerBulletsMax; i--)
             {
                 chargerBullets--;
-                inventory.ReturnItem(nailsItem, 1);
+                inventory.ReturnItem(bulletsItem, 1);
                 inventoryDisplay.UpdateDisplay();
             }
         }

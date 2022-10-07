@@ -31,7 +31,7 @@ public class Hook1 : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetMouseButtonDown(0))
+        if (Input.GetKeyDown(KeyCode.F))
         {
             fire = true;
             
@@ -82,7 +82,7 @@ public class Hook1 : MonoBehaviour
             pointHook = hit.point;
             // hit.transform.position = pick.transform.position;
             // hit.transform.position = Vector3.Lerp(hit.transform.position, pick.transform.position, speedhook * Time.deltaTime);
-           // hit.transform.SetParent(pick.gameObject.transform);
+            // hit.transform.SetParent(pick.gameObject.transform);
             isGrappling = true;
            grapplingHook.parent = null;
             //grapplingHook.LookAt(pointHook);
@@ -90,5 +90,9 @@ public class Hook1 : MonoBehaviour
         isShooting = false;
     }
 
+    /*IEnumerator Hook()
+    {
+        
+    }*/
     
 }

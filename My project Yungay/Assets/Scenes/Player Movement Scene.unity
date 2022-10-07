@@ -680,7 +680,6 @@ MonoBehaviour:
   prefabItem: {fileID: 0}
   inventoryDisplay: {fileID: 8949097853262754773}
   inventory: {fileID: 8949097853262754770}
-  thisitem: {fileID: 0}
   slot:
     item: {fileID: 0}
     amount: 0
@@ -698,6 +697,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   inventory: {fileID: 8949097853262754770}
   inventoryDisplay: {fileID: 8949097853262754773}
+  change: 0
 --- !u!114 &85355894
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -14612,7 +14612,7 @@ MonoBehaviour:
   distanceHook: 25
   isShooting: 0
   isGrappling: 0
-  speed: 5
+  speed: 80
   timer: 0
   maxtimer: 0.5
   speedhook: 5
@@ -16468,7 +16468,6 @@ MonoBehaviour:
   prefabItem: {fileID: 0}
   inventoryDisplay: {fileID: 8949097853262754773}
   inventory: {fileID: 8949097853262754770}
-  thisitem: {fileID: 0}
   slot:
     item: {fileID: 0}
     amount: 0
@@ -16486,6 +16485,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   inventory: {fileID: 8949097853262754770}
   inventoryDisplay: {fileID: 8949097853262754773}
+  change: 0
 --- !u!114 &2069708633
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -16595,6 +16595,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   inventory: {fileID: 8949097853262754770}
   inventoryDisplay: {fileID: 8949097853262754773}
+  change: 0
 --- !u!114 &2080873387
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -16627,7 +16628,6 @@ MonoBehaviour:
   prefabItem: {fileID: 0}
   inventoryDisplay: {fileID: 8949097853262754773}
   inventory: {fileID: 8949097853262754770}
-  thisitem: {fileID: 0}
   slot:
     item: {fileID: 0}
     amount: 0
