@@ -14,6 +14,8 @@ public class Drag : MonoBehaviour, IPointerDownHandler, IBeginDragHandler, IEndD
     public Inventory inventory;
     [HideInInspector]public InventorySlot slot;
     private Drop drop;
+    private GameObject ghost;
+    public GameObject inventoryPanel;
 
     private void Awake()
     {
@@ -23,7 +25,10 @@ public class Drag : MonoBehaviour, IPointerDownHandler, IBeginDragHandler, IEndD
 
     public void OnBeginDrag(PointerEventData eventData)
     {
-        pos = rectTransform.position; 
+        pos = rectTransform.position;
+        ghost = Instantiate(eventData.pointerDrag.gameObject, rectTransform.position, Quaternion.identity);
+        eventData.pointerDrag.GetComponent<Image>().color = new Color32(255, 255, 255, 100);
+        ghost.transform.SetParent(inventoryPanel.transform);
         prefabItem = GetItemObject().prefab;
         slot = GetComponent<Slot>().slot;
         if (drop.change)
@@ -38,7 +43,7 @@ public class Drag : MonoBehaviour, IPointerDownHandler, IBeginDragHandler, IEndD
         {
             if (slot.item != null)
             {
-                rectTransform.anchoredPosition += eventData.delta / canvas.scaleFactor;
+                ghost.GetComponent<RectTransform>().anchoredPosition += eventData.delta / canvas.scaleFactor;
             }
         }
     }
@@ -49,6 +54,9 @@ public class Drag : MonoBehaviour, IPointerDownHandler, IBeginDragHandler, IEndD
         {
             rectTransform.position = pos;
         }
+
+        Destroy(ghost);
+        eventData.pointerDrag.GetComponent<Image>().color = new Color32(255, 255, 255, 255);
     }
 
     public void OnPointerDown(PointerEventData eventData)

@@ -683,6 +683,7 @@ MonoBehaviour:
   slot:
     item: {fileID: 0}
     amount: 0
+  inventoryPanel: {fileID: 848643198}
 --- !u!114 &85355893
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -16472,6 +16473,7 @@ MonoBehaviour:
   slot:
     item: {fileID: 0}
     amount: 0
+  inventoryPanel: {fileID: 848643198}
 --- !u!114 &2069708632
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -16632,6 +16634,7 @@ MonoBehaviour:
   slot:
     item: {fileID: 0}
     amount: 0
+  inventoryPanel: {fileID: 0}
 --- !u!1001 &2088009192
 PrefabInstance:
   m_ObjectHideFlags: 0
