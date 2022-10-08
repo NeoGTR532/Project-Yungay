@@ -9,6 +9,7 @@ public class Hook1 : MonoBehaviour
     public  Transform grapplingHook;
     public  Transform handpos;
     public LayerMask Hookeable;
+    public LayerMask obstaculos;
     public float distanceHook;
     public bool isShooting, isGrappling;
     private Vector3 pointHook;
@@ -19,7 +20,6 @@ public class Hook1 : MonoBehaviour
     private bool fire;
     private float T;
     private float mt;
-
 
 
     void Start()
@@ -37,24 +37,33 @@ public class Hook1 : MonoBehaviour
             
             ShootHook();
         }
-       
+
+        RaycastHit hit1;
+        Ray ray1 = Camera.main.ScreenPointToRay(Input.mousePosition);
+
         if (isGrappling)
         {
             grapplingHook.position = Vector3.Lerp(grapplingHook.position, pointHook, speed * Time.deltaTime);
             timer += Time.deltaTime;
             RaycastHit hit;
             Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+
+
             if (Physics.Raycast(ray, out hit, distanceHook, Hookeable))
             {
-                hit.transform.position = Vector3.Lerp(hit.transform.position, handpos.transform.position, speedhook * Time.deltaTime);
+                if (hit.transform.gameObject.layer == LayerMask.NameToLayer("Hookeble"))
+                {
+                    hit.transform.position = Vector3.Lerp(hit.transform.position, handpos.transform.position, speedhook * Time.deltaTime);
+                }
             }
-                if (timer >= maxtimer)
+            if (timer >= maxtimer)
             {
                 isGrappling = false;
             }
-            
+
+
         }
-        if (!isGrappling)
+        else
         {
             grapplingHook.position = Vector3.Lerp(grapplingHook.position, handpos.transform.position, speed * Time.deltaTime);
             timer = 0;
@@ -79,13 +88,16 @@ public class Hook1 : MonoBehaviour
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
         if (Physics.Raycast(ray, out hit, distanceHook, Hookeable))
         {         
-            pointHook = hit.point;
-            // hit.transform.position = pick.transform.position;
-            // hit.transform.position = Vector3.Lerp(hit.transform.position, pick.transform.position, speedhook * Time.deltaTime);
-            // hit.transform.SetParent(pick.gameObject.transform);
-            isGrappling = true;
-           grapplingHook.parent = null;
-            //grapplingHook.LookAt(pointHook);
+            if(hit.transform.gameObject.layer == LayerMask.NameToLayer("Hookeble"))
+            {
+                pointHook = hit.point;
+                // hit.transform.position = pick.transform.position;
+                // hit.transform.position = Vector3.Lerp(hit.transform.position, pick.transform.position, speedhook * Time.deltaTime);
+                // hit.transform.SetParent(pick.gameObject.transform);
+                isGrappling = true;
+                grapplingHook.parent = null;
+                //grapplingHook.LookAt(pointHook);
+            }
         }
         isShooting = false;
     }

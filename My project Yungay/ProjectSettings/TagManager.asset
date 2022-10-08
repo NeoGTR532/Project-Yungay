@@ -8,6 +8,8 @@ TagManager:
   - Axe
   - Enemy
   - options
+  - Knife
+  - SlotDisplay
   layers:
   - Default
   - TransparentFX

@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.18028352, g: 0.22571376, b: 0.30692244, a: 1}
+  m_IndirectSpecularColor: {r: 0.18028378, g: 0.22571412, b: 0.30692285, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -2408,6 +2408,7 @@ MonoBehaviour:
   modelHook: {fileID: 0}
   modelPistol: {fileID: 0}
   modelSubmachine: {fileID: 0}
+  modelKnife: {fileID: 0}
 --- !u!1 &287615123
 GameObject:
   m_ObjectHideFlags: 0
@@ -4417,7 +4418,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &443652990
 Transform:
   m_ObjectHideFlags: 0
@@ -6863,6 +6864,7 @@ MonoBehaviour:
   modelHook: {fileID: 424624414}
   modelPistol: {fileID: 1670770839}
   modelSubmachine: {fileID: 1989189261}
+  modelKnife: {fileID: 1906253938}
 --- !u!114 &814939190
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -14604,7 +14606,10 @@ MonoBehaviour:
   handpos: {fileID: 1877508481}
   Hookeable:
     serializedVersion: 2
-    m_Bits: 4096
+    m_Bits: 5879
+  obstaculos:
+    serializedVersion: 2
+    m_Bits: 1782
   distanceHook: 25
   isShooting: 0
   isGrappling: 0
