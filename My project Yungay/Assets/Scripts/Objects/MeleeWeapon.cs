@@ -90,11 +90,19 @@ public class MeleeWeapon : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
+        
         ActivePickTrigger();
         //this.transform.SetParent(null);
-        this.GetComponent<Rigidbody>().isKinematic = true;
-        capCollider.enabled = false;
-        this.enabled = false;
+        
+        
+        
+        if (collision.gameObject.layer == LayerMask.NameToLayer("Ground"))
+        {
+            gameObject.tag = "Untagged";
+            this.GetComponent<Rigidbody>().isKinematic = true;
+            capCollider.enabled = false;
+            this.enabled = false;
+        }
         //this.enabled = false;
 
         /* if (collision.gameObject.CompareTag("Enemy"))

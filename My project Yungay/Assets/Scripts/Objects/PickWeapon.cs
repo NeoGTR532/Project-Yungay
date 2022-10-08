@@ -55,8 +55,18 @@ public class PickWeapon : MonoBehaviour
             this.transform.localPosition = new Vector3(0f, 0f, 0f);
             this.transform.localRotation = Quaternion.Euler(-180f, 0f, -90f);
             this.GetComponent<Animator>().enabled = true;
-        }
-    }
 
-   
+            if (gameObject.name == "Axe")
+            {
+                gameObject.tag = "Axe";
+            }
+
+            if (gameObject.name == "Knife")
+            {
+                gameObject.tag = "Knife";
+            }
+        }
+
+        
+    }
 }
