@@ -4,36 +4,33 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
-public class Drag : MonoBehaviour, IPointerDownHandler, IBeginDragHandler, IEndDragHandler, IDragHandler
+public class Drag : MonoBehaviour, IPointerDownHandler, IBeginDragHandler, IEndDragHandler, IDragHandler, IDropHandler
 {
     [SerializeField] private Canvas canvas;
     private RectTransform rectTransform;
-    public Vector3 pos;
+    private Vector3 pos;
     [HideInInspector]public GameObject prefabItem;
     public InventoryDisplay inventoryDisplay;
     public Inventory inventory;
-    [HideInInspector]public InventorySlot slot;
-    private Drop drop;
     private GameObject ghost;
     public GameObject inventoryPanel;
+    public List<RaycastResult> results = new List<RaycastResult>();
 
     private void Awake()
     {
         rectTransform = GetComponent<RectTransform>();
-        drop = GetComponent<Drop>();
     }
 
     public void OnBeginDrag(PointerEventData eventData)
     {
-        pos = rectTransform.position;
-        ghost = Instantiate(eventData.pointerDrag.gameObject, rectTransform.position, Quaternion.identity);
-        eventData.pointerDrag.GetComponent<Image>().color = new Color32(255, 255, 255, 100);
-        ghost.transform.SetParent(inventoryPanel.transform);
-        prefabItem = GetItemObject().prefab;
-        slot = GetComponent<Slot>().slot;
-        if (drop.change)
+        if (GetComponent<Slot>().slot.item != null)
         {
-            drop.change = false;
+            ghost = Instantiate(eventData.pointerDrag.gameObject, rectTransform.position, Quaternion.identity);
+            Destroy(ghost.GetComponent<Drag>());
+            Destroy(ghost.GetComponent<Slot>());
+            eventData.pointerDrag.GetComponent<Image>().color = new Color32(255, 255, 255, 100);
+            ghost.transform.SetParent(inventoryPanel.transform);
+            prefabItem = GetItemObject().prefab;
         }
     }
 
@@ -41,7 +38,7 @@ public class Drag : MonoBehaviour, IPointerDownHandler, IBeginDragHandler, IEndD
     {
         if (GetComponent<Image>().sprite != null)
         {
-            if (slot.item != null)
+            if (GetComponent<Slot>().slot.item != null)
             {
                 ghost.GetComponent<RectTransform>().anchoredPosition += eventData.delta / canvas.scaleFactor;
             }
@@ -50,11 +47,25 @@ public class Drag : MonoBehaviour, IPointerDownHandler, IBeginDragHandler, IEndD
 
     public void OnEndDrag(PointerEventData eventData)
     {
-        if (!drop.change)
-        {
-            rectTransform.position = pos;
-        }
+        EventSystem.current.RaycastAll(eventData, results);
 
+        Slot slot = null;
+
+        foreach (var result in results)
+        {
+            slot = result.gameObject.GetComponent<Slot>();
+
+            if (slot != null)
+            {
+                ChangeSlots(slot, GetComponent<Slot>());
+                break;
+            }
+            else
+            {
+
+            }
+        }
+        
         Destroy(ghost);
         eventData.pointerDrag.GetComponent<Image>().color = new Color32(255, 255, 255, 255);
     }
@@ -84,5 +95,41 @@ public class Drag : MonoBehaviour, IPointerDownHandler, IBeginDragHandler, IEndD
             }
         }
         return item;
+    }
+
+
+    public void OnDrop(PointerEventData eventData)
+    {
+        
+    }
+
+    private void ChangeSlots(Slot slot1, Slot slot2)
+    {
+        ItemObject item2 = slot2.slot.item;
+        int amount2 = slot2.slot.amount;
+
+        if (slot1.slot != null)
+        {
+            if (slot1.slot.item != null)
+            {
+                ItemObject item1 = slot1.slot.item;
+                int amount1 = slot1.slot.amount;
+                slot2.slot.item = item1;
+                slot2.slot.amount = amount1;
+                slot1.slot.item = item2;
+                slot1.slot.amount = amount2;
+            }
+            else
+            {
+                slot2.slot.item = null;
+                slot2.slot.amount = 0;
+                slot1.slot = new InventorySlot(item2,amount2);
+            }
+        }
+
+        Debug.Log(slot1.slot.item.name);
+
+        inventory.UpdateInventory();
+        inventoryDisplay.UpdateDisplay();
     }
 }
