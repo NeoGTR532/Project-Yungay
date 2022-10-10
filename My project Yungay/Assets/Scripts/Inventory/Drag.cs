@@ -54,18 +54,26 @@ public class Drag : MonoBehaviour, IPointerDownHandler, IBeginDragHandler, IEndD
         foreach (var result in results)
         {
             slot = result.gameObject.GetComponent<Slot>();
-
             if (slot != null)
             {
                 ChangeSlots(slot, GetComponent<Slot>());
                 break;
             }
-            else
-            {
-
-            }
         }
-        
+
+        if (slot == null)
+        {
+            Vector3 pos = PlayerModel.playerTransform.position;
+            pos.x -= 1;
+            pos.y += 0.5f;
+            GameObject clone = Instantiate(prefabItem, new Vector3(pos.x, pos.y, pos.z), Quaternion.identity);
+            clone.GetComponent<Item>().amount = GetComponent<Slot>().slot.amount;
+            GetComponent<Slot>().slot.item = null;
+            GetComponent<Slot>().slot.amount = 0;
+            inventory.UpdateInventory();
+            inventoryDisplay.UpdateDisplay();
+        }
+
         Destroy(ghost);
         eventData.pointerDrag.GetComponent<Image>().color = new Color32(255, 255, 255, 255);
     }
@@ -126,8 +134,6 @@ public class Drag : MonoBehaviour, IPointerDownHandler, IBeginDragHandler, IEndD
                 slot1.slot = new InventorySlot(item2,amount2);
             }
         }
-
-        Debug.Log(slot1.slot.item.name);
 
         inventory.UpdateInventory();
         inventoryDisplay.UpdateDisplay();
