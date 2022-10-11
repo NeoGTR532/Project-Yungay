@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.18028378, g: 0.22571412, b: 0.30692285, a: 1}
+  m_IndirectSpecularColor: {r: 0.18028352, g: 0.22571376, b: 0.30692244, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -21135,10 +21135,10 @@ CapsuleCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 0
-  m_Radius: 36.256958
-  m_Height: 193.55916
+  m_Radius: 50.137306
+  m_Height: 244.97449
   m_Direction: 1
-  m_Center: {x: -0.0000372529, y: 38.61781, z: -0.000018771087}
+  m_Center: {x: -0.0000372529, y: 47.566837, z: -0.00018732714}
 --- !u!65 &8541002840691638435
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -21167,7 +21167,7 @@ Rigidbody:
   m_IsKinematic: 1
   m_Interpolate: 0
   m_Constraints: 0
-  m_CollisionDetection: 2
+  m_CollisionDetection: 3
 --- !u!95 &8541002840691638437
 Animator:
   serializedVersion: 4
