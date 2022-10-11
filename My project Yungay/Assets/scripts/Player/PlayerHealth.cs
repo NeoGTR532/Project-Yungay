@@ -22,9 +22,9 @@ public class PlayerHealth : MonoBehaviour
         }
         else
         {
+            mb.checkpoint.GetComponent<DataChekpoint>().FixEnemy();
+            mb.health = 100;
             Debug.Log("Tiezo");
         }
-
-
     }
 }

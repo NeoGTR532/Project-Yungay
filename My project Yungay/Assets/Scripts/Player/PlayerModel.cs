@@ -46,8 +46,7 @@ public class PlayerModel : MonoBehaviour
 
     [Header("Checkpoint")]
     [SerializeField]
-    private GameObject checkParent;
-    public GameObject[] checkpoint;
+    public GameObject checkpoint;
 
     public Rigidbody rb;
 
@@ -60,6 +59,7 @@ public class PlayerModel : MonoBehaviour
 
     private void Awake()
     {
+        checkpoint = GameObject.FindGameObjectWithTag("Checkpoint");
         cap = GetComponent<CapsuleCollider>();
         rb = GetComponent<Rigidbody>();
         inventory = GetComponent<Inventory>();
@@ -74,8 +74,14 @@ public class PlayerModel : MonoBehaviour
         {
             inventory.AddItem(item, item.item, item.amount);
         }
-
     }
-  
-   
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.CompareTag("Checkpoint"))
+        {
+            checkpoint.GetComponent<DataChekpoint>().Check(); 
+        }
+    }
+
+
 }

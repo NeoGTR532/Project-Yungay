@@ -8,7 +8,6 @@ public class EnemyHealth : MonoBehaviour
     public GameObject[] resources;
     void Start()
     {
-        
     }
 
     // Update is called once per frame
@@ -21,7 +20,13 @@ public class EnemyHealth : MonoBehaviour
         life-=valor;
         if (life <= 0)
         {
-            Destroy(gameObject);
+            /*
+            EnemyDamage enemyDamage = GetComponent<EnemyDamage>();
+            EnemyMovement1 enemyMovement1 = GetComponent<EnemyMovement1>();
+            //Destroy(gameObject);
+            enemyDamage.enabled = false;
+            enemyMovement1.enabled = false;*/
+            
             Instantiate(resources[Random.Range(0, resources.Length)], transform.position, Quaternion.identity);
         }
     }
