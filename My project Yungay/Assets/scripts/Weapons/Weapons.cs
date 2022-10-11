@@ -13,6 +13,7 @@ public class Weapons : MonoBehaviour
         modelHook,
         modelPistol,
         modelSubmachine,
+        modelSpear,
         modelKnife;
 
 
@@ -66,57 +67,36 @@ public class Weapons : MonoBehaviour
 
     public void ChangeWeapons()
     {
+        Desactive();
         switch (stateWeapons)
         {
             case 1:
                 modelPistol.GetComponent<MeshRenderer>().enabled = true;
                 modelPistol.GetComponent<Pistol>().enabled = true;
-                modelSubmachine.GetComponent<MeshRenderer>().enabled = false;
-                modelSubmachine.GetComponent<Submachine>().enabled = false;
-                modelAxe.SetActive(false);
-                modelKnife.SetActive(false);
-                //if (modelAxe.transform.childCount > 0)
-                //{
-                //    modelAxe.SetActive(false);
-                //}
-                //else
-                //{
-
-                //}
                 break;
             case 2:
-                modelPistol.GetComponent<MeshRenderer>().enabled = false;
-                modelPistol.GetComponent<Pistol>().enabled = false;
                 modelSubmachine.GetComponent<MeshRenderer>().enabled = true;
                 modelSubmachine.GetComponent<Submachine>().enabled = true;
-                modelAxe.SetActive(false);
-                modelKnife.SetActive(false);
                 break;
             case 3:
-                modelPistol.GetComponent<MeshRenderer>().enabled = false;
-                modelPistol.GetComponent<Pistol>().enabled = false;
-                modelSubmachine.GetComponent<MeshRenderer>().enabled = false;
-                modelSubmachine.GetComponent<Submachine>().enabled = false;
                 modelAxe.SetActive(true);
-                modelKnife.SetActive(false);
                 break;
-            /*  case 4:
-                  modelPistol.GetComponent<MeshRenderer>().enabled = false;
-                  modelPistol.GetComponent<Pistol>().enabled = false;
-                  modelSubmachine.GetComponent<MeshRenderer>().enabled = false;
-                  modelSubmachine.GetComponent<Submachine>().enabled = false;
-                  modelHook.GetComponent<MeshRenderer>().enabled = true;
-                  modelHook.GetComponent<Hook>().enabled = true;
-                  modelAxe.SetActive(false);
-                  break;*/
+            case 4:
+                modelSpear.SetActive(true);
+                break;
             case 5:
-                modelPistol.GetComponent<MeshRenderer>().enabled = false;
-                modelPistol.GetComponent<Pistol>().enabled = false;
-                modelSubmachine.GetComponent<MeshRenderer>().enabled = false;
-                modelSubmachine.GetComponent<Submachine>().enabled = false;
-                modelAxe.SetActive(false);
                 modelKnife.SetActive(true);
                 break;
         }
+    }
+    public void Desactive()
+    {
+        modelPistol.GetComponent<MeshRenderer>().enabled = false;
+        modelPistol.GetComponent<Pistol>().enabled = false;
+        modelSubmachine.GetComponent<MeshRenderer>().enabled = false;
+        modelSubmachine.GetComponent<Submachine>().enabled = false;
+        modelAxe.SetActive(false);
+        modelSpear.SetActive(false);
+        modelKnife.SetActive(false);
     }
 }

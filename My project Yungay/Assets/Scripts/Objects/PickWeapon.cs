@@ -30,7 +30,7 @@ public class PickWeapon : MonoBehaviour
 
     public void GetParent(string a)
     {
-        parent = GameObject.Find(a);
+        //parent = GameObject.Find(a);
     }
 
     public void GetTransform(string b)
