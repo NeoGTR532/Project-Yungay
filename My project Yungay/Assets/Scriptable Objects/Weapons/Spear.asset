@@ -19,7 +19,7 @@ MonoBehaviour:
   chargerNailsMax: 0
   chargerBulletsMax: 0
   bulletSpreadVariance: {x: 0, y: 0}
-  range: 10
+  range: 1.5
   zoom: 0
   damage: 10
   spark: {fileID: 0}

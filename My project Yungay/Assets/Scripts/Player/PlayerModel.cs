@@ -44,7 +44,10 @@ public class PlayerModel : MonoBehaviour
     public bool canRun;
     public bool canUpLedge;
 
-
+    [Header("Checkpoint")]
+    [SerializeField]
+    private GameObject checkParent;
+    public GameObject[] checkpoint;
 
     public Rigidbody rb;
 
