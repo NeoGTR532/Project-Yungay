@@ -168,6 +168,33 @@ public class Inventory : MonoBehaviour
         return hasItem;
     }
 
+    public bool CheckItems(CraftRecipes recipe)
+    {
+        bool hasMaterials = false;
+        int materialCount = recipe.materials.Count;
+        int count = 0;
+        for (int i = 0; i < recipe.materials.Count; i++)
+        {
+            foreach (InventorySlot slot in slots)
+            {
+                if (slot.item == recipe.materials[i].item)
+                {
+                    if (slot.amount >= recipe.materials[i].amount)
+                    {
+                        count++;
+                    }
+                }
+            }
+        }
+
+        if (count == materialCount)
+        {
+            hasMaterials = true;
+        }
+
+        return hasMaterials;
+    }
+
     public int CheckAmount(ItemObject item)
     {
         int amount = 0;

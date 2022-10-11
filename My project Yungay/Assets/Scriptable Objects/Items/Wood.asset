@@ -10,10 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 3c08865a1c2b60a49b85bd8c18175481, type: 3}
-  m_Name: Stone
+  m_Name: Wood
   m_EditorClassIdentifier: 
-  prefab: {fileID: 5142440867696664683, guid: 558b41b58b3533a4993a7fb9055604d6, type: 3}
-  itemSprite: {fileID: 21300000, guid: f4135814ce8227f4e90cbd8bb1062ff8, type: 3}
-  type: 1
+  prefab: {fileID: 8899441439988601919, guid: 31850fe793b2d2a46b57b42bca6b0711, type: 3}
+  itemSprite: {fileID: 21300000, guid: 99d5064bc9dbe03448d4a01ded0adc18, type: 3}
+  type: 0
   maxStack: 10
   description: 

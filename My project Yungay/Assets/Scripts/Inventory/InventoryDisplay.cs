@@ -11,6 +11,7 @@ public class InventoryDisplay : MonoBehaviour
     private bool isOpen;
     [SerializeField] private GameObject inventaryPanel, craftPanel;
     private GameObject imageSlots;
+    public List<CraftDisplay> craftDisplayItems = new List<CraftDisplay>();
     // Start is called before the first frame update
     void Awake()
     {
@@ -69,6 +70,7 @@ public class InventoryDisplay : MonoBehaviour
     {
         inventaryPanel.SetActive(true);
         craftPanel.SetActive(true);
+        UpdateCraftDisplay();
         isOpen = true;
     }
 
@@ -77,5 +79,13 @@ public class InventoryDisplay : MonoBehaviour
         inventaryPanel.SetActive(false);
         craftPanel.SetActive(false);
         isOpen = false;
+    }
+
+    public void UpdateCraftDisplay()
+    {
+        for (int i = 0; i < craftDisplayItems.Count; i++)
+        {
+            craftDisplayItems[i].CheckIsCraftable();
+        }
     }
 }
