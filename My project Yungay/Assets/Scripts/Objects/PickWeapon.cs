@@ -65,6 +65,10 @@ public class PickWeapon : MonoBehaviour
             {
                 gameObject.tag = "Knife";
             }
+            if (gameObject.name == "Spear")
+            {
+                gameObject.tag = "Spear";
+            }
         }
 
         

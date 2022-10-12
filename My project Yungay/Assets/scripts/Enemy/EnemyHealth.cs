@@ -42,5 +42,9 @@ public class EnemyHealth : MonoBehaviour
         {
             lifeE(other.GetComponent<MeleeWeapon>().damage);
         }
+        if (other.CompareTag("Spear"))
+        {
+            lifeE(other.GetComponent<MeleeWeapon>().damage);
+        }
     }
 }
