@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d103314e3356e7a408a4db5dfd2e2787, type: 3}
   m_Name: Axe
   m_EditorClassIdentifier: 
-  prefab: {fileID: 210719011672384731, guid: ef3d81643dac34a4a949c69c312a7517, type: 3}
+  prefab: {fileID: 2377691152465184948, guid: 0d378e4566f33db47ad498e29d94b3ad, type: 3}
   itemSprite: {fileID: 21300000, guid: b91a65b92adc3744db8decf086078ccd, type: 3}
   type: 2
   maxStack: 1

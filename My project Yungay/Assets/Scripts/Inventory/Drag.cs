@@ -67,7 +67,7 @@ public class Drag : MonoBehaviour, IPointerDownHandler, IBeginDragHandler, IEndD
             pos.x -= 1;
             pos.y += 0.5f;
             GameObject clone = Instantiate(prefabItem, new Vector3(pos.x, pos.y, pos.z), Quaternion.identity);
-            clone.GetComponent<Item>().amount = GetComponent<Slot>().slot.amount;
+            clone.GetComponent<Loot>().loot[0].amount = GetComponent<Slot>().slot.amount;
             GetComponent<Slot>().slot.item = null;
             GetComponent<Slot>().slot.amount = 0;
             inventory.UpdateInventory();
