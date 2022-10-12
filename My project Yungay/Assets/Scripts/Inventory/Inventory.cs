@@ -28,7 +28,9 @@ public class Inventory : MonoBehaviour
             if (slots[index].amount + amount < slots[index].item.maxStack)
             {
                 slots[index].AddAmount(amount);
+
                 item.amount = 0;
+
             }
             else
             {

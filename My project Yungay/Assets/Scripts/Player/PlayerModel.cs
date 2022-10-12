@@ -66,15 +66,6 @@ public class PlayerModel : MonoBehaviour
         playerTransform = GetComponent<Transform>();
     }
 
-    private void OnCollisionEnter(Collision collision)
-    {
-        var item = collision.gameObject.GetComponent<Item>();
-
-        if (item)
-        {
-            inventory.AddItem(item, item.item, item.amount);
-        }
-    }
     private void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Checkpoint"))
