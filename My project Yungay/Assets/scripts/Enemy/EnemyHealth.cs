@@ -20,12 +20,7 @@ public class EnemyHealth : MonoBehaviour
         life-=valor;
         if (life <= 0)
         {
-            /*
-            EnemyDamage enemyDamage = GetComponent<EnemyDamage>();
-            EnemyMovement1 enemyMovement1 = GetComponent<EnemyMovement1>();
-            //Destroy(gameObject);
-            enemyDamage.enabled = false;
-            enemyMovement1.enabled = false;*/
+            Destroy(gameObject);
             
             Instantiate(resources[Random.Range(0, resources.Length)], transform.position, Quaternion.identity);
         }
