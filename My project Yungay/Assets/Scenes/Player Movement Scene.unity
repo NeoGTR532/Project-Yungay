@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.18028378, g: 0.22571412, b: 0.30692285, a: 1}
+  m_IndirectSpecularColor: {r: 0.18028352, g: 0.22571376, b: 0.30692244, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -1080,7 +1080,7 @@ GameObject:
   - component: {fileID: 163674925}
   m_Layer: 0
   m_Name: Cube (1)
-  m_TagString: Untagged
+  m_TagString: Loot
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2346,7 +2346,7 @@ GameObject:
   - component: {fileID: 289281167}
   m_Layer: 0
   m_Name: Cube (2)
-  m_TagString: Untagged
+  m_TagString: Loot
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -10064,7 +10064,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1188033623
 Transform:
   m_ObjectHideFlags: 0
@@ -10462,7 +10462,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1236928383
 Transform:
   m_ObjectHideFlags: 0
@@ -13694,7 +13694,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1670770840
 Transform:
   m_ObjectHideFlags: 0
@@ -14894,7 +14894,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1877508481
 Transform:
   m_ObjectHideFlags: 0
@@ -16134,7 +16134,7 @@ GameObject:
   - component: {fileID: 1965120404}
   m_Layer: 0
   m_Name: Cube
-  m_TagString: Untagged
+  m_TagString: Loot
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -16282,7 +16282,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1989189262
 Transform:
   m_ObjectHideFlags: 0
@@ -21989,6 +21989,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 31f74b30bad1bb24fa628af477ec8e66, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  cam: {fileID: 814939193}
   inventory: {fileID: 0}
   lootText: {fileID: 1399557445}
 --- !u!114 &8949097853262754776
