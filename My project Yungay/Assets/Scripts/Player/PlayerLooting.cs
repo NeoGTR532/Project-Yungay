@@ -16,53 +16,8 @@ public class PlayerLooting : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-       
-
-        Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-        RaycastHit hit;
-
-        
-
-        if (Physics.Raycast(ray, out hit, 1.5f) && hit.collider.gameObject.GetComponent<Loot>()/*CompareTag("Loot")*/)
-        {
-            var loot = hit.collider.gameObject.GetComponent<Loot>();
-            lootText.GetComponent<Animator>().SetBool("Show", true);
-
-            if (Input.GetKeyDown(KeyCode.F))
-            {
-                for (int i = 0; i < loot.loot.Count; i++)
-                {
-                    inventory.AddItem(loot.loot[i], loot.loot[i].item, loot.loot[i].amount);
-                }
-            }
-
-        }
-
-        else
-        {
-            lootText.GetComponent<Animator>().SetBool("Show", false);
-        }
-            
+        Loot();
     }
-
-    //public void OnTriggerStay(Collider other)
-    //{
-    //    var loot = other.gameObject.GetComponent<Loot>();
-
-    //    if (loot)
-    //    {
-    //        lootText.GetComponent<Animator>().SetBool("Show", true);
-    //        if (Input.GetKeyDown(KeyCode.F))
-    //        {
-    //            for (int i = 0; i < loot.loot.Count; i++)
-    //            {
-    //                inventory.AddItem(loot.loot[i], loot.loot[i].item, loot.loot[i].amount);
-    //            }
-
-    //            lootText.GetComponent<Animator>().SetBool("Show", false);
-    //        }
-    //    }
-    //}
     private void OnDrawGizmos()
     {
         Gizmos.color = Color.red;
@@ -70,14 +25,47 @@ public class PlayerLooting : MonoBehaviour
 
     }
 
-    //private void OnTriggerExit(Collider other)
-    //{
-    //    var loot = other.gameObject.GetComponent<Loot>();
+    private bool CheckLoot(Loot loot)
+    {
+        bool canloot = false;
 
-    //    if (loot)
-    //    {
-    //        lootText.GetComponent<Animator>().SetBool("Show", false);
+        for (int i = 0; i < loot.loot.Count; i++)
+        {
+            if (loot.loot[i].amount > 0)
+            {
+                canloot = true;
+                break;
+            }
+        }
+        return canloot;
+    }
 
-    //    }
-    //}
+    private void Loot()
+    {
+
+        Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+        RaycastHit hit;
+
+        if (Physics.Raycast(ray, out hit, 1.5f) && hit.collider.gameObject.GetComponent<Loot>())
+        {
+            var loot = hit.collider.gameObject.GetComponent<Loot>();
+            if (CheckLoot(loot))
+            {
+                lootText.GetComponent<Animator>().SetBool("Show", true);
+
+                if (Input.GetKeyDown(KeyCode.F))
+                {
+                    for (int i = 0; i < loot.loot.Count; i++)
+                    {
+                        inventory.AddItem(loot.loot[i], loot.loot[i].item, loot.loot[i].amount);
+                    }
+                    lootText.GetComponent<Animator>().SetBool("Show", false);
+                }
+            }
+        }
+        else
+        {
+            lootText.GetComponent<Animator>().SetBool("Show", false);
+        }
+    }
 }
