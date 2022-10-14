@@ -22123,6 +22123,7 @@ MonoBehaviour:
   cam: {fileID: 814939193}
   inventory: {fileID: 0}
   lootText: {fileID: 1399557445}
+  rayDistance: 0.7
 --- !u!114 &8949097853262754776
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -7,6 +7,7 @@ public class PlayerLooting : MonoBehaviour
     public Camera cam;
     public Inventory inventory;
     public GameObject lootText;
+    public float rayDistance;
     // Start is called before the first frame update
     void Awake()
     {
@@ -20,8 +21,8 @@ public class PlayerLooting : MonoBehaviour
     }
     private void OnDrawGizmos()
     {
-        Gizmos.color = Color.red;
-        Gizmos.DrawRay(cam.transform.position, cam.transform.forward * 1f);
+        Gizmos.color = Color.magenta;
+        Gizmos.DrawRay(cam.transform.position, cam.transform.forward * rayDistance);
 
     }
 
