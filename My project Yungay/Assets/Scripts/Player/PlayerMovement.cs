@@ -86,29 +86,6 @@ public class PlayerMovement : MonoBehaviour
         
             
     }
-
-    //private void Crouch()
-    //{
-    //    if (Input.GetKeyDown(KeyCode.LeftControl))
-
-    //        if(!model.isCrouching)
-    //        {
-    //            model.isCrouching = true;
-    //            model.canJump = false;
-    //            model.cap.height = model.crouchHeight;
-    //            model.cap.center = new Vector3(model.cap.center.x, model.CrouchY, model.cap.center.z);
-    //        }
-    //        else if(model.isCrouching && playerHeadCheck.headCheck == false)
-    //        {
-    //            model.isCrouching = false;
-    //            model.canJump = true;
-    //            model.rb.AddForce(move.normalized * model.speedWalk * 10f, ForceMode.Force);
-    //            model.cap.height = model.standHeight;
-    //            model.cap.center = new Vector3(model.cap.center.x, model.standY, model.cap.center.z);
-    //        }
-
-    //}
-
     private void ControlSpeed()
     {
         Vector3 flatVel = new Vector3(model.rb.velocity.x, 0f, model.rb.velocity.z);
