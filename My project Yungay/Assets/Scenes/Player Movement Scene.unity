@@ -231,7 +231,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   canvas: {fileID: 2116291153}
   prefabItem: {fileID: 0}
-  inventoryDisplay: {fileID: 8949097853262754773}
+  inventoryDisplay: {fileID: 0}
   inventory: {fileID: 8949097853262754770}
   inventoryPanel: {fileID: 848643198}
 --- !u!1 &22796962
@@ -489,7 +489,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   canvas: {fileID: 2116291153}
   prefabItem: {fileID: 0}
-  inventoryDisplay: {fileID: 8949097853262754773}
+  inventoryDisplay: {fileID: 0}
   inventory: {fileID: 8949097853262754770}
   inventoryPanel: {fileID: 848643198}
 --- !u!114 &85355894
@@ -2584,7 +2584,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   canvas: {fileID: 2116291153}
   prefabItem: {fileID: 0}
-  inventoryDisplay: {fileID: 8949097853262754773}
+  inventoryDisplay: {fileID: 0}
   inventory: {fileID: 8949097853262754770}
   inventoryPanel: {fileID: 848643198}
 --- !u!1 &310327112
@@ -4519,7 +4519,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   canvas: {fileID: 2116291153}
   prefabItem: {fileID: 0}
-  inventoryDisplay: {fileID: 8949097853262754773}
+  inventoryDisplay: {fileID: 0}
   inventory: {fileID: 8949097853262754770}
   inventoryPanel: {fileID: 848643198}
 --- !u!1 &529211275
@@ -4673,7 +4673,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   inventory: {fileID: 8949097853262754770}
-  inventoryDisplay: {fileID: 8949097853262754773}
+  inventoryDisplay: {fileID: 0}
   recipe: {fileID: 11400000, guid: 67ee8ea4ccf0bea44832533361986cd7, type: 2}
   canCraft: 0
 --- !u!1 &539091061
@@ -6323,7 +6323,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   canvas: {fileID: 2116291153}
   prefabItem: {fileID: 0}
-  inventoryDisplay: {fileID: 8949097853262754773}
+  inventoryDisplay: {fileID: 0}
   inventory: {fileID: 8949097853262754770}
   inventoryPanel: {fileID: 848643198}
 --- !u!1 &774937349
@@ -6949,7 +6949,7 @@ MonoBehaviour:
   inventory: {fileID: 8949097853262754770}
   nailsItem: {fileID: 11400000, guid: 7572195227b61b64291ece32e684d54f, type: 2}
   bulletsItem: {fileID: 11400000, guid: 90e3d25ee62315f41bd96ceec0c764b9, type: 2}
-  inventoryDisplay: {fileID: 8949097853262754773}
+  inventoryDisplay: {fileID: 0}
 --- !u!114 &814939189
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7209,7 +7209,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   canvas: {fileID: 2116291153}
   prefabItem: {fileID: 0}
-  inventoryDisplay: {fileID: 8949097853262754773}
+  inventoryDisplay: {fileID: 0}
   inventory: {fileID: 8949097853262754770}
   inventoryPanel: {fileID: 848643198}
 --- !u!1 &838408436
@@ -8535,7 +8535,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   canvas: {fileID: 2116291153}
   prefabItem: {fileID: 0}
-  inventoryDisplay: {fileID: 8949097853262754773}
+  inventoryDisplay: {fileID: 0}
   inventory: {fileID: 8949097853262754770}
   inventoryPanel: {fileID: 848643198}
 --- !u!1 &1007023010
@@ -12077,7 +12077,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   canvas: {fileID: 2116291153}
   prefabItem: {fileID: 0}
-  inventoryDisplay: {fileID: 8949097853262754773}
+  inventoryDisplay: {fileID: 0}
   inventory: {fileID: 8949097853262754770}
   inventoryPanel: {fileID: 848643198}
 --- !u!1 &1439538401
@@ -13023,7 +13023,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   inventory: {fileID: 8949097853262754770}
-  inventoryDisplay: {fileID: 8949097853262754773}
+  inventoryDisplay: {fileID: 0}
   recipe: {fileID: 11400000, guid: 5397d3ac2773701459acf34c41ef933f, type: 2}
   canCraft: 0
 --- !u!1 &1554891913
@@ -13495,7 +13495,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   canvas: {fileID: 2116291153}
   prefabItem: {fileID: 0}
-  inventoryDisplay: {fileID: 8949097853262754773}
+  inventoryDisplay: {fileID: 0}
   inventory: {fileID: 8949097853262754770}
   inventoryPanel: {fileID: 848643198}
 --- !u!1 &1613406611 stripped
@@ -15674,7 +15674,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   canvas: {fileID: 2116291153}
   prefabItem: {fileID: 0}
-  inventoryDisplay: {fileID: 8949097853262754773}
+  inventoryDisplay: {fileID: 0}
   inventory: {fileID: 8949097853262754770}
   inventoryPanel: {fileID: 848643198}
 --- !u!1 &1942819968
@@ -15899,7 +15899,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   canvas: {fileID: 2116291153}
   prefabItem: {fileID: 0}
-  inventoryDisplay: {fileID: 8949097853262754773}
+  inventoryDisplay: {fileID: 0}
   inventory: {fileID: 8949097853262754770}
   inventoryPanel: {fileID: 848643198}
 --- !u!1 &1958372406
@@ -17074,7 +17074,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   canvas: {fileID: 2116291153}
   prefabItem: {fileID: 0}
-  inventoryDisplay: {fileID: 8949097853262754773}
+  inventoryDisplay: {fileID: 0}
   inventory: {fileID: 8949097853262754770}
   inventoryPanel: {fileID: 848643198}
 --- !u!114 &2069708633
@@ -17200,7 +17200,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   canvas: {fileID: 2116291153}
   prefabItem: {fileID: 0}
-  inventoryDisplay: {fileID: 8949097853262754773}
+  inventoryDisplay: {fileID: 0}
   inventory: {fileID: 8949097853262754770}
   inventoryPanel: {fileID: 848643198}
 --- !u!1 &2087625146
@@ -17569,7 +17569,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   canvas: {fileID: 2116291153}
   prefabItem: {fileID: 0}
-  inventoryDisplay: {fileID: 8949097853262754773}
+  inventoryDisplay: {fileID: 0}
   inventory: {fileID: 8949097853262754770}
   inventoryPanel: {fileID: 848643198}
 --- !u!1 &2104908975
@@ -17680,7 +17680,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   canvas: {fileID: 2116291153}
   prefabItem: {fileID: 0}
-  inventoryDisplay: {fileID: 8949097853262754773}
+  inventoryDisplay: {fileID: 0}
   inventory: {fileID: 8949097853262754770}
   inventoryPanel: {fileID: 848643198}
 --- !u!1 &2116291150
@@ -17695,6 +17695,7 @@ GameObject:
   - component: {fileID: 2116291153}
   - component: {fileID: 2116291152}
   - component: {fileID: 2116291151}
+  - component: {fileID: 2116291155}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
@@ -17792,6 +17793,25 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
+--- !u!114 &2116291155
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2116291150}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1d5a3088bcbda834c9e4a00b2ae03904, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  inventory: {fileID: 8949097853262754770}
+  slotsUI: []
+  inventaryPanel: {fileID: 848643198}
+  craftPanel: {fileID: 2120356996}
+  craftDisplayItems:
+  - {fileID: 1533890901}
+  - {fileID: 533593487}
 --- !u!1 &2120356996
 GameObject:
   m_ObjectHideFlags: 0
@@ -19154,7 +19174,6 @@ GameObject:
   - component: {fileID: 8949097853262754764}
   - component: {fileID: 8949097853262754771}
   - component: {fileID: 8949097853262754770}
-  - component: {fileID: 8949097853262754773}
   - component: {fileID: 8949097853262754769}
   - component: {fileID: 8949097853262754774}
   - component: {fileID: 8949097853262754775}
@@ -22035,7 +22054,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxSlots: 15
   slots: []
-  inventoryDisplay: {fileID: 8949097853262754773}
+  inventoryDisplay: {fileID: 2116291155}
   currentItem: {fileID: 0}
 --- !u!114 &8949097853262754771
 MonoBehaviour:
@@ -22075,25 +22094,6 @@ MonoBehaviour:
   climbableObject:
     serializedVersion: 2
     m_Bits: 128
---- !u!114 &8949097853262754773
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2421363667948958475}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1d5a3088bcbda834c9e4a00b2ae03904, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  inventory: {fileID: 8949097853262754770}
-  slotsUI: []
-  inventaryPanel: {fileID: 848643198}
-  craftPanel: {fileID: 2120356996}
-  craftDisplayItems:
-  - {fileID: 1533890901}
-  - {fileID: 533593487}
 --- !u!114 &8949097853262754774
 MonoBehaviour:
   m_ObjectHideFlags: 0
