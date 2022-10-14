@@ -98,23 +98,7 @@ public class EnemyMovement1 : MonoBehaviour
                     anim.SetBool("Run", false);
                 }
             }
-            /*if (Vector3.Distance(transform.position, target.transform.position) > 1.4 && !atack)
-          {
-
-              transform.rotation = Quaternion.RotateTowards(transform.rotation, rotation, 3);
-              anim.SetBool("Walk", false);
-              anim.SetBool("Run", true);
-              transform.Translate(Vector3.forward * RunSpeed * Time.deltaTime);
-              anim.SetBool("Atack", false);
-          }
-          else
-          {
-              transform.rotation = Quaternion.RotateTowards(transform.rotation, rotation, 3);
-              anim.SetBool("Walk", false);
-              anim.SetBool("Run", false);
-
-
-          }*/
+            
         }
         if (atack)
         {
