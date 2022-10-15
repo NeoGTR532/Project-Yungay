@@ -13,6 +13,28 @@ public class PlayerHealth : MonoBehaviour
     void Update()
     {
         LifeUpdate();
+        if (mb.armor > 0f)
+        {
+            mb.armor -= 1 * Time.deltaTime;
+        }
+    }
+    public void Damage(float damage)
+    {
+        if (mb.health > 0)
+        {
+            if (mb.armor > 0f)
+            {
+                mb.health -= damage / 2;
+            }
+            else
+            {
+                mb.health -= damage;
+            }
+        }
+        else
+        {
+            Debug.Log("Tiezo");
+        }
     }
     public void LifeUpdate()
     {
@@ -23,8 +45,8 @@ public class PlayerHealth : MonoBehaviour
         else
         {
             mb.checkpoint.GetComponent<DataChekpoint>().FixEnemy();
-            mb.health = 100;
-            Debug.Log("Tiezo");
+            mb.health = mb.maxHealth;
+            //Debug.Log("Tiezo");
         }
     }
 }

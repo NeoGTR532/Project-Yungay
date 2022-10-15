@@ -9,7 +9,8 @@ public class EnemyDamage : MonoBehaviour
         melee, shooting
     }
     public Enemy enemyType;
-    public PlayerModel player;
+    public PlayerHealth
+        player;
     public float damage;
     
    
@@ -17,8 +18,7 @@ public class EnemyDamage : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Player"))
         {
-            player.health = player.health - damage;
-            Debug.Log("auch");
+            player.Damage(damage);
 
         }
     }

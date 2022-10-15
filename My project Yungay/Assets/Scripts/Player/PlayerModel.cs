@@ -9,6 +9,8 @@ public class PlayerModel : MonoBehaviour
   
     public float health;
     public float maxHealth;
+    //[HideInInspector]
+    public float armor;
 
 
     [Header("Movement")]
@@ -50,8 +52,6 @@ public class PlayerModel : MonoBehaviour
 
     public Rigidbody rb;
 
-    public Inventory inventory;
-
     public GameObject sourceSound;
 
     public static Transform playerTransform;
@@ -62,7 +62,6 @@ public class PlayerModel : MonoBehaviour
         checkpoint = GameObject.FindGameObjectWithTag("Checkpoint");
         cap = GetComponent<CapsuleCollider>();
         rb = GetComponent<Rigidbody>();
-        inventory = GetComponent<Inventory>();
         playerTransform = GetComponent<Transform>();
     }
 

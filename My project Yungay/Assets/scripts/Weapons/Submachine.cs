@@ -5,7 +5,7 @@ using UnityEngine;
 public class Submachine : MonoBehaviour
 {
     public Camera cam;
-    private Vector3 beggin;
+    private GameObject beggin;
 
     public Weapon submachine;
 
@@ -48,7 +48,6 @@ public class Submachine : MonoBehaviour
     }
     public void Shoot()
     {
-        beggin = this.transform.position;
         RaycastHit hit;
         if (munition.thereBullets)
         {
@@ -57,9 +56,9 @@ public class Submachine : MonoBehaviour
                 Vector3 direction = GetDirection();
                 munition.chargerBullets -= 1;
                 sound.GetComponent<AudioSource>().PlayOneShot(submachine.shoot);
-                if (Physics.Raycast(beggin, direction, out hit, submachine.range, enemyMask))
+                if (Physics.Raycast(beggin.transform.position, direction, out hit, submachine.range, enemyMask))
                 {
-                    TrailRenderer trail = Instantiate(bulletTrail, beggin, Quaternion.identity);
+                    TrailRenderer trail = Instantiate(bulletTrail, beggin.transform.position, Quaternion.identity);
                     StartCoroutine(SpawnTrail(trail, hit.point));
                     if (hit.collider.CompareTag("Enemy"))
                     {
@@ -70,7 +69,7 @@ public class Submachine : MonoBehaviour
                 }
                 else
                 {
-                    TrailRenderer trail = Instantiate(bulletTrail, beggin, Quaternion.identity);
+                    TrailRenderer trail = Instantiate(bulletTrail, beggin.transform.position, Quaternion.identity);
                     StartCoroutine(SpawnTrail(trail, cam.transform.forward * submachine.range));
                     lastShootTime = Time.time;
                 }

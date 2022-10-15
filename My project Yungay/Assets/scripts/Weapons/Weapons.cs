@@ -8,9 +8,14 @@ public class Weapons : MonoBehaviour
 
     public bool lockWeapons;
 
+    /* public Mesh modelPistol,
+         modelSubmachine;
 
+     public Material materialPistol,
+         materialSubmachine;
+    */
     public GameObject modelAxe,
-        modelHook,
+        weapon,
         modelPistol,
         modelSubmachine,
         modelSpear,
@@ -71,10 +76,16 @@ public class Weapons : MonoBehaviour
         switch (stateWeapons)
         {
             case 1:
+                //weapon.GetComponent<MeshRenderer>().material = materialPistol;
+                //weapon.GetComponent<MeshFilter>().mesh = modelPistol;
+                //weapon.GetComponent<Pistol>().enabled = true;
                 modelPistol.GetComponent<MeshRenderer>().enabled = true;
                 modelPistol.GetComponent<Pistol>().enabled = true;
                 break;
             case 2:
+               // weapon.GetComponent<MeshRenderer>().material = materialSubmachine;
+               // weapon.GetComponent<MeshFilter>().mesh = modelSubmachine;
+               // weapon.GetComponent<Submachine>().enabled = true;
                 modelSubmachine.GetComponent<MeshRenderer>().enabled = true;
                 modelSubmachine.GetComponent<Submachine>().enabled = true;
                 break;
@@ -91,6 +102,8 @@ public class Weapons : MonoBehaviour
     }
     public void Desactive()
     {
+        // weapon.GetComponent<Pistol>().enabled = false;
+        //weapon.GetComponent<Submachine>().enabled = false;
         modelPistol.GetComponent<MeshRenderer>().enabled = false;
         modelPistol.GetComponent<Pistol>().enabled = false;
         modelSubmachine.GetComponent<MeshRenderer>().enabled = false;

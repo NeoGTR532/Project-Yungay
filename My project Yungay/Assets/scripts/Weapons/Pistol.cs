@@ -5,7 +5,7 @@ using UnityEngine;
 public class Pistol : MonoBehaviour
 {
     public Camera cam;
-    private Vector3 beggin;
+    public GameObject beggin;
 
     public Weapon pistol;
 
@@ -53,7 +53,6 @@ public class Pistol : MonoBehaviour
     }
     public void Shoot()
     {
-        beggin = this.transform.position;
         RaycastHit hit; 
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
         if (munition.thereNails || munition.thereBullets)
@@ -66,7 +65,7 @@ public class Pistol : MonoBehaviour
                     sound.GetComponent<AudioSource>().PlayOneShot(pistol.shoot);
                     if (Physics.Raycast(ray, out hit, pistol.range, enemyMask))
                     {
-                        TrailRenderer trail = Instantiate(bulletTrail, beggin, Quaternion.identity);
+                        TrailRenderer trail = Instantiate(bulletTrail, beggin.transform.position, Quaternion.identity);
                         StartCoroutine(SpawnTrail(trail, hit.point));
                         if (hit.collider.CompareTag("Enemy"))
                         {
@@ -76,7 +75,7 @@ public class Pistol : MonoBehaviour
                     }
                     else
                     {
-                        TrailRenderer trail = Instantiate(bulletTrail, beggin, Quaternion.identity);
+                        TrailRenderer trail = Instantiate(bulletTrail, beggin.transform.position, Quaternion.identity);
                         StartCoroutine(SpawnTrail(trail, cam.transform.forward * pistol.range));
                         lastShootTime = Time.time;
                     }
@@ -87,7 +86,7 @@ public class Pistol : MonoBehaviour
                     sound.GetComponent<AudioSource>().PlayOneShot(pistol.shoot);
                     if (Physics.Raycast(ray, out hit, pistol.range, enemyMask))
                     {
-                        TrailRenderer trail = Instantiate(bulletTrail, beggin, Quaternion.identity);
+                        TrailRenderer trail = Instantiate(bulletTrail, beggin.transform.position, Quaternion.identity);
                         StartCoroutine(SpawnTrail(trail, hit.point));
                         if (hit.collider.CompareTag("Enemy"))
                         {
@@ -97,7 +96,7 @@ public class Pistol : MonoBehaviour
                     }
                     else
                     {
-                        TrailRenderer trail = Instantiate(bulletTrail, beggin, Quaternion.identity);
+                        TrailRenderer trail = Instantiate(bulletTrail, beggin.transform.position, Quaternion.identity);
                         StartCoroutine(SpawnTrail(trail, cam.transform.forward * pistol.range));
                         lastShootTime = Time.time;
                     }
