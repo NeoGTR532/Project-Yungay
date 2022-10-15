@@ -8,7 +8,7 @@ public class Rope : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-
+        EventManager.current.cutRopeEvent += CutRope;
     }
 
     // Update is called once per frame
@@ -17,13 +17,23 @@ public class Rope : MonoBehaviour
 
     }
 
+    private void CutRope()
+    {
+        anim.SetBool("isCut", true);
+        this.GetComponent<BoxCollider>().enabled = false;
+    }
+
     private void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.tag == "Knife")
         {
-            anim.SetBool("isCut", true);
-            this.GetComponent<BoxCollider>().enabled = false;
+            EventManager.current.StartCuttingRopeEvent(); //trigger solo para practicar, cuando sea necesario se usara el trigger en otro objecto
         }
 
+    }
+
+    private void OnDisable()
+    {
+        EventManager.current.cutRopeEvent -= CutRope;
     }
 }

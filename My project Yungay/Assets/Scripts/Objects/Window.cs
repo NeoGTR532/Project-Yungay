@@ -1,14 +1,16 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
 
 public class Window : MonoBehaviour
 {
+    public int windowId;
     public GameObject windowPieces;
     // Start is called before the first frame update
     void Start()
     {
-
+        EventManager.current.brokeWindowEvent += BreakWindow;
     }
 
     // Update is called once per frame
@@ -17,10 +19,19 @@ public class Window : MonoBehaviour
 
     }
 
+    private void BreakWindow(int id)
+    {
+        if (id == windowId)
+        {
+            Instantiate(windowPieces, transform.position, Quaternion.identity);
+            Destroy(this.gameObject);
+        }
+
+    }
+
     private void OnTriggerEnter(Collider other)
     {
-        Instantiate(windowPieces, transform.position, Quaternion.identity);
-        Destroy(this.gameObject);
+        EventManager.current.StartBreakingWindowEvent(windowId);
 
     }
 
@@ -28,10 +39,14 @@ public class Window : MonoBehaviour
     {
         if (collision.gameObject.tag != "Player")
         {
-            Instantiate(windowPieces, transform.position, Quaternion.identity);
-            Destroy(this.gameObject);
+            BreakWindow(windowId);
         }
 
 
+    }
+
+    private void OnDestroy()
+    {
+        EventManager.current.brokeWindowEvent -= BreakWindow;
     }
 }
