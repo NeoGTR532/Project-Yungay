@@ -10,6 +10,7 @@ public class Look : MonoBehaviour
     public Pistol pistol;
     public Submachine submachine;
     public GameObject point;
+    public LayerMask collider;
     int zoom;
     float normal;
     public float smooth = 5;
@@ -26,6 +27,8 @@ public class Look : MonoBehaviour
         switch (weapons.stateWeapons)
         {
             case 1:
+                RaycastHit hit;
+                Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
                 if (Input.GetMouseButtonDown(1))
                 {
                     isZoomed = !isZoomed;
@@ -34,7 +37,18 @@ public class Look : MonoBehaviour
                     weapons.lockWeapons = !weapons.lockWeapons;
                 }
                 if (isZoomed)
-                {
+                {/*
+                    if (Physics.Raycast(ray, pistol.pistol.range))
+                    {
+
+                    }
+                    else
+                    {
+                        cam.transform.position = Vector3.Lerp(cam.transform.position, cam.transform.forward, Time.deltaTime * smooth); 
+                        pistol.look.SetActive(true);
+
+                    }
+                    */
                     cam.GetComponent<Camera>().fieldOfView = Mathf.Lerp(cam.GetComponent<Camera>().fieldOfView, zoom, Time.deltaTime * smooth);
                     pistol.look.SetActive(true);
                 }
