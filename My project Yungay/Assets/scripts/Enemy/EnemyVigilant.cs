@@ -10,10 +10,10 @@ public class EnemyVigilant : MonoBehaviour
     public float speed;
     public EnemyWeapon Weapon;
     public float Vision;
-    private Animator anim;
+    public Animator anim;
     public bool Near;
     public bool DetectPlayer;
-    
+    private bool notGun;
     void Start()
     {
         Agent = GetComponent<NavMeshAgent>();
@@ -31,14 +31,10 @@ public class EnemyVigilant : MonoBehaviour
         {
 
             ToPlayWithouthWeapon();
-           if (Near)
-            {
-                anim.SetBool("Atack", true);
-            }
-
+            notGun = true;
         }
 
-        //ToPlayerWithWeapon();
+
 
 
     }
@@ -74,20 +70,47 @@ public class EnemyVigilant : MonoBehaviour
             Agent.speed = speed;
             DetectPlayer = true;
             anim.SetBool("Run", true);
+
+
+
+            if ((Vector3.Distance(transform.position, Target.transform.position) < 2f))
+            {
+                Near = true;
+               Agent.enabled = false;
+            
+                anim.SetBool("Run", false);
+                anim.SetBool("Atack", true);
+            }
+            else
+            {
+                Near = false;
+                Agent.enabled = true;
+                anim.SetBool("Atack", false);
+            }
         }
         else
         {
+            anim.SetBool("Run", false);
             DetectPlayer = false;
+            Agent.enabled = false;
         }
+        
     }
     public void Shoot()
     {
-       
 
+       /* RaycastHit hit;
+        if  (Physics.Raycast (transform))*/
     }
-    public void Final_ani()
+    public void Final_anim()
     {
-        //if
+        if(Vector3.Distance(transform.position, Target.transform.position) >   2.2f)
+        {
+            anim.SetBool("Atack", false);
+        }
+
+        //Atack = false;
+       
     }
  
     

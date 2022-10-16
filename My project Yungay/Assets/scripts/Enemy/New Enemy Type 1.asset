@@ -10,10 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 04edd9a3d1afd3247bc59e9b9c246524, type: 3}
-  m_Name: Rigle
+  m_Name: New Enemy Type 1
   m_EditorClassIdentifier: 
   Range: 0
   Munition: 0
   timeToShoot: 0
   timetoRecharge: 0
   Drop: []
+  anim: {fileID: 9100000, guid: 5f4fd3d730a95f9419398e43d06138da, type: 2}

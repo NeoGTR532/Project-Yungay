@@ -4571,7 +4571,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemyType: 0
-  player: {fileID: 0}
+  player: {fileID: 8949097853262754774}
   damage: 1
 --- !u!65 &529211278
 BoxCollider:
@@ -8413,7 +8413,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!65 &977010263
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -8984,7 +8984,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!65 &1026212059
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -13877,7 +13877,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1612012129
 Transform:
   m_ObjectHideFlags: 0
@@ -14454,7 +14454,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1735237084}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 5e7c969d60f224740a0e01922fc460b7, type: 3}
   m_Name: 
@@ -14462,10 +14462,12 @@ MonoBehaviour:
   Target: {fileID: 2421363667948958475}
   Agent: {fileID: 0}
   speed: 3
-  Weapon: {fileID: 11400000, guid: ae476e79cff78f24996e3ab6150e8942, type: 2}
-  Vision: 10
+  Weapon: {fileID: 0}
+  Vision: 5
+  anim: {fileID: 0}
   Near: 0
   DetectPlayer: 0
+  notGun: 0
 --- !u!4 &1771248735 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -597670272443537037, guid: 6738e33667670dc4abac69631c59a9ef,
@@ -22728,7 +22730,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fc3855736b6ff66458522c0474f9a302, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 100
+  health: 50
   maxHealth: 100
   armor: 0
   actualSpeed: 0
