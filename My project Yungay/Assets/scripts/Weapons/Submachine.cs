@@ -5,7 +5,7 @@ using UnityEngine;
 public class Submachine : MonoBehaviour
 {
     public Camera cam;
-    private GameObject beggin;
+    public GameObject beggin;
 
     public Weapon submachine;
 
