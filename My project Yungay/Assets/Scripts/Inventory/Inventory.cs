@@ -7,7 +7,6 @@ public class Inventory : MonoBehaviour
     public int maxSlots;
     public List<InventorySlot> slots = new List<InventorySlot>();
     public InventoryDisplay inventoryDisplay;
-    public ItemObject currentItem;
 
     private void Awake()
     {

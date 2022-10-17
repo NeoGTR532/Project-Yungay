@@ -49,17 +49,17 @@ public class PlayerLooting : MonoBehaviour
 
         if (Physics.Raycast(ray, out hit, 1.5f) && hit.collider.gameObject.GetComponent<Loot>())
         {
-            var _ = hit.collider.gameObject.GetComponent<Loot>();
-            if (CheckLoot(_))
+            var loot = hit.collider.gameObject.GetComponent<Loot>();
+            if (CheckLoot(loot))
             {
                 lootText.GetComponent<Animator>().SetBool("Show", true);
 
                 if (Input.GetKeyDown(KeyCode.F))
                 {
-                    for (int i = 0; i < _.loot.Count; i++)
+                    for (int i = 0; i < loot.loot.Count; i++)
                     {
-                        var __ = _.loot[i];
-                        inventory.AddItem(__, __.item, __.amount);
+                        var _ = loot.loot[i];
+                        inventory.AddItem(_, _.item, _.amount);
                     }
                     lootText.GetComponent<Animator>().SetBool("Show", false);
                 }
