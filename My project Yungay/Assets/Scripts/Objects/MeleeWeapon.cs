@@ -39,7 +39,7 @@ public class MeleeWeapon : MonoBehaviour
 
     private void UseAxe()
     {
-        if (Input.GetMouseButtonDown(0))
+        if (Input.GetMouseButtonDown(0) && GameManager.inPause == false)
 
         {
             anim.SetBool("using", true);
@@ -53,7 +53,7 @@ public class MeleeWeapon : MonoBehaviour
 
     private void ThowAxe()
     {
-        if(Input.GetMouseButton(1))
+        if(Input.GetMouseButton(1) && GameManager.inPause == false)
         {
            
             this.GetComponent<Rigidbody>().isKinematic = false;

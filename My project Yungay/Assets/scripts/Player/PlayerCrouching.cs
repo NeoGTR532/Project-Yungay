@@ -24,8 +24,8 @@ public class PlayerCrouching : MonoBehaviour
 
     private void Crouch()
     {
-        if (Input.GetKeyDown(KeyCode.LeftControl))
-
+        if (Input.GetKey(KeyCode.LeftControl))
+        {
             if (!model.isCrouching)
             {
                 model.isCrouching = true;
@@ -33,13 +33,30 @@ public class PlayerCrouching : MonoBehaviour
                 model.cap.height = model.crouchHeight;
                 model.cap.center = new Vector3(model.cap.center.x, model.CrouchY, model.cap.center.z);
             }
-            else if (model.isCrouching && playerHeadCheck.headCheck == false)
-            {
-                model.isCrouching = false;
-                model.canJump = true;
-                model.cap.height = model.standHeight;
-                model.cap.center = new Vector3(model.cap.center.x, model.standY, model.cap.center.z);
-            }
+        }
+
+        else if (Input.GetKeyUp(KeyCode.LeftControl) && model.isCrouching && playerHeadCheck.headCheck == false)
+        {
+            model.isCrouching = false;
+            model.canJump = true;
+            model.cap.height = model.standHeight;
+            model.cap.center = new Vector3(model.cap.center.x, model.standY, model.cap.center.z);
+        }
+
+        else if (!Input.GetKey(KeyCode.LeftControl) && model.isCrouching && playerHeadCheck.headCheck == false)
+        {
+            model.isCrouching = false;
+            model.canJump = true;
+            model.cap.height = model.standHeight;
+            model.cap.center = new Vector3(model.cap.center.x, model.standY, model.cap.center.z);
+        }
+        //else if (model.isCrouching && playerHeadCheck.headCheck == false)
+        //{
+        //    model.isCrouching = false;
+        //    model.canJump = true;
+        //    model.cap.height = model.standHeight;
+        //    model.cap.center = new Vector3(model.cap.center.x, model.standY, model.cap.center.z);
+        //}
 
     }
 }

@@ -34,15 +34,15 @@ public class Pistol : MonoBehaviour
     void Update()
     {
 
-        if (Input.GetMouseButton(0))
+        if (Input.GetMouseButton(0) && GameManager.inPause==false)
         {
             Shoot();
         }
-        if (Input.GetKeyDown(KeyCode.T))
+        if (Input.GetKeyDown(KeyCode.T) && GameManager.inPause == false)
         {
             StateAmmo();
         }
-        if (Input.GetKeyDown(KeyCode.R))
+        if (Input.GetKeyDown(KeyCode.R) && GameManager.inPause == false)
         {
             munition.RechargeAmmo();
         }
