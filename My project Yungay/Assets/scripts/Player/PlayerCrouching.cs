@@ -6,7 +6,7 @@ public class PlayerCrouching : MonoBehaviour
 {
     public PlayerModel model;
     public PlayerHeadCheck playerHeadCheck;
-    public PlayerGroundCheck playerGroundCheck;
+    //public PlayerGroundCheck playerGroundCheck;
     // Start is called before the first frame update
     void Start()
     {
@@ -16,7 +16,7 @@ public class PlayerCrouching : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (playerGroundCheck.grounded)
+        if (PlayerGroundCheck.grounded/*playerGroundCheck.grounded*/)
         {
             Crouch();
         }

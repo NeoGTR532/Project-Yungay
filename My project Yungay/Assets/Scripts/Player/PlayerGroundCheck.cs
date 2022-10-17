@@ -9,7 +9,7 @@ public class PlayerGroundCheck : MonoBehaviour
     [Header("GroundCheck")]
     public float height;
     public LayerMask Ground;
-    public bool grounded;
+    public static bool grounded;
     public float groundDrag;
 
     // Start is called before the first frame update

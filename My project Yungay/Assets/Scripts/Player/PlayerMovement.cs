@@ -5,7 +5,7 @@ using UnityEngine;
 public class PlayerMovement : MonoBehaviour
 {
     public PlayerModel model;
-    public PlayerGroundCheck playerGroundCheck;
+    //public PlayerGroundCheck playerGroundCheck;
     public Transform orientation;
 
     private float hor;
@@ -30,11 +30,11 @@ public class PlayerMovement : MonoBehaviour
         ControlSpeed();
             
         model.actualSpeed = model.rb.velocity.magnitude;
-         
+        Movement();
     }
     void FixedUpdate()
     {
-        Movement();
+        
         
     }
 
@@ -43,7 +43,7 @@ public class PlayerMovement : MonoBehaviour
         
         move = orientation.forward * ver + orientation.right * hor;
         
-        if (playerGroundCheck.grounded)
+        if (PlayerGroundCheck.grounded/*playerGroundCheck.grounded*/)
         {
             
             if (Input.GetKey(KeyCode.LeftShift) && model.staActual >=0 && !model.isCrouching)
@@ -57,7 +57,7 @@ public class PlayerMovement : MonoBehaviour
             }
         }
 
-        else if (!playerGroundCheck.grounded)
+        else if (!PlayerGroundCheck.grounded/*playerGroundCheck.grounded*/)
         {
             model.rb.AddForce(move.normalized * model.speedWalk * 10f * airMultiplier , ForceMode.Force);
 
@@ -82,7 +82,15 @@ public class PlayerMovement : MonoBehaviour
     private void Run()
     {
         model.rb.AddForce(move.normalized * model.speedRun * 10f, ForceMode.Force);
-         model.isRunning = true;
+        if (model.actualSpeed >=4.5)
+        {
+            model.isRunning = true;
+        }
+        else
+        {
+            model.isRunning = false;
+        }
+        
         
             
     }

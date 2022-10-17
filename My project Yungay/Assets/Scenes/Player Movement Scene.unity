@@ -2030,8 +2030,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a8fd48a77e0ae874981028a923868108, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  anim: {fileID: 0}
-  canAttack: 0
 --- !u!95 &274654652
 Animator:
   serializedVersion: 4
@@ -6101,7 +6099,6 @@ MonoBehaviour:
   Ground:
     serializedVersion: 2
     m_Bits: 512
-  grounded: 0
   groundDrag: 5
 --- !u!1 &721695660
 GameObject:
@@ -12064,7 +12061,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   model: {fileID: 1414573069}
-  playerGroundCheck: {fileID: 1414573072}
   orientation: {fileID: 1911402286}
   airMultiplier: 0.4
   anim: {fileID: 0}
@@ -12160,7 +12156,6 @@ MonoBehaviour:
   Ground:
     serializedVersion: 2
     m_Bits: 512
-  grounded: 0
   groundDrag: 5
 --- !u!114 &1414573073
 MonoBehaviour:
@@ -22238,8 +22233,8 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.1637875, y: 0.06393583, z: 0.23022729}
-  m_Center: {x: 0.30137956, y: -0.000000007450581, z: -0.019462474}
+  m_Size: {x: 0.1637875, y: 0.02528182, z: 0.2003201}
+  m_Center: {x: 0.30137956, y: -0.000000007450581, z: -0.03441608}
 --- !u!114 &8303731282646855751
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -22832,7 +22827,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   model: {fileID: 8949097853262754767}
-  playerGroundCheck: {fileID: 707149081}
   orientation: {fileID: 618307592}
   airMultiplier: 0.4
   anim: {fileID: 0}
@@ -22934,7 +22928,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   model: {fileID: 0}
   playerHeadCheck: {fileID: 705947484}
-  playerGroundCheck: {fileID: 707149081}
 --- !u!114 &8949097853262754772
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -41,7 +41,7 @@ public class Stamina : MonoBehaviour
 
     public void IsRunning()
     {
-        if (model.isRunning && model.actualSpeed >=4)
+        if (model.actualSpeed >= 9.5f && PlayerGroundCheck.grounded)
         {
             model.staActual -= model.staminaDrain * Time.deltaTime;
             CheckStamina(1);
@@ -50,7 +50,7 @@ public class Stamina : MonoBehaviour
 
     public void StaminaRegen()
     {
-        if(!Input.GetKey(KeyCode.LeftShift))
+        if(!Input.GetKey(KeyCode.LeftShift) && !model.isRunning && model.actualSpeed <= 5f)
         {
             model.staActual += model.staRegen * Time.deltaTime;
             CheckStamina(1);
