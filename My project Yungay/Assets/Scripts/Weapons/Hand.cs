@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class Hand : MonoBehaviour
 {
-    public Inventory inventory;
-    public ItemObject? currentItem = null;
+    private Inventory inventory;
+    private ItemObject currentItem = null;
     private int slotIndex = 0;
     private MeshFilter meshFilter;
     private MeshRenderer meshRenderer;
@@ -14,6 +14,7 @@ public class Hand : MonoBehaviour
     {
         meshFilter = GetComponent<MeshFilter>();
         meshRenderer = GetComponent<MeshRenderer>();
+        inventory = GameObject.FindGameObjectWithTag("Player").GetComponent<Inventory>();
     }
 
     // Update is called once per frame
@@ -52,11 +53,15 @@ public class Hand : MonoBehaviour
         currentItem = inventory.slots[slotIndex].item;
         if (currentItem ? true:false)
         {
-            var _ = currentItem.type;
-            if (_ == ItemType.Equipment)
+            if (currentItem.type == ItemType.Equipment)
             {
                 meshFilter.sharedMesh = currentItem.prefab.GetComponent<MeshFilter>().sharedMesh;
                 meshRenderer.sharedMaterial = currentItem.prefab.GetComponent<MeshRenderer>().sharedMaterial;
+            }
+            else
+            {
+                meshFilter.sharedMesh = null;
+                meshRenderer.sharedMaterial = null;
             }
         }
         else
