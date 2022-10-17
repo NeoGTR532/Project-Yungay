@@ -9,12 +9,16 @@ public class Hand : MonoBehaviour
     private int slotIndex = 0;
     private MeshFilter meshFilter;
     private MeshRenderer meshRenderer;
+    private Animator anim;
+    public static bool isAttacking;
+    private bool canAttack = false;
     // Start is called before the first frame update
     void Start()
     {
         meshFilter = GetComponent<MeshFilter>();
         meshRenderer = GetComponent<MeshRenderer>();
         inventory = GameObject.FindGameObjectWithTag("Player").GetComponent<Inventory>();
+        anim = GetComponent<Animator>();
     }
 
     // Update is called once per frame
@@ -22,6 +26,10 @@ public class Hand : MonoBehaviour
     {
         ChangeItem();
         ChangeMesh();
+        if (canAttack)
+        {
+            UseItem();
+        }
     }
 
     private void ChangeItem()
@@ -57,11 +65,16 @@ public class Hand : MonoBehaviour
             {
                 meshFilter.sharedMesh = currentItem.prefab.GetComponent<MeshFilter>().sharedMesh;
                 meshRenderer.sharedMaterial = currentItem.prefab.GetComponent<MeshRenderer>().sharedMaterial;
+                EquipmentItem _ = (EquipmentItem)currentItem;
+                anim.runtimeAnimatorController = _.controller;
+                canAttack = true;
             }
             else
             {
                 meshFilter.sharedMesh = null;
                 meshRenderer.sharedMaterial = null;
+                anim.runtimeAnimatorController = null;
+                canAttack = false;
             }
         }
         else
@@ -70,5 +83,18 @@ public class Hand : MonoBehaviour
             meshRenderer.sharedMaterial = null;
         }
 
+    }
+
+    private void UseItem()
+    {
+        if (Input.GetMouseButtonDown(0))
+        {
+            anim.SetBool("using", true);
+            isAttacking = true;
+        }
+        else if (Input.GetMouseButtonUp(0))
+        {
+            anim.SetBool("using", false);
+        }
     }
 }

@@ -18,3 +18,4 @@ MonoBehaviour:
   maxStack: 1
   description: 
   damage: 20
+  controller: {fileID: 9100000, guid: f323cdea2d862a04cad0acf124d8630f, type: 2}
