@@ -109,7 +109,7 @@ public class Hand : MonoBehaviour
             GameObject clone = Instantiate(currentItem.prefab, transform.position, Quaternion.identity);
             clone.GetComponent<Loot>().loot[0].amount = inventory.slots[slotIndex].amount;
             clone.GetComponent<Rigidbody>().isKinematic = false;
-            clone.GetComponent<Rigidbody>().AddForce(transform.forward * force, ForceMode.Impulse);
+            clone.GetComponent<Rigidbody>().AddForce(Camera.main.transform.forward * force, ForceMode.Impulse);
             inventory.slots[slotIndex].item = null;
             inventory.slots[slotIndex].amount = 0;
             inventory.UpdateInventory();
