@@ -7,6 +7,7 @@ public class PlayerHealth : MonoBehaviour
 {
     public PlayerModel mb;
     public Image lifeBar;
+    float time;
 
 
     // Update is called once per frame
@@ -20,7 +21,7 @@ public class PlayerHealth : MonoBehaviour
     }
     public void Damage(float damage)
     {
-        if (mb.health > 0)
+        if (mb.health >= 0)
         {
             if (mb.armor > 0f)
             {
@@ -28,14 +29,12 @@ public class PlayerHealth : MonoBehaviour
             }
             else
             {
-                mb.checkpoint.GetComponent<DataChekpoint>().ReturnPoint();
-                mb.health = mb.maxHealth;
                 mb.health -= damage;
             }
         }
         else
         {
-            Debug.Log("Tiezo");
+           // Debug.Log("Tiezo");
         }
     }
     public void LifeUpdate()
@@ -44,9 +43,16 @@ public class PlayerHealth : MonoBehaviour
         {
             lifeBar.fillAmount = mb.health / mb.maxHealth;
         }
-        else
+        if(mb.health<= 0)
         {
-            //Debug.Log("Tiezo");
+            time += 1 * Time.deltaTime;
+            if (time >= 1)
+            {
+                mb.checkpoint.GetComponent<DataChekpoint>().ReturnPoint();
+                time = 0;
+            }
+            Debug.Log("Tiezo");
+            
         }
     }
 }

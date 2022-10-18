@@ -9,6 +9,13 @@ public class DataChekpoint : MonoBehaviour
     public List<Player> players = new List<Player>();
     public List<InventorySlot> inventories = new List<InventorySlot>();
     public GameObject player;
+    public InventoryDisplay inventoryDisplay;
+
+    private void Start()
+    {
+        inventoryDisplay = InventoryDisplay.instance;
+    }
+
     public void Check()
     {
         dataEnemys.Clear();
@@ -42,6 +49,7 @@ public class DataChekpoint : MonoBehaviour
             player.GetComponent<Inventory>().slots[i].item = inventories[i].item;
             player.GetComponent<Inventory>().slots[i].amount = inventories[i].amount;
         }
+        inventoryDisplay.UpdateDisplay();
     }
 
     [System.Serializable]

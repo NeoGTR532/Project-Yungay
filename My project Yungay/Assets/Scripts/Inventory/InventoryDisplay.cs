@@ -12,9 +12,11 @@ public class InventoryDisplay : MonoBehaviour
     [SerializeField] private GameObject inventaryPanel, craftPanel;
     private GameObject imageSlots;
     public List<CraftDisplay> craftDisplayItems = new List<CraftDisplay>();
+    public static InventoryDisplay instance;
     // Start is called before the first frame update
     void Awake()
     {
+        instance = this;
         imageSlots = GameObject.Find("InventoryPanel");
         for (int i = 0; i < inventory.maxSlots; i++)
         {
