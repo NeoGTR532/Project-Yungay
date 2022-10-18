@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.18028352, g: 0.22571376, b: 0.30692244, a: 1}
+  m_IndirectSpecularColor: {r: 0.18028378, g: 0.22571412, b: 0.30692285, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -9538,6 +9538,37 @@ Transform:
   m_Father: {fileID: 803657612}
   m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1103079915
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1103079916}
+  m_Layer: 10
+  m_Name: shot
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1103079916
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1103079915}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -0.039, y: 1.13, z: 0.034}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1735237090}
+  m_RootOrder: -1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1105583089 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: -3667395902118055181, guid: fbd54bbfb16db6f4f9a155278ff55605,
@@ -10931,6 +10962,10 @@ PrefabInstance:
         type: 3}
       insertIndex: -1
       addedObject: {fileID: 944838000}
+    - targetCorrespondingSourceObject: {fileID: -8679921383154817045, guid: 6738e33667670dc4abac69631c59a9ef,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1103079916}
     - targetCorrespondingSourceObject: {fileID: -597670272443537037, guid: 6738e33667670dc4abac69631c59a9ef,
         type: 3}
       insertIndex: -1
@@ -14788,14 +14823,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5e7c969d60f224740a0e01922fc460b7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Life: {fileID: 8949097853262754774}
+  Player:
+    serializedVersion: 2
+    m_Bits: 0
+  pointShoot: {fileID: 1103079915}
   Target: {fileID: 2421363667948958475}
   Agent: {fileID: 0}
   speed: 3
-  Weapon: {fileID: 0}
-  Vision: 5
+  Weapon: {fileID: 11400000, guid: cf942317fe1311f49a080cff4e454d80, type: 2}
+  Vision: 7
   anim: {fileID: 0}
   Near: 0
   DetectPlayer: 0
+  Timer: 0
 --- !u!4 &1771248735 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -597670272443537037, guid: 6738e33667670dc4abac69631c59a9ef,

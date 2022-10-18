@@ -5,6 +5,9 @@ using UnityEngine.AI;
 
 public class EnemyVigilant : MonoBehaviour
 {
+    public PlayerHealth Life;
+    public LayerMask Player;
+    public GameObject pointShoot;
     public GameObject Target;
     public  NavMeshAgent Agent;
     public float speed;
@@ -13,7 +16,9 @@ public class EnemyVigilant : MonoBehaviour
     public Animator anim;
     public bool Near;
     public bool DetectPlayer;
-    private bool notGun;
+    public float Timer;
+    
+    
     void Start()
     {
         Agent = GetComponent<NavMeshAgent>();
@@ -26,12 +31,16 @@ public class EnemyVigilant : MonoBehaviour
         if (Weapon != null)
         {
             ToPlayerWithWeapon();
+            if (DetectPlayer)
+            {
+                Shoot();
+            }
         }
         else
         {
 
             ToPlayWithouthWeapon();
-            notGun = true;
+            
         }
 
 
@@ -50,11 +59,30 @@ public class EnemyVigilant : MonoBehaviour
             Agent.SetDestination(Target.transform.position);
             Agent.speed = speed;
             DetectPlayer = true;
-            //anim.SetBool("Run", true);
+            anim.SetBool("RunP", true);
+
+            if ((Vector3.Distance(transform.position, Target.transform.position) < 4f))
+            {
+                Near = true;
+                Agent.enabled = false;
+                anim.SetBool("Iddlep",true);
+                anim.SetBool("RunP", false);
+            }
+            else
+            {
+                Near = false;
+                Agent.enabled = true;
+                anim.SetBool("Iddlep", false);
+                anim.SetBool("RunP", true);
+
+            }
         }
         else
         {
             DetectPlayer = false;
+            anim.SetBool("RunP", false);
+            Agent.enabled = false;
+
         }
     }
     public void ToPlayWithouthWeapon()
@@ -99,8 +127,40 @@ public class EnemyVigilant : MonoBehaviour
     public void Shoot()
     {
 
-       /* RaycastHit hit;
-        if  (Physics.Raycast (transform))*/
+        RaycastHit hit;
+        if  (Physics.Raycast (pointShoot.transform.position,pointShoot.transform.forward,out hit ,Weapon.Range))
+        {
+            if (hit.transform.gameObject.CompareTag("Player"))
+            {
+                if (Weapon.Munition > 0)
+                {
+                    Timer += Time.deltaTime;
+                    if (Timer > Weapon.timeToShoot)
+                    {
+                        Debug.Log("Shot");
+                        Weapon.Munition--;
+                        Timer = 0;
+                        //Life.Damage(Weapon.damage);
+
+                    }
+                    
+                
+                }
+                
+                
+            }
+
+        }
+        if (Weapon.Munition == 0)
+        {
+            Timer += Time.deltaTime;
+            if (Timer>=Weapon.timetoRecharge)
+            {
+                Weapon.Munition +=Weapon.charger;
+                Timer = 0;
+                Debug.Log("Masmunicion");
+            }
+        }
     }
     public void Final_anim()
     {
@@ -112,7 +172,13 @@ public class EnemyVigilant : MonoBehaviour
         //Atack = false;
        
     }
- 
-    
+
+    private void OnDrawGizmos()
+    {
+        Gizmos.color = Color.red;
+        Gizmos.DrawRay(pointShoot.transform.position, pointShoot.transform.forward * Weapon.Range);
+    }
+
+
 
 }

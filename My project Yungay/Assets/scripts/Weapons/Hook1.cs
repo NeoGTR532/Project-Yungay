@@ -1,4 +1,4 @@
-using System.Collections;
+ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -17,9 +17,8 @@ public class Hook1 : MonoBehaviour
     public float timer;
     public float maxtimer;
     public float speedhook;
-    private bool fire;
-    private float T;
-    private float mt;
+
+    
 
 
     void Start()
@@ -33,7 +32,7 @@ public class Hook1 : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.F))
         {
-            fire = true;
+            
             
             ShootHook();
         }
