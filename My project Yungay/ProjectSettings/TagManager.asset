@@ -11,6 +11,11 @@ TagManager:
   - Knife
   - SlotDisplay
   - PositionCine
+  - Loot
+  - Object
+  - Checkpoint
+  - Spear
+  - UI
   layers:
   - Default
   - TransparentFX
@@ -25,8 +30,8 @@ TagManager:
   - Enemy
   - Weapon
   - Hookeble
-  - 
-  - 
+  - Player
+  - Equiptment Item
   - 
   - 
   - 

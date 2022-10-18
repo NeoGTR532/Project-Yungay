@@ -5,6 +5,7 @@ using UnityEngine;
 public class Hand : MonoBehaviour
 {
     private Inventory inventory;
+    private InventoryDisplay inventoryDisplay;
     private ItemObject currentItem = null;
     private int slotIndex = 0;
     private MeshFilter meshFilter;
@@ -12,12 +13,14 @@ public class Hand : MonoBehaviour
     private Animator anim;
     public static bool isAttacking;
     private bool canAttack = false;
+    public float force;
     // Start is called before the first frame update
     void Start()
     {
         meshFilter = GetComponent<MeshFilter>();
         meshRenderer = GetComponent<MeshRenderer>();
         inventory = GameObject.FindGameObjectWithTag("Player").GetComponent<Inventory>();
+        inventoryDisplay = GameObject.FindGameObjectWithTag("UI").GetComponent<InventoryDisplay>();
         anim = GetComponent<Animator>();
     }
 
@@ -29,6 +32,7 @@ public class Hand : MonoBehaviour
         if (canAttack)
         {
             UseItem();
+            Throw();
         }
     }
 
@@ -63,9 +67,9 @@ public class Hand : MonoBehaviour
         {
             if (currentItem.type == ItemType.Equipment)
             {
-                meshFilter.sharedMesh = currentItem.prefab.GetComponent<MeshFilter>().sharedMesh;
-                meshRenderer.sharedMaterial = currentItem.prefab.GetComponent<MeshRenderer>().sharedMaterial;
                 EquipmentItem _ = (EquipmentItem)currentItem;
+                meshFilter.sharedMesh = _.itemMesh;
+                meshRenderer.sharedMaterial = _.itemMaterial;
                 anim.runtimeAnimatorController = _.controller;
                 canAttack = true;
             }
@@ -87,14 +91,36 @@ public class Hand : MonoBehaviour
 
     private void UseItem()
     {
-        if (Input.GetMouseButtonDown(0))
+        if (Input.GetMouseButtonDown(0) && !GameManager.inPause)
         {
             anim.SetBool("using", true);
             isAttacking = true;
         }
-        else if (Input.GetMouseButtonUp(0))
+        else if (Input.GetMouseButtonUp(0) && !GameManager.inPause)
         {
             anim.SetBool("using", false);
+        }
+    }
+
+    private void Throw()
+    {
+        if (Input.GetMouseButton(1) && !GameManager.inPause)
+        {
+            GameObject clone = Instantiate(currentItem.prefab, transform.position, Quaternion.identity);
+            clone.GetComponent<Loot>().loot[0].amount = inventory.slots[slotIndex].amount;
+            clone.GetComponent<Rigidbody>().isKinematic = false;
+            clone.GetComponent<Rigidbody>().AddForce(transform.forward * force, ForceMode.Impulse);
+            inventory.slots[slotIndex].item = null;
+            inventory.slots[slotIndex].amount = 0;
+            inventory.UpdateInventory();
+            inventoryDisplay.UpdateDisplay();
+            canAttack = false;
+            //capCollider.enabled = true;
+            //this.transform.SetParent(null);
+            //modelWeapon.SetActive(false);
+            //anim.enabled = false;
+
+
         }
     }
 }

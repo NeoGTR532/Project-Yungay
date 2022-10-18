@@ -18,4 +18,8 @@ MonoBehaviour:
   maxStack: 1
   description: 
   damage: 20
+  itemMesh: {fileID: -8287839383430266118, guid: bf1c6365a8e8eab4ca8d934511ec50d7,
+    type: 3}
+  itemMaterial: {fileID: 288276066229762379, guid: bf1c6365a8e8eab4ca8d934511ec50d7,
+    type: 3}
   controller: {fileID: 9100000, guid: f323cdea2d862a04cad0acf124d8630f, type: 2}

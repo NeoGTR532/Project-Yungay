@@ -12,6 +12,8 @@ public enum EquipmentType
 public class EquipmentItem : ItemObject
 {
     public float damage;
+    public Mesh itemMesh;
+    public Material itemMaterial;
     public RuntimeAnimatorController controller;
     private void Awake()
     {
