@@ -28,6 +28,8 @@ public class PlayerHealth : MonoBehaviour
             }
             else
             {
+                mb.checkpoint.GetComponent<DataChekpoint>().ReturnPoint();
+                mb.health = mb.maxHealth;
                 mb.health -= damage;
             }
         }
@@ -44,8 +46,6 @@ public class PlayerHealth : MonoBehaviour
         }
         else
         {
-            mb.checkpoint.GetComponent<DataChekpoint>().FixEnemy();
-            mb.health = mb.maxHealth;
             //Debug.Log("Tiezo");
         }
     }

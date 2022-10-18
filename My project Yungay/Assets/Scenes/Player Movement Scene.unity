@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.18028352, g: 0.22571376, b: 0.30692244, a: 1}
+  m_IndirectSpecularColor: {r: 0.18028378, g: 0.22571412, b: 0.30692285, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -5636,6 +5636,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   dataEnemys: []
   enemigos: []
+  players: []
+  inventories: []
+  player: {fileID: 0}
 --- !u!1 &664258012
 GameObject:
   m_ObjectHideFlags: 0
@@ -22842,7 +22845,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fc3855736b6ff66458522c0474f9a302, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 50
+  health: 5
   maxHealth: 100
   armor: 0
   actualSpeed: 0
@@ -23012,7 +23015,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerHealth: {fileID: 8949097853262754774}
   inventory: {fileID: 8949097853262754770}
-  bandageItem: {fileID: 0}
+  bandageItem: {fileID: 11400000, guid: 72443fe3c41252744b442bbd4294631e, type: 2}
   percentageCure: 0
 --- !u!114 &8949097853262754778
 MonoBehaviour:
@@ -23028,7 +23031,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerHealth: {fileID: 8949097853262754767}
   inventory: {fileID: 8949097853262754770}
-  armorItem: {fileID: 0}
+  armorItem: {fileID: 11400000, guid: f0fa9460d49089a4ea35bd2b26307673, type: 2}
   timeArmor: 20
 --- !u!4 &8988387945947282226
 Transform:
