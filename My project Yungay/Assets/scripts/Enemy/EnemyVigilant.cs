@@ -162,7 +162,7 @@ public class EnemyVigilant : MonoBehaviour
             }
         }
     }
-    public void Final_anim()
+   /* public void Final_anim()
     {
         if(Vector3.Distance(transform.position, Target.transform.position) >   2.2f)
         {
@@ -171,13 +171,13 @@ public class EnemyVigilant : MonoBehaviour
 
         //Atack = false;
        
-    }
+    }*/
 
-    private void OnDrawGizmos()
+   /* private void OnDrawGizmos()
     {
         Gizmos.color = Color.red;
         Gizmos.DrawRay(pointShoot.transform.position, pointShoot.transform.forward * Weapon.Range);
-    }
+    }*/
 
 
 
