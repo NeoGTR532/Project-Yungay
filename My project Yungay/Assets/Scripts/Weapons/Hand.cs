@@ -70,14 +70,14 @@ public class Hand : MonoBehaviour
                 EquipmentItem _ = (EquipmentItem)currentItem;
                 meshFilter.sharedMesh = _.itemMesh;
                 meshRenderer.sharedMaterial = _.itemMaterial;
-                anim.runtimeAnimatorController = _.controller;
+                //anim.runtimeAnimatorController = _.controller;
                 canAttack = true;
             }
             else
             {
                 meshFilter.sharedMesh = null;
                 meshRenderer.sharedMaterial = null;
-                anim.runtimeAnimatorController = null;
+                //anim.runtimeAnimatorController = null;
                 canAttack = false;
             }
         }
@@ -93,12 +93,12 @@ public class Hand : MonoBehaviour
     {
         if (Input.GetMouseButtonDown(0) && !GameManager.inPause)
         {
-            anim.SetBool("using", true);
+            anim.Play("Axe_Attack");
             isAttacking = true;
         }
         else if (Input.GetMouseButtonUp(0) && !GameManager.inPause)
         {
-            anim.SetBool("using", false);
+            //anim.SetBool("AxeAttack", false);
         }
     }
 
@@ -106,7 +106,7 @@ public class Hand : MonoBehaviour
     {
         if (Input.GetMouseButton(1) && !GameManager.inPause)
         {
-            GameObject clone = Instantiate(currentItem.prefab, transform.position, Quaternion.identity);
+            GameObject clone = Instantiate(currentItem.prefab, transform.position, transform.rotation);
             clone.GetComponent<Loot>().loot[0].amount = inventory.slots[slotIndex].amount;
             clone.GetComponent<Rigidbody>().isKinematic = false;
             clone.GetComponent<Rigidbody>().AddForce(Camera.main.transform.forward * force, ForceMode.Impulse);
