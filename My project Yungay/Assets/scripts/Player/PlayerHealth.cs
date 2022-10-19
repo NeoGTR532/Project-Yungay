@@ -7,6 +7,7 @@ public class PlayerHealth : MonoBehaviour
 {
     public PlayerModel mb;
     public Image lifeBar;
+    public Text numberLife;
     float time;
 
 
@@ -42,6 +43,7 @@ public class PlayerHealth : MonoBehaviour
         if (mb.health >= 0)
         {
             lifeBar.fillAmount = mb.health / mb.maxHealth;
+            numberLife.text = mb.health.ToString();
         }
         if(mb.health<= 0)
         {

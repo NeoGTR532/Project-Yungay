@@ -79,24 +79,24 @@ public class Weapons : MonoBehaviour
                 //weapon.GetComponent<MeshRenderer>().material = materialPistol;
                 //weapon.GetComponent<MeshFilter>().mesh = modelPistol;
                 //weapon.GetComponent<Pistol>().enabled = true;
-                modelPistol.GetComponent<MeshRenderer>().enabled = true;
+               // modelPistol.GetComponent<MeshRenderer>().enabled = true;
                 modelPistol.GetComponent<Pistol>().enabled = true;
                 break;
             case 2:
                // weapon.GetComponent<MeshRenderer>().material = materialSubmachine;
                // weapon.GetComponent<MeshFilter>().mesh = modelSubmachine;
                // weapon.GetComponent<Submachine>().enabled = true;
-                modelSubmachine.GetComponent<MeshRenderer>().enabled = true;
+               // modelSubmachine.GetComponent<MeshRenderer>().enabled = true;
                 modelSubmachine.GetComponent<Submachine>().enabled = true;
                 break;
             case 3:
-                modelAxe.SetActive(true);
+               // modelAxe.SetActive(true);
                 break;
             case 4:
-                modelSpear.SetActive(true);
+              //  modelSpear.SetActive(true);
                 break;
             case 5:
-                modelKnife.SetActive(true);
+               // modelKnife.SetActive(true);
                 break;
         }
     }

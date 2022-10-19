@@ -140,7 +140,7 @@ public class EnemyVigilant : MonoBehaviour
                         Debug.Log("Shot");
                         Weapon.Munition--;
                         Timer = 0;
-                        //Life.Damage(Weapon.damage);
+                        Life.Damage(Weapon.damage);
 
                     }
                     
@@ -173,11 +173,11 @@ public class EnemyVigilant : MonoBehaviour
        
     }*/
 
-   /* private void OnDrawGizmos()
+    private void OnDrawGizmos()
     {
         Gizmos.color = Color.red;
         Gizmos.DrawRay(pointShoot.transform.position, pointShoot.transform.forward * Weapon.Range);
-    }*/
+    }
 
 
 

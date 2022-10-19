@@ -113,7 +113,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   loot:
   - item: {fileID: 11400000, guid: f0fa9460d49089a4ea35bd2b26307673, type: 2}
-    amount: 2
+    amount: 0
   isRandom: 0
 --- !u!54 &2414701104860168135
 Rigidbody:
