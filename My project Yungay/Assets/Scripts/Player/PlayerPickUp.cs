@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class PlayerPickUp : MonoBehaviour
 {
-    public float pickUpRange = 5;
-    public float moveForce = 250;
+    public float pickUpRange;
+    public float moveForce;
 
     private GameObject heldObj;
     public Transform holdParent;
@@ -13,10 +13,12 @@ public class PlayerPickUp : MonoBehaviour
 
     public GameObject handPos;
     public float HandRange;
+
+    public static bool isPushing;
     // Start is called before the first frame update
     void Start()
     {
-        
+
     }
 
     // Update is called once per frame
@@ -32,7 +34,7 @@ public class PlayerPickUp : MonoBehaviour
                     if (hit.transform.gameObject.CompareTag("Object"))
                     {
                         PickupObject(hit.transform.gameObject);
-                        //playerCam.enabled = !playerCam.enabled;
+
                     }
 
                 }
@@ -41,14 +43,16 @@ public class PlayerPickUp : MonoBehaviour
             else
             {
                 DropObject();
+                //isPushing = false;
             }
-           
+
         }
 
         if (heldObj != null)
         {
+            isPushing = true;
             MoveObject();
-            playerCam.enabled = !playerCam.enabled;
+
         }
     }
 
@@ -74,14 +78,20 @@ public class PlayerPickUp : MonoBehaviour
         }
     }
 
-    void DropObject()
+    public void DropObject()
     {
-        Rigidbody heldRig = heldObj.GetComponent<Rigidbody>();
-        heldRig.useGravity = true;
-        heldRig.drag = 1;
+        if (heldObj!=null)
+        {
+            isPushing = false;
+            Rigidbody heldRig = heldObj.GetComponent<Rigidbody>();
+            heldRig.useGravity = true;
+            heldRig.drag = 1;
+            heldObj.transform.parent = null;
+            heldObj = null;
+        }
+        
+        
 
-        heldObj.transform.parent = null;
-        heldObj = null;
-        playerCam.enabled = playerCam.enabled;
+        
     }
 }

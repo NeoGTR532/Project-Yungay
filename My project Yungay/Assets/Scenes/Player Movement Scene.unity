@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.18028378, g: 0.22571412, b: 0.30692285, a: 1}
+  m_IndirectSpecularColor: {r: 0.18028352, g: 0.22571376, b: 0.30692244, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -5630,6 +5630,7 @@ GameObject:
   - component: {fileID: 628219203}
   - component: {fileID: 628219202}
   - component: {fileID: 628219206}
+  - component: {fileID: 628219207}
   m_Layer: 0
   m_Name: Cube (3)
   m_TagString: Object
@@ -5730,7 +5731,20 @@ Rigidbody:
   m_IsKinematic: 0
   m_Interpolate: 0
   m_Constraints: 112
-  m_CollisionDetection: 1
+  m_CollisionDetection: 2
+--- !u!114 &628219207
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 628219201}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: df8df4e1269bdf241b1056c11de3a19d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerPickUp: {fileID: 8949097853262754779}
 --- !u!1 &654974105
 GameObject:
   m_ObjectHideFlags: 0
@@ -7277,7 +7291,6 @@ GameObject:
   - component: {fileID: 814939189}
   - component: {fileID: 814939188}
   - component: {fileID: 814939187}
-  - component: {fileID: 814939194}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -7478,24 +7491,6 @@ Camera:
   m_OcclusionCulling: 1
   m_StereoConvergence: 10
   m_StereoSeparation: 0.022
---- !u!114 &814939194
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 814939185}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b3a0a871f55b1ed46befea904b8c6124, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  pickUpRange: 5
-  moveForce: 250
-  holdParent: {fileID: 1188033623}
-  playerCam: {fileID: 0}
-  handPos: {fileID: 0}
-  HandRange: 2
 --- !u!1 &818925067
 GameObject:
   m_ObjectHideFlags: 0
@@ -10789,7 +10784,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1188033622}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 1.094}
+  m_LocalPosition: {x: 0, y: 0, z: 0.048}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -11187,7 +11182,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1236928382}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 1.074, z: 1.86}
+  m_LocalPosition: {x: 0, y: 1.074, z: 1.423}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -23898,12 +23893,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b3a0a871f55b1ed46befea904b8c6124, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  pickUpRange: 5
+  pickUpRange: 0.75
   moveForce: 100
   holdParent: {fileID: 1236928383}
   playerCam: {fileID: 814939190}
   handPos: {fileID: 1188033622}
-  HandRange: 5
+  HandRange: 0
 --- !u!4 &8988387945947282226
 Transform:
   m_ObjectHideFlags: 0

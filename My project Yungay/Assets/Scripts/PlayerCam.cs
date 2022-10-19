@@ -21,6 +21,15 @@ public class PlayerCam : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (PlayerPickUp.isPushing == false)
+        {
+            Camera();
+        }
+
+    }
+
+    void Camera()
+    {
         float mouseX = Input.GetAxisRaw("Mouse X") * Time.deltaTime * sensX;
         float mouseY = Input.GetAxisRaw("Mouse Y") * Time.deltaTime * sensY;
 
