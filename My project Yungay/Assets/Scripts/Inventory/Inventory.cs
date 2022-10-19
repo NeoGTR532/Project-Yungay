@@ -132,7 +132,7 @@ public class Inventory : MonoBehaviour
         }
         AddItem(null, recipe.result, recipe.amount);
     }
-    private void RemoveSlot()
+    public void RemoveSlot()
     {
         for (int i = 0; i < slots.Count; i++)
         {

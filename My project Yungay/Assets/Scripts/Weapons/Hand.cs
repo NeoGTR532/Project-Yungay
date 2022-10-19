@@ -20,7 +20,7 @@ public class Hand : MonoBehaviour
         meshFilter = GetComponent<MeshFilter>();
         meshRenderer = GetComponent<MeshRenderer>();
         inventory = GameObject.FindGameObjectWithTag("Player").GetComponent<Inventory>();
-        inventoryDisplay = GameObject.FindGameObjectWithTag("UI").GetComponent<InventoryDisplay>();
+        inventoryDisplay = InventoryDisplay.instance;//GameObject.FindGameObjectWithTag("UI").GetComponent<InventoryDisplay>();
         anim = GetComponent<Animator>();
     }
 
