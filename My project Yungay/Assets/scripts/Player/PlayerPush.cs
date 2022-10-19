@@ -29,6 +29,7 @@ public class PlayerPush : MonoBehaviour
             if (Input.GetKeyUp(KeyCode.E))
             {
                 pickedObject.gameObject.transform.SetParent(null);
+                pickedObject.GetComponent<Rigidbody>().isKinematic = false;
                 pickedObject = null;
                 model.canJump = true;
                 model.canCrouch = true;
@@ -36,25 +37,26 @@ public class PlayerPush : MonoBehaviour
                 ispushing = false;
             }
         }
-       
-          RaycastHit hit;
-          if (Physics.Raycast(handPos.transform.position,handPos.transform.forward,out hit, HandRange))
-         {
-             if (hit.transform.gameObject.CompareTag("Object"))
-             {
-                 if ( Input.GetKey(KeyCode.E) && pickedObject == null)
-                 {
-                     ispushing = true;
-                     hit.transform.position = handpush.transform.position;
-                     hit.transform.SetParent(handpush.gameObject.transform);
-                     pickedObject = hit.transform.gameObject;
-                     model.canJump = false;
-                     model.canCrouch = false;
-                     model.canRun = false;
+
+        RaycastHit hit;
+        if (Physics.Raycast(handPos.transform.position, handPos.transform.forward, out hit, HandRange))
+        {
+            if (hit.transform.gameObject.CompareTag("Object"))
+            {
+                if (Input.GetKey(KeyCode.E) && pickedObject == null)
+                {
+                    ispushing = true;
+                    //hit.transform.position = handpush.transform.position;
+                    hit.transform.gameObject.GetComponent<Rigidbody>().isKinematic = true;
+                    hit.transform.SetParent(handpush.gameObject.transform);
+                    pickedObject = hit.transform.gameObject;
+                    model.canJump = false;
+                    model.canCrouch = false;
+                    model.canRun = false;
 
 
-                 }
-             }
+                }
+            }
+        }
     }
-}
 }
