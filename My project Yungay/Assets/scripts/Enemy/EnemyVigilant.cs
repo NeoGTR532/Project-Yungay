@@ -6,7 +6,7 @@ using UnityEngine.AI;
 public class EnemyVigilant : MonoBehaviour
 {
     public PlayerHealth Life;
-    public LayerMask Player;
+    //public LayerMask Player;
     public GameObject pointShoot;
     public GameObject Target;
     public  NavMeshAgent Agent;
@@ -61,7 +61,7 @@ public class EnemyVigilant : MonoBehaviour
             DetectPlayer = true;
             anim.SetBool("RunP", true);
 
-            if ((Vector3.Distance(transform.position, Target.transform.position) < 4f))
+            if ((Vector3.Distance(transform.position, Target.transform.position) < Weapon.Range))
             {
                 Near = true;
                 Agent.enabled = false;
@@ -162,21 +162,16 @@ public class EnemyVigilant : MonoBehaviour
             }
         }
     }
-   /* public void Final_anim()
-    {
-        if(Vector3.Distance(transform.position, Target.transform.position) >   2.2f)
-        {
-            anim.SetBool("Atack", false);
-        }
-
-        //Atack = false;
-       
-    }*/
+  
 
     private void OnDrawGizmos()
     {
-        Gizmos.color = Color.red;
-        Gizmos.DrawRay(pointShoot.transform.position, pointShoot.transform.forward * Weapon.Range);
+        if (Weapon != null)
+        {
+            Gizmos.color = Color.red;
+            Gizmos.DrawRay(pointShoot.transform.position, pointShoot.transform.forward * Weapon.Range);
+        }
+        
     }
 
 

@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.18028334, g: 0.2257134, b: 0.30692226, a: 1}
+  m_IndirectSpecularColor: {r: 0.18028378, g: 0.22571412, b: 0.30692285, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -6534,7 +6534,7 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 6738e33667670dc4abac69631c59a9ef,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 6738e33667670dc4abac69631c59a9ef,
         type: 3}
@@ -11270,7 +11270,7 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 6738e33667670dc4abac69631c59a9ef,
         type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 6738e33667670dc4abac69631c59a9ef,
         type: 3}
@@ -15368,14 +15368,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Life: {fileID: 8949097853262754774}
-  Player:
-    serializedVersion: 2
-    m_Bits: 0
   pointShoot: {fileID: 1103079915}
   Target: {fileID: 2421363667948958475}
   Agent: {fileID: 0}
   speed: 3
-  Weapon: {fileID: 11400000, guid: cf942317fe1311f49a080cff4e454d80, type: 2}
+  Weapon: {fileID: 11400000, guid: 9328765420afc1f43b1223775995af40, type: 2}
   Vision: 7
   anim: {fileID: 0}
   Near: 0
