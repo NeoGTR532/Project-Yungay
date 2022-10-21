@@ -106,12 +106,12 @@ public class Pistol : MonoBehaviour
     }
 
 
-    private void OnDrawGizmos()
+   /* private void OnDrawGizmos()
     {
         Gizmos.color = Color.red;
         Gizmos.DrawRay(cam.transform.position, cam.transform.forward * pistol.range);
 
-    }
+    }*/
     private IEnumerator SpawnTrail(TrailRenderer Trail, Vector3 HitPoint)
     {
         Vector3 startPosition = Trail.transform.position;

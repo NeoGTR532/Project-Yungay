@@ -16,9 +16,8 @@ public class Weapon : ScriptableObject
     public int chargerBulletsMax;
     [HideInInspector]
     public Vector2 bulletSpreadVariance;
+    [Range(0f, 3f)]
     public float range;
-    [Range(60,0)]
-    public int zoom;
     public float damage;
     public ParticleSystem spark;
     public Sprite look;

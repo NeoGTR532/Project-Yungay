@@ -7,82 +7,69 @@ public class Look : MonoBehaviour
 {
     public GameObject cam;
     public Weapons weapons;
-    public Pistol pistol;
-    public Submachine submachine;
-    public GameObject point;
+    public Weapon weapon;
+    public GameObject look;
+    public GameObject positionCam;
     public LayerMask collider;
-    int zoom;
-    float normal;
     public float smooth = 5;
 
-    private bool isZoomed = false;
-    void Awake()
+    public bool isZoomed = false;
+    private void Start()
     {
-        normal = cam.GetComponent<Camera>().fieldOfView;
     }
 
     // Update is called once per frame
     void Update()
     {
-        switch (weapons.stateWeapons)
+
+        if (Input.GetMouseButtonDown(1) && weapon != null)
         {
-            case 1:
-                RaycastHit hit;
-                Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-                if (Input.GetMouseButtonDown(1))
-                {
-                    isZoomed = !isZoomed;
-                    zoom = pistol.pistol.zoom;
-                    pistol.look.GetComponent<RawImage>().texture = pistol.pistol.look.texture;
-                    weapons.lockWeapons = !weapons.lockWeapons;
-                }
-                if (isZoomed)
-                {/*
-                    if (Physics.Raycast(ray, pistol.pistol.range))
-                    {
-
-                    }
-                    else
-                    {
-                        cam.transform.position = Vector3.Lerp(cam.transform.position, cam.transform.forward, Time.deltaTime * smooth); 
-                        pistol.look.SetActive(true);
-
-                    }
-                    */
-                    cam.GetComponent<Camera>().fieldOfView = Mathf.Lerp(cam.GetComponent<Camera>().fieldOfView, zoom, Time.deltaTime * smooth);
-                    pistol.look.SetActive(true);
-                }
-
-                else if (isZoomed == false)
-                {
-                    cam.GetComponent<Camera>().fieldOfView = Mathf.Lerp(cam.GetComponent<Camera>().fieldOfView, normal, Time.deltaTime * smooth);
-                    pistol.look.SetActive(false);
-                }
-                break;
-            case 2:
-                if (Input.GetMouseButtonDown(1))
-                {
-                    isZoomed = !isZoomed;
-                    zoom = submachine.submachine.zoom;
-                    submachine.look.GetComponent<RawImage>().texture = submachine.submachine.look.texture;
-                    weapons.lockWeapons = !weapons.lockWeapons;
-                }
-                if (isZoomed)
-                {
-                    cam.GetComponent<Camera>().fieldOfView = Mathf.Lerp(cam.GetComponent<Camera>().fieldOfView, zoom, Time.deltaTime * smooth);
-                    submachine.look.SetActive(true);
-                }
-
-                else if (isZoomed == false)
-                {
-                    cam.GetComponent<Camera>().fieldOfView = Mathf.Lerp(cam.GetComponent<Camera>().fieldOfView, normal, Time.deltaTime * smooth);
-                    pistol.look.SetActive(false);
-                }
-                break;
-            case 3:
-                break;
-            case 4:
-                break;
+            IsPoint();
         }
+        if (isZoomed)
+        {
+            RaycastHit hit;
+            Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+            if (Physics.Raycast(ray, out hit, weapon.range, collider))
+            {
+                Debug.Log(hit.collider);
+                StartCoroutine(Point(cam.transform.position, cam.transform.forward * weapon.range));
+                look.SetActive(true);
+                
+            }
+            else
+            {
+                StartCoroutine(Point(cam.transform.position, cam.transform.forward * weapon.range));
+                look.SetActive(true);
+            }
+        }
+        else if (isZoomed == false)
+        {
+            StartCoroutine(Point(cam.transform.position, positionCam.transform.position));
+            look.SetActive(false);
+        }
+    }
+
+    public void IsPoint()
+    {
+        isZoomed = !isZoomed;
+        look.GetComponent<RawImage>().texture = weapon.look.texture;
+        weapons.lockWeapons = !weapons.lockWeapons;
+
+    }
+    IEnumerator Point(Vector3 start, Vector3 end)
+    {
+        Vector3 position = Vector3.Lerp(start, end, smooth * Time.deltaTime);
+
+        cam.transform.position = position;
+
+        yield return null;
+
+        
+    }
+    private void OnDrawGizmos()
+    {
+        Gizmos.color = Color.green;
+        Gizmos.DrawRay(cam.transform.position, cam.transform.forward * weapon.range);
     }
 }
