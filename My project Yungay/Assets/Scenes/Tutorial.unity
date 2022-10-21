@@ -1231,6 +1231,11 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: -1155638071247060687, guid: 21423cde304bdb142a037a6713bd7efc,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 21423cde304bdb142a037a6713bd7efc,
         type: 3}
       propertyPath: m_Name
@@ -13429,6 +13434,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   mb: {fileID: 8949097853262754767}
   lifeBar: {fileID: 128424684}
+  numberLife: {fileID: 0}
 --- !u!114 &8949097853262754775
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -13476,6 +13482,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerHealth: {fileID: 8949097853262754774}
   inventory: {fileID: 8949097853262754770}
+  inventoryDisplay: {fileID: 0}
   bandageItem: {fileID: 11400000, guid: 72443fe3c41252744b442bbd4294631e, type: 2}
   percentageCure: 0
 --- !u!114 &8949097853262754778
@@ -13492,6 +13499,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerHealth: {fileID: 8949097853262754767}
   inventory: {fileID: 8949097853262754770}
+  inventoryDisplay: {fileID: 0}
   armorItem: {fileID: 11400000, guid: f0fa9460d49089a4ea35bd2b26307673, type: 2}
   timeArmor: 20
 --- !u!4 &8988387945947282226
