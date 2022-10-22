@@ -5,14 +5,16 @@ using UnityEngine.UI;
 
 public class Look : MonoBehaviour
 {
-    public GameObject cam;
-    public Weapons weapons;
+    public Camera camera;
     public Weapon weapon;
+    public GameObject init;
+    public GameObject limit;
     public GameObject look;
-    public GameObject positionCam;
-    public LayerMask collider;
-    public float smooth = 5;
-
+    public Vector3 a;
+    public LayerMask collision;
+    public LayerMask no;
+    public float smooth;
+    bool one = false;
     public bool isZoomed = false;
     private void Start()
     {
@@ -21,32 +23,42 @@ public class Look : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
+         RaycastHit hit;
+         Ray ray = new Ray(init.transform.position, init.transform.forward * weapon.zoom);
+         Vector3 _ = new Vector3(0,0,0);
+         _= new Vector3(camera.transform.position.x, camera.transform.position.y, camera.transform.position.z * -weapon.zoom);
+         limit.transform.position = ray.GetPoint(_.z);
+         one = true;
         if (Input.GetMouseButtonDown(1) && weapon != null)
         {
             IsPoint();
         }
-        if (isZoomed)
+        if(Input.GetMouseButtonUp(1))
         {
-            RaycastHit hit;
-            Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-            if (Physics.Raycast(ray, out hit, weapon.range, collider))
+            one = !one;
+        }
+        if(isZoomed)
+        {
+            if (Physics.Raycast(init.transform.position, init.transform.forward, out hit, weapon.zoom, collision))
             {
-                Debug.Log(hit.collider);
-                StartCoroutine(Point(cam.transform.position, cam.transform.forward * weapon.range));
-                look.SetActive(true);
-                
+                if (hit.point != null)
+                {
+                    Debug.Log(hit.collider);
+                    limit.transform.position = hit.point;
+                    Debug.Log(limit.transform.position);
+                    camera.transform.position = Vector3.Lerp(hit.distance * a, init.transform.position, smooth * Time.deltaTime);
+                }
             }
-            else
+            else if(Physics.Raycast(init.transform.position, init.transform.forward, out hit, weapon.zoom))
             {
-                StartCoroutine(Point(cam.transform.position, cam.transform.forward * weapon.range));
-                look.SetActive(true);
+                limit.transform.position = hit.point;
+                Debug.Log(hit.collider);
+                camera.transform.position = Vector3.Lerp(limit.transform.position,init.transform.position, smooth * Time.deltaTime);
             }
         }
-        else if (isZoomed == false)
+        else
         {
-            StartCoroutine(Point(cam.transform.position, positionCam.transform.position));
-            look.SetActive(false);
+           // camera.transform.position = Vector3.Lerp( init.transform.position, limit.transform.position, smooth * Time.deltaTime);
         }
     }
 
@@ -54,22 +66,12 @@ public class Look : MonoBehaviour
     {
         isZoomed = !isZoomed;
         look.GetComponent<RawImage>().texture = weapon.look.texture;
-        weapons.lockWeapons = !weapons.lockWeapons;
-
+       // weapons.lockWeapons = !weapons.lockWeapons;
     }
-    IEnumerator Point(Vector3 start, Vector3 end)
-    {
-        Vector3 position = Vector3.Lerp(start, end, smooth * Time.deltaTime);
 
-        cam.transform.position = position;
-
-        yield return null;
-
-        
-    }
     private void OnDrawGizmos()
     {
-        Gizmos.color = Color.green;
-        Gizmos.DrawRay(cam.transform.position, cam.transform.forward * weapon.range);
+        Gizmos.color = Color.blue;
+        Gizmos.DrawRay(init.transform.position, init.transform.forward * weapon.zoom);
     }
 }

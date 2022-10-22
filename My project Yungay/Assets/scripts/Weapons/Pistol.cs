@@ -8,6 +8,7 @@ public class Pistol : MonoBehaviour
     public GameObject beggin;
 
     public Weapon pistol;
+    public Weapon arma;
 
     private float BulletSpeed = 100f;
 
