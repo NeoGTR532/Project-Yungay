@@ -90,16 +90,16 @@ public class Hand : MonoBehaviour
     }
 
     private void UseItem()
-    {
+    {   
         if (Input.GetMouseButtonDown(0) && !GameManager.inPause)
         {
-            EquipmentMelee _ = (EquipmentMelee)currentItem;
-            anim.Play(_.animation.name);
-            isAttacking = true;
-        }
-        else if (Input.GetMouseButtonUp(0) && !GameManager.inPause)
-        {
-            //anim.SetBool("AxeAttack", false);
+            EquipmentItem _ = (EquipmentItem)currentItem;
+            if (_.equipmentType == EquipmentType.Melee)
+            {
+                EquipmentMelee melee = (EquipmentMelee)currentItem;
+                anim.Play(melee.animation.name);
+                isAttacking = true;
+            }
         }
     }
 
@@ -107,19 +107,23 @@ public class Hand : MonoBehaviour
     {
         if (Input.GetMouseButton(1) && !GameManager.inPause)
         {
-            GameObject clone = Instantiate(currentItem.prefab, transform.position, transform.rotation);
-            clone.GetComponent<Loot>().loot[0].amount = inventory.slots[slotIndex].amount;
-            clone.GetComponent<Rigidbody>().isKinematic = false;
-            clone.GetComponent<Rigidbody>().AddForce(Camera.main.transform.forward * force, ForceMode.Impulse);
-            inventory.slots[slotIndex].item = null;
-            inventory.slots[slotIndex].amount = 0;
-            inventory.UpdateInventory();
-            inventoryDisplay.UpdateDisplay();
-            canAttack = false;
-            //capCollider.enabled = true;
-            //this.transform.SetParent(null);
-            //modelWeapon.SetActive(false);
-            //anim.enabled = false;
+            EquipmentItem _ = (EquipmentItem)currentItem;
+            if (_.equipmentType == EquipmentType.Melee)
+            {
+                GameObject clone = Instantiate(currentItem.prefab, transform.position, transform.rotation);
+                clone.GetComponent<Loot>().loot[0].amount = inventory.slots[slotIndex].amount;
+                clone.GetComponent<Rigidbody>().isKinematic = false;
+                clone.GetComponent<Rigidbody>().AddForce(Camera.main.transform.forward * force, ForceMode.Impulse);
+                inventory.slots[slotIndex].item = null;
+                inventory.slots[slotIndex].amount = 0;
+                inventory.UpdateInventory();
+                inventoryDisplay.UpdateDisplay();
+                canAttack = false;
+                //capCollider.enabled = true;
+                //this.transform.SetParent(null);
+                //modelWeapon.SetActive(false);
+                //anim.enabled = false;
+            }
 
 
         }

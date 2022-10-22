@@ -23,6 +23,7 @@ public class EquipmentRange : EquipmentItem
 
     private void Awake()
     {
+        equipmentType = EquipmentType.Range;
         bulletSpreadVariance = new Vector2(bulletSpreadVarianceDis, bulletSpreadVarianceDis);
     }
 }

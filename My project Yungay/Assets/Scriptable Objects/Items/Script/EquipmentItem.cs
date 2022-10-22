@@ -12,6 +12,7 @@ public class EquipmentItem : ItemObject
 {
     public Mesh itemMesh;
     public Material itemMaterial;
+    [HideInInspector]public EquipmentType equipmentType;
     private void Awake()
     {
         type = ItemType.Equipment;

@@ -8,4 +8,8 @@ public class EquipmentMelee : EquipmentItem
     public float force;
     public float damage;
     public AnimationClip animation;
+    private void Awake()
+    {
+        equipmentType = EquipmentType.Melee;
+    }
 }
