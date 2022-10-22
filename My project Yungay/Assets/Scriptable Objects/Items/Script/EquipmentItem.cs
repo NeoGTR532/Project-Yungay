@@ -14,7 +14,7 @@ public class EquipmentItem : ItemObject
     public float damage;
     public Mesh itemMesh;
     public Material itemMaterial;
-    public RuntimeAnimatorController controller;
+    public AnimationClip animation;
     private void Awake()
     {
         type = ItemType.Equipment;

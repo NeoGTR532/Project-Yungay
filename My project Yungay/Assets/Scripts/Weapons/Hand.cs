@@ -93,7 +93,8 @@ public class Hand : MonoBehaviour
     {
         if (Input.GetMouseButtonDown(0) && !GameManager.inPause)
         {
-            anim.Play("Axe_Attack");
+            EquipmentItem _ = (EquipmentItem)currentItem;
+            anim.Play(_.animation.name);
             isAttacking = true;
         }
         else if (Input.GetMouseButtonUp(0) && !GameManager.inPause)

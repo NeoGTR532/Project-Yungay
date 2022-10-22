@@ -17,4 +17,4 @@ MonoBehaviour:
   type: 0
   maxStack: 5
   description: 
-  restoreHealthValue: 0
+  restoreHealthValue: 30
