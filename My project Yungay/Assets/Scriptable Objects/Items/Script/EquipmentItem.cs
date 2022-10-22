@@ -5,16 +5,13 @@ using UnityEngine;
 public enum EquipmentType
 {
     Melee,
-    Range,
-    Default
+    Range
 }
-[CreateAssetMenu(fileName = "New Equipment Item", menuName = "Inventory System/Items/Equipment")]
+//[CreateAssetMenu(fileName = "New Equipment Item", menuName = "Inventory System/Items/Equipment")]
 public class EquipmentItem : ItemObject
 {
-    public float damage;
     public Mesh itemMesh;
     public Material itemMaterial;
-    public AnimationClip animation;
     private void Awake()
     {
         type = ItemType.Equipment;

@@ -9,7 +9,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d103314e3356e7a408a4db5dfd2e2787, type: 3}
+  m_Script: {fileID: 11500000, guid: d70e7798e461d694d9ddbd8bfbbcf0b1, type: 3}
   m_Name: Knife
   m_EditorClassIdentifier: 
   prefab: {fileID: 8234525721378084209, guid: 35aef249cb4297f43abe113ea6f36164, type: 3}
@@ -17,9 +17,10 @@ MonoBehaviour:
   type: 2
   maxStack: 1
   description: 
-  damage: 10
-  itemMesh: {fileID: -6127348048242964064, guid: 59c376b9697a280429305bfdc4676938,
+  itemMesh: {fileID: 5302568919011541938, guid: 974b1587f41fd0a4681a0721d3724de3,
     type: 3}
   itemMaterial: {fileID: -3661639628750336703, guid: f761e9b0126548f4fb296c7f871b856a,
     type: 3}
+  force: 0
+  damage: 5
   animation: {fileID: 7400000, guid: 80f299b92008cdc4db1ea8a5f0a1d1ba, type: 2}

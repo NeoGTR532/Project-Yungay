@@ -128,6 +128,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   loot:
-  - item: {fileID: 11400000, guid: 9bbdf6a72f20bc94cbeed2ae089e833f, type: 2}
+  - item: {fileID: 11400000, guid: f1bffbb63e1bd86438e99fbcdf251672, type: 2}
     amount: 0
   isRandom: 0

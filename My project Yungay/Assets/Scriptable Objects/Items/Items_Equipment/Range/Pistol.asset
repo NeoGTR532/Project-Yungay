@@ -1,0 +1,34 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0b441810659202d47980f884c4b90a50, type: 3}
+  m_Name: Pistol
+  m_EditorClassIdentifier: 
+  prefab: {fileID: 919132149155446097, guid: f6d75c444dfaa9444873c47a969870c0, type: 3}
+  itemSprite: {fileID: 21300000, guid: d9574d01d1dadc8409610b4499a3832d, type: 3}
+  type: 2
+  maxStack: 1
+  description: 
+  itemMesh: {fileID: -8163526336849700479, guid: f6d75c444dfaa9444873c47a969870c0,
+    type: 3}
+  itemMaterial: {fileID: -3661639628750336703, guid: f761e9b0126548f4fb296c7f871b856a,
+    type: 3}
+  lastShootTime: 0
+  shootDelay: 1
+  bulletSpreadVarianceDis: 0
+  chargerNailsMax: 10
+  chargerBulletsMax: 10
+  bulletSpreadVariance: {x: 0, y: 0}
+  range: 0.462
+  damage: 5
+  spark: {fileID: 92786460937822819, guid: 3fbd47da97cd9044bbe09eaeb04a600b, type: 3}
+  look: {fileID: 21300000, guid: 57f74e2799893004e9adcd459b5dd878, type: 3}
+  shoot: {fileID: 0}

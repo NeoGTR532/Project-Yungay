@@ -9,7 +9,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d103314e3356e7a408a4db5dfd2e2787, type: 3}
+  m_Script: {fileID: 11500000, guid: d70e7798e461d694d9ddbd8bfbbcf0b1, type: 3}
   m_Name: Axe
   m_EditorClassIdentifier: 
   prefab: {fileID: 2377691152465184948, guid: 0d378e4566f33db47ad498e29d94b3ad, type: 3}
@@ -17,9 +17,10 @@ MonoBehaviour:
   type: 2
   maxStack: 1
   description: 
-  damage: 20
-  itemMesh: {fileID: -8287839383430266118, guid: bf1c6365a8e8eab4ca8d934511ec50d7,
+  itemMesh: {fileID: -5076798556035486163, guid: a190b4c0ce1769248bb33466c8ca22f7,
     type: 3}
-  itemMaterial: {fileID: 288276066229762379, guid: bf1c6365a8e8eab4ca8d934511ec50d7,
+  itemMaterial: {fileID: -3661639628750336703, guid: f761e9b0126548f4fb296c7f871b856a,
     type: 3}
+  force: 0
+  damage: 10
   animation: {fileID: 7400000, guid: bb7eeec186a9b914387a9de3547c7ab6, type: 2}

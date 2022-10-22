@@ -93,7 +93,7 @@ public class Hand : MonoBehaviour
     {
         if (Input.GetMouseButtonDown(0) && !GameManager.inPause)
         {
-            EquipmentItem _ = (EquipmentItem)currentItem;
+            EquipmentMelee _ = (EquipmentMelee)currentItem;
             anim.Play(_.animation.name);
             isAttacking = true;
         }
