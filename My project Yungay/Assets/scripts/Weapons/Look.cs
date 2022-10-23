@@ -7,68 +7,79 @@ public class Look : MonoBehaviour
 {
     public Camera camera;
     public Weapon weapon;
-    public GameObject init;
-    public GameObject limit;
+    public GameObject init,limit;
     public GameObject look;
-    public Vector3 a;
     public LayerMask collision;
     public LayerMask no;
     public float smooth;
-    bool one = false;
-    public bool isZoomed = false;
+    public bool zoom = false;
+    public Vector3 end;
+    private Coroutine coroutine;
+
     private void Start()
     {
+
     }
 
     // Update is called once per frame
     void Update()
     {
-         RaycastHit hit;
-         Ray ray = new Ray(init.transform.position, init.transform.forward * weapon.zoom);
-         Vector3 _ = new Vector3(0,0,0);
-         _= new Vector3(camera.transform.position.x, camera.transform.position.y, camera.transform.position.z * -weapon.zoom);
-         limit.transform.position = ray.GetPoint(_.z);
-         one = true;
+        UpdateLimit();
+
         if (Input.GetMouseButtonDown(1) && weapon != null)
         {
             IsPoint();
+            zoom = true;
+            //StartCoroutine(MoveCamera(limit.transform.position));
         }
-        if(Input.GetMouseButtonUp(1))
+
+        if (Input.GetMouseButtonUp(1))
         {
-            one = !one;
+            zoom = false;
+
+            coroutine = StartCoroutine(MoveCamera(init.transform.position));
         }
-        if(isZoomed)
+
+        if (zoom)
         {
-            if (Physics.Raycast(init.transform.position, init.transform.forward, out hit, weapon.zoom, collision))
+            if (coroutine != null)
             {
-                if (hit.point != null)
-                {
-                    Debug.Log(hit.collider);
-                    limit.transform.position = hit.point;
-                    Debug.Log(limit.transform.position);
-                    camera.transform.position = Vector3.Lerp(hit.distance * a, init.transform.position, smooth * Time.deltaTime);
-                }
+                StopCoroutine(coroutine);
             }
-            else if(Physics.Raycast(init.transform.position, init.transform.forward, out hit, weapon.zoom))
-            {
-                limit.transform.position = hit.point;
-                Debug.Log(hit.collider);
-                camera.transform.position = Vector3.Lerp(limit.transform.position,init.transform.position, smooth * Time.deltaTime);
-            }
+            camera.transform.position = Vector3.Lerp(camera.transform.position, limit.transform.position, Time.deltaTime * smooth);
         }
-        else
-        {
-           // camera.transform.position = Vector3.Lerp( init.transform.position, limit.transform.position, smooth * Time.deltaTime);
-        }
+
     }
 
     public void IsPoint()
     {
-        isZoomed = !isZoomed;
         look.GetComponent<RawImage>().texture = weapon.look.texture;
-       // weapons.lockWeapons = !weapons.lockWeapons;
     }
 
+    private void UpdateLimit()
+    {
+        RaycastHit hit;
+        Ray ray = new Ray(init.transform.position, init.transform.forward * weapon.zoom);
+        end = ray.origin + ray.direction * weapon.zoom;
+        limit.transform.position = end;
+        if (Physics.Raycast(init.transform.position, init.transform.forward, out hit, weapon.zoom, collision))
+        {
+            if (hit.point != null)
+            {
+                limit.transform.position = hit.point;
+            }
+        }
+    }
+
+    IEnumerator MoveCamera(Vector3 end)
+    {
+        while (camera.transform.position != end)
+        {
+            camera.transform.position = Vector3.Lerp(camera.transform.position, end, Time.deltaTime * smooth);
+            yield return new WaitForEndOfFrame();
+        }
+        camera.transform.position = end;
+    }
     private void OnDrawGizmos()
     {
         Gizmos.color = Color.blue;

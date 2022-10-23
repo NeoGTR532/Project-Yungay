@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.18028378, g: 0.22571412, b: 0.30692285, a: 1}
+  m_IndirectSpecularColor: {r: 0.18028352, g: 0.22571376, b: 0.30692244, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -151,8 +151,8 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 16
+  m_Father: {fileID: 3085451461771012529}
+  m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &4121854
 GameObject:
@@ -3736,7 +3736,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 814939185}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c8f676d86fb0db445a190cb62bd11477, type: 3}
   m_Name: 
@@ -3746,15 +3746,15 @@ MonoBehaviour:
   init: {fileID: 1664249883}
   limit: {fileID: 704419}
   look: {fileID: 1816754206}
-  a: {x: 0.1, y: 0.1, z: 0.1}
   collision:
     serializedVersion: 2
     m_Bits: 24311
   no:
     serializedVersion: 2
     m_Bits: 0
-  smooth: 0.1
-  isZoomed: 0
+  smooth: 2
+  zoom: 0
+  end: {x: 0, y: 0, z: 0}
 --- !u!114 &814939188
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7315,12 +7315,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1664249883}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -17.075407, y: 1.7969767, z: -3.7220974}
+  m_LocalPosition: {x: 0, y: 1.386, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 15
+  m_Father: {fileID: 3085451461771012529}
+  m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1668811261 stripped
 GameObject:
@@ -10790,6 +10790,8 @@ Transform:
   - {fileID: 699774781}
   - {fileID: 899008978}
   - {fileID: 1443910878}
+  - {fileID: 1664249885}
+  - {fileID: 704420}
   - {fileID: 814939186}
   m_Father: {fileID: 0}
   m_RootOrder: 7
