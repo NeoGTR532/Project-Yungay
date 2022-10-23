@@ -26,27 +26,36 @@ public class Look : MonoBehaviour
     {
         UpdateLimit();
 
+        float distance1 = Vector3.Distance(camera.transform.position, limit.transform.position);
+        float distance2 = Vector3.Distance(camera.transform.position, init.transform.position);
+
+
         if (Input.GetMouseButtonDown(1) && weapon != null)
         {
             IsPoint();
             zoom = true;
-            //StartCoroutine(MoveCamera(limit.transform.position));
         }
 
         if (Input.GetMouseButtonUp(1))
         {
             zoom = false;
-
-            coroutine = StartCoroutine(MoveCamera(init.transform.position));
         }
 
         if (zoom)
         {
-            if (coroutine != null)
+            if (distance1 < 0.01f)
             {
-                StopCoroutine(coroutine);
+                camera.transform.position = limit.transform.position;
             }
             camera.transform.position = Vector3.Lerp(camera.transform.position, limit.transform.position, Time.deltaTime * smooth);
+        }
+        else
+        {
+            camera.transform.position = Vector3.Lerp(camera.transform.position, init.transform.position, Time.deltaTime * smooth);
+            if (distance2 < 0.01f)
+            {
+                camera.transform.position = init.transform.position;
+            }
         }
 
     }
