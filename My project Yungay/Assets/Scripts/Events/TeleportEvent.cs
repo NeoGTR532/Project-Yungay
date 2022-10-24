@@ -10,6 +10,7 @@ public class TeleportEvent : MonoBehaviour
     void Start()
     {
         EventManager.current.useLeverEvent += Teleport;
+        player = GameObject.FindGameObjectWithTag("Player");
     }
 
 
