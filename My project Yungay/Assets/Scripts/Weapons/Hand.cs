@@ -130,4 +130,15 @@ public class Hand : MonoBehaviour
             }
         }
     }
+
+    public void AddCollider()
+    {
+        gameObject.AddComponent<BoxCollider>();
+        GetComponent<BoxCollider>().isTrigger = true;
+    }
+
+    public void RemoveCollider()
+    {
+        Destroy(GetComponent<BoxCollider>());
+    }
 }

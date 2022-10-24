@@ -20,27 +20,23 @@ public class Box : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.tag == "Axe")
+        if (other.gameObject.tag == "Equipment")
         {
+            Debug.Log("xD");
             Instantiate(resources[Random.Range(0, resources.Length)], transform.position, Quaternion.identity);
+            Instantiate(boxFullPieces, transform.position, Quaternion.identity);
+            Destroy(this.gameObject);
         }
-        Instantiate(boxFullPieces, transform.position, Quaternion.identity);
-        Destroy(this.gameObject);
-        
     }
 
     private void OnCollisionEnter(Collision collision)
     {
-        if (collision.gameObject.tag != "Player")
+        if (collision.gameObject.tag == "Equipment")
         {
-            if (collision.gameObject.tag == "Axe")
-            {
-                Instantiate(resources[Random.Range(0, resources.Length)], transform.position, Quaternion.identity);
-            }
+            Instantiate(resources[Random.Range(0, resources.Length)], transform.position, Quaternion.identity);
             Instantiate(boxFullPieces, transform.position, Quaternion.identity);
             Destroy(this.gameObject);
+            Debug.Log("xd");
         }
-
-
     }
 }
