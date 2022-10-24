@@ -9,6 +9,7 @@ public class PlayerModel : MonoBehaviour
   
     public float health;
     public float maxHealth;
+    public bool isDeath;
     [HideInInspector]
     public float armor;
 

@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class PlayerHealth : MonoBehaviour
 {
@@ -10,6 +11,8 @@ public class PlayerHealth : MonoBehaviour
     public Text numberLife;
     float time;
 
+
+    public GameObject deathPanel;
 
     // Update is called once per frame
     void Update()
@@ -47,6 +50,8 @@ public class PlayerHealth : MonoBehaviour
         }
         if(mb.health<= 0)
         {
+            mb.isDeath = true;
+            DeathPanel();
             time += 1 * Time.deltaTime;
             if (time >= 1)
             {
@@ -56,5 +61,24 @@ public class PlayerHealth : MonoBehaviour
             Debug.Log("Tiezo");
             
         }
+    }
+
+    public void DeathPanel()
+    {
+        
+        
+        deathPanel.SetActive(true);
+        GameManager.ShowCursor();
+    }
+    public void RestarLevel()
+    {
+        mb.isDeath = false;
+        
+         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        
+        //GameManager.HideCursor();
+        
+        
+
     }
 }

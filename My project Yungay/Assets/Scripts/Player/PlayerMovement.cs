@@ -30,7 +30,11 @@ public class PlayerMovement : MonoBehaviour
         ControlSpeed();
             
         model.actualSpeed = model.rb.velocity.magnitude;
-        Movement();
+        if (GameManager.inPause == false && model.isDeath == false)
+        {
+            Movement();
+        }
+        
     }
     void FixedUpdate()
     {
