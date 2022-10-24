@@ -45,7 +45,7 @@ public class RangeWeapons : MonoBehaviour
         }
         if (Input.GetKeyDown(KeyCode.R) && GameManager.inPause == false)
         {
-            munition.RechargeAmmo();
+            //munition.RechargeAmmo();
         }
     }
     public void StateAmmo()

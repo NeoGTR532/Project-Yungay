@@ -43,7 +43,7 @@ public class Submachine : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.R))
         {
-            munition.RechargeAmmo();
+            //munition.RechargeAmmo();
         }
     }
     public void Shoot()

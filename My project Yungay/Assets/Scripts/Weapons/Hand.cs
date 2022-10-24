@@ -6,7 +6,7 @@ public class Hand : MonoBehaviour
 {
     private Inventory inventory;
     private InventoryDisplay inventoryDisplay;
-    private ItemObject currentItem = null;
+    public static ItemObject currentItem = null;
     private int slotIndex = 0;
     private MeshFilter meshFilter;
     private MeshRenderer meshRenderer;
@@ -14,6 +14,7 @@ public class Hand : MonoBehaviour
     public static bool isAttacking;
     private bool canAttack = false;
     public float force;
+    public static bool canAim = false;
     // Start is called before the first frame update
     void Start()
     {
@@ -22,6 +23,7 @@ public class Hand : MonoBehaviour
         inventory = GameObject.FindGameObjectWithTag("Player").GetComponent<Inventory>();
         inventoryDisplay = InventoryDisplay.instance;//GameObject.FindGameObjectWithTag("UI").GetComponent<InventoryDisplay>();
         anim = GetComponent<Animator>();
+
     }
 
     // Update is called once per frame
@@ -70,14 +72,12 @@ public class Hand : MonoBehaviour
                 EquipmentItem _ = (EquipmentItem)currentItem;
                 meshFilter.sharedMesh = _.itemMesh;
                 meshRenderer.sharedMaterial = _.itemMaterial;
-                //anim.runtimeAnimatorController = _.controller;
                 canAttack = true;
             }
             else
             {
                 meshFilter.sharedMesh = null;
                 meshRenderer.sharedMaterial = null;
-                //anim.runtimeAnimatorController = null;
                 canAttack = false;
             }
         }
@@ -90,10 +90,17 @@ public class Hand : MonoBehaviour
     }
 
     private void UseItem()
-    {   
+    {
+        EquipmentItem _ = (EquipmentItem)currentItem;
+
+        if (_.equipmentType == EquipmentType.Range)
+        {
+            canAim = true;
+        }
+
+
         if (Input.GetMouseButtonDown(0) && !GameManager.inPause)
         {
-            EquipmentItem _ = (EquipmentItem)currentItem;
             if (_.equipmentType == EquipmentType.Melee)
             {
                 EquipmentMelee melee = (EquipmentMelee)currentItem;
@@ -101,6 +108,7 @@ public class Hand : MonoBehaviour
                 isAttacking = true;
             }
         }
+
     }
 
     private void Throw()
@@ -119,13 +127,7 @@ public class Hand : MonoBehaviour
                 inventory.UpdateInventory();
                 inventoryDisplay.UpdateDisplay();
                 canAttack = false;
-                //capCollider.enabled = true;
-                //this.transform.SetParent(null);
-                //modelWeapon.SetActive(false);
-                //anim.enabled = false;
             }
-
-
         }
     }
 }

@@ -14,9 +14,11 @@ public class EquipmentRange : EquipmentItem
     public int chargerBulletsMax;
     [HideInInspector]
     public Vector2 bulletSpreadVariance;
-    [Range(0f, 3f)]
-    public float range;
     public float damage;
+    [Range(1f, 50f), Min(1)]
+    public float range;
+    [Range(1f, 15f), Min(1)]
+    public float zoom;
     public ParticleSystem spark;
     public Sprite look;
     public AudioClip shoot;
