@@ -42,7 +42,7 @@ public class MainMenu : MonoBehaviour
     {
         panelMainMenu.SetActive(false);
         Time.timeScale = 1f;
-        SceneManager.LoadScene("Player Movement Scene");
+        SceneManager.LoadScene("Tutorial");
     }
 
     public void ButtonOptions()

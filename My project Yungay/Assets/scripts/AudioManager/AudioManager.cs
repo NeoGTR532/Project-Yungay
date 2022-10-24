@@ -1,94 +1,142 @@
 using System.Collections;
 using System.Collections.Generic;
-using UnityEngine.Audio;
 using UnityEngine;
+using UnityEngine.UI;
+using System;
 
 public class AudioManager : MonoBehaviour
 {
-    #region Static instance
-    private static AudioManager instance;
-    public static AudioManager Instance
-    {
+    public static AudioManager Instance;
 
-        get
+    public Sounds[] musicSounds, sfxSounds;
+    public AudioSource musicSource, sfxSource;
+
+    public Slider sliderMaster;
+    public float sliderValueMaster;
+    public Image muteImageMaster;
+
+    public Slider sliderMusic;
+    public float sliderValueMusic;
+    public Image muteImageMusic;
+
+    public Slider sliderSfx;
+    public float sliderValueSfx;
+    public Image muteImageSfx;
+    private void Awake()
+    {
+        //if (Instance == null)
+        //{
+        //    Instance = this;
+        //    DontDestroyOnLoad(gameObject);
+        //}
+
+        //else
+        //{
+        //    Destroy(gameObject);
+        //}
+    }
+
+    public void Start()
+    {
+        sliderMaster.value = PlayerPrefs.GetFloat("volumenMaster", 0.5f);
+        AudioListener.volume = sliderMaster.value;
+        CheckMuteMaster();
+
+        sliderMusic.value = PlayerPrefs.GetFloat("volumenMusic", 0.5f);
+        musicSource.volume = sliderMusic.value;
+        CheckMuteMusic();
+
+        sliderSfx.value = PlayerPrefs.GetFloat("volumenSfx", 0.5f);
+        sfxSource.volume = sliderSfx.value;
+        CheckMuteSfx();
+    }
+
+    #region "Menu Opciones"
+    public void ChangeSliderMaster(float value)
+    {
+        sliderValueMaster = value;
+        PlayerPrefs.SetFloat("volumenMaster", sliderValueMaster);
+        AudioListener.volume = sliderValueMaster;
+        CheckMuteMaster();
+    }
+
+    public void ChangeSliderMusic(float value)
+    {
+        sliderValueMusic = value;
+        PlayerPrefs.SetFloat("volumenMusic", sliderValueMusic);
+        musicSource.volume = sliderValueMusic;
+        CheckMuteMusic();
+    }
+
+    public void ChangeSliderSfx(float value)
+    {
+        sliderValueSfx = value;
+        PlayerPrefs.SetFloat("volumenSfx", sliderValueSfx);
+        sfxSource.volume = sliderValueSfx;
+        CheckMuteSfx();
+    }
+
+    public void CheckMuteMaster()
+    {
+        if (sliderValueMaster == 0)
         {
-            if (instance == null)
-            {
-                instance = FindObjectOfType<AudioManager>();
-                if (instance == null)
-                {
-                    instance = new GameObject("Spawn AudioManager", typeof(AudioManager)).GetComponent<AudioManager>();
-                }
-            }
-            return instance;
+            muteImageMaster.enabled = true;
         }
-        set
+        else
         {
-            instance = value;
+            muteImageMaster.enabled = false;
+        }
+    }
+
+    public void CheckMuteMusic()
+    {
+        if (sliderValueMusic == 0)
+        {
+            muteImageMusic.enabled = true;
+        }
+        else
+        {
+            muteImageMusic.enabled = false;
+        }
+    }
+    public void CheckMuteSfx()
+    {
+        if (sliderValueSfx == 0)
+        {
+            muteImageSfx.enabled = true;
+        }
+        else
+        {
+            muteImageSfx.enabled = false;
         }
     }
     #endregion
-
-    public AudioSource musicSource;
-    public AudioSource musicSource2;
-    [SerializeField]
-    private GameObject[] sfxSource;
-    public Sounds[] sounds;
-
-    public float a;
-
-    public void Awake()
+    public void PlayMusic(string name)
     {
-        DontDestroyOnLoad(this.gameObject);
-
-        musicSource = this.gameObject.AddComponent<AudioSource>();
-        musicSource2 = this.gameObject.AddComponent<AudioSource>();
-
-        musicSource.loop = true;
-        musicSource2.loop = true;
-
-      /*  for (int i = 0; i < sfxSource.Length; i++)
+        Sounds s = Array.Find(musicSounds, x => x.name == name);
+        if (s == null)
         {
-            sfxSource[i].AddComponent<AudioSource>();
-            sfxSource[i].GetComponent<AudioSource>().clip = sounds[i];
-            sfxSource[i].GetComponent<AudioSource>().volume = a;
+            Debug.Log("Sound Not Found");
         }
-        */
-    }
 
-    public void Play(string name)
-    {
-        
-    }
-    public GameObject SelecSfx(GameObject source, int indice, float volumen, bool loop, float blend)
-    {
-        source.GetComponent<AudioSource>().clip = sounds[indice].source.clip;
-        source.GetComponent<AudioSource>().volume = volumen;
-        source.GetComponent<AudioSource>().loop = loop;
-        source.GetComponent<AudioSource>().spatialBlend = blend;
-        source.GetComponent<AudioSource>().Play();
-
-        return source;
-
-    }
-    public void ChangeMasterVolumen(float value)
-    {
-        AudioListener.volume = value;
-    }
-    /*
-    public void ChangeVolumenSfx(float value)
-    {/*
-        for (int i = 0; i <= sfxSound.Length; i++)
+        else
         {
-            sfxSource[i].GetComponent<AudioSource>().volume = value;
+            musicSource.clip = s.clip;
+            musicSource.Play();
         }
-        
-        a = value;
     }
-    public void ChangeVolumenMusic(float value)
+
+    public void PlaySFX(string name)
     {
-        musicSource.GetComponent<AudioSource>().volume = value;
-        musicSource2.GetComponent<AudioSource>().volume = value;
+        Sounds s = Array.Find(musicSounds, x => x.name == name);
+        if (s == null)
+        {
+            Debug.Log("Sound Not Found");
+        }
+
+        else
+        {
+            sfxSource.PlayOneShot(s.clip);
+        }
     }
-        */
 }

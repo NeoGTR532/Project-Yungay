@@ -936,12 +936,6 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 8197715922086174063, guid: 21423cde304bdb142a037a6713bd7efc, type: 3}
---- !u!4 &201280649 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: d86d24b7149787d4d967b5dfe7b87869,
-    type: 3}
-  m_PrefabInstance: {fileID: 1673510490}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &205855366 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 6573719555239926175, guid: 21423cde304bdb142a037a6713bd7efc,
@@ -1150,6 +1144,7 @@ MonoBehaviour:
   - Agarra el Papel
   - Lanza el papel (click derecho)
   - Mueve la caja (E)
+  - Sal de la casa(E)
 --- !u!222 &247357244
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -1186,7 +1181,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 201280649}
+  m_Father: {fileID: 543450652060342705}
   m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &255433216
@@ -1922,12 +1917,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 397942265}
   m_CullTransparentMesh: 1
---- !u!1 &424624414 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: d86d24b7149787d4d967b5dfe7b87869,
-    type: 3}
-  m_PrefabInstance: {fileID: 1833740619}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &443191589
 GameObject:
   m_ObjectHideFlags: 0
@@ -2238,25 +2227,19 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 0}
---- !u!4 &505048420 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: d86d24b7149787d4d967b5dfe7b87869,
-    type: 3}
-  m_PrefabInstance: {fileID: 1833740619}
-  m_PrefabAsset: {fileID: 0}
 --- !u!114 &505048423
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 424624414}
+  m_GameObject: {fileID: 919132147632149530}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 7dd5a28b9baa52d448e847b53ef2d228, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  grapplingHook: {fileID: 505048420}
+  grapplingHook: {fileID: 543450651908230816}
   handPos: {fileID: 539091062}
   CamPos: {fileID: 814939186}
   grappleLayer:
@@ -3542,6 +3525,31 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 3711932093077394407, guid: 21423cde304bdb142a037a6713bd7efc, type: 3}
+--- !u!65 &799117807
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 799117799}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.9977179, y: 2.8999999, z: 1}
+  m_Center: {x: -0.42385903, y: 0, z: 0}
+--- !u!114 &799117808
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 799117799}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b44654cc396614b4489e1274d670e72f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &814696338
 GameObject:
   m_ObjectHideFlags: 0
@@ -3718,7 +3726,7 @@ Transform:
   - {fileID: 135680002}
   - {fileID: 443652990}
   - {fileID: 565419570}
-  - {fileID: 505048420}
+  - {fileID: 543450651908230816}
   - {fileID: 1670770840}
   - {fileID: 1877508481}
   - {fileID: 3294122377232304438}
@@ -3742,9 +3750,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   camera: {fileID: 814939193}
-  weapon: {fileID: 11400000, guid: 7fc7c36603de0bb4595b934b1d2db04e, type: 2}
   init: {fileID: 1664249883}
-  limit: {fileID: 704419}
   look: {fileID: 1816754206}
   collision:
     serializedVersion: 2
@@ -3754,7 +3760,6 @@ MonoBehaviour:
     m_Bits: 0
   smooth: 2
   zoom: 0
-  end: {x: 0, y: 0, z: 0}
 --- !u!114 &814939188
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3767,9 +3772,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 842a89ce9354d424e90d7969336f75b8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  weapons: {fileID: 814939189}
-  pistol: {fileID: 1670770844}
-  submachine: {fileID: 4466513125692617306}
+  pistol: {fileID: 0}
+  submachine: {fileID: 0}
   nails: 0
   bullets: 0
   chargerNails: 0
@@ -5518,7 +5522,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 50, y: -30, z: 0}
 --- !u!114 &1222552669
 MonoBehaviour:
@@ -6510,6 +6514,11 @@ PrefabInstance:
     serializedVersion: 2
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 3741045180577099354, guid: fa9ca198d9416704780e5ee1bd7b755c,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5205739719434117978, guid: fa9ca198d9416704780e5ee1bd7b755c,
         type: 3}
       propertyPath: m_Name
@@ -6584,7 +6593,7 @@ PrefabInstance:
         type: 3}
       propertyPath: panelOptions
       value: 
-      objectReference: {fileID: 2050953714}
+      objectReference: {fileID: 0}
     - target: {fileID: 5205739721002314345, guid: fa9ca198d9416704780e5ee1bd7b755c,
         type: 3}
       propertyPath: m_SortingOrder
@@ -7004,7 +7013,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 201280649}
+  m_Father: {fileID: 543450652060342705}
   m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1594961397
@@ -7919,7 +7928,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 201280649}
+  - {fileID: 543450652060342705}
   m_Father: {fileID: 814939186}
   m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -7935,8 +7944,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a19874f6824a8e147b88f0f9c32bb154, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  pick: {fileID: 201280649}
-  grapplingHook: {fileID: 201280649}
+  pick: {fileID: 543450652060342705}
+  grapplingHook: {fileID: 543450652060342705}
   handpos: {fileID: 1877508481}
   Hookeable:
     serializedVersion: 2
@@ -8681,12 +8690,6 @@ MonoBehaviour:
   enemyMask:
     serializedVersion: 2
     m_Bits: 2147483647
---- !u!1 &2050953714 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 5205739719866233444, guid: fa9ca198d9416704780e5ee1bd7b755c,
-    type: 3}
-  m_PrefabInstance: {fileID: 1469395825}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &2053136078
 GameObject:
   m_ObjectHideFlags: 0
@@ -9812,6 +9815,18 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!4 &543450651908230816 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: d86d24b7149787d4d967b5dfe7b87869,
+    type: 3}
+  m_PrefabInstance: {fileID: 1833740619}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &543450652060342705 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: d86d24b7149787d4d967b5dfe7b87869,
+    type: 3}
+  m_PrefabInstance: {fileID: 1673510490}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &558875830413715858
 GameObject:
   m_ObjectHideFlags: 0
@@ -9892,6 +9907,12 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!1 &919132147632149530 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: d86d24b7149787d4d967b5dfe7b87869,
+    type: 3}
+  m_PrefabInstance: {fileID: 1833740619}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &922474773594164910
 Transform:
   m_ObjectHideFlags: 0
@@ -12298,7 +12319,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 15.29344, y: 226.3891, z: 6.584989}
 --- !u!114 &6353185121951297035
 MonoBehaviour:
