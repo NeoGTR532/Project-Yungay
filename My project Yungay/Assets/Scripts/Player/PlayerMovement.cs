@@ -23,7 +23,8 @@ public class PlayerMovement : MonoBehaviour
         model.rb.freezeRotation = true;
         model.states = new Dictionary<PlayerModel.State,PlayerModel.OnState >()
         {
-            { PlayerModel.State.idle, Movement },
+            { PlayerModel.State.idle, Iddle },
+            { PlayerModel.State.move, Movement },
             { PlayerModel.State.walk, Walk },
             { PlayerModel.State.run, Run }
         };
@@ -33,25 +34,37 @@ public class PlayerMovement : MonoBehaviour
     {
         model.states[model.state]?.Invoke();
 
-        hor = Input.GetAxisRaw("Horizontal");
-        ver = Input.GetAxisRaw("Vertical");
 
         ControlSpeed();
             
         model.actualSpeed = model.rb.velocity.magnitude;
-        if (GameManager.inPause == false && model.isDeath == false)
-        {
-           Movement();
-        }
+       
+        Iddle();
+        
         
     }
     void FixedUpdate()
     {
     }
 
+    private void Iddle()
+    {
+        if(GameManager.inPause == false && model.isDeath == false)
+        {
+            hor = Input.GetAxisRaw("Horizontal");
+            ver = Input.GetAxisRaw("Vertical");
+            Movement(); 
+        }
+        else
+        {
+            Debug.Log("wea");
+            move = checkMove;
+        }
+
+    }
+
     private void Movement()
     {
-        
         move = orientation.forward * ver + orientation.right * hor;
         if (move == checkMove)
         {

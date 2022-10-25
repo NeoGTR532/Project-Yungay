@@ -9,6 +9,7 @@ public class GameManager : MonoBehaviour
     public GameObject panelOptions;
     private string sceneName;
     public static bool inPause = false;
+    public bool inPase = false;
     public static string actualScene;
 
     public bool pause;
@@ -23,6 +24,7 @@ public class GameManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        inPase = inPause;
         Scene currentScene = SceneManager.GetActiveScene();
         string sceneName = currentScene.name;
 
