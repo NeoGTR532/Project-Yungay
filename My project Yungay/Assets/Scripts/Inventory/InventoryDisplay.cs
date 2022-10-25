@@ -8,7 +8,7 @@ public class InventoryDisplay : MonoBehaviour
 {
     public Inventory inventory;
     [SerializeField] public List<GameObject> slotsUI = new List<GameObject>();
-    private bool isOpen;
+    public static bool isOpen;
     [SerializeField] private GameObject inventaryPanel, craftPanel;
     private GameObject imageSlots;
     public List<CraftDisplay> craftDisplayItems = new List<CraftDisplay>();

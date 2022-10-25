@@ -17,12 +17,12 @@ MonoBehaviour:
   type: 2
   maxStack: 1
   description: 
+  itemName: Pistol
   itemMesh: {fileID: -8163526336849700479, guid: f6d75c444dfaa9444873c47a969870c0,
     type: 3}
   itemMaterial: {fileID: -3661639628750336703, guid: f761e9b0126548f4fb296c7f871b856a,
     type: 3}
   equipmentType: 1
-  weaponName: Pistol
   lastShootTime: 0
   shootDelay: 1
   bulletSpreadVarianceDis: 0

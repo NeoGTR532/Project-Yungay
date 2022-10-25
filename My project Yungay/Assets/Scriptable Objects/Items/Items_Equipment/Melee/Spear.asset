@@ -17,10 +17,12 @@ MonoBehaviour:
   type: 2
   maxStack: 1
   description: 
+  itemName: Spear
   itemMesh: {fileID: 4068373912626513877, guid: 96deed3817e1a404e93f2639e243b378,
     type: 3}
   itemMaterial: {fileID: -3661639628750336703, guid: f761e9b0126548f4fb296c7f871b856a,
     type: 3}
+  equipmentType: 0
   force: 0
   damage: 10
   animation: {fileID: 7400000, guid: dec97139030c9ad408a779dab06f92e6, type: 2}

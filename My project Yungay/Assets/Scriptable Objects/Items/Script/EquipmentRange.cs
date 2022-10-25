@@ -5,7 +5,6 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "New Equipment Range Item", menuName = "Inventory System/Items/Equipment/Range")]
 public class EquipmentRange : EquipmentItem
 {
-    public string weaponName;
     [HideInInspector]
     public float lastShootTime;
     public float shootDelay;

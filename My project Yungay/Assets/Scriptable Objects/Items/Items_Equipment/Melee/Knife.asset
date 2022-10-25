@@ -17,10 +17,12 @@ MonoBehaviour:
   type: 2
   maxStack: 1
   description: 
+  itemName: Knife
   itemMesh: {fileID: 5302568919011541938, guid: 974b1587f41fd0a4681a0721d3724de3,
     type: 3}
   itemMaterial: {fileID: -3661639628750336703, guid: f761e9b0126548f4fb296c7f871b856a,
     type: 3}
+  equipmentType: 0
   force: 0
   damage: 5
   animation: {fileID: 7400000, guid: 80f299b92008cdc4db1ea8a5f0a1d1ba, type: 2}

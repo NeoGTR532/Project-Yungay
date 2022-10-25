@@ -4,40 +4,46 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
-public class CraftDisplay : MonoBehaviour, IPointerClickHandler
+public class CraftDisplay : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
 {
     public Inventory inventory;
     public InventoryDisplay inventoryDisplay;
     public CraftRecipes recipe;
-    private Image image;
-    public bool canCraft;
-
-    
-    public void OnPointerClick(PointerEventData eventData)
-    {
-        if (canCraft)
-        {
-            inventory.CraftItem(recipe);
-            inventory.UpdateInventory();
-            inventoryDisplay.UpdateDisplay();
-            CheckIsCraftable();
-        }
-    }
-
+    private Image image, imageChild;
+    private bool canCraft, isClick;
+    private Coroutine coroutine;
     private void Awake()
     {
         image = GetComponent<Image>();
+        image.color = new Color32(255, 255, 255, 100);
+        imageChild = transform.GetChild(0).GetComponent<Image>();
+        imageChild.fillAmount = 0f;
     }
 
-    private void Start()
+
+    public void OnPointerDown(PointerEventData eventData)
     {
-        image.color = new Color32(255, 255, 255, 100);
+        if (canCraft)
+        {
+            StartCoroutine(ChargeImage());
+            isClick = true;
+        }
+    }
+
+    public void OnPointerUp(PointerEventData eventData)
+    {
+        if (coroutine != null)
+        {
+            StopCoroutine(coroutine);
+        }
+        imageChild.fillAmount = 0f;
+        isClick = false;
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (canCraft)
+        if (canCraft && !isClick)
         {
             image.color = new Color32(255, 255, 255, 255);
         }
@@ -47,18 +53,55 @@ public class CraftDisplay : MonoBehaviour, IPointerClickHandler
         }
     }
 
+    //public void ClickImage()
+    //{
+    //    if (canCraft)
+    //    {
+    //        coroutine = StartCoroutine(ChargeImage());
+    //        isClick = true;
+    //    }
+    //}
+
+    //public void UpClick()
+    //{
+    //    if (coroutine != null)
+    //    {
+    //        StopCoroutine(coroutine);
+    //    }
+    //    imageChild.fillAmount = 0f;
+    //    isClick = false;
+    //}
+
     public void CheckIsCraftable()
     {
-        bool hasItems = inventory.CheckItems(recipe);
-
-        if (hasItems)
+        if (inventory.CheckItems(recipe))
         {
-            canCraft = true;
+            if (inventory.CheckItem(recipe.result))
+            {
+                canCraft = false;
+            }
+            else
+            {
+                canCraft = true;
+            }
         }
         else
         {
             canCraft = false;
-            
         }
+    }
+
+    public IEnumerator ChargeImage()
+    {
+        while (imageChild.fillAmount < 1f)
+        {
+            imageChild.fillAmount += 0.01f;
+            yield return new WaitForEndOfFrame();
+        }
+        imageChild.fillAmount = 1f;
+        inventory.CraftItem(recipe);
+        inventory.UpdateInventory();
+        inventoryDisplay.UpdateCraftDisplay();
+        CheckIsCraftable();
     }
 }

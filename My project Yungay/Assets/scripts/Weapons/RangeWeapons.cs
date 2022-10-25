@@ -61,7 +61,7 @@ public class RangeWeapons : MonoBehaviour
         RaycastHit hit;
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
         EquipmentRange _ = (EquipmentRange)item;
-        switch(_.name)
+        switch(_.itemName)
         {
             case "Pistol":
                 if (munition.thereNails || munition.thereBullets)

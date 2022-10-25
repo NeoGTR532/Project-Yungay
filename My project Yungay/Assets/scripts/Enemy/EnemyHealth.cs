@@ -28,18 +28,10 @@ public class EnemyHealth : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("Axe"))
+        EquipmentMelee _ = (EquipmentMelee)Hand.currentItem;
+        if (other.CompareTag("Axe") || other.CompareTag("Knife") || other.CompareTag("Spear"))
         {
-            lifeE(other.GetComponent<MeleeWeapon>().damage);
-        }
-
-        if (other.CompareTag("Knife"))
-        {
-            lifeE(other.GetComponent<MeleeWeapon>().damage);
-        }
-        if (other.CompareTag("Spear"))
-        {
-            lifeE(other.GetComponent<MeleeWeapon>().damage);
+            lifeE(_.damage);
         }
     }
 }

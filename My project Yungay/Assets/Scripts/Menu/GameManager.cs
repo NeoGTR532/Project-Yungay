@@ -36,7 +36,7 @@ public class GameManager : MonoBehaviour
                 panelPause.SetActive(true);
                 inPause = true;
             }
-            else if (sceneName != "Menu" && inPause && !panelOptions.activeSelf)
+            else if (sceneName != "Menu" && inPause && !panelOptions.activeSelf && !InventoryDisplay.isOpen)
             {
                 HideCursor();
                 Time.timeScale = 1f;

@@ -10,6 +10,7 @@ public enum EquipmentType
 //[CreateAssetMenu(fileName = "New Equipment Item", menuName = "Inventory System/Items/Equipment")]
 public class EquipmentItem : ItemObject
 {
+    public string itemName;
     public Mesh itemMesh;
     public Material itemMaterial;
     [HideInInspector]public EquipmentType equipmentType;

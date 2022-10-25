@@ -31,19 +31,21 @@ public class Window : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        EventManager.current.StartBreakingWindowEvent(windowId);
-
-    }
-
-    private void OnCollisionEnter(Collision collision)
-    {
-        if (collision.gameObject.tag != "Player")
+        if (other.CompareTag("Axe") || other.CompareTag("Spear"))
         {
-            BreakWindow(windowId);
+            EventManager.current.StartBreakingWindowEvent(windowId);
         }
-
-
     }
+
+    //private void OnCollisionEnter(Collision collision)
+    //{
+    //    if (collision.gameObject.tag != "Player")
+    //    {
+    //        BreakWindow(windowId);
+    //    }
+
+
+    //}
 
     private void OnDestroy()
     {

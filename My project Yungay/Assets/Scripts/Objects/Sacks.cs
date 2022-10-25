@@ -19,9 +19,8 @@ public class Sacks : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.tag == "Knife")
+        if (other.CompareTag("Knife"))
         {
-            Debug.Log("xD");
             Instantiate(resources[Random.Range(0, resources.Length)], transform.position, Quaternion.identity);
             Destroy(this.gameObject);
         }
