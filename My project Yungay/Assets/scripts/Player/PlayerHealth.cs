@@ -58,6 +58,7 @@ public class PlayerHealth : MonoBehaviour
                 mb.checkpoint.GetComponent<DataChekpoint>().ReturnPoint();
                 time = 0;
             }
+            mb.state = PlayerModel.State.death;
             Debug.Log("Tiezo");
             
         }

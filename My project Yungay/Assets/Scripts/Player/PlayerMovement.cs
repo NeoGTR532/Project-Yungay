@@ -15,15 +15,24 @@ public class PlayerMovement : MonoBehaviour
 
     public Animator anim;
 
-    Vector3 move;
+    public Vector3 move;
+    Vector3 checkMove = new Vector3(0, 0, 0);
     // Start is called before the first frame update
     void Start()
     {
         model.rb.freezeRotation = true;
+        model.states = new Dictionary<PlayerModel.State,PlayerModel.OnState >()
+        {
+            { PlayerModel.State.idle, Movement },
+            { PlayerModel.State.walk, Walk },
+            { PlayerModel.State.run, Run }
+        };
     }
 
     private void Update()
     {
+        model.states[model.state]?.Invoke();
+
         hor = Input.GetAxisRaw("Horizontal");
         ver = Input.GetAxisRaw("Vertical");
 
@@ -32,59 +41,70 @@ public class PlayerMovement : MonoBehaviour
         model.actualSpeed = model.rb.velocity.magnitude;
         if (GameManager.inPause == false && model.isDeath == false)
         {
-            Movement();
+           Movement();
         }
         
     }
     void FixedUpdate()
     {
-        
-        
     }
 
     private void Movement()
     {
         
         move = orientation.forward * ver + orientation.right * hor;
-        
-        if (PlayerGroundCheck.grounded/*playerGroundCheck.grounded*/)
+        if (move == checkMove)
         {
-            
-            if (Input.GetKey(KeyCode.LeftShift) && model.staActual >=0 && !model.isCrouching)
+            model.state = PlayerModel.State.idle;
+            if (hor == 0 || ver == 0)
             {
-                Run();
-            }
-            
-            else
-            {
-                Walk();
+                model.sourceSound.SetActive(false);
             }
         }
-
-        else if (!PlayerGroundCheck.grounded/*playerGroundCheck.grounded*/)
+        else if (move != checkMove)
         {
-            model.rb.AddForce(move.normalized * model.speedWalk * 10f * airMultiplier , ForceMode.Force);
+            if (PlayerGroundCheck.grounded/*playerGroundCheck.grounded*/)
+            {
 
-        }
+                if (Input.GetKey(KeyCode.LeftShift) && model.staActual >= 0 && !model.isCrouching)
+                {
+                    //Run();
+                    model.state = PlayerModel.State.run;
+                }
 
-        if (hor != 0 || ver != 0)
-        {
-           model.sourceSound.SetActive(true);
-        }
-        else
-        {
-           model.sourceSound.SetActive(false);
-        }
+                else
+                {
+                    // Walk();
+                    model.state = PlayerModel.State.walk;
+                }
+            }
 
+            else if (!PlayerGroundCheck.grounded/*playerGroundCheck.grounded*/)
+            {
+                model.rb.AddForce(move.normalized * model.speedWalk * 10f * airMultiplier, ForceMode.Force);
+
+            }
+
+            if (hor != 0 || ver != 0)
+            {
+                model.sourceSound.SetActive(true);
+            }
+        }
     }
 
     private void Walk()
     {
+        model.state = PlayerModel.State.walk;
         model.rb.AddForce(move.normalized * model.speedWalk * 10f, ForceMode.Force);
         model.isRunning = false;
+        if(model.actualSpeed < model.speedWalk)
+        {
+            model.state = PlayerModel.State.idle;
+        }
     }
     private void Run()
     {
+        model.state = PlayerModel.State.run;
         model.rb.AddForce(move.normalized * model.speedRun * 10f, ForceMode.Force);
         if (model.actualSpeed >=4.5)
         {
@@ -93,6 +113,7 @@ public class PlayerMovement : MonoBehaviour
         else
         {
             model.isRunning = false;
+            model.state = PlayerModel.State.idle;
         }
         
         

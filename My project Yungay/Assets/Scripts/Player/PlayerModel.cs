@@ -5,6 +5,16 @@ using UnityEngine.UI;
 
 public class PlayerModel : MonoBehaviour
 {
+    public enum State
+    {
+        death, idle, walk, run,jump, jumping
+    }
+
+    [Header("State")]
+    public State state = State.idle;
+    public delegate void OnState();
+    public Dictionary<State, OnState> states;
+
     [Header("Life")]
   
     public float health;
@@ -64,6 +74,7 @@ public class PlayerModel : MonoBehaviour
         cap = GetComponent<CapsuleCollider>();
         rb = GetComponent<Rigidbody>();
         playerTransform = GetComponent<Transform>();
+        state = State.idle;
     }
 
     private void OnTriggerEnter(Collider other)
