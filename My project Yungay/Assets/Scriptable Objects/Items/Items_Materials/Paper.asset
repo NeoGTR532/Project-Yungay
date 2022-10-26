@@ -17,9 +17,9 @@ MonoBehaviour:
   type: 2
   maxStack: 1
   description: 
-  damage: 0
+  itemName: Paper
   itemMesh: {fileID: -2432090755550338912, guid: 56dd1b7cb1dac2a4a948f2ad05d35c9f,
     type: 3}
   itemMaterial: {fileID: -3033667219593020291, guid: 56dd1b7cb1dac2a4a948f2ad05d35c9f,
     type: 3}
-  controller: {fileID: 0}
+  equipmentType: 0

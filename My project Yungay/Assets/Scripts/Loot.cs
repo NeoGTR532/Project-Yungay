@@ -24,10 +24,7 @@ public class Loot : MonoBehaviour
 
     private void Update()
     {
-        if (!isRandom)
-        {
-            Delete();
-        }
+
     }
 
     public void Delete()
@@ -44,6 +41,23 @@ public class Loot : MonoBehaviour
         if (count == loot.Count)
         {
             Destroy(GetComponent<Loot>());
+        }
+    }
+
+    public void DeleteObject()
+    {
+        int count = 0;
+        for (int i = 0; i < loot.Count; i++)
+        {
+            if (loot[i].amount == 0)
+            {
+                count++;
+            }
+        }
+
+        if (count == loot.Count)
+        {
+            Destroy(gameObject);
         }
     }
 }

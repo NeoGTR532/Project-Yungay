@@ -45,13 +45,13 @@ public class Hand : MonoBehaviour
             UseItem();
             Throw();
             ChangeMunition();
-            UpdateText();
 
             if (Input.GetKeyDown(KeyCode.R))
             {
                 muni.ReloadMunition(currentMunition);
             }
         }
+        UpdateText();
     }
 
     private void ChangeItem()
@@ -80,8 +80,18 @@ public class Hand : MonoBehaviour
 
     private void UpdateText()
     {
-        munitionImage.sprite = currentMunition.itemSprite;
-        ammotext.text = GetCharge(currentMunition).ToString() + " / " + inventory.CheckAmount(currentMunition);
+        if (canAim)
+        {
+            munitionImage.gameObject.SetActive(true);
+            ammotext.gameObject.SetActive(true);
+            munitionImage.sprite = currentMunition.itemSprite;
+            ammotext.text = GetCharge(currentMunition).ToString() + " / " + inventory.CheckAmount(currentMunition);
+        }
+        else
+        {
+            munitionImage.gameObject.SetActive(false);
+            ammotext.gameObject.SetActive(false);
+        }
     }
 
     private int GetCharge(ItemObject item)
@@ -171,8 +181,11 @@ public class Hand : MonoBehaviour
             if (_.equipmentType == EquipmentType.Melee)
             {
                 EquipmentMelee melee = (EquipmentMelee)currentItem;
-                anim.Play(melee.animation.name);
-                isAttacking = true;
+                if (melee.animation != null)
+                {
+                    anim.Play(melee.animation.name);
+                    isAttacking = true;
+                }
             }
         }
 
