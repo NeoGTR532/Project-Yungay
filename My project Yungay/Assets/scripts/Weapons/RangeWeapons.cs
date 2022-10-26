@@ -145,23 +145,26 @@ public class RangeWeapons : MonoBehaviour
         RaycastHit hit;
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
 
-        if (Physics.Raycast(ray, out hit, _.range, enemyMask))
+        if (lastShootTime + _.shootDelay < Time.time)
         {
-            TrailRenderer trail = Instantiate(bulletTrail, beggin.transform.position, Quaternion.identity);
-            StartCoroutine(SpawnTrail(trail, hit.point));
-            if (hit.collider.CompareTag("Enemy"))
+            if (Physics.Raycast(ray, out hit, _.range, enemyMask))
             {
-                hit.collider.gameObject.GetComponent<EnemyHealth>().lifeE(_.damage);
+                TrailRenderer trail = Instantiate(bulletTrail, beggin.transform.position, Quaternion.identity);
+                StartCoroutine(SpawnTrail(trail, hit.point));
+                if (hit.collider.CompareTag("Enemy"))
+                {
+                    hit.collider.gameObject.GetComponent<EnemyHealth>().lifeE(_.damage);
+                }
+                lastShootTime = Time.time;
             }
-            lastShootTime = Time.time;
+            else
+            {
+                TrailRenderer trail = Instantiate(bulletTrail, beggin.transform.position, Quaternion.identity);
+                StartCoroutine(SpawnTrail(trail, cam.transform.forward * _.range));
+                lastShootTime = Time.time;
+            }
+            munition.RestMunition(hand.currentMunition);
         }
-        else
-        {
-            TrailRenderer trail = Instantiate(bulletTrail, beggin.transform.position, Quaternion.identity);
-            StartCoroutine(SpawnTrail(trail, cam.transform.forward * _.range));
-            lastShootTime = Time.time;
-        }
-        munition.RestMunition(hand.currentMunition);
     }
 
     private Vector3 GetDirection()
