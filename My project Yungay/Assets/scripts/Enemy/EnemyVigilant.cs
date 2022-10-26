@@ -17,6 +17,7 @@ public class EnemyVigilant : MonoBehaviour
     public bool Near;
     public bool DetectPlayer;
     public float Timer;
+    public  EnemyHealth dead;
     
     
     void Start()
@@ -28,20 +29,26 @@ public class EnemyVigilant : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Weapon != null)
-        {
-            ToPlayerWithWeapon();
-            if (DetectPlayer)
-            {
-                Shoot();
-            }
-        }
-        else
+       if (!dead.dead)
         {
 
-            ToPlayWithouthWeapon();
-            
+            if (Weapon != null)
+            {
+                ToPlayerWithWeapon();
+                if (DetectPlayer)
+                {
+                    Shoot();
+                }
+            }
+            else
+            {
+
+                ToPlayWithouthWeapon();
+
+            }
         }
+        
+      
 
 
 

@@ -15,6 +15,8 @@ public class EnemyPatrol : MonoBehaviour
     public Animator anim;
     public NavMeshAgent Agent;
     public float Timer;
+    public EnemyHealth Dead;
+    
 
 
     public Transform[] wayPoints;
@@ -39,21 +41,28 @@ public class EnemyPatrol : MonoBehaviour
 
     // Update is called once per frame
     void Update()
-    {
-        
-       if (!DetectPlayer)
-        {
-            if (Vector3.Distance(transform.position, newpoint) < 0.1f)
-            {
-                UpdateDestination();
-                IterateWayPointIndex();
 
+    {
+        if (!Dead.dead)
+        {
+            if (!DetectPlayer)
+            {
+                if (Vector3.Distance(transform.position, newpoint) < 0.1f)
+                {
+                    UpdateDestination();
+                    IterateWayPointIndex();
+
+                }
+            }
+            else
+            {
+                Shoot();
             }
         }
-        else
-        {
-            Shoot();
-        }
+            
+        
+        
+       
 
 
         ToPlayer();

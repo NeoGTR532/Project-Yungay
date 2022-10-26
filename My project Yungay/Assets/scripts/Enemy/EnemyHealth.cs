@@ -6,23 +6,34 @@ public class EnemyHealth : MonoBehaviour
 {
     public float life;
     public GameObject[] resources;
+    private Animator anim;
+    public  float timer;
+    public bool dead;
     void Start()
     {
+        anim = GetComponent<Animator>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+        if (dead)
+        {
+            timer += Time.deltaTime;
+            if (timer > 5f)
+            {
+                Destroy(gameObject);
+            }
+        }
     }
     public void lifeE(float valor)
     {
         life-=valor;
-        if (life <= 0)
+        if (life <= 0 && !dead)
         {
-            Destroy(gameObject);
-            
-            Instantiate(resources[Random.Range(0, resources.Length)], transform.position, Quaternion.identity);
+            dead = true;
+            anim.Play("Dead");
+ 
         }
     }
 

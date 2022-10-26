@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.18028352, g: 0.22571376, b: 0.30692244, a: 1}
+  m_IndirectSpecularColor: {r: 0.18028378, g: 0.22571412, b: 0.30692285, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -1832,7 +1832,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 252283178}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 15.32, y: -0.007, z: -10.64}
+  m_LocalPosition: {x: 11.62, y: -0.007, z: -10.64}
   m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -4382,7 +4382,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 431920586}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 16.24, y: -0.007, z: -11.07}
+  m_LocalPosition: {x: 13.42, y: -0.007, z: -11.07}
   m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -4933,6 +4933,8 @@ MonoBehaviour:
   life: 5
   resources:
   - {fileID: 4837104770637594162, guid: ebdd4bd39d5a20342a6105aca0e03ec8, type: 3}
+  timer: 0
+  dead: 0
 --- !u!1 &524417621
 GameObject:
   m_ObjectHideFlags: 0
@@ -10456,6 +10458,8 @@ MonoBehaviour:
   life: 5
   resources:
   - {fileID: 4837104770637594162, guid: ebdd4bd39d5a20342a6105aca0e03ec8, type: 3}
+  timer: 0
+  dead: 0
 --- !u!114 &1137636715
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -12836,6 +12840,7 @@ MonoBehaviour:
   orientation: {fileID: 1911402286}
   airMultiplier: 0.4
   anim: {fileID: 0}
+  move: {x: 0, y: 0, z: 0}
 --- !u!114 &1414573069
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -12848,6 +12853,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fc3855736b6ff66458522c0474f9a302, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  state: 1
   health: 10
   maxHealth: 0
   isDeath: 0
@@ -13450,6 +13456,11 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 3741045179470426404, guid: fa9ca198d9416704780e5ee1bd7b755c,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3741045180577099354, guid: fa9ca198d9416704780e5ee1bd7b755c,
         type: 3}
       propertyPath: m_IsActive
       value: 0
@@ -15760,6 +15771,8 @@ MonoBehaviour:
   life: 5
   resources:
   - {fileID: 4837104770637594162, guid: ebdd4bd39d5a20342a6105aca0e03ec8, type: 3}
+  timer: 0
+  dead: 0
 --- !u!114 &1735237086
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -15871,6 +15884,7 @@ MonoBehaviour:
   Near: 0
   DetectPlayer: 0
   Timer: 0
+  dead: {fileID: 0}
 --- !u!4 &1771248735 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -597670272443537037, guid: 6738e33667670dc4abac69631c59a9ef,
@@ -17349,6 +17363,8 @@ MonoBehaviour:
   life: 5
   resources:
   - {fileID: 4837104770637594162, guid: ebdd4bd39d5a20342a6105aca0e03ec8, type: 3}
+  timer: 0
+  dead: 0
 --- !u!114 &1922625189
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -18723,9 +18739,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 637b9d07d3061df4686383b655698b41, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  life: 5
+  life: 50
   resources:
   - {fileID: 4837104770637594162, guid: ebdd4bd39d5a20342a6105aca0e03ec8, type: 3}
+  timer: 0
+  dead: 0
 --- !u!95 &2063111827
 Animator:
   serializedVersion: 4
@@ -19368,6 +19386,8 @@ MonoBehaviour:
   life: 5
   resources:
   - {fileID: 4837104770637594162, guid: ebdd4bd39d5a20342a6105aca0e03ec8, type: 3}
+  timer: 0
+  dead: 0
 --- !u!114 &2088009197
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -24135,6 +24155,7 @@ MonoBehaviour:
   orientation: {fileID: 618307592}
   airMultiplier: 0.4
   anim: {fileID: 0}
+  move: {x: 0, y: 0, z: 0}
 --- !u!114 &8949097853262754767
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -24147,6 +24168,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fc3855736b6ff66458522c0474f9a302, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  state: 1
   health: 100
   maxHealth: 100
   isDeath: 0
