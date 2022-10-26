@@ -11678,7 +11678,7 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 6738e33667670dc4abac69631c59a9ef,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 6738e33667670dc4abac69631c59a9ef,
         type: 3}
@@ -15884,7 +15884,7 @@ MonoBehaviour:
   Near: 0
   DetectPlayer: 0
   Timer: 0
-  dead: {fileID: 0}
+  dead: {fileID: 1735237085}
 --- !u!4 &1771248735 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -597670272443537037, guid: 6738e33667670dc4abac69631c59a9ef,
@@ -18806,6 +18806,7 @@ MonoBehaviour:
   anim: {fileID: 0}
   Agent: {fileID: 0}
   Timer: 0
+  Dead: {fileID: 0}
   wayPoints:
   - {fileID: 914114022}
   - {fileID: 959510765}
