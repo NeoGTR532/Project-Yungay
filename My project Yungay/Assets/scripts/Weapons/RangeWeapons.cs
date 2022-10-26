@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class RangeWeapons : MonoBehaviour
 {
+    private Hand hand;
     public Camera cam;
     public GameObject beggin;
 
@@ -29,7 +30,8 @@ public class RangeWeapons : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        hand = GetComponent<Hand>();
+        munition = GetComponent<Munition>();
     }
 
     // Update is called once per frame
@@ -37,17 +39,17 @@ public class RangeWeapons : MonoBehaviour
     {
         if (Hand.canAim)
         {
-            EquipmentRange _ = (EquipmentRange)Hand.currentItem;
             if (Input.GetMouseButton(0) && !GameManager.inPause)
             {
-                Shoot(Hand.currentItem);
+                if (munition.CheckAmmo(hand.currentMunition))
+                {
+                    //Shoot(Hand.currentItem);
+                    Disparo(Hand.currentItem);
+                }
             }
         }
     }
-    public void StateAmmo()
-    {
-        ammoPistol = !ammoPistol;
-    }
+
     public void Shoot(ItemObject item)
     {
         RaycastHit hit;
@@ -136,6 +138,32 @@ public class RangeWeapons : MonoBehaviour
         }
         
     }
+
+    public void Disparo(ItemObject item)
+    {
+        EquipmentRange _ = (EquipmentRange)Hand.currentItem;
+        RaycastHit hit;
+        Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+
+        if (Physics.Raycast(ray, out hit, _.range, enemyMask))
+        {
+            TrailRenderer trail = Instantiate(bulletTrail, beggin.transform.position, Quaternion.identity);
+            StartCoroutine(SpawnTrail(trail, hit.point));
+            if (hit.collider.CompareTag("Enemy"))
+            {
+                hit.collider.gameObject.GetComponent<EnemyHealth>().lifeE(_.damage);
+            }
+            lastShootTime = Time.time;
+        }
+        else
+        {
+            TrailRenderer trail = Instantiate(bulletTrail, beggin.transform.position, Quaternion.identity);
+            StartCoroutine(SpawnTrail(trail, cam.transform.forward * _.range));
+            lastShootTime = Time.time;
+        }
+        munition.RestMunition(hand.currentMunition);
+    }
+
     private Vector3 GetDirection()
     {
         Vector3 direction = cam.transform.forward;

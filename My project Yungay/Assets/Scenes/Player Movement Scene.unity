@@ -2315,7 +2315,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cam: {fileID: 814939193}
   beggin: {fileID: 814939185}
-  bulletTrail: {fileID: 0}
+  bulletTrail: {fileID: 2674764959141256313, guid: 4d6a9de6ae7201d4890431ff4d03a33f,
+    type: 3}
   munition: {fileID: 274654654}
   lockWeapons: 0
   ammoPistol: 0

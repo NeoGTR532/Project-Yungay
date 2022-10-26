@@ -34,11 +34,11 @@ public class Munition : MonoBehaviour
     {
         if (Hand.canAim)
         {
-            textNails.text = chargerNails.ToString();
-            CheckAmmo();
-            hasItemBullets = inventory.CheckItem(bulletsItem);
-            hasItemNails = inventory.CheckItem(nailsItem);
-            InventoryAmmo();
+            //textNails.text = chargerNails.ToString();
+            //CheckAmmo();
+            //hasItemBullets = inventory.CheckItem(bulletsItem);
+            //hasItemNails = inventory.CheckItem(nailsItem);
+            //InventoryAmmo();
         }
     }
 
@@ -284,38 +284,52 @@ public class Munition : MonoBehaviour
         }
     }
 
-    public void CheckAmmo()
+    public bool CheckAmmo(ItemObject item)
     {
-        EquipmentRange _ = (EquipmentRange)Hand.currentItem;
+        bool haveMunition = false;
 
-        if (Hand.currentItem == pistol)
+        for (int i = 0; i < hand.weaponSlots.Count; i++)
         {
-            for (int i = chargerBullets; i > _.chargerBulletsMax; i--)
+            if (hand.weaponSlots[i].weapon == Hand.currentItem)
             {
-                chargerBullets--;
-                inventory.ReturnItem(bulletsItem, 1);
-                inventoryDisplay.UpdateDisplay();
+                for (int j = 0; j < hand.weaponSlots[i].munitions.Count; j++)
+                {
+                    if (hand.weaponSlots[i].munitions[j].munition == item)
+                    {
+                        if (hand.weaponSlots[i].munitions[j].charge > 0)
+                        {
+                            haveMunition = true;
+                        }
+                    }
+                    break;
+                }
+
+                break;
             }
         }
 
 
+        return haveMunition;
 
-        if (chargerNails >= 1)
-        {
-            thereNails = true;
-        }
-        else
-        {
-            thereNails = false;
-        }
-        if (chargerBullets >= 1)
-        {
-            thereBullets = true;
-        }
-        else
-        {
-            thereBullets = false;
-        }
+    }
 
+    public void RestMunition(ItemObject item)
+    {
+        for (int i = 0; i < hand.weaponSlots.Count; i++)
+        {
+            if (hand.weaponSlots[i].weapon == Hand.currentItem)
+            {
+                for (int j = 0; j < hand.weaponSlots[i].munitions.Count; j++)
+                {
+                    if (hand.weaponSlots[i].munitions[j].munition == item)
+                    {
+                        hand.weaponSlots[i].munitions[j].charge--;
+                    }
+                    break;
+                }
+
+                break;
+            }
+        }
     }
 }
