@@ -32,13 +32,13 @@ public class InventoryDisplay : MonoBehaviour
         {
             OpenDisplay();
             GameManager.ShowCursor();
-            Time.timeScale = 0f;
 
         }
-        else if (Input.GetKeyDown(KeyCode.I) && !GameManager.inPause)
+        else if (Input.GetKeyDown(KeyCode.I) || Input.GetKeyDown(KeyCode.Escape) && isOpen)
         {
             CloseDisplay();
             GameManager.HideCursor();
+            GameManager.inPause = false;
             Time.timeScale = 1f;
         }
     }
@@ -54,7 +54,14 @@ public class InventoryDisplay : MonoBehaviour
                     slotsUI[i].GetComponent<Slot>().slot = inventory.slots[i];
                     slotsUI[i].GetComponent<Image>().sprite = inventory.slots[i].item.itemSprite;
                     TMP_Text text = slotsUI[i].transform.GetChild(0).GetComponent<TMP_Text>();
-                    text.text = inventory.slots[i].amount.ToString();
+                    if (inventory.slots[i].item.maxStack != 1)
+                    {
+                        text.text = inventory.slots[i].amount.ToString();
+                    }
+                    else
+                    {
+                        text.text = "";
+                    }
                 }
                 else
                 {

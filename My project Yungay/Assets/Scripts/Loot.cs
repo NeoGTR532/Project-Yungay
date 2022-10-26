@@ -14,7 +14,7 @@ public class Loot : MonoBehaviour
         }       
     }
 
-    private void RandomAmount()
+    public void RandomAmount()
     {
         for (int i = 0; i < loot.Count; i++)
         {
@@ -30,7 +30,7 @@ public class Loot : MonoBehaviour
         }
     }
 
-    private void Delete()
+    public void Delete()
     {
         int count = 0;
         for (int i = 0; i < loot.Count; i++)
@@ -43,7 +43,7 @@ public class Loot : MonoBehaviour
 
         if (count == loot.Count)
         {
-            Destroy(gameObject);
+            Destroy(GetComponent<Loot>());
         }
     }
 }

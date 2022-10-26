@@ -28,7 +28,7 @@ public class GameManager : MonoBehaviour
         Scene currentScene = SceneManager.GetActiveScene();
         string sceneName = currentScene.name;
 
-        if (Input.GetKeyDown(KeyCode.Escape))
+        if (Input.GetKeyDown(KeyCode.Escape) && !InventoryDisplay.isOpen)
         {
             if (sceneName != "Menu" && inPause == false)
             {
@@ -38,7 +38,7 @@ public class GameManager : MonoBehaviour
                 panelPause.SetActive(true);
                 inPause = true;
             }
-            else if (sceneName != "Menu" && inPause && !panelOptions.activeSelf && !InventoryDisplay.isOpen)
+            else if (sceneName != "Menu" && inPause && !panelOptions.activeSelf)
             {
                 HideCursor();
                 Time.timeScale = 1f;
@@ -55,8 +55,16 @@ public class GameManager : MonoBehaviour
             {
                 ShowCursor();
             }
-            
+
         }
+
+        if (InventoryDisplay.isOpen)
+        {
+            Time.timeScale = 0f;
+            inPause = true;
+        }
+
+        
 
         actualScene = sceneName;
 

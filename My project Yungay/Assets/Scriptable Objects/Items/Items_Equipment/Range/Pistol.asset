@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Pistol
   m_EditorClassIdentifier: 
   prefab: {fileID: 919132149155446097, guid: f6d75c444dfaa9444873c47a969870c0, type: 3}
-  itemSprite: {fileID: 21300000, guid: d9574d01d1dadc8409610b4499a3832d, type: 3}
+  itemSprite: {fileID: 21300000, guid: 730c3b9214c9cf945a0a75b014bbcf27, type: 3}
   type: 2
   maxStack: 1
   description: 
@@ -26,6 +26,11 @@ MonoBehaviour:
   lastShootTime: 0
   shootDelay: 1
   bulletSpreadVarianceDis: 0
+  munitions:
+  - munition: {fileID: 11400000, guid: 7572195227b61b64291ece32e684d54f, type: 2}
+    charge: 10
+  - munition: {fileID: 11400000, guid: 90e3d25ee62315f41bd96ceec0c764b9, type: 2}
+    charge: 10
   chargerNailsMax: 10
   chargerBulletsMax: 10
   bulletSpreadVariance: {x: 0, y: 0}

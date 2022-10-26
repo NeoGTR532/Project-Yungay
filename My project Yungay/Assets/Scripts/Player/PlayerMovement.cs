@@ -40,8 +40,11 @@ public class PlayerMovement : MonoBehaviour
         model.actualSpeed = model.rb.velocity.magnitude;
        
         Iddle();
-        
-        
+
+        if (GameManager.inPause)
+        {
+            model.sourceSound.SetActive(false);
+        }
     }
     void FixedUpdate()
     {
@@ -57,7 +60,6 @@ public class PlayerMovement : MonoBehaviour
         }
         else
         {
-            Debug.Log("wea");
             move = checkMove;
         }
 

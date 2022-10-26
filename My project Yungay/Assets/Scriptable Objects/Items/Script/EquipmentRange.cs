@@ -10,6 +10,7 @@ public class EquipmentRange : EquipmentItem
     public float shootDelay;
     [Range(0f, 0.9f)]
     public float bulletSpreadVarianceDis;
+    public List<MunitonSlot> munitions = new();
     public int chargerNailsMax;
     public int chargerBulletsMax;
     [HideInInspector]

@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Spear
   m_EditorClassIdentifier: 
   prefab: {fileID: 919132149155446097, guid: 96deed3817e1a404e93f2639e243b378, type: 3}
-  itemSprite: {fileID: 21300000, guid: 3abf4164c06e1724ea81927c408039a5, type: 3}
+  itemSprite: {fileID: 21300000, guid: f9f6b89f6a0d9394eac735b1ce679cca, type: 3}
   type: 2
   maxStack: 1
   description: 

@@ -5,10 +5,11 @@ using UnityEngine;
 public class EnemyHealth : MonoBehaviour
 {
     public float life;
-    public GameObject[] resources;
+    public List<ItemObject> items = new();
     private Animator anim;
     public  float timer;
     public bool dead;
+    private Loot enemyLoot;
     void Start()
     {
         anim = GetComponent<Animator>();
@@ -20,6 +21,10 @@ public class EnemyHealth : MonoBehaviour
         if (dead)
         {
             timer += Time.deltaTime;
+            if (enemyLoot?true:false)
+            {
+                enemyLoot.Delete();
+            }
             if (timer > 5f)
             {
                 Destroy(gameObject);
@@ -33,7 +38,8 @@ public class EnemyHealth : MonoBehaviour
         {
             dead = true;
             anim.Play("Dead");
- 
+            enemyLoot = gameObject.AddComponent<Loot>();
+            RandomLoot();
         }
     }
 
@@ -44,5 +50,15 @@ public class EnemyHealth : MonoBehaviour
         {
             lifeE(_.damage);
         }
+    }
+
+    private void RandomLoot()
+    {
+        for (int i = 0; i < (int)Random.Range(0,items.Count); i++)
+        {
+            enemyLoot.loot.Add(new Item(null,0));
+            enemyLoot.loot[i].item = items[i];
+        }
+        enemyLoot.RandomAmount();
     }
 }

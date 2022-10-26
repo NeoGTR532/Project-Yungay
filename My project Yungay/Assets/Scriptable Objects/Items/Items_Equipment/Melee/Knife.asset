@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Knife
   m_EditorClassIdentifier: 
   prefab: {fileID: 8234525721378084209, guid: 35aef249cb4297f43abe113ea6f36164, type: 3}
-  itemSprite: {fileID: 21300000, guid: 0907cb2e0c51c5b40abc66b6d883119b, type: 3}
+  itemSprite: {fileID: 21300000, guid: dbf669bcd6c56a84f8212067b9bf6cb5, type: 3}
   type: 2
   maxStack: 1
   description: 

@@ -1,12 +1,17 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using TMPro;
+using UnityEngine.UI;
 public class Hand : MonoBehaviour
 {
     private Inventory inventory;
     private InventoryDisplay inventoryDisplay;
     public static ItemObject currentItem = null;
+    public ItemObject currentMunition = null;
+    public List<ItemObject> itemsMunition = new();
+    public List<RangeWeaponSlot> weaponSlots = new();
+    private int munitionIndex = 0;
     private int slotIndex = 0;
     private MeshFilter meshFilter;
     private MeshRenderer meshRenderer;
@@ -15,6 +20,9 @@ public class Hand : MonoBehaviour
     private bool canAttack = false;
     public float force;
     public static bool canAim = false;
+    private Munition muni;
+    public Image munitionImage;
+    public TMP_Text ammotext;
     // Start is called before the first frame update
     void Start()
     {
@@ -23,7 +31,8 @@ public class Hand : MonoBehaviour
         inventory = GameObject.FindGameObjectWithTag("Player").GetComponent<Inventory>();
         inventoryDisplay = InventoryDisplay.instance;//GameObject.FindGameObjectWithTag("UI").GetComponent<InventoryDisplay>();
         anim = GetComponent<Animator>();
-
+        currentMunition = itemsMunition[0];
+        muni = GetComponent<Munition>();
     }
 
     // Update is called once per frame
@@ -35,6 +44,13 @@ public class Hand : MonoBehaviour
         {
             UseItem();
             Throw();
+            ChangeMunition();
+            UpdateText();
+
+            if (Input.GetKeyDown(KeyCode.R))
+            {
+                muni.ReloadMunition(currentMunition);
+            }
         }
     }
 
@@ -59,6 +75,56 @@ public class Hand : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Alpha5))
         {
             slotIndex = 4;
+        }
+    }
+
+    private void UpdateText()
+    {
+        munitionImage.sprite = currentMunition.itemSprite;
+        ammotext.text = GetCharge(currentMunition).ToString() + " / " + inventory.CheckAmount(currentMunition);
+    }
+
+    private int GetCharge(ItemObject item)
+    {
+        int charge = 0;
+        for (int i = 0; i < weaponSlots.Count; i++)
+        {
+            if (weaponSlots[i].weapon == currentItem)
+            {
+                for (int j = 0; j < weaponSlots[i].munitions.Count; j++)
+                {
+                    if (weaponSlots[i].munitions[j].munition == item)
+                    {
+                        charge = weaponSlots[i].munitions[j].charge;
+                        break;
+                    }
+                }
+                break;
+            }
+        }
+        return charge;
+    }
+    private void ChangeMunition()
+    {
+        if (canAim)
+        {
+            EquipmentItem _ = (EquipmentItem)currentItem;
+            if (_.name == "Pistol")
+            {
+                if (Input.GetKeyDown(KeyCode.T))
+                {
+                    munitionIndex++;
+                    if (munitionIndex > itemsMunition.Count-1)
+                    {
+                        munitionIndex = 0;
+                    }
+                    currentMunition = itemsMunition[munitionIndex];
+                }
+            }
+            else if(_.name == "Submachine")
+            {
+                currentMunition = itemsMunition[1];
+            }
         }
     }
 
@@ -141,5 +207,45 @@ public class Hand : MonoBehaviour
     public void RemoveCollider()
     {
         Destroy(GetComponent<BoxCollider>());
+    }
+
+    public int GetMunitionIndex(ItemObject item)
+    {
+        int index = 0;
+        for (int i = 0; i < weaponSlots.Count; i++)
+        {
+            if (weaponSlots[i].weapon == item)
+            {
+                index = i;
+                break;
+            }
+        }
+        return index;
+    }
+}
+
+[System.Serializable]
+public class RangeWeaponSlot
+{
+    public ItemObject weapon;
+    public List<MunitonSlot> munitions = new();
+
+    public RangeWeaponSlot(ItemObject weapon, List<MunitonSlot> munitions)
+    {
+        this.weapon = weapon;
+        this.munitions = munitions;
+    }
+}
+
+[System.Serializable]
+public class MunitonSlot
+{
+    public ItemObject munition;
+    public int charge;
+
+    public MunitonSlot(ItemObject munition,int charge)
+    {
+        this.munition = munition;
+        this.charge = charge;
     }
 }

@@ -25,7 +25,7 @@ public class CraftDisplay : MonoBehaviour, IPointerDownHandler, IPointerUpHandle
     {
         if (canCraft)
         {
-            StartCoroutine(ChargeImage());
+            coroutine = StartCoroutine(ChargeImage());
             isClick = true;
         }
     }

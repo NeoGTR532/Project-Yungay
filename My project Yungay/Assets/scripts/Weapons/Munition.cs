@@ -22,10 +22,12 @@ public class Munition : MonoBehaviour
     public ItemObject bulletsItem;
     public InventoryDisplay inventoryDisplay;
     private RangeWeapons rangeWeapons;
+    private Hand hand;
 
     private void Start()
     {
         rangeWeapons = GetComponent<RangeWeapons>();
+        hand = GetComponent<Hand>();
     }
 
     private void FixedUpdate()
@@ -54,209 +56,232 @@ public class Munition : MonoBehaviour
             bullets = inventory.CheckAmount(inventory.slots[i].item);
         }
 
-        //switch (weapons.stateWeapons)
-        //{
-        //    case 1:
-        //        if (hasItemNails)
-        //        {
-        //            int i = inventory.GetItemIndex(nailsItem);
-        //            nails = inventory.CheckAmount(inventory.slots[i].item);
-        //        }
-        //        else if (hasItemNails == false)
-        //        { }
-        //        if (hasItemBullets)
-        //        {
-        //            int i = inventory.GetItemIndex(bulletsItem);
-        //            bullets = inventory.CheckAmount(inventory.slots[i].item);
-        //        }
-        //        else if (hasItemBullets == false)
-        //        { }
-        //        break;
-        //    case 2:
-        //        if (hasItemBullets)
-        //        {
-        //            bullets = inventory.CheckAmount(bulletsItem);
-        //        }
-        //        else if (hasItemBullets == false)
-        //        { }
-        //        break;
-
-        //    default:
-        //        break;
-        //}
-
     }
 
-    public void RechargeAmmo(ItemObject itemObject)
-    {
-        EquipmentRange _ = (EquipmentRange)itemObject;
-        if (itemObject == pistol)
-        {
-            if (rangeWeapons.ammoPistol == true && bullets >= 1)
-            {
+    //public void RechargeAmmo(ItemObject itemObject)
+    //{
+    //    EquipmentRange _ = (EquipmentRange)itemObject;
+    //    if (itemObject == pistol)
+    //    {
+    //        if (rangeWeapons.ammoPistol == true && bullets >= 1)
+    //        {
 
-                if (bullets > _.chargerBulletsMax && chargerBullets < _.chargerBulletsMax)
-                {
-                    for (int i = chargerBullets; i < _.chargerBulletsMax; i++)
-                    {
-                        chargerBullets++;
-                        inventory.RestItem(bulletsItem, 1);
-                        inventoryDisplay.UpdateDisplay();
-                    }
-                }
-                else
-                {
-                    for (int i = bullets; i > 0; i--)
-                    {
-                        if (chargerBullets < _.chargerBulletsMax)
-                        {
-                            chargerBullets++;
-                            inventory.RestItem(bulletsItem, 1);
-                            inventoryDisplay.UpdateDisplay();
-                        }
+    //            if (bullets > _.chargerBulletsMax && chargerBullets < _.chargerBulletsMax)
+    //            {
+    //                for (int i = chargerBullets; i < _.chargerBulletsMax; i++)
+    //                {
+    //                    chargerBullets++;
+    //                    inventory.RestItem(bulletsItem, 1);
+    //                    inventoryDisplay.UpdateDisplay();
+    //                }
+    //            }
+    //            else
+    //            {
+    //                for (int i = bullets; i > 0; i--)
+    //                {
+    //                    if (chargerBullets < _.chargerBulletsMax)
+    //                    {
+    //                        chargerBullets++;
+    //                        inventory.RestItem(bulletsItem, 1);
+    //                        inventoryDisplay.UpdateDisplay();
+    //                    }
 
-                    }
-                }
-            }
-            else if (rangeWeapons.ammoPistol == false && nails >= 1)
-            {
-                if (nails > _.chargerNailsMax && chargerNails < _.chargerNailsMax)
-                {
-                    for (int i = chargerNails; i < _.chargerNailsMax; i++)
-                    {
-                        chargerNails++;
-                        inventory.RestItem(nailsItem, 1);
-                        inventoryDisplay.UpdateDisplay();
-                    }
-                }
-                else
-                {
-                    for (int i = nails; i > 0; i--)
-                    {
-                        if (chargerNails < _.chargerNailsMax)
-                        {
-                            chargerNails++;
-                            inventory.RestItem(nailsItem, 1);
-                            inventoryDisplay.UpdateDisplay();
-                        }
-                    }
-                }
-            }
-        }
+    //                }
+    //            }
+    //        }
+    //        else if (rangeWeapons.ammoPistol == false && nails >= 1)
+    //        {
+    //            if (nails > _.chargerNailsMax && chargerNails < _.chargerNailsMax)
+    //            {
+    //                for (int i = chargerNails; i < _.chargerNailsMax; i++)
+    //                {
+    //                    chargerNails++;
+    //                    inventory.RestItem(nailsItem, 1);
+    //                    inventoryDisplay.UpdateDisplay();
+    //                }
+    //            }
+    //            else
+    //            {
+    //                for (int i = nails; i > 0; i--)
+    //                {
+    //                    if (chargerNails < _.chargerNailsMax)
+    //                    {
+    //                        chargerNails++;
+    //                        inventory.RestItem(nailsItem, 1);
+    //                        inventoryDisplay.UpdateDisplay();
+    //                    }
+    //                }
+    //            }
+    //        }
+    //    }
 
-        if (itemObject == submachine)
-        {
-            if (rangeWeapons.ammoPistol == true && bullets >= 1)
-            {
-                if (bullets > _.chargerBulletsMax && chargerBullets < _.chargerBulletsMax)
-                {
-                    for (int i = chargerBullets; i < _.chargerBulletsMax; i++)
-                    {
-                        chargerBullets++;
-                        inventory.RestItem(bulletsItem, 1);
-                        inventoryDisplay.UpdateDisplay();
+    //    if (itemObject == submachine)
+    //    {
+    //        if (rangeWeapons.ammoPistol == true && bullets >= 1)
+    //        {
+    //            if (bullets > _.chargerBulletsMax && chargerBullets < _.chargerBulletsMax)
+    //            {
+    //                for (int i = chargerBullets; i < _.chargerBulletsMax; i++)
+    //                {
+    //                    chargerBullets++;
+    //                    inventory.RestItem(bulletsItem, 1);
+    //                    inventoryDisplay.UpdateDisplay();
 
-                    }
-                }
-                else
-                {
-                    for (int i = bullets; i > 0; i--)
-                    {
-                        if (chargerBullets < _.chargerBulletsMax)
-                        {
-                            chargerBullets++;
-                            inventory.RestItem(bulletsItem, 1);
-                            inventoryDisplay.UpdateDisplay();
-                        }
+    //                }
+    //            }
+    //            else
+    //            {
+    //                for (int i = bullets; i > 0; i--)
+    //                {
+    //                    if (chargerBullets < _.chargerBulletsMax)
+    //                    {
+    //                        chargerBullets++;
+    //                        inventory.RestItem(bulletsItem, 1);
+    //                        inventoryDisplay.UpdateDisplay();
+    //                    }
 
-                    }
-                }
-            }
-        }
+    //                }
+    //            }
+    //        }
+    //    }
         
-        //switch (itemObject)
-        //{
-        //    case pistol:
-        //        if (pistol.ammo == true && bullets >= 1)
-        //        {
+    //    //switch (itemObject)
+    //    //{
+    //    //    case pistol:
+    //    //        if (pistol.ammo == true && bullets >= 1)
+    //    //        {
 
-        //            if (bullets > pistol.pistol.chargerBulletsMax && chargerBullets < pistol.pistol.chargerBulletsMax)
-        //            {
-        //                for (int i = chargerBullets; i < pistol.pistol.chargerBulletsMax; i++)
-        //                {
-        //                    chargerBullets++;
-        //                    inventory.RestItem(bulletsItem, 1);
-        //                    inventoryDisplay.UpdateDisplay();
-        //                }
-        //            }
-        //            else
-        //            {
-        //                for (int i = bullets; i > 0; i--)
-        //                {
-        //                    if (chargerBullets < pistol.pistol.chargerBulletsMax)
-        //                    {
-        //                        chargerBullets++;
-        //                        inventory.RestItem(bulletsItem, 1);
-        //                        inventoryDisplay.UpdateDisplay();
-        //                    }
+    //    //            if (bullets > pistol.pistol.chargerBulletsMax && chargerBullets < pistol.pistol.chargerBulletsMax)
+    //    //            {
+    //    //                for (int i = chargerBullets; i < pistol.pistol.chargerBulletsMax; i++)
+    //    //                {
+    //    //                    chargerBullets++;
+    //    //                    inventory.RestItem(bulletsItem, 1);
+    //    //                    inventoryDisplay.UpdateDisplay();
+    //    //                }
+    //    //            }
+    //    //            else
+    //    //            {
+    //    //                for (int i = bullets; i > 0; i--)
+    //    //                {
+    //    //                    if (chargerBullets < pistol.pistol.chargerBulletsMax)
+    //    //                    {
+    //    //                        chargerBullets++;
+    //    //                        inventory.RestItem(bulletsItem, 1);
+    //    //                        inventoryDisplay.UpdateDisplay();
+    //    //                    }
 
-        //                }
-        //            }
-        //        }
-        //        else if (pistol.ammo == false && nails >= 1)
-        //        {
-        //            if (nails > pistol.pistol.chargerNailsMax && chargerNails < pistol.pistol.chargerNailsMax)
-        //            {
-        //                for (int i = chargerNails; i < pistol.pistol.chargerNailsMax; i++)
-        //                {
-        //                    chargerNails++;
-        //                    inventory.RestItem(nailsItem, 1);
-        //                    inventoryDisplay.UpdateDisplay();
-        //                }
-        //            }
-        //            else
-        //            {
-        //                for (int i = nails; i > 0; i--)
-        //                {
-        //                    if (chargerNails < pistol.pistol.chargerNailsMax)
-        //                    {
-        //                        chargerNails++;
-        //                        inventory.RestItem(nailsItem, 1);
-        //                        inventoryDisplay.UpdateDisplay();
-        //                    }
-        //                }
-        //            }
-        //        }
-        //        break;
-        //    case 2:
-        //        if (submachine.ammo == true && bullets >= 1)
-        //        {
-        //            if (bullets > submachine.submachine.chargerBulletsMax && chargerBullets < submachine.submachine.chargerBulletsMax)
-        //            {
-        //                for (int i = chargerBullets; i < submachine.submachine.chargerBulletsMax; i++)
-        //                {
-        //                    chargerBullets++;
-        //                    inventory.RestItem(bulletsItem, 1);
-        //                    inventoryDisplay.UpdateDisplay();
+    //    //                }
+    //    //            }
+    //    //        }
+    //    //        else if (pistol.ammo == false && nails >= 1)
+    //    //        {
+    //    //            if (nails > pistol.pistol.chargerNailsMax && chargerNails < pistol.pistol.chargerNailsMax)
+    //    //            {
+    //    //                for (int i = chargerNails; i < pistol.pistol.chargerNailsMax; i++)
+    //    //                {
+    //    //                    chargerNails++;
+    //    //                    inventory.RestItem(nailsItem, 1);
+    //    //                    inventoryDisplay.UpdateDisplay();
+    //    //                }
+    //    //            }
+    //    //            else
+    //    //            {
+    //    //                for (int i = nails; i > 0; i--)
+    //    //                {
+    //    //                    if (chargerNails < pistol.pistol.chargerNailsMax)
+    //    //                    {
+    //    //                        chargerNails++;
+    //    //                        inventory.RestItem(nailsItem, 1);
+    //    //                        inventoryDisplay.UpdateDisplay();
+    //    //                    }
+    //    //                }
+    //    //            }
+    //    //        }
+    //    //        break;
+    //    //    case 2:
+    //    //        if (submachine.ammo == true && bullets >= 1)
+    //    //        {
+    //    //            if (bullets > submachine.submachine.chargerBulletsMax && chargerBullets < submachine.submachine.chargerBulletsMax)
+    //    //            {
+    //    //                for (int i = chargerBullets; i < submachine.submachine.chargerBulletsMax; i++)
+    //    //                {
+    //    //                    chargerBullets++;
+    //    //                    inventory.RestItem(bulletsItem, 1);
+    //    //                    inventoryDisplay.UpdateDisplay();
 
-        //                }
-        //            }
-        //            else
-        //            {
-        //                for (int i = bullets; i > 0; i--)
-        //                {
-        //                    if (chargerBullets < submachine.submachine.chargerBulletsMax)
-        //                    {
-        //                        chargerBullets++;
-        //                        inventory.RestItem(bulletsItem, 1);
-        //                        inventoryDisplay.UpdateDisplay();
-        //                    }
+    //    //                }
+    //    //            }
+    //    //            else
+    //    //            {
+    //    //                for (int i = bullets; i > 0; i--)
+    //    //                {
+    //    //                    if (chargerBullets < submachine.submachine.chargerBulletsMax)
+    //    //                    {
+    //    //                        chargerBullets++;
+    //    //                        inventory.RestItem(bulletsItem, 1);
+    //    //                        inventoryDisplay.UpdateDisplay();
+    //    //                    }
 
-        //                }
-        //            }
-        //        }
-        //        break;
-        //}
+    //    //                }
+    //    //            }
+    //    //        }
+    //    //        break;
+    //    //}
+    //}
+
+    public void ReloadMunition(ItemObject item)
+    {
+        if (inventory.CheckItem(item))
+        {
+            for (int i = 0; i < hand.weaponSlots.Count; i++)
+            {
+                if (hand.weaponSlots[i].weapon == Hand.currentItem)
+                {
+                    for (int j = 0; j < hand.weaponSlots[i].munitions.Count; j++)
+                    {
+                        if (hand.weaponSlots[i].munitions[j].munition == item)
+                        {
+                            EquipmentRange _ = (EquipmentRange)Hand.currentItem;
+                            int maxCharge = 0;
+                            for (int k = 0; k < _.munitions.Count; k++)
+                            {
+                                if (_.munitions[k].munition == item)
+                                {
+                                    maxCharge = _.munitions[k].charge;
+                                    break;
+                                }
+                            }
+
+                            if ( inventory.slots[inventory.GetItemIndex(item)].amount > maxCharge)
+                            {
+                                int amount = maxCharge - hand.weaponSlots[i].munitions[j].charge;
+                                hand.weaponSlots[i].munitions[j].charge = maxCharge;
+                                inventory.RestItem(item, amount);
+                            }
+                            else
+                            {
+                                int amount = 0;
+
+                                for (int l = hand.weaponSlots[i].munitions[j].charge; l < maxCharge ; l++)
+                                {
+                                    hand.weaponSlots[i].munitions[j].charge++;
+                                    amount++;
+                                }
+                                inventory.RestItem(item, amount);
+                            }
+
+                            inventory.UpdateInventory();
+                            inventoryDisplay.UpdateDisplay();
+                            break;
+                        }
+                    }
+
+                    break;
+                }
+            }
+           
+        }
     }
 
     public void CheckAmmo()
