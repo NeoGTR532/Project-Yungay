@@ -292,14 +292,15 @@ public class Munition : MonoBehaviour
             {
                 for (int j = 0; j < hand.weaponSlots[i].munitions.Count; j++)
                 {
+                    Debug.Log(j);
                     if (hand.weaponSlots[i].munitions[j].munition == item)
                     {
                         if (hand.weaponSlots[i].munitions[j].charge > 0)
                         {
-                            haveMunition = true;
+                            haveMunition = true; Debug.Log(haveMunition);
+                            break;
                         }
                     }
-                    break;
                 }
 
                 break;
@@ -322,8 +323,8 @@ public class Munition : MonoBehaviour
                     if (hand.weaponSlots[i].munitions[j].munition == item)
                     {
                         hand.weaponSlots[i].munitions[j].charge--;
+                        break;
                     }
-                    break;
                 }
 
                 break;

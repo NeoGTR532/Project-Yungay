@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.18028352, g: 0.22571376, b: 0.30692244, a: 1}
+  m_IndirectSpecularColor: {r: 0.18028378, g: 0.22571412, b: 0.30692285, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -2323,7 +2323,7 @@ MonoBehaviour:
   sound: {fileID: 0}
   enemyMask:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 2147483647
   weapons: {fileID: 0}
 --- !u!1 &285545424
 GameObject:
@@ -12871,6 +12871,7 @@ MonoBehaviour:
   airMultiplier: 0.4
   anim: {fileID: 0}
   move: {x: 0, y: 0, z: 0}
+  checkMove: {x: 0, y: 0, z: 0}
 --- !u!114 &1414573069
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -22664,11 +22665,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9a254eb0557c20142b4fbc078b1dd3cb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  parent: {fileID: 565419569}
-  weaponTransform: {fileID: 4886262449964803069}
-  meleeWeapon: {fileID: 5225492111923296590}
-  nameParent: ParentSpear
-  nameTransform: Spear_Transform
 --- !u!114 &5225492111923296590
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -23691,11 +23687,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9a254eb0557c20142b4fbc078b1dd3cb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  parent: {fileID: 135680001}
-  weaponTransform: {fileID: 0}
-  meleeWeapon: {fileID: 8303731282646855751}
-  nameParent: ParentAxe
-  nameTransform: Axe_Transform
 --- !u!4 &8326507455008412784
 Transform:
   m_ObjectHideFlags: 0
@@ -23881,11 +23872,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9a254eb0557c20142b4fbc078b1dd3cb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  parent: {fileID: 443652989}
-  weaponTransform: {fileID: 0}
-  meleeWeapon: {fileID: 8541002840691638432}
-  nameParent: ParentKnife
-  nameTransform: Knife_Transform
 --- !u!114 &8541002840691638432
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -24192,6 +24178,7 @@ MonoBehaviour:
   airMultiplier: 0.4
   anim: {fileID: 0}
   move: {x: 0, y: 0, z: 0}
+  checkMove: {x: 0, y: 0, z: 0}
 --- !u!114 &8949097853262754767
 MonoBehaviour:
   m_ObjectHideFlags: 0

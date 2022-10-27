@@ -14,9 +14,10 @@ public class PlayerMovement : MonoBehaviour
     public float airMultiplier;
 
     public Animator anim;
-
+    [HideInInspector]
     public Vector3 move;
-    Vector3 checkMove = new Vector3(0, 0, 0);
+    [HideInInspector]
+    public Vector3 checkMove = new Vector3(0, 0, 0);
     // Start is called before the first frame update
     void Start()
     {
