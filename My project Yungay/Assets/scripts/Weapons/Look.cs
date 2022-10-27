@@ -27,7 +27,7 @@ public class Look : MonoBehaviour
     {
         if (Hand.canAim)
         {
-            EquipmentRange _ = (EquipmentRange)Hand.currentItem;
+            weapon = Hand.currentItem as EquipmentRange;
 
             UpdateLimit();
 
@@ -35,7 +35,7 @@ public class Look : MonoBehaviour
             float distance2 = Vector3.Distance(camera.transform.position, init.transform.position);
 
 
-            if (Input.GetMouseButtonDown(1) && _ != null)
+            if (Input.GetMouseButtonDown(1) && weapon != null)
             {
                 IsPoint();
                 zoom = true;
@@ -72,16 +72,19 @@ public class Look : MonoBehaviour
 
     private void UpdateLimit()
     {
-        weapon = (EquipmentRange)Hand.currentItem;
+        weapon = Hand.currentItem as EquipmentRange;
         RaycastHit hit;
-        Ray ray = new Ray(init.transform.position, init.transform.forward * weapon.zoom);
-        end = ray.origin + ray.direction * weapon.zoom;
-        endPosition = end;
-        if (Physics.Raycast(init.transform.position, init.transform.forward, out hit, weapon.zoom, collision))
+        if (weapon?true:false)
         {
-            if (hit.point != null)
+            Ray ray = new Ray(init.transform.position, init.transform.forward * weapon.zoom);
+            end = ray.origin + ray.direction * weapon.zoom;
+            endPosition = end;
+            if (Physics.Raycast(init.transform.position, init.transform.forward, out hit, weapon.zoom, collision))
             {
-                endPosition = hit.point;
+                if (hit.point != null)
+                {
+                    endPosition = hit.point;
+                }
             }
         }
     }

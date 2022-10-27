@@ -76,6 +76,35 @@ public class Hand : MonoBehaviour
         {
             slotIndex = 4;
         }
+
+        canAim = false;
+        canAttack = false;
+
+        if (currentItem? true : false)
+        {
+            var _ = currentItem as EquipmentItem;
+
+            if (_?true:false)
+            {
+                if (_.equipmentType == EquipmentType.Range)
+                {
+                    canAim = true;
+                }
+                else
+                {
+                    canAim = false;
+                }
+
+                if (_.equipmentType == EquipmentType.Melee)
+                {
+                    canAttack = true;
+                }
+                else
+                {
+                    canAttack = false;
+                }
+            }
+        }
     }
 
     private void UpdateText()
@@ -168,23 +197,29 @@ public class Hand : MonoBehaviour
 
     private void UseItem()
     {
-        EquipmentItem _ = (EquipmentItem)currentItem;
+        EquipmentItem _ = currentItem as EquipmentItem;
 
-        if (_.equipmentType == EquipmentType.Range)
+        if (_?true:false)
         {
-            canAim = true;
-        }
-
-
-        if (Input.GetMouseButtonDown(0) && !GameManager.inPause)
-        {
-            if (_.equipmentType == EquipmentType.Melee)
+            if (_.equipmentType == EquipmentType.Range)
             {
-                EquipmentMelee melee = (EquipmentMelee)currentItem;
-                if (melee.animation != null)
+                canAim = true;
+            }
+            else
+            {
+                canAim = false;
+            }
+
+            if (Input.GetMouseButtonDown(0) && !GameManager.inPause)
+            {
+                if (_.equipmentType == EquipmentType.Melee)
                 {
-                    anim.Play(melee.animation.name);
-                    isAttacking = true;
+                    EquipmentMelee melee = (EquipmentMelee)currentItem;
+                    if (melee.animation != null)
+                    {
+                        anim.Play(melee.animation.name);
+                        isAttacking = true;
+                    }
                 }
             }
         }
@@ -195,18 +230,22 @@ public class Hand : MonoBehaviour
     {
         if (Input.GetMouseButton(1) && !GameManager.inPause)
         {
-            EquipmentItem _ = (EquipmentItem)currentItem;
-            if (_.equipmentType == EquipmentType.Melee)
+            EquipmentItem _ = currentItem as EquipmentItem;
+
+            if (_?true:false)
             {
-                GameObject clone = Instantiate(currentItem.prefab, transform.position, transform.rotation);
-                clone.GetComponent<Loot>().loot[0].amount = inventory.slots[slotIndex].amount;
-                clone.GetComponent<Rigidbody>().isKinematic = false;
-                clone.GetComponent<Rigidbody>().AddForce(Camera.main.transform.forward * force, ForceMode.Impulse);
-                inventory.slots[slotIndex].item = null;
-                inventory.slots[slotIndex].amount = 0;
-                inventory.UpdateInventory();
-                inventoryDisplay.UpdateDisplay();
-                canAttack = false;
+                if (_.equipmentType == EquipmentType.Melee)
+                {
+                    GameObject clone = Instantiate(currentItem.prefab, transform.position, transform.rotation);
+                    clone.GetComponent<Loot>().loot[0].amount = inventory.slots[slotIndex].amount;
+                    clone.GetComponent<Rigidbody>().isKinematic = false;
+                    clone.GetComponent<Rigidbody>().AddForce(Camera.main.transform.forward * force, ForceMode.Impulse);
+                    inventory.slots[slotIndex].item = null;
+                    inventory.slots[slotIndex].amount = 0;
+                    inventory.UpdateInventory();
+                    inventoryDisplay.UpdateDisplay();
+                    canAttack = false;
+                }
             }
         }
     }

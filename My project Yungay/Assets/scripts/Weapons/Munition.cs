@@ -21,12 +21,10 @@ public class Munition : MonoBehaviour
     public ItemObject nailsItem;
     public ItemObject bulletsItem;
     public InventoryDisplay inventoryDisplay;
-    private RangeWeapons rangeWeapons;
     private Hand hand;
 
     private void Start()
     {
-        rangeWeapons = GetComponent<RangeWeapons>();
         hand = GetComponent<Hand>();
     }
 
