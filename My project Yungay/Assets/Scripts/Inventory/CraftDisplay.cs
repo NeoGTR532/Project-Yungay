@@ -12,6 +12,7 @@ public class CraftDisplay : MonoBehaviour, IPointerDownHandler, IPointerUpHandle
     private Image image, imageChild;
     private bool canCraft, isClick;
     private Coroutine coroutine;
+    public float chargeSpeed;
     private void Awake()
     {
         image = GetComponent<Image>();
@@ -25,7 +26,7 @@ public class CraftDisplay : MonoBehaviour, IPointerDownHandler, IPointerUpHandle
     {
         if (canCraft)
         {
-            coroutine = StartCoroutine(ChargeImage());
+            coroutine = StartCoroutine(ChargeImage(chargeSpeed));
             isClick = true;
         }
     }
@@ -91,11 +92,11 @@ public class CraftDisplay : MonoBehaviour, IPointerDownHandler, IPointerUpHandle
         }
     }
 
-    public IEnumerator ChargeImage()
+    public IEnumerator ChargeImage(float speed)
     {
         while (imageChild.fillAmount < 1f)
         {
-            imageChild.fillAmount += 0.01f;
+            imageChild.fillAmount += 0.001f * speed;
             yield return new WaitForEndOfFrame();
         }
         imageChild.fillAmount = 1f;

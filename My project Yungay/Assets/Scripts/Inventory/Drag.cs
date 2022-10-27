@@ -29,7 +29,7 @@ public class Drag : MonoBehaviour, IPointerDownHandler, IBeginDragHandler, IEndD
             Destroy(ghost.GetComponent<Drag>());
             Destroy(ghost.GetComponent<Slot>());
             eventData.pointerDrag.GetComponent<Image>().color = new Color32(255, 255, 255, 100);
-            ghost.transform.SetParent(inventoryPanel.transform);
+            ghost.transform.SetParent(inventoryPanel.transform,true);
             prefabItem = GetItemObject().prefab;
         }
     }

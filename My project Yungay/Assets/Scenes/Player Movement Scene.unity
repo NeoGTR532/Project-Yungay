@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.18028352, g: 0.22571376, b: 0.30692244, a: 1}
+  m_IndirectSpecularColor: {r: 0.18028378, g: 0.22571412, b: 0.30692285, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -5213,6 +5213,7 @@ MonoBehaviour:
   inventory: {fileID: 8949097853262754770}
   inventoryDisplay: {fileID: 2116291155}
   recipe: {fileID: 11400000, guid: 67ee8ea4ccf0bea44832533361986cd7, type: 2}
+  chargeSpeed: 1
 --- !u!1 &539091061
 GameObject:
   m_ObjectHideFlags: 0
@@ -6807,7 +6808,7 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 6738e33667670dc4abac69631c59a9ef,
         type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 6738e33667670dc4abac69631c59a9ef,
         type: 3}
@@ -7561,6 +7562,7 @@ GameObject:
   - component: {fileID: 814939192}
   - component: {fileID: 814939191}
   - component: {fileID: 814939190}
+  - component: {fileID: 814939194}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -7601,7 +7603,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 814939185}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4d71da61b38228c458089f21365a2ef6, type: 3}
   m_Name: 
@@ -7692,6 +7694,20 @@ Camera:
   m_OcclusionCulling: 1
   m_StereoConvergence: 10
   m_StereoSeparation: 0.022
+--- !u!114 &814939194
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 814939185}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 89e445583425b79479e09c7176dd0771, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cameraPosition: {fileID: 814939186}
+  cameraRotation: {fileID: 814939186}
 --- !u!1 &818925067
 GameObject:
   m_ObjectHideFlags: 0
@@ -9261,6 +9277,7 @@ MonoBehaviour:
   inventory: {fileID: 8949097853262754770}
   inventoryDisplay: {fileID: 2116291155}
   recipe: {fileID: 11400000, guid: 0fb4dbb5b8e7c324787ab2d272788b71, type: 2}
+  chargeSpeed: 1
 --- !u!114 &977320021
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10420,7 +10437,7 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 6738e33667670dc4abac69631c59a9ef,
         type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 6738e33667670dc4abac69631c59a9ef,
         type: 3}
@@ -11571,6 +11588,7 @@ MonoBehaviour:
   inventory: {fileID: 8949097853262754770}
   inventoryDisplay: {fileID: 2116291155}
   recipe: {fileID: 11400000, guid: 62c85b3ca05c21c488f30df76133af87, type: 2}
+  chargeSpeed: 1
 --- !u!114 &1242364370
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -14533,6 +14551,7 @@ MonoBehaviour:
   inventory: {fileID: 8949097853262754770}
   inventoryDisplay: {fileID: 2116291155}
   recipe: {fileID: 11400000, guid: 5397d3ac2773701459acf34c41ef933f, type: 2}
+  chargeSpeed: 1
 --- !u!4 &1535184705 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -597670272443537037, guid: 6738e33667670dc4abac69631c59a9ef,
@@ -17326,7 +17345,7 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 6738e33667670dc4abac69631c59a9ef,
         type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 6738e33667670dc4abac69631c59a9ef,
         type: 3}
@@ -19348,7 +19367,7 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 6738e33667670dc4abac69631c59a9ef,
         type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 6738e33667670dc4abac69631c59a9ef,
         type: 3}
@@ -24186,7 +24205,7 @@ MonoBehaviour:
   isDeath: 0
   armor: 0
   actualSpeed: 0
-  speedWalk: 5
+  speedWalk: 3
   speedRun: 10
   speedCrouch: 0
   jumpForce: 4.87
