@@ -236,7 +236,7 @@ public class Hand : MonoBehaviour
             {
                 if (_.equipmentType == EquipmentType.Melee)
                 {
-                    GameObject clone = Instantiate(currentItem.prefab, transform.position, transform.rotation);
+                    GameObject clone = Instantiate(currentItem.prefab, Camera.main.transform.position, Camera.main.transform.rotation);
                     clone.GetComponent<Loot>().loot[0].amount = inventory.slots[slotIndex].amount;
                     clone.GetComponent<Rigidbody>().isKinematic = false;
                     clone.GetComponent<Rigidbody>().AddForce(Camera.main.transform.forward * force, ForceMode.Impulse);
