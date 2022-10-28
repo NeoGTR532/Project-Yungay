@@ -7,7 +7,6 @@ public class PlayerLooting : MonoBehaviour
     public Camera cam;
     public Inventory inventory;
     public GameObject lootText;
-    public HudTest hudTest;
     public float rayDistance;
     // Start is called before the first frame update
     void Awake()
@@ -61,7 +60,6 @@ public class PlayerLooting : MonoBehaviour
                     {
                         var _ = loot.loot[i];
                         inventory.AddItem(_, _.item, _.amount);
-                        hudTest.TextHud(_.item, _.amount);
                         Debug.Log(_.amount);
                     }
                     loot.DeleteObject();

@@ -7,6 +7,7 @@ public class Inventory : MonoBehaviour
     public int maxSlots;
     public List<InventorySlot> slots = new List<InventorySlot>();
     public InventoryDisplay inventoryDisplay;
+    public HudTest hudTest;
 
     private void Awake()
     {
@@ -14,6 +15,7 @@ public class Inventory : MonoBehaviour
         {
             slots.Add(new InventorySlot(null, 0));
         }
+        hudTest = GameObject.Find("Canvas").GetComponent<HudTest>();
     }
 
     public void AddItem(Item item, ItemObject itemObject, int amount)
@@ -27,7 +29,7 @@ public class Inventory : MonoBehaviour
             if (slots[index].amount + amount < slots[index].item.maxStack)
             {
                 slots[index].AddAmount(amount);
-
+                hudTest.TextHud(itemObject, amount);
                 item.amount = 0;
 
             }
@@ -35,6 +37,7 @@ public class Inventory : MonoBehaviour
             {
                 item.amount = (slots[index].amount + amount) - slots[index].item.maxStack;
                 slots[index].amount = slots[index].item.maxStack;
+                hudTest.TextHud(itemObject, slots[index].item.maxStack - slots[index].amount);
             }
         }
         else
@@ -56,6 +59,8 @@ public class Inventory : MonoBehaviour
                 {
                     item.amount = 0;
                 }
+
+                hudTest.TextHud(itemObject, amount);
             }
             else
             {

@@ -12,13 +12,32 @@ public class HudTest : MonoBehaviour
 
     private void Update()
     {
-        if(testing)
+        CleanTexts();
+    }
+    public void TextHud(ItemObject itemObject, int cantidad)
+    {
+        testing = false;
+        for (int i = 0; i < texto.Count; i++)
+        {
+            if(texto[i].text == "")
+            {
+                texto[i].text = "Recogido: " + itemObject.name + " (X" + cantidad.ToString() + ")";
+                break;
+            }
+        }
+        testing = true;
+    }
+
+    public void CleanTexts()
+    {
+        if (testing)
         {
             timer += Time.deltaTime;
         }
-        if(timer >= maxTimer)
+
+        if (timer >= maxTimer)
         {
-            timer = 0; 
+            timer = 0f;
             for (int i = 0; i < texto.Count; i++)
             {
                 if (texto[i].text != "")
@@ -27,18 +46,7 @@ public class HudTest : MonoBehaviour
                 }
 
             }
+            testing = false;
         }
-    }
-    public void TextHud(ItemObject itemObject, int cantidad)
-    {
-        for (int i = 0; i < texto.Count; i++)
-        {
-            if(texto[i].text == "")
-            {
-                texto[i].text = "Recogido: " + itemObject.name + " (X" + cantidad.ToString() + ")";
-            }
-            break;
-        }
-        testing = true;
     }
 }
