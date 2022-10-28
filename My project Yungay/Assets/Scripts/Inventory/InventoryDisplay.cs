@@ -37,7 +37,7 @@ public class InventoryDisplay : MonoBehaviour
         else if (Input.GetKeyDown(KeyCode.I) || Input.GetKeyDown(KeyCode.Escape) && isOpen)
         {
             CloseDisplay();
-            GameManager.HideCursor();
+            Cursor.lockState = CursorLockMode.Locked;
             GameManager.inPause = false;
             Time.timeScale = 1f;
         }

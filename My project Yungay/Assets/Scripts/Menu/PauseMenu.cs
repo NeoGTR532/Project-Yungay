@@ -48,6 +48,5 @@ public class PauseMenu : MonoBehaviour
         panelPause.SetActive(false);
         GameManager.inPause = false;
         Time.timeScale = 1F;
-        GameManager.HideCursor();
     }
 }
