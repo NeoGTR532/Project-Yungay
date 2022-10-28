@@ -28,8 +28,22 @@ public class Cure : MonoBehaviour
     public void Heal()
     {
         health = playerHealth.mb.maxHealth * (percentageCure/100);
-        playerHealth.mb.health += health;
+        StartCoroutine(healing(playerHealth.mb.health + health));
+
+        //playerHealth.mb.health += health;
         inventory.RestItem(bandageItem, 1);
+        inventory.UpdateInventory();
         inventoryDisplay.UpdateDisplay();
+    }
+
+    IEnumerator healing(float heal)
+    {
+        while(playerHealth.mb.health < heal)
+        {
+            playerHealth.mb.health += 1 * Time.deltaTime;
+            yield return new WaitForEndOfFrame();
+        }
+        yield break;
+
     }
 }
