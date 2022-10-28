@@ -40,6 +40,7 @@ public class EnemyHealth : MonoBehaviour
             anim.Play("Dead");
             enemyLoot = gameObject.AddComponent<Loot>();
             RandomLoot();
+            CheckItem();
         }
     }
 
@@ -60,5 +61,20 @@ public class EnemyHealth : MonoBehaviour
             enemyLoot.loot[i].item = items[i];
         }
         enemyLoot.RandomAmount();
+    }
+
+    private void CheckItem()
+    {
+
+        for (int i = 0; i < transform.childCount; i++)
+        {
+            Loot _ = transform.GetChild(i).GetComponent<Loot>();
+            Loot loot = transform.GetComponent<Loot>();
+            if (_? true:false)
+            {
+                loot.loot.Add(new Item(_.loot[0].item, _.loot[0].amount));
+                _.gameObject.SetActive(false);
+            }
+        }
     }
 }
