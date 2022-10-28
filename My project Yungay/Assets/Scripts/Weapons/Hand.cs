@@ -23,6 +23,7 @@ public class Hand : MonoBehaviour
     private Munition muni;
     public Image munitionImage;
     public TMP_Text ammotext;
+    public AudioSource audioSource;
     // Start is called before the first frame update
     void Start()
     {
@@ -33,6 +34,7 @@ public class Hand : MonoBehaviour
         anim = GetComponent<Animator>();
         currentMunition = itemsMunition[0];
         muni = GetComponent<Munition>();
+        audioSource = GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
@@ -218,6 +220,7 @@ public class Hand : MonoBehaviour
                     if (melee.animation != null)
                     {
                         anim.Play(melee.animation.name);
+                        audioSource.PlayOneShot(melee.attackClip);
                         isAttacking = true;
                     }
                 }
@@ -245,6 +248,8 @@ public class Hand : MonoBehaviour
                     inventory.UpdateInventory();
                     inventoryDisplay.UpdateDisplay();
                     canAttack = false;
+                    EquipmentMelee melee = _ as EquipmentMelee;
+                    audioSource.PlayOneShot(melee.attackClip);
                 }
             }
         }

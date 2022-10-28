@@ -55,7 +55,7 @@ public class EnemyHealth : MonoBehaviour
 
     private void RandomLoot()
     {
-        for (int i = 0; i < (int)Random.Range(0,items.Count); i++)
+        for (int i = 0; i <= (int)Random.Range(0,items.Count); i++)
         {
             enemyLoot.loot.Add(new Item(null,0));
             enemyLoot.loot[i].item = items[i];
