@@ -17,4 +17,7 @@ MonoBehaviour:
   type: 0
   maxStack: 10
   description: 
-  damage: 0
+  itemName: 
+  itemMesh: {fileID: 0}
+  itemMaterial: {fileID: 0}
+  equipmentType: 0
