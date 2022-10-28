@@ -14,31 +14,38 @@ public class Cure : MonoBehaviour
     public float speed;
     public float timer;
     public float maxTime;
+    private bool charge;
 
     private void Start()
     {
         inventoryDisplay = InventoryDisplay.instance;
     }
 
-    private void FixedUpdate()
+    private void Update()
     {
-        hasBandage = inventory.CheckItem(bandageItem);
-        if (hasBandage && Input.GetMouseButtonDown(0) && playerHealth.mb.health < playerHealth.mb.maxHealth) 
+        if (inventory.CheckItem(bandageItem) && playerHealth.mb.health < playerHealth.mb.maxHealth && Input.GetMouseButtonDown(0)) 
         {
-            timer += Time.deltaTime;
+            charge = true;
         }
         else if(Input.GetMouseButtonUp(0))
         {
             if(timer < maxTime)
             {
                 timer = 0;
+                charge = false;
             }
         }
 
         if (timer >= maxTime)
         {
             timer = 0;
+            charge = false;
             Heal();
+        }
+
+        if (charge)
+        {
+            timer += Time.deltaTime;
         }
     }
     public void Heal()
