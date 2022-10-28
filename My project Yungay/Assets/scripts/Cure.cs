@@ -11,6 +11,9 @@ public class Cure : MonoBehaviour
     private bool hasBandage;
     private float health;
     public float percentageCure;
+    public float speed;
+    public float timer;
+    public float maxTime;
 
     private void Start()
     {
@@ -22,6 +25,19 @@ public class Cure : MonoBehaviour
         hasBandage = inventory.CheckItem(bandageItem);
         if (hasBandage && Input.GetMouseButtonDown(0) && playerHealth.mb.health < playerHealth.mb.maxHealth) 
         {
+            timer += Time.deltaTime;
+        }
+        else if(Input.GetMouseButtonUp(0))
+        {
+            if(timer < maxTime)
+            {
+                timer = 0;
+            }
+        }
+
+        if (timer >= maxTime)
+        {
+            timer = 0;
             Heal();
         }
     }
@@ -32,7 +48,7 @@ public class Cure : MonoBehaviour
 
         //playerHealth.mb.health += health;
         inventory.RestItem(bandageItem, 1);
-        inventory.UpdateInventory();
+        inventory.RemoveSlot();
         inventoryDisplay.UpdateDisplay();
     }
 
@@ -40,7 +56,7 @@ public class Cure : MonoBehaviour
     {
         while(playerHealth.mb.health < heal)
         {
-            playerHealth.mb.health += 1 * Time.deltaTime;
+            playerHealth.mb.health += speed * Time.deltaTime;
             yield return new WaitForEndOfFrame();
         }
         yield break;

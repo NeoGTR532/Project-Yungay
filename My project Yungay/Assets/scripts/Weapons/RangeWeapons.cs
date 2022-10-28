@@ -27,6 +27,8 @@ public class RangeWeapons : MonoBehaviour
 
     public Weapon weapons;
 
+    public Inventory inventory;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -164,6 +166,7 @@ public class RangeWeapons : MonoBehaviour
                 lastShootTime = Time.time;
             }
             munition.RestMunition(hand.currentMunition);
+            inventory.RemoveSlot();
         }
     }
 

@@ -269,7 +269,7 @@ public class Munition : MonoBehaviour
                                 inventory.RestItem(item, amount);
                             }
 
-                            inventory.UpdateInventory();
+                            inventory.RemoveSlot();
                             inventoryDisplay.UpdateDisplay();
                             break;
                         }

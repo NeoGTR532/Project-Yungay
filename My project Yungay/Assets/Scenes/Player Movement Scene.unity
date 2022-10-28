@@ -2325,6 +2325,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 2147483647
   weapons: {fileID: 0}
+  inventory: {fileID: 0}
 --- !u!1 &285545424
 GameObject:
   m_ObjectHideFlags: 0
@@ -24449,6 +24450,9 @@ MonoBehaviour:
   inventoryDisplay: {fileID: 0}
   bandageItem: {fileID: 11400000, guid: 72443fe3c41252744b442bbd4294631e, type: 2}
   percentageCure: 30
+  speed: 3
+  timer: 0
+  maxTime: 3
 --- !u!114 &8949097853262754778
 MonoBehaviour:
   m_ObjectHideFlags: 0
