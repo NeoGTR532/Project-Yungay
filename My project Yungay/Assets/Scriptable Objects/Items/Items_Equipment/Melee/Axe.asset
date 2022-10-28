@@ -12,15 +12,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d70e7798e461d694d9ddbd8bfbbcf0b1, type: 3}
   m_Name: Axe
   m_EditorClassIdentifier: 
-  prefab: {fileID: 2377691152465184948, guid: 0d378e4566f33db47ad498e29d94b3ad, type: 3}
+  prefab: {fileID: 3930251777971428299, guid: f9e51f30ed163ba46a4b38e7ec4ec282, type: 3}
   itemSprite: {fileID: 21300000, guid: fd49850fd56451647b1637aac1a6e435, type: 3}
   type: 2
   maxStack: 1
   description: 
   itemName: Axe
-  itemMesh: {fileID: -5076798556035486163, guid: a190b4c0ce1769248bb33466c8ca22f7,
+  itemMesh: {fileID: 5451499792267123037, guid: dd4a3e4c1166b1c499824f63286c0ed5,
     type: 3}
-  itemMaterial: {fileID: -3661639628750336703, guid: f761e9b0126548f4fb296c7f871b856a,
+  itemMaterial: {fileID: 5775865398287329665, guid: dd4a3e4c1166b1c499824f63286c0ed5,
     type: 3}
   equipmentType: 0
   force: 0

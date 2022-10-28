@@ -178,7 +178,7 @@ public class Hand : MonoBehaviour
                 meshFilter.sharedMesh = _.itemMesh;
                 meshRenderer.sharedMaterial = _.itemMaterial;
                 canAttack = true;
-               // gameObject.tag = _.itemName;
+                gameObject.tag = _.itemName;
             }
             else
             {
