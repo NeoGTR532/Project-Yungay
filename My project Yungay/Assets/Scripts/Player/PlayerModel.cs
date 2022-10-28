@@ -68,6 +68,8 @@ public class PlayerModel : MonoBehaviour
     public static Transform playerTransform;
 
 
+    
+
     private void Awake()
     {
         checkpoint = GameObject.FindGameObjectWithTag("Checkpoint");

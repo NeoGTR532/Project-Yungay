@@ -4,12 +4,16 @@ using UnityEngine;
 
 public class TutorialManager : MonoBehaviour
 {
+ 
     public bool moveCamera = false;
     public bool movePlayer = false;
     public bool grabBackpack = false;
     public bool openInventory = false;
     public bool grabPaper = false;
     public bool throwPaper = false;
+    public bool moveBox = false;
+
+    
     private Transform cameraTransform;
     public float timer = 0f;
     public float maxTime = 0f;
@@ -99,7 +103,15 @@ public class TutorialManager : MonoBehaviour
                             }
                             else
                             {
-                                MisionText.currentMision = 6;
+                                if (!moveBox)
+                                {
+                                    MisionText.currentMision = 6;
+                                    CheckMoveBox();
+                                }
+                                else
+                                {
+                                    MisionText.currentMision = 7;
+                                }
                             }
                             
                         }
@@ -145,5 +157,13 @@ public class TutorialManager : MonoBehaviour
     {
         bool grabItem = inventory.CheckItem(item);
         return grabItem;
+    }
+
+    private void CheckMoveBox()
+    {
+        if (PlayerPickUp.isPushing)
+        {
+            moveBox = true;
+        }
     }
 }

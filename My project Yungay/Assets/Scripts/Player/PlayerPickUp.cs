@@ -9,10 +9,8 @@ public class PlayerPickUp : MonoBehaviour
 
     private GameObject heldObj;
     public Transform holdParent;
-    public PlayerCam playerCam;
 
     public GameObject handPos;
-    public float HandRange;
 
     public static bool isPushing;
     // Start is called before the first frame update

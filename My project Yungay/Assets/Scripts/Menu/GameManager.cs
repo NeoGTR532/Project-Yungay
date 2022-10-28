@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.Playables;
 
 public class GameManager : MonoBehaviour
 {
@@ -11,6 +12,13 @@ public class GameManager : MonoBehaviour
     public static bool inPause = false;
     public bool inPase = false;
     public static string actualScene;
+
+    [Header("Cinematics")]
+    public static bool inCinematic;
+
+    private PlayableDirector currentDirector;
+    private bool cinematicSkipped;
+    private float timeToSkipTo;
 
     public bool pause;
     //public static string actualScene;
@@ -24,9 +32,19 @@ public class GameManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+
         inPase = inPause;
         Scene currentScene = SceneManager.GetActiveScene();
         string sceneName = currentScene.name;
+
+        if (Input.GetKeyDown(KeyCode.Escape) && !cinematicSkipped)
+        {
+            currentDirector.time = 30.0f;
+            cinematicSkipped = true;
+        }
+        {
+
+        }
 
         if (Input.GetKeyDown(KeyCode.Escape) && !InventoryDisplay.isOpen)
         {
@@ -81,5 +99,28 @@ public class GameManager : MonoBehaviour
     {
         Cursor.visible = false;
         Cursor.lockState = CursorLockMode.Locked;
+    }
+
+    private void InPause()
+    {
+        if (inPause == true)
+        {
+            Time.timeScale = 0f;
+        }
+
+        else
+        {
+            Time.timeScale = 1f;
+        }
+    }
+
+    public void GetDirector(PlayableDirector director)
+    {
+        cinematicSkipped = false;
+        currentDirector = director;
+    }
+    public void GetSkipTime(float skipTime)
+    {
+        timeToSkipTo = skipTime;
     }
 }
