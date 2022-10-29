@@ -7,6 +7,7 @@ public class Lever : MonoBehaviour
     public int leverID;
     public int id;
     public Animator anim;
+    public Animator fade;
 
     private void Start()
     {
@@ -29,6 +30,8 @@ public class Lever : MonoBehaviour
         if (id == this.id)
         {
             Debug.Log("Inicia la cinematica");
+            StartCoroutine(Fading());
+            
         }
 
     }
@@ -38,4 +41,11 @@ public class Lever : MonoBehaviour
         EventManager.current.useLeverEvent -= StartCinematic;
     }
 
+
+    IEnumerator Fading()
+    {
+        fade.SetBool("isFade", true);
+        yield return new WaitForSeconds(3f);
+        fade.SetBool("isFade", false);
+    }
 }
