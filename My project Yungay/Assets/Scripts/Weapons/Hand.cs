@@ -93,8 +93,13 @@ public class Hand : MonoBehaviour
             {
                 if (_.equipmentType == EquipmentType.Range)
                 {
+                    if (!canAim)
+                    {
+                        imageCursor.sprite = weaponsCursor;
+                    }
+
                     canAim = true;
-                    imageCursor.sprite = weaponsCursor;
+                    
                 }
                 else
                 {

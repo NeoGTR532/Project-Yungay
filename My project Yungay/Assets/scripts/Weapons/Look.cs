@@ -50,6 +50,7 @@ public class Look : MonoBehaviour
             {
                 zoom = false;
                 anim.SetBool("isAim", false);
+                Hand.imageCursor.sprite = weaponCursor;
             }
 
             if (zoom)
