@@ -27,7 +27,8 @@ public class PlayerMovement : MonoBehaviour
             { PlayerModel.State.idle, Iddle },
             { PlayerModel.State.move, Movement },
             { PlayerModel.State.walk, Walk },
-            { PlayerModel.State.run, Run }
+            { PlayerModel.State.run, Run },
+            {PlayerModel.State.cinematica, Cinema}
         };
     }
 
@@ -51,6 +52,10 @@ public class PlayerMovement : MonoBehaviour
     {
     }
 
+    private void Cinema()
+    {
+        
+    }
     private void Iddle()
     {
         if(GameManager.inPause == false && model.isDeath == false)

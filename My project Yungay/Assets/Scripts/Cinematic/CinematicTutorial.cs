@@ -8,6 +8,7 @@ public class CinematicTutorial : MonoBehaviour
     private PlayableDirector director;
     public Camera cinematicCamera;
     public Camera playerCamera;
+    public PlayerModel playerModel;
 
 
     //public GameObject controlPanel;
@@ -22,6 +23,8 @@ public class CinematicTutorial : MonoBehaviour
 
     private void Start()
     {
+       // playerModel = PlayerModel.instance;
+
         StarTimeline();
     }
     // Update is called once per frame
@@ -46,7 +49,8 @@ public class CinematicTutorial : MonoBehaviour
         cinematicCamera.targetDisplay = 0;
         playerCamera.targetDisplay = 1;
         director.Play();
-       
+        playerModel.state = PlayerModel.State.cinematica;
+
     }
 
     public void EndTimeline(PlayableDirector obj)
@@ -54,5 +58,6 @@ public class CinematicTutorial : MonoBehaviour
         cinematicCamera.targetDisplay = 1;
         playerCamera.targetDisplay = 0;
         GameManager.inPause = false;
+        playerModel.state = PlayerModel.State.idle;
     }
 }

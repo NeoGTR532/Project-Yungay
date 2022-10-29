@@ -7,7 +7,7 @@ public class PlayerModel : MonoBehaviour
 {
     public enum State
     {
-        death, idle,move, walk, run,jump, jumping
+        cinematica,death, idle,move, walk, run,jump, jumping
     }
 
     [Header("State")]
@@ -67,9 +67,12 @@ public class PlayerModel : MonoBehaviour
 
     public static Transform playerTransform;
 
+    public static PlayerModel instance;
 
-    
-
+    private void Start()
+    {
+        instance = this;
+    }
     private void Awake()
     {
         checkpoint = GameObject.FindGameObjectWithTag("Checkpoint");
