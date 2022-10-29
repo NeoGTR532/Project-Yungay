@@ -2234,7 +2234,7 @@ MonoBehaviour:
       charge: 0
     - munition: {fileID: 11400000, guid: 90e3d25ee62315f41bd96ceec0c764b9, type: 2}
       charge: 0
-  force: 5
+  force: 7.5
   munitionImage: {fileID: 789789649}
   ammotext: {fileID: 1808715365}
   defaultCursor: {fileID: 21300000, guid: e7e80d39e3e102147a3be13caa7cd3d7, type: 3}
@@ -20695,6 +20695,11 @@ RectTransform:
   m_LocalScale: {x: 0, y: 0, z: 0}
   m_ConstrainProportionsScale: 0
   m_Children:
+  - {fileID: 1721299069}
+  - {fileID: 1666815871}
+  - {fileID: 1329016750}
+  - {fileID: 1008422439}
+  - {fileID: 1899925335}
   - {fileID: 923347932}
   - {fileID: 1816754209}
   - {fileID: 1645743988}
@@ -20703,11 +20708,6 @@ RectTransform:
   - {fileID: 974143889}
   - {fileID: 443191590}
   - {fileID: 1399557446}
-  - {fileID: 1721299069}
-  - {fileID: 1666815871}
-  - {fileID: 1329016750}
-  - {fileID: 1008422439}
-  - {fileID: 1899925335}
   - {fileID: 933400190}
   m_Father: {fileID: 0}
   m_RootOrder: 13
