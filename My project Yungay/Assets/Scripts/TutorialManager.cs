@@ -25,6 +25,7 @@ public class TutorialManager : MonoBehaviour
     private bool activateInventory = false;
     private GameObject backpackObjetc, paperObject;
     private bool once = false;
+    public GameObject box;
     private void Start()
     {
         cameraTransform = GameObject.Find("Main Camera").GetComponent<Transform>();
@@ -106,6 +107,7 @@ public class TutorialManager : MonoBehaviour
                                 if (!moveBox)
                                 {
                                     MisionText.currentMision = 6;
+                                    box.GetComponent<Rigidbody>().isKinematic = false;
                                     CheckMoveBox();
                                 }
                                 else
@@ -162,6 +164,14 @@ public class TutorialManager : MonoBehaviour
     private void CheckMoveBox()
     {
         if (PlayerPickUp.isPushing)
+        {
+            moveBox = true;
+        }
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.CompareTag("Object"))
         {
             moveBox = true;
         }
