@@ -9,6 +9,12 @@ public class HudTest : MonoBehaviour
     public bool testing;
     public float timer;
     public float maxTimer;
+    private Inventory inventory;
+
+    private void Start()
+    {
+        inventory = GameObject.FindGameObjectWithTag("Player").GetComponent<Inventory>();
+    }
 
     private void Update()
     {
@@ -21,7 +27,15 @@ public class HudTest : MonoBehaviour
         {
             if(texto[i].text == "")
             {
-                texto[i].text = "Recogido: " + itemObject.name + " (X" + cantidad.ToString() + ")";
+                if (cantidad != 0)
+                {
+                    texto[i].text = "Recogido: " + itemObject.name + " (X" + cantidad.ToString() + ")";
+                }
+                else
+                {
+                    texto[i].text =  itemObject.name + " (maxStack)";
+                }
+                
                 break;
             }
         }
