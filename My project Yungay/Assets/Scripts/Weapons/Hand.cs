@@ -59,10 +59,6 @@ public class Hand : MonoBehaviour
             }
         }
         UpdateText();
-        if (Input.GetKeyDown(KeyCode.K))
-        {
-            AudioManager.Instance.PlaySFX("Bruno");
-        }
     }
 
     private void ChangeItem()
@@ -236,8 +232,7 @@ public class Hand : MonoBehaviour
                     if (melee.animation != null)
                     {
                         anim.Play(melee.animation.name);
-                        //audioSource.PlayOneShot(melee.attackClip);
-                        AudioManager.Instance.PlaySFX("Pistol");
+                        AudioManager.Instance.PlaySFX(melee.attackClip.name);
                         isAttacking = true;
                     }
                 }

@@ -13941,8 +13941,43 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3741045179792130075, guid: fa9ca198d9416704780e5ee1bd7b755c,
         type: 3}
+      propertyPath: sfxSounds.Array.size
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 3741045179792130075, guid: fa9ca198d9416704780e5ee1bd7b755c,
+        type: 3}
       propertyPath: sfxSounds.Array.data[0].name
-      value: Bruno
+      value: Pistol
+      objectReference: {fileID: 0}
+    - target: {fileID: 3741045179792130075, guid: fa9ca198d9416704780e5ee1bd7b755c,
+        type: 3}
+      propertyPath: sfxSounds.Array.data[1].clip
+      value: 
+      objectReference: {fileID: 8300000, guid: 73e6401072c264a4fb0703be8819064c, type: 3}
+    - target: {fileID: 3741045179792130075, guid: fa9ca198d9416704780e5ee1bd7b755c,
+        type: 3}
+      propertyPath: sfxSounds.Array.data[1].name
+      value: Axe
+      objectReference: {fileID: 0}
+    - target: {fileID: 3741045179792130075, guid: fa9ca198d9416704780e5ee1bd7b755c,
+        type: 3}
+      propertyPath: sfxSounds.Array.data[2].clip
+      value: 
+      objectReference: {fileID: 8300000, guid: 0999d077c0f5ab24d8a7f22dd5c012d1, type: 3}
+    - target: {fileID: 3741045179792130075, guid: fa9ca198d9416704780e5ee1bd7b755c,
+        type: 3}
+      propertyPath: sfxSounds.Array.data[2].name
+      value: Knife
+      objectReference: {fileID: 0}
+    - target: {fileID: 3741045179792130075, guid: fa9ca198d9416704780e5ee1bd7b755c,
+        type: 3}
+      propertyPath: sfxSounds.Array.data[3].clip
+      value: 
+      objectReference: {fileID: 8300000, guid: 433733621d2208e408c1a844a75d74d9, type: 3}
+    - target: {fileID: 3741045179792130075, guid: fa9ca198d9416704780e5ee1bd7b755c,
+        type: 3}
+      propertyPath: sfxSounds.Array.data[3].name
+      value: Spear
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_AddedGameObjects: []

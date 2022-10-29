@@ -52,95 +52,6 @@ public class RangeWeapons : MonoBehaviour
         }
     }
 
-    public void Shoot(ItemObject item)
-    {
-        RaycastHit hit;
-        Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-        EquipmentRange _ = (EquipmentRange)item;
-        switch(_.itemName)
-        {
-            case "Pistol":
-                if (munition.thereNails || munition.thereBullets)
-                {
-                    if (lastShootTime + _.shootDelay < Time.time)
-                    {
-                        if (munition.thereNails && ammoPistol == false)
-                        {
-                            munition.chargerNails -= 1;
-                            //sound.GetComponent<AudioSource>().PlayOneShot(_.shoot);
-                            if (Physics.Raycast(ray, out hit, _.range, enemyMask))
-                            {
-                                TrailRenderer trail = Instantiate(bulletTrail, beggin.transform.position, Quaternion.identity);
-                                StartCoroutine(SpawnTrail(trail, hit.point));
-                                if (hit.collider.CompareTag("Enemy"))
-                                {
-                                    hit.collider.gameObject.GetComponent<EnemyHealth>().lifeE(_.damage);
-                                }
-                                lastShootTime = Time.time;
-                            }
-                            else
-                            {
-                                TrailRenderer trail = Instantiate(bulletTrail, beggin.transform.position, Quaternion.identity);
-                                StartCoroutine(SpawnTrail(trail, cam.transform.forward * _.range));
-                                lastShootTime = Time.time;
-                            }
-                        }
-                        if (munition.thereBullets == true && ammoPistol == true)
-                        {
-                            munition.chargerBullets -= 1;
-                            //sound.GetComponent<AudioSource>().PlayOneShot(_.shoot);
-                            if (Physics.Raycast(ray, out hit, _.range, enemyMask))
-                            {
-                                TrailRenderer trail = Instantiate(bulletTrail, beggin.transform.position, Quaternion.identity);
-                                StartCoroutine(SpawnTrail(trail, hit.point));
-                                if (hit.collider.CompareTag("Enemy"))
-                                {
-                                    hit.collider.gameObject.GetComponent<EnemyHealth>().lifeE(_.damage);
-                                }
-                                lastShootTime = Time.time;
-                            }
-                            else
-                            {
-                                TrailRenderer trail = Instantiate(bulletTrail, beggin.transform.position, Quaternion.identity);
-                                StartCoroutine(SpawnTrail(trail, cam.transform.forward * _.range));
-                                lastShootTime = Time.time;
-                            }
-                        }
-                    }
-                }
-                break;
-            case "SubmachineGun":
-                if (munition.thereBullets)
-                {
-                    if (lastShootTime + _.shootDelay < Time.time)
-                    {
-                        Vector3 direction = GetDirection();
-                        munition.chargerBullets -= 1;
-                        //sound.GetComponent<AudioSource>().PlayOneShot(_.shoot);
-                        if (Physics.Raycast(beggin.transform.position, direction, out hit, _.range, enemyMask))
-                        {
-                            TrailRenderer trail = Instantiate(bulletTrail, beggin.transform.position, Quaternion.identity);
-                            StartCoroutine(SpawnTrail(trail, hit.point));
-                            if (hit.collider.CompareTag("Enemy"))
-                            {
-                                hit.collider.gameObject.GetComponent<EnemyHealth>().lifeE(_.damage);
-                            }
-                            lastShootTime = Time.time;
-
-                        }
-                        else
-                        {
-                            TrailRenderer trail = Instantiate(bulletTrail, beggin.transform.position, Quaternion.identity);
-                            StartCoroutine(SpawnTrail(trail, cam.transform.forward * _.range));
-                            lastShootTime = Time.time;
-                        }
-                    }
-                }
-                break;
-        }
-        
-    }
-
     public void Disparo(ItemObject item)
     {
         EquipmentRange _ = (EquipmentRange)Hand.currentItem;
@@ -149,7 +60,7 @@ public class RangeWeapons : MonoBehaviour
 
         if (lastShootTime + _.shootDelay < Time.time)
         {
-            if (Physics.Raycast(ray, out hit, _.range, enemyMask))
+            if (Physics.Raycast(ray, out hit, /*_.range,*/ enemyMask))
             {
                 TrailRenderer trail = Instantiate(bulletTrail, beggin.transform.position, Quaternion.identity);
                 StartCoroutine(SpawnTrail(trail, hit.point));
