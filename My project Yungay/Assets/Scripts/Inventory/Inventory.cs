@@ -30,12 +30,19 @@ public class Inventory : MonoBehaviour
             {
                 slots[index].AddAmount(amount);
                 hudTest.TextHud(itemObject, amount);
-                item.amount = 0;
+                if (item != null)
+                {
+                    item.amount = 0;
+                }
+                
 
             }
             else
             {
-                item.amount = (slots[index].amount + amount) - slots[index].item.maxStack;
+                if (item != null)
+                {
+                    item.amount = (slots[index].amount + amount) - slots[index].item.maxStack;
+                }
                 slots[index].amount = slots[index].item.maxStack;
                 hudTest.TextHud(itemObject, slots[index].item.maxStack - slots[index].amount);
             }

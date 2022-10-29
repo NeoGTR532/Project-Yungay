@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3c08865a1c2b60a49b85bd8c18175481, type: 3}
   m_Name: Spring
   m_EditorClassIdentifier: 
-  prefab: {fileID: 6091949557851866741, guid: 2cc4fa7d49f89a342821637f1f09f054, type: 3}
+  prefab: {fileID: 532150563355150936, guid: 38f4831e475bbd442a4cad15aa56e46b, type: 3}
   itemSprite: {fileID: 21300000, guid: d4173b77ef4f16742929423aac9e4580, type: 3}
   type: 1
   maxStack: 10

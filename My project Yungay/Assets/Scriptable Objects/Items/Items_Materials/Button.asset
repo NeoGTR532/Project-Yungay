@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3c08865a1c2b60a49b85bd8c18175481, type: 3}
   m_Name: Button
   m_EditorClassIdentifier: 
-  prefab: {fileID: 6091949557851866741, guid: 2cc4fa7d49f89a342821637f1f09f054, type: 3}
+  prefab: {fileID: 4538740350180716780, guid: 692581f5c1313bb4d9dc2ebe2fd15505, type: 3}
   itemSprite: {fileID: 21300000, guid: 94052ab745a6bb74bb4e06927e8fda6c, type: 3}
   type: 1
   maxStack: 10

@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5793ebdb5b8260e4d815a9aef87e3ee1, type: 3}
   m_Name: Vendas
   m_EditorClassIdentifier: 
-  prefab: {fileID: 0}
-  itemSprite: {fileID: 21300000, guid: 407446e797afdf34e87cff3c9800741d, type: 3}
+  prefab: {fileID: 4813296409211751550, guid: a98bb0df3f2b2cc459e33e20d8bca1d3, type: 3}
+  itemSprite: {fileID: 21300000, guid: 4f1bf44322dd418489c6d377de47ba00, type: 3}
   type: 0
   maxStack: 5
   description: 

@@ -12,7 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5793ebdb5b8260e4d815a9aef87e3ee1, type: 3}
   m_Name: Botiquin
   m_EditorClassIdentifier: 
-  prefab: {fileID: 0}
+  prefab: {fileID: 3088418160210637385, guid: 3e3f085ebc5446145822f369ba4a5114, type: 3}
+  itemSprite: {fileID: 21300000, guid: cf72655da7e8f944ea4eb213a5bc7130, type: 3}
   type: 0
   maxStack: 5
   description: Botiquin te cura

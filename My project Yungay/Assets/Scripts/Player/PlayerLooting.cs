@@ -60,7 +60,6 @@ public class PlayerLooting : MonoBehaviour
                     {
                         var _ = loot.loot[i];
                         inventory.AddItem(_, _.item, _.amount);
-                        Debug.Log(_.amount);
                     }
                     loot.DeleteObject();
                     lootText.GetComponent<Animator>().SetBool("Show", false);

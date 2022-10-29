@@ -79,7 +79,15 @@ public class CraftDisplay : MonoBehaviour, IPointerDownHandler, IPointerUpHandle
         {
             if (inventory.CheckItem(recipe.result))
             {
-                canCraft = false;
+                if (inventory.slots[inventory.GetItemIndex(recipe.result)].amount < inventory.slots[inventory.GetItemIndex(recipe.result)].item.maxStack)
+                {
+                    canCraft = true;
+                }
+                else
+                {
+                    canCraft = false;
+                }
+                
             }
             else
             {
