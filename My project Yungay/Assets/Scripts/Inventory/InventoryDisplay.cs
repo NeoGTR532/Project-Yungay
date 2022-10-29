@@ -32,6 +32,7 @@ public class InventoryDisplay : MonoBehaviour
         {
             OpenDisplay();
             GameManager.ShowCursor();
+            AudioManager.Instance.PlaySFX("Abrir");
 
         }
         else if (Input.GetKeyDown(KeyCode.I) || Input.GetKeyDown(KeyCode.Escape) && isOpen)
@@ -40,6 +41,7 @@ public class InventoryDisplay : MonoBehaviour
             Cursor.lockState = CursorLockMode.Locked;
             GameManager.inPause = false;
             Time.timeScale = 1f;
+            AudioManager.Instance.PlaySFX("Cerrar");
         }
     }
 

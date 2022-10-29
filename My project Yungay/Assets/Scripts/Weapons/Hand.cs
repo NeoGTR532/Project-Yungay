@@ -26,7 +26,6 @@ public class Hand : MonoBehaviour
     private AudioSource audioSource;
     public Sprite defaultCursor, weaponsCursor, aimCursor;
     public static Image imageCursor;
-    public AudioManager audioManager;
     // Start is called before the first frame update
     void Start()
     {
@@ -39,7 +38,6 @@ public class Hand : MonoBehaviour
         muni = GetComponent<Munition>();
         audioSource = GetComponent<AudioSource>();
         imageCursor = GameObject.Find("Cursor").GetComponent<Image>();
-        audioManager = AudioManager.Instance;
     }
 
     // Update is called once per frame
@@ -232,7 +230,6 @@ public class Hand : MonoBehaviour
                     if (melee.animation != null)
                     {
                         anim.Play(melee.animation.name);
-                        AudioManager.Instance.PlaySFX(melee.attackClip.name);
                         isAttacking = true;
                     }
                 }
@@ -251,7 +248,7 @@ public class Hand : MonoBehaviour
             {
                 if (_.equipmentType == EquipmentType.Melee)
                 {
-                    GameObject clone = Instantiate(currentItem.prefab, Camera.main.transform.position, Camera.main.transform.rotation);
+                    GameObject clone = Instantiate(currentItem.prefab, transform.position, transform.rotation);
                     clone.GetComponent<Loot>().loot[0].amount = inventory.slots[slotIndex].amount;
                     clone.GetComponent<Rigidbody>().isKinematic = false;
                     clone.GetComponent<Rigidbody>().AddForce(Camera.main.transform.forward * force, ForceMode.Impulse);
@@ -261,8 +258,7 @@ public class Hand : MonoBehaviour
                     inventoryDisplay.UpdateDisplay();
                     canAttack = false;
                     EquipmentMelee melee = _ as EquipmentMelee;
-                    //audioSource.PlayOneShot(melee.attackClip);
-                    AudioManager.Instance.PlaySFX("Pistol");
+                    AudioManager.Instance.PlaySFX("Throw");
                 }
             }
         }
@@ -279,6 +275,12 @@ public class Hand : MonoBehaviour
         Destroy(GetComponent<BoxCollider>());
     }
 
+    public void PlaySound()
+    {
+        EquipmentMelee melee = (EquipmentMelee)currentItem;
+        AudioManager.Instance.PlaySFX(melee.attackClip.name);
+    }
+
     public int GetMunitionIndex(ItemObject item)
     {
         int index = 0;
@@ -291,6 +293,14 @@ public class Hand : MonoBehaviour
             }
         }
         return index;
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.CompareTag("Box"))
+        {
+            other.GetComponent<Box>().Destroy();
+        }
     }
 }
 

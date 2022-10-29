@@ -69,12 +69,14 @@ public class RangeWeapons : MonoBehaviour
                     hit.collider.gameObject.GetComponent<EnemyHealth>().lifeE(_.damage);
                 }
                 lastShootTime = Time.time;
+                AudioManager.Instance.PlaySFX("Pistol");
             }
             else
             {
                 TrailRenderer trail = Instantiate(bulletTrail, beggin.transform.position, Quaternion.identity);
                 StartCoroutine(SpawnTrail(trail, cam.transform.forward * _.range));
                 lastShootTime = Time.time;
+                AudioManager.Instance.PlaySFX("Pistol");
             }
             munition.RestMunition(hand.currentMunition);
             inventory.RemoveSlot();
