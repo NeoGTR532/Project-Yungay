@@ -39,8 +39,15 @@ public class GameManager : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.Escape) && !cinematicSkipped)
         {
-            currentDirector.time = 30.0f;
-            cinematicSkipped = true;
+            if (currentDirector?true:false) 
+            {
+                currentDirector.time = 30.0f;
+                cinematicSkipped = true;
+            }
+            else
+            {
+
+            }
         }
         {
 

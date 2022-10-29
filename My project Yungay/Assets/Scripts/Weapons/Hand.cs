@@ -26,6 +26,7 @@ public class Hand : MonoBehaviour
     private AudioSource audioSource;
     public Sprite defaultCursor, weaponsCursor, aimCursor;
     public static Image imageCursor;
+    public AudioManager audioManager;
     // Start is called before the first frame update
     void Start()
     {
@@ -38,6 +39,7 @@ public class Hand : MonoBehaviour
         muni = GetComponent<Munition>();
         audioSource = GetComponent<AudioSource>();
         imageCursor = GameObject.Find("Cursor").GetComponent<Image>();
+        audioManager = AudioManager.Instance;
     }
 
     // Update is called once per frame
@@ -57,6 +59,10 @@ public class Hand : MonoBehaviour
             }
         }
         UpdateText();
+        if (Input.GetKeyDown(KeyCode.K))
+        {
+            AudioManager.Instance.PlaySFX("Bruno");
+        }
     }
 
     private void ChangeItem()
@@ -230,7 +236,8 @@ public class Hand : MonoBehaviour
                     if (melee.animation != null)
                     {
                         anim.Play(melee.animation.name);
-                        audioSource.PlayOneShot(melee.attackClip);
+                        //audioSource.PlayOneShot(melee.attackClip);
+                        AudioManager.Instance.PlaySFX("Pistol");
                         isAttacking = true;
                     }
                 }
@@ -259,7 +266,8 @@ public class Hand : MonoBehaviour
                     inventoryDisplay.UpdateDisplay();
                     canAttack = false;
                     EquipmentMelee melee = _ as EquipmentMelee;
-                    audioSource.PlayOneShot(melee.attackClip);
+                    //audioSource.PlayOneShot(melee.attackClip);
+                    AudioManager.Instance.PlaySFX("Pistol");
                 }
             }
         }

@@ -24,16 +24,15 @@ public class AudioManager : MonoBehaviour
     public Image muteImageSfx;
     private void Awake()
     {
-        //if (Instance == null)
-        //{
-        //    Instance = this;
-        //    DontDestroyOnLoad(gameObject);
-        //}
-
-        //else
-        //{
-        //    Destroy(gameObject);
-        //}
+        if (Instance == null)
+        {
+            Instance = this;
+            DontDestroyOnLoad(gameObject);
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
     }
 
     public void Start()
@@ -128,7 +127,7 @@ public class AudioManager : MonoBehaviour
 
     public void PlaySFX(string name)
     {
-        Sounds s = Array.Find(musicSounds, x => x.name == name);
+        Sounds s = Array.Find(sfxSounds, x => x.name == name);
         if (s == null)
         {
             Debug.Log("Sound Not Found");
