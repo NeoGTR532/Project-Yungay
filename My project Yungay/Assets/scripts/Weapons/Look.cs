@@ -17,7 +17,7 @@ public class Look : MonoBehaviour
     public bool zoom = false;
     private Coroutine coroutine;
     private Animator anim;
-    private bool once = false;
+    public Sprite weaponCursor,aimCursor;
 
     private void Start()
     {
@@ -43,19 +43,13 @@ public class Look : MonoBehaviour
                 zoom = true;
                 anim.Play("Aim_Pistol");
                 anim.SetBool("isAim", true);
-                //if (!once)
-                //{
-                //    anim.Play("Aim_Pistol");
-                //    anim.SetBool("isAim", true);
-                //    once = true;
-                //}
+                Hand.imageCursor.sprite = aimCursor;
             }
 
             if (Input.GetMouseButtonUp(1))
             {
                 zoom = false;
                 anim.SetBool("isAim", false);
-                once = false;
             }
 
             if (zoom)

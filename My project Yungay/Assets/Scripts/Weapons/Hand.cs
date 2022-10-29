@@ -23,7 +23,9 @@ public class Hand : MonoBehaviour
     private Munition muni;
     public Image munitionImage;
     public TMP_Text ammotext;
-    public AudioSource audioSource;
+    private AudioSource audioSource;
+    public Sprite defaultCursor, weaponsCursor, aimCursor;
+    public static Image imageCursor;
     // Start is called before the first frame update
     void Start()
     {
@@ -35,6 +37,7 @@ public class Hand : MonoBehaviour
         currentMunition = itemsMunition[0];
         muni = GetComponent<Munition>();
         audioSource = GetComponent<AudioSource>();
+        imageCursor = GameObject.Find("Cursor").GetComponent<Image>();
     }
 
     // Update is called once per frame
@@ -91,10 +94,12 @@ public class Hand : MonoBehaviour
                 if (_.equipmentType == EquipmentType.Range)
                 {
                     canAim = true;
+                    imageCursor.sprite = weaponsCursor;
                 }
                 else
                 {
                     canAim = false;
+                    imageCursor.sprite = defaultCursor;
                 }
 
                 if (_.equipmentType == EquipmentType.Melee)
