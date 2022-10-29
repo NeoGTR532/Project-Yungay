@@ -46,6 +46,7 @@ public class PauseMenu : MonoBehaviour
     public void ButtonBack()
     {
         panelPause.SetActive(false);
+        Cursor.lockState = CursorLockMode.Locked;
         GameManager.inPause = false;
         Time.timeScale = 1F;
     }

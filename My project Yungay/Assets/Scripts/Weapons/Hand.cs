@@ -294,20 +294,6 @@ public class Hand : MonoBehaviour
         }
         return index;
     }
-
-    private void OnTriggerEnter(Collider other)
-    {
-        Debug.Log(other.gameObject.name);
-        if (other.CompareTag("Box"))
-        {
-            other.GetComponent<Box>().Destroy();
-        }
-    }
-
-    private void OnCollisionEnter(Collision collision)
-    {
-        Debug.Log(collision.gameObject.name);
-    }
 }
 
 [System.Serializable]

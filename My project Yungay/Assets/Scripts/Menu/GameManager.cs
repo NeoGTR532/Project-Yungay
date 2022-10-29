@@ -68,6 +68,7 @@ public class GameManager : MonoBehaviour
                 Time.timeScale = 1f;
                 panelPause.SetActive(false);
                 inPause = false;
+                Cursor.lockState = CursorLockMode.Locked;
             }
             else if (sceneName != "Menu" && inPause && panelOptions.activeSelf)
             {

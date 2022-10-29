@@ -1979,8 +1979,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   boxFullPieces: {fileID: 8136586195334732137, guid: 72c811a78a6570e4a8a65845a7174fc6,
     type: 3}
-  resources:
-  - {fileID: 1735745338477293402, guid: 52f0955757eeca443812e14958b0434e, type: 3}
+  lootPrefab: {fileID: 0}
+  items: []
 --- !u!65 &233529564
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -2319,8 +2319,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   boxFullPieces: {fileID: 8136586195334732137, guid: 72c811a78a6570e4a8a65845a7174fc6,
     type: 3}
-  resources:
-  - {fileID: 6091949557851866741, guid: 2cc4fa7d49f89a342821637f1f09f054, type: 3}
+  lootPrefab: {fileID: 0}
+  items: []
 --- !u!65 &252283180
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -2664,7 +2664,7 @@ MeshFilter:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 274654647}
-  m_Mesh: {fileID: -5076798556035486163, guid: a190b4c0ce1769248bb33466c8ca22f7, type: 3}
+  m_Mesh: {fileID: 4068373912626513877, guid: 9250b7ef6e445f54db772315e85eef8d, type: 3}
 --- !u!114 &274654651
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3585,8 +3585,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   boxFullPieces: {fileID: 8136586195334732137, guid: 72c811a78a6570e4a8a65845a7174fc6,
     type: 3}
-  resources:
-  - {fileID: 6091949557851866741, guid: 2cc4fa7d49f89a342821637f1f09f054, type: 3}
+  lootPrefab: {fileID: 0}
+  items: []
 --- !u!65 &317905476
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -3699,8 +3699,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   boxFullPieces: {fileID: 8136586195334732137, guid: 72c811a78a6570e4a8a65845a7174fc6,
     type: 3}
-  resources:
-  - {fileID: 4837104770637594162, guid: ebdd4bd39d5a20342a6105aca0e03ec8, type: 3}
+  lootPrefab: {fileID: 0}
+  items: []
 --- !u!65 &328102879
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -4539,8 +4539,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   boxFullPieces: {fileID: 8136586195334732137, guid: 72c811a78a6570e4a8a65845a7174fc6,
     type: 3}
-  resources:
-  - {fileID: 7060141630597079246, guid: 18e383e10b5130844a4b2ecee29c1e13, type: 3}
+  lootPrefab: {fileID: 0}
+  items: []
 --- !u!65 &405622047
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -4796,8 +4796,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   boxFullPieces: {fileID: 8136586195334732137, guid: 72c811a78a6570e4a8a65845a7174fc6,
     type: 3}
-  resources:
-  - {fileID: 6091949557851866741, guid: 2cc4fa7d49f89a342821637f1f09f054, type: 3}
+  lootPrefab: {fileID: 0}
+  items: []
 --- !u!65 &429767187
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -4925,8 +4925,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   boxFullPieces: {fileID: 8136586195334732137, guid: 72c811a78a6570e4a8a65845a7174fc6,
     type: 3}
-  resources:
-  - {fileID: 4837104770637594162, guid: ebdd4bd39d5a20342a6105aca0e03ec8, type: 3}
+  lootPrefab: {fileID: 0}
+  items: []
 --- !u!65 &431920589
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -7301,8 +7301,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   boxFullPieces: {fileID: 8136586195334732137, guid: 72c811a78a6570e4a8a65845a7174fc6,
     type: 3}
-  resources:
-  - {fileID: 4837104770637594162, guid: ebdd4bd39d5a20342a6105aca0e03ec8, type: 3}
+  lootPrefab: {fileID: 0}
+  items: []
 --- !u!65 &721695662
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -8059,82 +8059,6 @@ CanvasRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 789789647}
-  m_CullTransparentMesh: 1
---- !u!1 &802546550
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 802546551}
-  - component: {fileID: 802546553}
-  - component: {fileID: 802546552}
-  m_Layer: 5
-  m_Name: Image
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!224 &802546551
-RectTransform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 802546550}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 2116291154}
-  m_RootOrder: -1
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 100, y: 100}
-  m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &802546552
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 802546550}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_RaycastTarget: 1
-  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
-  m_Maskable: 1
-  m_OnCullStateChanged:
-    m_PersistentCalls:
-      m_Calls: []
-  m_Sprite: {fileID: 0}
-  m_Type: 0
-  m_PreserveAspect: 0
-  m_FillCenter: 1
-  m_FillMethod: 4
-  m_FillAmount: 1
-  m_FillClockwise: 1
-  m_FillOrigin: 0
-  m_UseSpriteMesh: 0
-  m_PixelsPerUnitMultiplier: 1
---- !u!222 &802546553
-CanvasRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 802546550}
   m_CullTransparentMesh: 1
 --- !u!1 &803657611
 GameObject:
@@ -10526,8 +10450,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   boxFullPieces: {fileID: 8136586195334732137, guid: 72c811a78a6570e4a8a65845a7174fc6,
     type: 3}
-  resources:
-  - {fileID: 4837104770637594162, guid: ebdd4bd39d5a20342a6105aca0e03ec8, type: 3}
+  lootPrefab: {fileID: 0}
+  items: []
 --- !u!65 &977591287
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -13769,8 +13693,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   boxFullPieces: {fileID: 8136586195334732137, guid: 72c811a78a6570e4a8a65845a7174fc6,
     type: 3}
-  resources:
-  - {fileID: 4837104770637594162, guid: ebdd4bd39d5a20342a6105aca0e03ec8, type: 3}
+  lootPrefab: {fileID: 0}
+  items: []
 --- !u!65 &1319708520
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -15266,91 +15190,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 3741045179750391223, guid: fa9ca198d9416704780e5ee1bd7b755c,
-        type: 3}
-      propertyPath: m_PlayOnAwake
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3741045179792130075, guid: fa9ca198d9416704780e5ee1bd7b755c,
-        type: 3}
-      propertyPath: sfxSounds.Array.size
-      value: 7
-      objectReference: {fileID: 0}
-    - target: {fileID: 3741045179792130075, guid: fa9ca198d9416704780e5ee1bd7b755c,
-        type: 3}
-      propertyPath: sfxSounds.Array.data[0].name
-      value: Pistol
-      objectReference: {fileID: 0}
-    - target: {fileID: 3741045179792130075, guid: fa9ca198d9416704780e5ee1bd7b755c,
-        type: 3}
-      propertyPath: sfxSounds.Array.data[1].clip
-      value: 
-      objectReference: {fileID: 8300000, guid: 73e6401072c264a4fb0703be8819064c, type: 3}
-    - target: {fileID: 3741045179792130075, guid: fa9ca198d9416704780e5ee1bd7b755c,
-        type: 3}
-      propertyPath: sfxSounds.Array.data[1].name
-      value: Axe
-      objectReference: {fileID: 0}
-    - target: {fileID: 3741045179792130075, guid: fa9ca198d9416704780e5ee1bd7b755c,
-        type: 3}
-      propertyPath: sfxSounds.Array.data[2].clip
-      value: 
-      objectReference: {fileID: 8300000, guid: 0999d077c0f5ab24d8a7f22dd5c012d1, type: 3}
-    - target: {fileID: 3741045179792130075, guid: fa9ca198d9416704780e5ee1bd7b755c,
-        type: 3}
-      propertyPath: sfxSounds.Array.data[2].name
-      value: Knife
-      objectReference: {fileID: 0}
-    - target: {fileID: 3741045179792130075, guid: fa9ca198d9416704780e5ee1bd7b755c,
-        type: 3}
-      propertyPath: sfxSounds.Array.data[3].clip
-      value: 
-      objectReference: {fileID: 8300000, guid: 433733621d2208e408c1a844a75d74d9, type: 3}
-    - target: {fileID: 3741045179792130075, guid: fa9ca198d9416704780e5ee1bd7b755c,
-        type: 3}
-      propertyPath: sfxSounds.Array.data[3].name
-      value: Spear
-      objectReference: {fileID: 0}
-    - target: {fileID: 3741045179792130075, guid: fa9ca198d9416704780e5ee1bd7b755c,
-        type: 3}
-      propertyPath: sfxSounds.Array.data[4].clip
-      value: 
-      objectReference: {fileID: 8300000, guid: 8fe58fa0b2274b24a8ac3e43c8ac4d23, type: 3}
-    - target: {fileID: 3741045179792130075, guid: fa9ca198d9416704780e5ee1bd7b755c,
-        type: 3}
-      propertyPath: sfxSounds.Array.data[4].name
-      value: Abrir
-      objectReference: {fileID: 0}
-    - target: {fileID: 3741045179792130075, guid: fa9ca198d9416704780e5ee1bd7b755c,
-        type: 3}
-      propertyPath: sfxSounds.Array.data[5].clip
-      value: 
-      objectReference: {fileID: 8300000, guid: 4661d080d5fa70a41993f1697ad11371, type: 3}
-    - target: {fileID: 3741045179792130075, guid: fa9ca198d9416704780e5ee1bd7b755c,
-        type: 3}
-      propertyPath: sfxSounds.Array.data[5].name
-      value: Mochila
-      objectReference: {fileID: 0}
-    - target: {fileID: 3741045179792130075, guid: fa9ca198d9416704780e5ee1bd7b755c,
-        type: 3}
-      propertyPath: sfxSounds.Array.data[6].clip
-      value: 
-      objectReference: {fileID: 8300000, guid: 3687b10bfef5a2a4e82fc326c8240955, type: 3}
-    - target: {fileID: 3741045179792130075, guid: fa9ca198d9416704780e5ee1bd7b755c,
-        type: 3}
-      propertyPath: sfxSounds.Array.data[6].name
-      value: Throw
-      objectReference: {fileID: 0}
-    - target: {fileID: 3741045180704199342, guid: fa9ca198d9416704780e5ee1bd7b755c,
-        type: 3}
-      propertyPath: m_PlayOnAwake
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3741045181005002779, guid: fa9ca198d9416704780e5ee1bd7b755c,
-        type: 3}
-      propertyPath: m_Name
-      value: Canvas Menu
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_AddedGameObjects: []
   m_SourcePrefab: {fileID: 100100000, guid: fa9ca198d9416704780e5ee1bd7b755c, type: 3}
@@ -15645,8 +15484,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   boxFullPieces: {fileID: 8136586195334732137, guid: 72c811a78a6570e4a8a65845a7174fc6,
     type: 3}
-  resources:
-  - {fileID: 1735745338477293402, guid: d169416df5e61704da52bf354974e8b2, type: 3}
+  lootPrefab: {fileID: 0}
+  items: []
 --- !u!65 &1515899114
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -18772,8 +18611,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   boxFullPieces: {fileID: 8136586195334732137, guid: 72c811a78a6570e4a8a65845a7174fc6,
     type: 3}
-  resources:
-  - {fileID: 6956965531049255221, guid: d169416df5e61704da52bf354974e8b2, type: 3}
+  lootPrefab: {fileID: 8899441439988601919, guid: 31850fe793b2d2a46b57b42bca6b0711,
+    type: 3}
+  items:
+  - {fileID: 11400000, guid: 916a62b47d553554185606c8ccf38189, type: 2}
+  - {fileID: 11400000, guid: 157c94ec010615448a7e622bf9ca479d, type: 2}
+  - {fileID: 11400000, guid: abc6655494af5b949967c0721deff67a, type: 2}
 --- !u!65 &1840345600
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -19873,8 +19716,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   boxFullPieces: {fileID: 8136586195334732137, guid: 72c811a78a6570e4a8a65845a7174fc6,
     type: 3}
-  resources:
-  - {fileID: 1735745338477293402, guid: d169416df5e61704da52bf354974e8b2, type: 3}
+  lootPrefab: {fileID: 0}
+  items: []
 --- !u!65 &1942819970
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -20479,8 +20322,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   boxFullPieces: {fileID: 8136586195334732137, guid: 72c811a78a6570e4a8a65845a7174fc6,
     type: 3}
-  resources:
-  - {fileID: 4837104770637594162, guid: ebdd4bd39d5a20342a6105aca0e03ec8, type: 3}
+  lootPrefab: {fileID: 0}
+  items: []
 --- !u!65 &2010564341
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -21983,7 +21826,6 @@ RectTransform:
   - {fileID: 443191590}
   - {fileID: 1399557446}
   - {fileID: 933400190}
-  - {fileID: 802546551}
   m_Father: {fileID: 0}
   m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -22429,8 +22271,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   boxFullPieces: {fileID: 8136586195334732137, guid: 72c811a78a6570e4a8a65845a7174fc6,
     type: 3}
-  resources:
-  - {fileID: 7060141630597079246, guid: 18e383e10b5130844a4b2ecee29c1e13, type: 3}
+  lootPrefab: {fileID: 0}
+  items: []
 --- !u!65 &2145161115
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -23633,8 +23475,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   boxFullPieces: {fileID: 8136586195334732137, guid: 72c811a78a6570e4a8a65845a7174fc6,
     type: 3}
-  resources:
-  - {fileID: 4837104770637594162, guid: ebdd4bd39d5a20342a6105aca0e03ec8, type: 3}
+  lootPrefab: {fileID: 0}
+  items: []
 --- !u!65 &2537313920447301310
 BoxCollider:
   m_ObjectHideFlags: 0
