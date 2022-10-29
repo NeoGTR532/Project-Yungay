@@ -39,6 +39,8 @@ public class Box : MonoBehaviour
             Instantiate(boxFullPieces, transform.position, Quaternion.identity);
             Destroy(this.gameObject);
         }
+
+        Debug.Log(other.gameObject.name);
     }
 
     private void OnCollisionEnter(Collision collision)
@@ -49,5 +51,7 @@ public class Box : MonoBehaviour
             Instantiate(boxFullPieces, transform.position, Quaternion.identity);
             Destroy(this.gameObject);
         }
+
+        Debug.Log(collision.gameObject.name);
     }
 }
