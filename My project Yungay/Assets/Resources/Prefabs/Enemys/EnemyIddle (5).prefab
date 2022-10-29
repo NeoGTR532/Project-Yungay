@@ -795,7 +795,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemyType: 0
   player: {fileID: 0}
-  damage: 1
+  damage: 5
 --- !u!1 &2496656330427947942
 GameObject:
   m_ObjectHideFlags: 0
@@ -1057,7 +1057,7 @@ Transform:
   - {fileID: 2496656329205999421}
   - {fileID: 2496656330427947937}
   m_Father: {fileID: 0}
-  m_RootOrder: 29
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!136 &2496656329862639532
 CapsuleCollider:
@@ -1177,7 +1177,7 @@ MonoBehaviour:
   Target: {fileID: 0}
   Agent: {fileID: 0}
   speed: 3
-  Weapon: {fileID: 11400000, guid: 9328765420afc1f43b1223775995af40, type: 2}
+  Weapon: {fileID: 0}
   Vision: 7
   anim: {fileID: 0}
   Near: 0

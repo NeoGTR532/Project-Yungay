@@ -21482,8 +21482,8 @@ MonoBehaviour:
   isDeath: 0
   armor: 0
   actualSpeed: 0
-  speedWalk: 3
-  speedRun: 10
+  speedWalk: 2
+  speedRun: 4
   speedCrouch: 0
   jumpForce: 4.87
   jumpCooldown: 0.25
