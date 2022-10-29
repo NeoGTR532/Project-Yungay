@@ -48,4 +48,9 @@ public class Lever : MonoBehaviour
         yield return new WaitForSeconds(3f);
         fade.SetBool("isFade", false);
     }
+
+    public void TravelSound()
+    {
+        AudioManager.Instance.PlaySFX("Car");
+    }
 }
