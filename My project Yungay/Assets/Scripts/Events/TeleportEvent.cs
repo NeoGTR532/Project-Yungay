@@ -16,12 +16,19 @@ public class TeleportEvent : MonoBehaviour
 
     private void Teleport(int id)
     {
-        player.transform.position = transform.position;
+        StartCoroutine(Teleporting());
         Level1Manager.isTravel = true;
     }
 
     private void OnDisable()
     {
         EventManager.current.useLeverEvent -= Teleport;
+    }
+
+    IEnumerator Teleporting()
+    {
+        yield return new WaitForSeconds(2f);
+        player.transform.position = transform.position;
+        
     }
 }
