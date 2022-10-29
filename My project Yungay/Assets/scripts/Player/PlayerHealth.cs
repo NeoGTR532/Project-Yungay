@@ -46,7 +46,7 @@ public class PlayerHealth : MonoBehaviour
         if (mb.health >= 0)
         {
             lifeBar.fillAmount = mb.health / mb.maxHealth;
-            numberLife.text = mb.health.ToString();
+            //numberLife.text = mb.health.ToString();
         }
         if(mb.health<= 0)
         {
