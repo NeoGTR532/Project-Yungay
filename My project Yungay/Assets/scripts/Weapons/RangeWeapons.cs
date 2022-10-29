@@ -55,12 +55,13 @@ public class RangeWeapons : MonoBehaviour
     public void Disparo(ItemObject item)
     {
         EquipmentRange _ = (EquipmentRange)Hand.currentItem;
+        Vector3 direction = GetDirection(_.bulletSpreadVarianceDis);
         RaycastHit hit;
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
 
         if (lastShootTime + _.shootDelay < Time.time)
         {
-            if (Physics.Raycast(ray, out hit, /*_.range,*/ enemyMask))
+            if (Physics.Raycast(Camera.main.transform.position,direction, out hit, /*_.range,*/ enemyMask))
             {
                 TrailRenderer trail = Instantiate(bulletTrail, beggin.transform.position, Quaternion.identity);
                 StartCoroutine(SpawnTrail(trail, hit.point));
@@ -68,6 +69,12 @@ public class RangeWeapons : MonoBehaviour
                 {
                     hit.collider.gameObject.GetComponent<EnemyHealth>().lifeE(_.damage);
                 }
+
+                if (hit.collider.CompareTag("Box"))
+                {
+                    hit.collider.gameObject.GetComponent<Box>().DestroyByOthers();
+                }
+
                 lastShootTime = Time.time;
                 AudioManager.Instance.PlaySFX("Pistol");
             }
@@ -83,13 +90,14 @@ public class RangeWeapons : MonoBehaviour
         }
     }
 
-    private Vector3 GetDirection()
+    private Vector3 GetDirection(float variance)
     {
+        Vector2 dir = new Vector2(variance, variance);
         Vector3 direction = cam.transform.forward;
         float z = 0;
         direction += new Vector3(
-            Random.Range(-BulletSpreadVariance.x, BulletSpreadVariance.x),
-            Random.Range(-BulletSpreadVariance.y, BulletSpreadVariance.y),
+            Random.Range(-dir.x, dir.x),
+            Random.Range(-dir.y, dir.y),
             z
         );
 

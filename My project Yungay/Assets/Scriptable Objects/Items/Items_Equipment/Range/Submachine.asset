@@ -10,29 +10,27 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 0b441810659202d47980f884c4b90a50, type: 3}
-  m_Name: Pistol
+  m_Name: Submachine
   m_EditorClassIdentifier: 
-  prefab: {fileID: 4624760335123719848, guid: 06c7930911417884bb0cf8cf69459419, type: 3}
-  itemSprite: {fileID: 21300000, guid: 730c3b9214c9cf945a0a75b014bbcf27, type: 3}
+  prefab: {fileID: 6753811621691610466, guid: 1b2fa453ea678f54bae3a506c2b21d8b, type: 3}
+  itemSprite: {fileID: 21300000, guid: b5ce61cc08726a34598c392b71545565, type: 3}
   type: 2
   maxStack: 1
   description: 
-  itemName: Pistol
-  itemMesh: {fileID: -9010193167645078742, guid: 6e74603fdba2bf740a5d678063c594aa,
+  itemName: Submachine
+  itemMesh: {fileID: -3099183463934272234, guid: c4d23ee469e137f47aeed4f98c356d04,
     type: 3}
-  itemMaterial: {fileID: 5561349426305759274, guid: 6e74603fdba2bf740a5d678063c594aa,
+  itemMaterial: {fileID: 5561349426305759274, guid: c4d23ee469e137f47aeed4f98c356d04,
     type: 3}
   equipmentType: 1
   lastShootTime: 0
-  shootDelay: 1
-  bulletSpreadVarianceDis: 0
+  shootDelay: 0.2
+  bulletSpreadVarianceDis: 0.2
   munitions:
-  - munition: {fileID: 11400000, guid: 7572195227b61b64291ece32e684d54f, type: 2}
-    charge: 10
   - munition: {fileID: 11400000, guid: 90e3d25ee62315f41bd96ceec0c764b9, type: 2}
-    charge: 10
-  chargerNailsMax: 10
-  chargerBulletsMax: 10
+    charge: 20
+  chargerNailsMax: 0
+  chargerBulletsMax: 20
   bulletSpreadVariance: {x: 0, y: 0}
   damage: 5
   range: 20

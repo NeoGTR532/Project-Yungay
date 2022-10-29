@@ -25,6 +25,12 @@ public class Box : MonoBehaviour
         Destroy(this.gameObject);
     }
 
+    public void DestroyByOthers()
+    {
+        Instantiate(boxFullPieces, transform.position, Quaternion.identity);
+        Destroy(this.gameObject);
+    }
+
     private void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Axe"))

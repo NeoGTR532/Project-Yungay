@@ -251,25 +251,37 @@ public class Munition : MonoBehaviour
                                 }
                             }
 
-                            if ( inventory.slots[inventory.GetItemIndex(item)].amount > maxCharge)
+                            if (inventory.CheckAmount(hand.currentMunition) < maxCharge)
                             {
-                                int amount = maxCharge - hand.weaponSlots[i].munitions[j].charge;
-                                hand.weaponSlots[i].munitions[j].charge = maxCharge;
-                                inventory.RestItem(item, amount);
+                                for (int m = inventory.CheckAmount(hand.currentMunition); m > 0;m --)
+                                {
+                                    hand.weaponSlots[i].munitions[j].charge++;
+                                    inventory.RestItem(item, 1);
+                                    inventory.RemoveSlot();
+                                }
                             }
                             else
                             {
-                                int amount = 0;
-
-                                for (int l = hand.weaponSlots[i].munitions[j].charge; l < maxCharge ; l++)
+                                if (inventory.slots[inventory.GetItemIndex(item)].amount > maxCharge)
                                 {
-                                    hand.weaponSlots[i].munitions[j].charge++;
-                                    amount++;
+                                    int amount = maxCharge - hand.weaponSlots[i].munitions[j].charge;
+                                    hand.weaponSlots[i].munitions[j].charge = maxCharge;
+                                    inventory.RestItem(item, amount);
+                                    inventory.RemoveSlot();
                                 }
-                                inventory.RestItem(item, amount);
-                            }
+                                else
+                                {
+                                    int amount = 0;
 
-                            inventory.RemoveSlot();
+                                    for (int l = hand.weaponSlots[i].munitions[j].charge; l < maxCharge; l++)
+                                    {
+                                        hand.weaponSlots[i].munitions[j].charge++;
+                                        amount++;
+                                        inventory.RestItem(item, 1);
+                                        inventory.RemoveSlot();
+                                    }
+                                }
+                            }
                             inventoryDisplay.UpdateDisplay();
                             break;
                         }
